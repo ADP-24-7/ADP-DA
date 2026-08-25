@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+.pycache/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local data and generated files
+data/raw/*
+data/processed/*
+artifacts/*
+outputs/
+reports/
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!artifacts/.gitkeep
+
+# Logs
+*.log
