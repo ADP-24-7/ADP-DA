@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/evaluation_artifact.schema.json",
+  "title": "ADP Evaluation Artifact",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "artifact_version",
+    "status",
+    "workload_id",
+    "experiment_id",
+    "dataset_version",
+    "metrics",
+    "threshold_basis",
+    "claim_scope",
+    "limitations"
+  ],
+  "properties": {
+    "artifact_id": { "type": "string" },
+    "artifact_version": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["candidate", "validated", "hold", "rejected"]
+    },
+    "workload_id": { "type": "string" },
+    "experiment_id": { "type": "string" },
+    "dataset_version": { "type": "string" },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "value", "unit"],
+        "properties": {
+          "name": { "type": "string" },
+          "value": { "type": "number" },
+          "unit": { "type": "string" },
+          "baseline": { "type": ["number", "null"] },
+          "threshold": { "type": ["number", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "threshold_basis": { "type": "string" },
+    "claim_scope": { "type": "string" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failure_cases": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "digest": { "type": "string" }
+  },
+  "additionalProperties": false
+}
