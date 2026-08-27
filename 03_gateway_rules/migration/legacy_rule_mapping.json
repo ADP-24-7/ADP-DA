@@ -1,0 +1,273 @@
+[
+  {
+    "legacy_rule_id": "GR-0001",
+    "requirement_ids": [
+      "RC-00001",
+      "RC-00003",
+      "RC-00004",
+      "RC-00006",
+      "RC-00010"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0002",
+    "requirement_ids": [
+      "RC-00009"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0003",
+    "requirement_ids": [
+      "RC-00002"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0004",
+    "requirement_ids": [
+      "RC-00015",
+      "RC-00019"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0005",
+    "requirement_ids": [
+      "RC-00014",
+      "RC-00018",
+      "RC-00020"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0006",
+    "requirement_ids": [
+      "RC-00023"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0007",
+    "requirement_ids": [
+      "RC-00032"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0008",
+    "requirement_ids": [
+      "RC-00026",
+      "RC-00033",
+      "RC-00034",
+      "RC-00038",
+      "RC-00039",
+      "RC-00049"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "REQUIRES_REDESIGN",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0009",
+    "requirement_ids": [
+      "RC-00040"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0010",
+    "requirement_ids": [
+      "RC-00042"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "NEEDS_REVIEW",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0011",
+    "requirement_ids": [
+      "RC-00035",
+      "RC-00036",
+      "RC-00037",
+      "RC-00041"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0012",
+    "requirement_ids": [
+      "RC-00028",
+      "RC-00043",
+      "RC-00048"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0013",
+    "requirement_ids": [
+      "RC-00013",
+      "RC-00016",
+      "RC-00030",
+      "RC-00031"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0014",
+    "requirement_ids": [
+      "RC-00005",
+      "RC-00007",
+      "RC-00008"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0015",
+    "requirement_ids": [
+      "RC-00011",
+      "RC-00012"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0016",
+    "requirement_ids": [
+      "RC-00017"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0017",
+    "requirement_ids": [
+      "RC-00021",
+      "RC-00022",
+      "RC-00024"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0018",
+    "requirement_ids": [
+      "RC-00025",
+      "RC-00027"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "DEFER",
+    "review_required_evidence_ids": [
+      "EV-00025",
+      "EV-00027"
+    ],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0019",
+    "requirement_ids": [
+      "RC-00029",
+      "RC-00044",
+      "RC-00045",
+      "RC-00046",
+      "RC-00047"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "DEFER",
+    "review_required_evidence_ids": [
+      "EV-00029",
+      "EV-00046",
+      "EV-00047"
+    ],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0020",
+    "requirement_ids": [
+      "RC-00050",
+      "RC-00051",
+      "RC-00052"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "MIGRATABLE",
+    "review_required_evidence_ids": [],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0021",
+    "requirement_ids": [
+      "RC-00053",
+      "RC-00054",
+      "RC-00055"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "DEFER",
+    "review_required_evidence_ids": [
+      "EV-00053",
+      "EV-00054",
+      "EV-00055"
+    ],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  },
+  {
+    "legacy_rule_id": "GR-0022",
+    "requirement_ids": [
+      "RC-00056",
+      "RC-00057",
+      "RC-00058",
+      "RC-00059"
+    ],
+    "migration_role": "PROVENANCE_ONLY",
+    "audit_classification": "DEFER",
+    "review_required_evidence_ids": [
+      "EV-00056",
+      "EV-00057"
+    ],
+    "note": "Legacy GR is preserved as provenance. New Control/Test/Policy objects are derived from Requirement Candidate grouping, not GR 1:1 migration."
+  }
+]

@@ -1,0 +1,1596 @@
+[
+  {
+    "requirement_id": "RC-00001",
+    "requirement_meaning": "통계작성, 과학적 연구, 공익적 기록보존",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "통계작성, 과학적 연구, 공익적 기록보존",
+    "requirement_class": "EVALUATION_DEPENDENT",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": true,
+    "related_legacy_gr": [
+      "GR-0001"
+    ],
+    "evidence_id": "EV-00001",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00002",
+    "requirement_meaning": "제3자에게 제공하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "포함해서는 아니 된다"
+    ],
+    "condition": "제3자에게 제공하는 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0003"
+    ],
+    "evidence_id": "EV-00002",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00003",
+    "requirement_meaning": "통계작성, 과학적 연구, 공익적 기록보존",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [
+      "서로 다른 개인정보처리자 간의 가명정보의 결합은 보호위원회 또는 관계 중앙행정기관의 장이 지정하는 전문기관이 수행한다"
+    ],
+    "prohibition": [],
+    "condition": "통계작성, 과학적 연구, 공익적 기록보존",
+    "requirement_class": "EVALUATION_DEPENDENT",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": true,
+    "related_legacy_gr": [
+      "GR-0001"
+    ],
+    "evidence_id": "EV-00003",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00004",
+    "requirement_meaning": "기관 외부로 결합된 정보를 반출하려는",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [
+      "가명정보 또는 제58조의2에 해당하는 정보로 처리한 뒤 전문기관의 장의 승인을 받아야 한다"
+    ],
+    "prohibition": [],
+    "condition": "기관 외부로 결합된 정보를 반출하려는",
+    "requirement_class": "EVALUATION_DEPENDENT",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": true,
+    "related_legacy_gr": [
+      "GR-0001"
+    ],
+    "evidence_id": "EV-00004",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00005",
+    "requirement_meaning": "가명정보의 결합 및 반출 절차에 관하여 필요한 사항",
+    "domain": "PRIVACY",
+    "actor": "",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "가명정보의 결합 및 반출 절차에 관하여 필요한 사항",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0014"
+    ],
+    "evidence_id": "EV-00005",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00006",
+    "requirement_meaning": "가명정보를 처리하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [
+      "원래의 상태로 복원하기 위한 추가 정보를 별도로 분리하여 보관ㆍ관리하는 등 해당 정보가 분실ㆍ도난ㆍ유출ㆍ위조ㆍ변조 또는 훼손되지 않도록 대통령령으로 정하는 바에 따라 안전성 확보에 필요한 기술적ㆍ관리적 및 물리적 조치를 하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "가명정보를 처리하는 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0001"
+    ],
+    "evidence_id": "EV-00006",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00007",
+    "requirement_meaning": "제28조의2 또는 제28조의3에 따라 가명정보를 처리하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "제28조의2 또는 제28조의3에 따라 가명정보를 처리하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0014"
+    ],
+    "evidence_id": "EV-00007",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00008",
+    "requirement_meaning": "가명정보를 처리하고자 하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "가명정보의 처리 목적, 제3자 제공 시 제공받는 자 등 대통령령으로 정하는 사항에 대한 관련 기록을 작성하여 보관하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "가명정보를 처리하고자 하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0014"
+    ],
+    "evidence_id": "EV-00008",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00009",
+    "requirement_meaning": "특정 개인을 알아보기 위한 목적",
+    "domain": "PRIVACY",
+    "actor": "제28조의2 또는 제28조의3에 따라 가명정보를 처리하는 자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "특정 개인을 알아보기 위한 목적으로 가명정보를 처리해서는 아니 된다"
+    ],
+    "condition": "특정 개인을 알아보기 위한 목적",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0002"
+    ],
+    "evidence_id": "EV-00009",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00010",
+    "requirement_meaning": "특정 개인을 알아볼 수 있는 정보가 생성된 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "가명정보"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [
+      "처리를 중지하고, 지체 없이 회수ㆍ파기하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "특정 개인을 알아볼 수 있는 정보가 생성된 경우",
+    "requirement_class": "EVALUATION_DEPENDENT",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": true,
+    "related_legacy_gr": [
+      "GR-0001"
+    ],
+    "evidence_id": "EV-00010",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00011",
+    "requirement_meaning": "동의 철회의 대상 및 내용 등을 특정하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인인 신용정보주체",
+    "data_scope": [
+      "개인신용정보"
+    ],
+    "processing_phase": [
+      "consent_withdrawal"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "동의 철회의 대상 및 내용 등을 특정하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0015"
+    ],
+    "evidence_id": "EV-00011",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00012",
+    "requirement_meaning": "상품이나 용역을 소개하거나 구매를 권유할 목적으로 연락하는 신용정보제공ㆍ이용자에 대하여 청구하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인인 신용정보주체",
+    "data_scope": [
+      "개인신용정보"
+    ],
+    "processing_phase": [
+      "marketing_contact",
+      "consent_withdrawal"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "상품이나 용역을 소개하거나 구매를 권유할 목적으로 연락하는 신용정보제공ㆍ이용자에 대하여 청구하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0015"
+    ],
+    "evidence_id": "EV-00012",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00013",
+    "requirement_meaning": "청구를 받은 날부터 1개월 이내",
+    "domain": "PRIVACY",
+    "actor": "신용정보제공ㆍ이용자",
+    "data_scope": [],
+    "processing_phase": [],
+    "obligation": [
+      "청구를 받은 날부터 1개월 이내에 그에 따른 조치를 완료하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "청구를 받은 날부터 1개월 이내",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0013"
+    ],
+    "evidence_id": "EV-00013",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00014",
+    "requirement_meaning": "제3자에게 개인정보의 처리 업무를 위탁하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "다음 각 호의 내용이 포함된 문서로 하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "제3자에게 개인정보의 처리 업무를 위탁하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0005"
+    ],
+    "evidence_id": "EV-00014",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00015",
+    "requirement_meaning": "위탁업무 수행 목적 외",
+    "domain": "PRIVACY",
+    "actor": "",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "위탁업무 수행 목적 외 개인정보의 처리 금지"
+    ],
+    "condition": "위탁업무 수행 목적 외",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0004"
+    ],
+    "evidence_id": "EV-00015",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00016",
+    "requirement_meaning": "개인정보의 기술적ㆍ관리적 보호조치",
+    "domain": "PRIVACY",
+    "actor": "",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [],
+    "obligation": [
+      "개인정보의 기술적ㆍ관리적 보호조치"
+    ],
+    "prohibition": [],
+    "condition": "",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0013"
+    ],
+    "evidence_id": "EV-00016",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00017",
+    "requirement_meaning": "개인정보의 처리 업무를 위탁하는 경우",
+    "domain": "PRIVACY",
+    "actor": "위탁자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "위탁하는 업무의 내용과 수탁자를 정보주체가 언제든지 쉽게 확인할 수 있도록 대통령령으로 정하는 방법에 따라 공개하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "개인정보의 처리 업무를 위탁하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0016"
+    ],
+    "evidence_id": "EV-00017",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00018",
+    "requirement_meaning": "업무 위탁으로 인하여 정보주체의 개인정보가 분실ㆍ도난ㆍ유출ㆍ위조ㆍ변조 또는 훼손되지 아니하도록",
+    "domain": "PRIVACY",
+    "actor": "위탁자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "수탁자를 교육하고, 처리 현황 점검 등 대통령령으로 정하는 바에 따라 수탁자가 개인정보를 안전하게 처리하는지를 감독하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "업무 위탁으로 인하여 정보주체의 개인정보가 분실ㆍ도난ㆍ유출ㆍ위조ㆍ변조 또는 훼손되지 아니하도록",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0005"
+    ],
+    "evidence_id": "EV-00018",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00019",
+    "requirement_meaning": "개인정보처리자로부터 위탁받은 해당 업무 범위를 초과하여",
+    "domain": "PRIVACY",
+    "actor": "수탁자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "개인정보를 이용하거나 제3자에게 제공하여서는 아니 된다"
+    ],
+    "condition": "개인정보처리자로부터 위탁받은 해당 업무 범위를 초과하여",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0004"
+    ],
+    "evidence_id": "EV-00019",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00020",
+    "requirement_meaning": "위탁받은 개인정보의 처리 업무를 제3자에게 다시 위탁하려는 경우",
+    "domain": "PRIVACY",
+    "actor": "수탁자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "위탁자의 동의를 받아야 한다"
+    ],
+    "prohibition": [],
+    "condition": "위탁받은 개인정보의 처리 업무를 제3자에게 다시 위탁하려는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0005"
+    ],
+    "evidence_id": "EV-00020",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00021",
+    "requirement_meaning": "개인정보를 국외로 제공ㆍ처리위탁ㆍ보관하는 경우",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "cross_border_transfer",
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "개인정보를 국외로 제공ㆍ처리위탁ㆍ보관하여서는 아니 된다"
+    ],
+    "condition": "개인정보를 국외로 제공ㆍ처리위탁ㆍ보관하는 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0017"
+    ],
+    "evidence_id": "EV-00021",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00022",
+    "requirement_meaning": "정보주체로부터 국외 이전에 관한 별도의 동의를 받은 경우",
+    "domain": "PRIVACY",
+    "actor": "",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "cross_border_transfer"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "정보주체로부터 국외 이전에 관한 별도의 동의를 받은 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0017"
+    ],
+    "evidence_id": "EV-00022",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00023",
+    "requirement_meaning": "제1항제1호에 따른 동의를 받을 때",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [],
+    "obligation": [
+      "미리 다음 각 호의 사항을 정보주체에게 알려야 한다"
+    ],
+    "prohibition": [],
+    "condition": "제1항제1호에 따른 동의를 받을 때",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0006"
+    ],
+    "evidence_id": "EV-00023",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00024",
+    "requirement_meaning": "제1항제1호에 따른 동의를 받을 때",
+    "domain": "PRIVACY",
+    "actor": "개인정보처리자",
+    "data_scope": [
+      "개인정보"
+    ],
+    "processing_phase": [
+      "cross_border_transfer",
+      "consent_notice"
+    ],
+    "obligation": [
+      "미리 다음 각 호의 사항을 정보주체에게 알려야 한다"
+    ],
+    "prohibition": [],
+    "condition": "제1항제1호에 따른 동의를 받을 때",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0017"
+    ],
+    "evidence_id": "EV-00024",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00025",
+    "requirement_meaning": "정보처리시스템의 안전한 운영",
+    "domain": "PRIVACY",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "정보처리시스템"
+    ],
+    "processing_phase": [],
+    "obligation": [
+      "?? ? ?? ????? ? ?"
+    ],
+    "prohibition": [],
+    "condition": "정보처리시스템의 안전한 운영",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0018"
+    ],
+    "evidence_id": "EV-00025",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00026",
+    "requirement_meaning": "정보처리시스템의 정상작동여부 확인",
+    "domain": "PRIVACY",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "정보처리시스템"
+    ],
+    "processing_phase": [
+      "security_control"
+    ],
+    "obligation": [
+      "시스템 자원 상태의 감시, 경고 및 제어가 가능하도록 모니터링시스템을 갖출 것"
+    ],
+    "prohibition": [],
+    "condition": "정보처리시스템의 정상작동여부 확인",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0008"
+    ],
+    "evidence_id": "EV-00026",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00027",
+    "requirement_meaning": "정보처리시스템의 운영체제(Operating System) 계정으로 로그인(Log in)할 경우",
+    "domain": "PRIVACY",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "???????? ????(Operating System) ??"
+    ],
+    "processing_phase": [
+      "security_control"
+    ],
+    "obligation": [
+      "이중인증 절차를 시행하고, 계정에 대한 사용권한, 접근 기록, 작업 내역 등에 대한 상시 모니터링체계를 수립하며, 이상 징후 발생 시 필요한 통제 조치를 즉시 시행할 것"
+    ],
+    "prohibition": [],
+    "condition": "정보처리시스템의 운영체제(Operating System) 계정으로 로그인(Log in)할 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0018"
+    ],
+    "evidence_id": "EV-00027",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00028",
+    "requirement_meaning": "클라우드컴퓨팅서비스를 이용하고자 하는 경우",
+    "domain": "SAAS_CLOUD",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "클라우드컴퓨팅서비스"
+    ],
+    "processing_phase": [
+      "saas_cloud_use"
+    ],
+    "obligation": [
+      "다음 각 호의 절차를 수행하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "클라우드컴퓨팅서비스를 이용하고자 하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0012"
+    ],
+    "evidence_id": "EV-00028",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00029",
+    "requirement_meaning": "????",
+    "domain": "SAAS_CLOUD",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "클라우드컴퓨팅서비스"
+    ],
+    "processing_phase": [
+      "saas_cloud_use"
+    ],
+    "obligation": [
+      "다음 각 목의 기준에 따른 이용업무의 중요도 평가"
+    ],
+    "prohibition": [],
+    "condition": "????",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0019"
+    ],
+    "evidence_id": "EV-00029",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00030",
+    "requirement_meaning": "해킹 등 전자적 침해행위로부터 방지하기 위하여",
+    "domain": "PRIVACY",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "정보처리시스템 및 정보통신망"
+    ],
+    "processing_phase": [],
+    "obligation": [
+      "다음 각 호의 대책을 수립ㆍ운용하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "해킹 등 전자적 침해행위로부터 방지하기 위하여",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0013"
+    ],
+    "evidence_id": "EV-00030",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00031",
+    "requirement_meaning": "해킹 등 전자적 침해행위로 인한 사고를 방지하기 위한",
+    "domain": "PRIVACY",
+    "actor": "",
+    "data_scope": [
+      "정보보호시스템"
+    ],
+    "processing_phase": [],
+    "obligation": [
+      "정보보호시스템 설치 및 운영"
+    ],
+    "prohibition": [],
+    "condition": "해킹 등 전자적 침해행위로 인한 사고를 방지하기 위한",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0013"
+    ],
+    "evidence_id": "EV-00031",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00032",
+    "requirement_meaning": "내부통신망과 연결된 내부 업무용시스템",
+    "domain": "SAAS_CLOUD",
+    "actor": "",
+    "data_scope": [
+      "내부 업무용시스템"
+    ],
+    "processing_phase": [],
+    "obligation": [],
+    "prohibition": [
+      "인터넷(무선통신망 포함) 등 외부통신망과 분리ㆍ차단 및 접속 금지"
+    ],
+    "condition": "내부통신망과 연결된 내부 업무용시스템",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0007"
+    ],
+    "evidence_id": "EV-00032",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00033",
+    "requirement_meaning": "전화 등 거래수단 성격상 암호화가 불가능한 경우를 제외한 전자금융거래",
+    "domain": "PRIVACY",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "전자금융거래"
+    ],
+    "processing_phase": [
+      "security_control"
+    ],
+    "obligation": [
+      "암호화 통신을 할 것"
+    ],
+    "prohibition": [],
+    "condition": "전화 등 거래수단 성격상 암호화가 불가능한 경우를 제외한 전자금융거래",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0008"
+    ],
+    "evidence_id": "EV-00033",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00034",
+    "requirement_meaning": "정보처리시스템 및 전산자료에 보관하고 있는 이용자의 비밀번호",
+    "domain": "PRIVACY",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "이용자의 비밀번호"
+    ],
+    "processing_phase": [
+      "security_control"
+    ],
+    "obligation": [
+      "이용자의 비밀번호를 암호화하여 보관하며 동 비밀번호를 조회할 수 없도록 하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "정보처리시스템 및 전산자료에 보관하고 있는 이용자의 비밀번호",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0008"
+    ],
+    "evidence_id": "EV-00034",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00035",
+    "requirement_meaning": "인공지능 활용 전 단계",
+    "domain": "AI",
+    "actor": "금융회사등",
+    "data_scope": [
+      "인공지능"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "obligation": [
+      "금융·인공지능 등 관련 법규를 준수해야 함",
+      "인공지능 활용 시 보안성 기준 및 점검·개선 체계를 마련해야 함"
+    ],
+    "prohibition": [],
+    "condition": "인공지능 활용 전 단계",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0011"
+    ],
+    "evidence_id": "EV-00035",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00036",
+    "requirement_meaning": "인공지능을 개발·이용할 경우",
+    "domain": "AI",
+    "actor": "금융회사등",
+    "data_scope": [
+      "인공지능"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "obligation": [
+      "적용되는 법규를 사전에 파악하고 해당 법규의 취지와 요구사항을 면밀히 검토한다"
+    ],
+    "prohibition": [],
+    "condition": "인공지능을 개발·이용할 경우",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0011"
+    ],
+    "evidence_id": "EV-00036",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00037",
+    "requirement_meaning": "외부에서 위탁·제공되는 인공지능시스템의 일부 또는 전부를 활용하는 경우",
+    "domain": "AI",
+    "actor": "금융회사등",
+    "data_scope": [
+      "인공지능시스템"
+    ],
+    "processing_phase": [
+      "ai_use",
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "적용되는 법령의 준수여부를 금융회사등이 직접 확인하고, 이를 내규에 반영하는 절차를 수립한다"
+    ],
+    "prohibition": [],
+    "condition": "외부에서 위탁·제공되는 인공지능시스템의 일부 또는 전부를 활용하는 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0011"
+    ],
+    "evidence_id": "EV-00037",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00038",
+    "requirement_meaning": "보안 목적 AIㆍSaaS",
+    "domain": "AI",
+    "actor": "금융회사등",
+    "data_scope": [
+      "개인신용정보, 고유식별정보 등 중요정보"
+    ],
+    "processing_phase": [
+      "ai_use",
+      "security_control"
+    ],
+    "obligation": [
+      "개인신용정보, 고유식별정보 등 중요정보 입력ㆍ처리ㆍ외부전송ㆍ유출 여부 모니터링 및 통제"
+    ],
+    "prohibition": [],
+    "condition": "보안 목적 AIㆍSaaS",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0008"
+    ],
+    "evidence_id": "EV-00038",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00039",
+    "requirement_meaning": "보안 목적 AIㆍSaaS",
+    "domain": "AI",
+    "actor": "금융회사등",
+    "data_scope": [
+      "AIㆍSaaS"
+    ],
+    "processing_phase": [
+      "ai_use",
+      "security_control"
+    ],
+    "obligation": [
+      "접속ㆍ이용 내역, 관리자 활동, 이상행위 등에 대한 모니터링 및 로그 수집(1년 이상 보존)"
+    ],
+    "prohibition": [],
+    "condition": "보안 목적 AIㆍSaaS",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0008"
+    ],
+    "evidence_id": "EV-00039",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00040",
+    "requirement_meaning": "입출력 데이터에서 목적 외 고유식별정보 및 개인(신용)정보 포함 여부",
+    "domain": "AI",
+    "actor": "",
+    "data_scope": [
+      "고유식별정보 및 개인(신용)정보"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "obligation": [
+      "목적 외 고유식별정보 및 개인(신용)정보 포함 여부를 탐지하고 마스킹 또는 차단하는 기능을 구현"
+    ],
+    "prohibition": [],
+    "condition": "입출력 데이터에서 목적 외 고유식별정보 및 개인(신용)정보 포함 여부",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": true,
+    "related_legacy_gr": [
+      "GR-0009"
+    ],
+    "evidence_id": "EV-00040",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00041",
+    "requirement_meaning": "클라우드 기반 인공지능서비스나 상용 생성형 인공지능서비스 이용 시",
+    "domain": "AI",
+    "actor": "",
+    "data_scope": [
+      "데이터"
+    ],
+    "processing_phase": [
+      "ai_use",
+      "cross_border_transfer",
+      "saas_cloud_use"
+    ],
+    "obligation": [
+      "데이터의 국외 이전 가능성을 확인"
+    ],
+    "prohibition": [],
+    "condition": "클라우드 기반 인공지능서비스나 상용 생성형 인공지능서비스 이용 시",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0011"
+    ],
+    "evidence_id": "EV-00041",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00042",
+    "requirement_meaning": "외부 인공지능서비스 이용 시",
+    "domain": "AI",
+    "actor": "",
+    "data_scope": [
+      "데이터"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "obligation": [
+      "모델 개선 목적의 데이터 재사용을 금하도록 사전에 확인하고 계약서 등에 명시"
+    ],
+    "prohibition": [
+      "모델 개선 목적의 데이터 재사용을 금하도록"
+    ],
+    "condition": "외부 인공지능서비스 이용 시",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0010"
+    ],
+    "evidence_id": "EV-00042",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00043",
+    "requirement_meaning": "4.20일부터 별도의 혁신금융서비스 심사를 거치지 않더라도",
+    "domain": "SAAS_CLOUD",
+    "actor": "금융회사와 전자금융업자",
+    "data_scope": [
+      "클라우드 기반의 다양한 사무관리･업무지원용 등의 서비스"
+    ],
+    "processing_phase": [
+      "saas_cloud_use"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "4.20일부터 별도의 혁신금융서비스 심사를 거치지 않더라도",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0012"
+    ],
+    "evidence_id": "EV-00043",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00044",
+    "requirement_meaning": "이용자의 고유식별정보나 개인신용정보를 처리하는 경우 및 가명정보를 활용하는 경우",
+    "domain": "SAAS_CLOUD",
+    "actor": "금융회사",
+    "data_scope": [
+      "고유식별정보",
+      "개인신용정보",
+      "가명정보"
+    ],
+    "processing_phase": [
+      "saas_cloud_use",
+      "pseudonymized_data_processing"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "고유식별정보나 개인신용정보를 처리하는 경우에는 SaaS를 활용할 수 없다"
+    ],
+    "condition": "이용자의 고유식별정보나 개인신용정보를 처리하는 경우 및 가명정보를 활용하는 경우",
+    "requirement_class": "EVALUATION_DEPENDENT",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": true,
+    "related_legacy_gr": [
+      "GR-0019"
+    ],
+    "evidence_id": "EV-00044",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00045",
+    "requirement_meaning": "망분리 규제 예외가 허용되는 경우",
+    "domain": "SAAS_CLOUD",
+    "actor": "금융회사",
+    "data_scope": [
+      "SaaS",
+      "접속 단말기"
+    ],
+    "processing_phase": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "obligation": [
+      "침해사고 대응기관의 평가를 거친 SaaS를 이용",
+      "접속 단말기에 대해 보호대책을 수립",
+      "정보보호통제 이행 여부를 반기에 1회 평가하고 정보보호위원회(CISO)에 보고해야 한다"
+    ],
+    "prohibition": [],
+    "condition": "망분리 규제 예외가 허용되는 경우",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0019"
+    ],
+    "evidence_id": "EV-00045",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00046",
+    "requirement_meaning": "이용자의 고유식별정보 또는 개인신용정보를 처리하지 않는 응용프로그램 등 소프트웨어를 제공하는 서비스 이용 목적의 경우",
+    "domain": "SAAS_CLOUD",
+    "actor": "금융회사 또는 전자금융업자",
+    "data_scope": [
+      "??????",
+      "??????",
+      "?????? ? ?????? ???? ???"
+    ],
+    "processing_phase": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "이용자의 고유식별정보 또는 개인신용정보를 처리하지 않는 응용프로그램 등 소프트웨어를 제공하는 서비스 이용 목적의 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0019"
+    ],
+    "evidence_id": "EV-00046",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00047",
+    "requirement_meaning": "내부업무망 SaaS",
+    "domain": "SAAS_CLOUD",
+    "actor": "",
+    "data_scope": [
+      "SaaS관리자 계정 등 중요계정"
+    ],
+    "processing_phase": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "obligation": [
+      "?? ??? ? ??? ?????,??? ?? ??*??,?? ?? ?? ? ?? ?? ? ?? ??",
+      "SaaS??? ?? ? ????? ?? ?? ?? ??"
+    ],
+    "prohibition": [],
+    "condition": "내부업무망 SaaS",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0019"
+    ],
+    "evidence_id": "EV-00047",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00048",
+    "requirement_meaning": "SaaS이용을 위한 네트워크 구간",
+    "domain": "SAAS_CLOUD",
+    "actor": "",
+    "data_scope": [
+      "SaaS"
+    ],
+    "processing_phase": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "obligation": [
+      "네트워크 구간에 대한 보호대책(암호화 등)수립·적용"
+    ],
+    "prohibition": [],
+    "condition": "SaaS이용을 위한 네트워크 구간",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0012"
+    ],
+    "evidence_id": "EV-00048",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00049",
+    "requirement_meaning": "접속·이용시",
+    "domain": "PRIVACY",
+    "actor": "",
+    "data_scope": [
+      "SaaS"
+    ],
+    "processing_phase": [
+      "security_control"
+    ],
+    "obligation": [
+      "모니터링 및 로그 수집"
+    ],
+    "prohibition": [],
+    "condition": "접속·이용시",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0008"
+    ],
+    "evidence_id": "EV-00049",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00050",
+    "requirement_meaning": "이용자의 예치금을 관리하는 경우",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "이용자의 예치금"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "obligation": [
+      "이용자의 예치금을 고유재산과 분리하여 공신력 있는 기관에 예치 또는 신탁하여 관리하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "이용자의 예치금을 관리하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0020"
+    ],
+    "evidence_id": "EV-00050",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00051",
+    "requirement_meaning": "관리기관에 예치 또는 신탁한 예치금",
+    "domain": "DIGITAL_ASSET",
+    "actor": "누구든지; 가상자산사업자",
+    "data_scope": [
+      "예치금"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "관리기관에 예치 또는 신탁한 예치금을 상계ㆍ압류하지 못한다",
+      "대통령령으로 정하는 경우 외에는 예치금을 양도하거나 담보로 제공하여서는 아니 된다"
+    ],
+    "condition": "관리기관에 예치 또는 신탁한 예치금",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0020"
+    ],
+    "evidence_id": "EV-00051",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00052",
+    "requirement_meaning": "이용자의 예치금을 고유재산과 분리하여 관리기관에 예치 또는 신탁하여 관리할 때",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "이용자의 예치금"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "obligation": [
+      "해당 관리기관과 다음 각 호의 사항이 포함된 계약을 체결해야 한다"
+    ],
+    "prohibition": [],
+    "condition": "이용자의 예치금을 고유재산과 분리하여 관리기관에 예치 또는 신탁하여 관리할 때",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0020"
+    ],
+    "evidence_id": "EV-00052",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00053",
+    "requirement_meaning": "?????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "가상자산사업자"
+    ],
+    "processing_phase": [
+      "digital_asset_activity"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "?????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0021"
+    ],
+    "evidence_id": "EV-00053",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00054",
+    "requirement_meaning": "?????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "가상자산거래"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "?????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0021"
+    ],
+    "evidence_id": "EV-00054",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00055",
+    "requirement_meaning": "????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "",
+    "data_scope": [
+      "가상자산"
+    ],
+    "processing_phase": [
+      "digital_asset_activity"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0021"
+    ],
+    "evidence_id": "EV-00055",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00056",
+    "requirement_meaning": "????? ????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산을 이전하는 가상자산사업자",
+    "data_scope": [
+      "?? ? ?? ??"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "????? ???? ????????? ?? ? ?? ??? ??? ?"
+    ],
+    "prohibition": [],
+    "condition": "????? ????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00056",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00057",
+    "requirement_meaning": "?????? ? ????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "",
+    "data_scope": [
+      "가상자산주소"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "?????? ? ????",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00057",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00058",
+    "requirement_meaning": "해외 가상자산사업자 및 개인지갑과의 거래",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "가상자산 이전거래",
+      "개인지갑"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "wallet_address",
+      "transaction_data"
+    ],
+    "obligation": [
+      "자금세탁방지 의무 부과"
+    ],
+    "prohibition": [],
+    "condition": "해외 가상자산사업자 및 개인지갑과의 거래",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00058",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00059",
+    "requirement_meaning": "고객과 거래 시",
+    "domain": "DIGITAL_ASSET",
+    "actor": "금융기관",
+    "data_scope": [
+      "고객 신원",
+      "실제소유자 여부",
+      "거래 목적"
+    ],
+    "processing_phase": [
+      "customer_due_diligence",
+      "digital_asset_activity"
+    ],
+    "obligation": [
+      "고객의 신원, 실제소유자 여부, 거래 목적 등을 파악하는 등 합당한 주의를 기울인다"
+    ],
+    "prohibition": [],
+    "condition": "고객과 거래 시",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00059",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  }
+]

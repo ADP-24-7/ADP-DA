@@ -1,0 +1,491 @@
+[
+  {
+    "policy_candidate_id": "PC-001",
+    "requirement_ids": [
+      "RC-00002",
+      "RC-00015",
+      "RC-00019"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-001"
+    ],
+    "test_ids": [
+      "TEST-001",
+      "TEST-002"
+    ],
+    "workload_scope": [
+      "pseudonymized_data_processing",
+      "third_party_or_outsourcing"
+    ],
+    "actor_scope": [
+      "개인정보처리자",
+      "수탁자"
+    ],
+    "purpose_scope": [
+      "개인정보처리자로부터 위탁받은 해당 업무 범위를 초과하여",
+      "위탁업무 수행 목적 외",
+      "제3자에게 제공하는 경우"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "third_party_or_outsourcing"
+    ],
+    "data_class": [
+      "가명정보",
+      "개인정보"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "개인정보처리자로부터 위탁받은 해당 업무 범위를 초과하여",
+      "위탁업무 수행 목적 외",
+      "제3자에게 제공하는 경우"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [],
+    "reason_codes": [
+      "GR-0003",
+      "GR-0004",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Outbound transfer requires purpose/recipient guard; final BLOCK is not asserted until policy validation."
+  },
+  {
+    "policy_candidate_id": "PC-002",
+    "requirement_ids": [
+      "RC-00009"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-002"
+    ],
+    "test_ids": [
+      "TEST-003"
+    ],
+    "workload_scope": [
+      "pseudonymized_data_processing"
+    ],
+    "actor_scope": [
+      "제28조의2 또는 제28조의3에 따라 가명정보를 처리하는 자"
+    ],
+    "purpose_scope": [
+      "특정 개인을 알아보기 위한 목적"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "data_class": [
+      "가명정보"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "특정 개인을 알아보기 위한 목적"
+    ],
+    "candidate_action": "UNRESOLVED",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [],
+    "reason_codes": [
+      "GR-0002",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Re-identification detection is runtime-relevant, but action requires classifier validation."
+  },
+  {
+    "policy_candidate_id": "PC-003",
+    "requirement_ids": [
+      "RC-00006"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-003"
+    ],
+    "test_ids": [
+      "TEST-004"
+    ],
+    "workload_scope": [
+      "pseudonymized_data_processing"
+    ],
+    "actor_scope": [
+      "개인정보처리자"
+    ],
+    "purpose_scope": [
+      "가명정보를 처리하는 경우"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "data_class": [
+      "가명정보"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "가명정보를 처리하는 경우"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [
+      "VAULT-TOKEN",
+      "FIELD-SEPARATION"
+    ],
+    "reason_codes": [
+      "GR-0001",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "data_evaluation_artifact",
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Mapping separation is runtime-relevant; concrete vault/token design requires evaluation."
+  },
+  {
+    "policy_candidate_id": "PC-004",
+    "requirement_ids": [
+      "RC-00001",
+      "RC-00003",
+      "RC-00004",
+      "RC-00010",
+      "RC-00044"
+    ],
+    "control_ids": [
+      "CTRL-EVAL-001"
+    ],
+    "test_ids": [
+      "TEST-005"
+    ],
+    "workload_scope": [
+      "pseudonymized_data_processing",
+      "saas_cloud_use"
+    ],
+    "actor_scope": [
+      "개인정보처리자",
+      "금융회사"
+    ],
+    "purpose_scope": [
+      "기관 외부로 결합된 정보를 반출하려는",
+      "이용자의 고유식별정보나 개인신용정보를 처리하는 경우 및 가명정보를 활용하는 경우",
+      "통계작성, 과학적 연구, 공익적 기록보존",
+      "특정 개인을 알아볼 수 있는 정보가 생성된 경우"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "saas_cloud_use"
+    ],
+    "data_class": [
+      "가명정보",
+      "고유식별정보",
+      "개인신용정보"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "기관 외부로 결합된 정보를 반출하려는",
+      "이용자의 고유식별정보나 개인신용정보를 처리하는 경우 및 가명정보를 활용하는 경우",
+      "통계작성, 과학적 연구, 공익적 기록보존",
+      "특정 개인을 알아볼 수 있는 정보가 생성된 경우"
+    ],
+    "candidate_action": "UNRESOLVED",
+    "candidate_transform": "UNRESOLVED",
+    "candidate_transform_options": [
+      "MASK",
+      "HMAC-PSEUDO",
+      "VAULT-TOKEN",
+      "GENERALIZE",
+      "REMOVE",
+      "KEEP"
+    ],
+    "reason_codes": [
+      "GR-0001",
+      "GR-0019",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "data_evaluation_artifact",
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Transform choice is evaluation-dependent and cannot be final here."
+  },
+  {
+    "policy_candidate_id": "PC-005",
+    "requirement_ids": [
+      "RC-00021",
+      "RC-00022",
+      "RC-00024",
+      "RC-00041"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-004"
+    ],
+    "test_ids": [
+      "TEST-009",
+      "TEST-010"
+    ],
+    "workload_scope": [
+      "cross_border_transfer",
+      "third_party_or_outsourcing",
+      "consent_notice",
+      "ai_use",
+      "saas_cloud_use"
+    ],
+    "actor_scope": [
+      "개인정보처리자"
+    ],
+    "purpose_scope": [
+      "개인정보를 국외로 제공ㆍ처리위탁ㆍ보관하는 경우",
+      "정보주체로부터 국외 이전에 관한 별도의 동의를 받은 경우",
+      "제1항제1호에 따른 동의를 받을 때",
+      "클라우드 기반 인공지능서비스나 상용 생성형 인공지능서비스 이용 시"
+    ],
+    "processing_phase": [
+      "cross_border_transfer",
+      "third_party_or_outsourcing",
+      "consent_notice",
+      "ai_use",
+      "saas_cloud_use"
+    ],
+    "data_class": [
+      "개인정보",
+      "데이터"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "개인정보를 국외로 제공ㆍ처리위탁ㆍ보관하는 경우",
+      "정보주체로부터 국외 이전에 관한 별도의 동의를 받은 경우",
+      "제1항제1호에 따른 동의를 받을 때",
+      "클라우드 기반 인공지능서비스나 상용 생성형 인공지능서비스 이용 시"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [],
+    "reason_codes": [
+      "GR-0011",
+      "GR-0017",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Cross-border egress requires review gate; final action depends on transfer basis validation."
+  },
+  {
+    "policy_candidate_id": "PC-007",
+    "requirement_ids": [
+      "RC-00032"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-006"
+    ],
+    "test_ids": [
+      "TEST-016"
+    ],
+    "workload_scope": [],
+    "actor_scope": [],
+    "purpose_scope": [
+      "내부통신망과 연결된 내부 업무용시스템"
+    ],
+    "processing_phase": [],
+    "data_class": [
+      "내부 업무용시스템"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "내부통신망과 연결된 내부 업무용시스템"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [],
+    "reason_codes": [
+      "GR-0007",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Network boundary control is runtime-relevant but final block policy requires validation."
+  },
+  {
+    "policy_candidate_id": "PC-008",
+    "requirement_ids": [
+      "RC-00033",
+      "RC-00034",
+      "RC-00048"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-007"
+    ],
+    "test_ids": [
+      "TEST-017",
+      "TEST-018"
+    ],
+    "workload_scope": [
+      "security_control",
+      "saas_cloud_use"
+    ],
+    "actor_scope": [
+      "금융회사 또는 전자금융업자"
+    ],
+    "purpose_scope": [
+      "SaaS이용을 위한 네트워크 구간",
+      "전화 등 거래수단 성격상 암호화가 불가능한 경우를 제외한 전자금융거래",
+      "정보처리시스템 및 전산자료에 보관하고 있는 이용자의 비밀번호"
+    ],
+    "processing_phase": [
+      "security_control",
+      "saas_cloud_use"
+    ],
+    "data_class": [
+      "전자금융거래",
+      "이용자의 비밀번호",
+      "SaaS"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "SaaS이용을 위한 네트워크 구간",
+      "전화 등 거래수단 성격상 암호화가 불가능한 경우를 제외한 전자금융거래",
+      "정보처리시스템 및 전산자료에 보관하고 있는 이용자의 비밀번호"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [
+      "FIELD-SEPARATION",
+      "KEEP"
+    ],
+    "reason_codes": [
+      "GR-0008",
+      "GR-0012",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "data_evaluation_artifact",
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Protection control is runtime-relevant but encryption implementation is not selected here."
+  },
+  {
+    "policy_candidate_id": "PC-009",
+    "requirement_ids": [
+      "RC-00040"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-008"
+    ],
+    "test_ids": [
+      "TEST-021",
+      "TEST-022"
+    ],
+    "workload_scope": [
+      "ai_use"
+    ],
+    "actor_scope": [],
+    "purpose_scope": [
+      "입출력 데이터에서 목적 외 고유식별정보 및 개인(신용)정보 포함 여부"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "data_class": [
+      "고유식별정보 및 개인(신용)정보"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "입출력 데이터에서 목적 외 고유식별정보 및 개인(신용)정보 포함 여부"
+    ],
+    "candidate_action": "UNRESOLVED",
+    "candidate_transform": "UNRESOLVED",
+    "candidate_transform_options": [
+      "MASK",
+      "HMAC-PSEUDO",
+      "VAULT-TOKEN",
+      "GENERALIZE",
+      "REMOVE",
+      "KEEP"
+    ],
+    "reason_codes": [
+      "GR-0009",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "data_evaluation_artifact",
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Sensitive AI input handling depends on detector and transform evaluation."
+  },
+  {
+    "policy_candidate_id": "PC-010",
+    "requirement_ids": [
+      "RC-00042"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-009"
+    ],
+    "test_ids": [
+      "TEST-023"
+    ],
+    "workload_scope": [
+      "ai_use"
+    ],
+    "actor_scope": [],
+    "purpose_scope": [
+      "외부 인공지능서비스 이용 시"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "data_class": [
+      "데이터"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "외부 인공지능서비스 이용 시"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "NONE",
+    "candidate_transform_options": [],
+    "reason_codes": [
+      "GR-0010",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "VERIFIED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": false,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Provider reuse restriction requires provider evidence before external AI routing."
+  }
+]

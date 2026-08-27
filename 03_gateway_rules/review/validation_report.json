@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-08-27T00:00:00+09:00",
+  "scope": "03 Gateway Rules migration validation against frozen 02 Requirement Candidates",
+  "counts": {
+    "legacy_rules": 22,
+    "controls": 22,
+    "tests": 29,
+    "policy_candidates": 11,
+    "requirement_classification": {
+      "EVALUATION_DEPENDENT": 5,
+      "GOVERNANCE_CONTROL": 22,
+      "NON_RUNTIME_REFERENCE": 10,
+      "RUNTIME_ENFORCEABLE": 22
+    },
+    "migration_audit_classification": {
+      "DEFER": 4,
+      "MIGRATABLE": 10,
+      "NEEDS_REVIEW": 7,
+      "REQUIRES_REDESIGN": 1
+    },
+    "project_provisional_policies": 0,
+    "validation_required_policies": 11,
+    "promotion_blocked_policies": 2,
+    "review_required_affected_policies": 2,
+    "active_policy_candidates": 0
+  },
+  "validation": {
+    "control_schema_errors": [],
+    "test_schema_errors": [],
+    "policy_candidate_schema_errors": [],
+    "duplicate_control_ids": [],
+    "duplicate_test_ids": [],
+    "duplicate_policy_candidate_ids": [],
+    "dangling_requirement_ids": [],
+    "dangling_control_ids": [],
+    "dangling_test_ids": [],
+    "orphan_requirements": [],
+    "controls_without_tests": [],
+    "runtime_controls_without_policy": [],
+    "direct_runtime_decision_in_evidence": [],
+    "gateway_tags_remaining_in_evidence": [],
+    "direct_evidence_runtime_reference_in_policy_candidates": [],
+    "review_required_policy_promotion_errors": [],
+    "final_transform_without_artifact": [],
+    "threshold_without_artifact": [],
+    "active_policy_candidates": [],
+    "active_policy_chain_missing": [],
+    "missing_legacy_rule_migrations": [],
+    "gr_0008_migration_status_error": []
+  },
+  "semantic_warnings": {
+    "controls_using_legacy_rule_names": [],
+    "control_test_1_to_1_ratio": false,
+    "duplicate_expected_behavior": {},
+    "duplicate_failure_condition": {},
+    "duplicate_required_artifact": {},
+    "governance_controls_without_policy": [
+      "CTRL-GOV-001",
+      "CTRL-GOV-002",
+      "CTRL-GOV-003",
+      "CTRL-GOV-004",
+      "CTRL-GOV-005",
+      "CTRL-GOV-006",
+      "CTRL-GOV-007",
+      "CTRL-REF-001",
+      "CTRL-REF-002",
+      "CTRL-REF-003",
+      "CTRL-REF-004"
+    ],
+    "governance_only_requirements_with_policy": [],
+    "candidate_action_legacy_copy_rate": {
+      "copied": 1,
+      "total": 11
+    }
+  },
+  "result": "PASS"
+}
