@@ -1,0 +1,828 @@
+[
+  {
+    "rule_id": "GR-0001",
+    "rule_name": "Pseudonymized data permitted-purpose protection",
+    "domain": "PRIVACY",
+    "priority": 300,
+    "when": {
+      "data_type": [
+        "가명정보"
+      ],
+      "processing_context": [
+        "pseudonymized_data_processing"
+      ],
+      "destination": [],
+      "conditions": [
+        "permitted_pseudonymized_processing_purpose",
+        "mapping_information_present",
+        "reidentification_risk_not_detected"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00001",
+      "EV-00003",
+      "EV-00004",
+      "EV-00006",
+      "EV-00010"
+    ],
+    "decision": {
+      "action": "TRANSFORM",
+      "required_controls": [
+        "PSEUDONYMIZE",
+        "SEPARATE_MAPPING"
+      ],
+      "transform_required": true,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0002",
+    "rule_name": "Re-identification purpose blocked",
+    "domain": "PRIVACY",
+    "priority": 100,
+    "when": {
+      "data_type": [
+        "가명정보"
+      ],
+      "processing_context": [
+        "pseudonymized_data_processing"
+      ],
+      "destination": [],
+      "conditions": [
+        "reidentification_purpose_detected"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00009"
+    ],
+    "decision": {
+      "action": "BLOCK",
+      "required_controls": [
+        "NO_REIDENTIFICATION",
+        "BLOCK"
+      ],
+      "transform_required": false,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0003",
+    "rule_name": "Pseudonymized data transfer with identifying information blocked",
+    "domain": "PRIVACY",
+    "priority": 101,
+    "when": {
+      "data_type": [
+        "가명정보"
+      ],
+      "processing_context": [
+        "pseudonymized_data_processing",
+        "third_party_or_outsourcing"
+      ],
+      "destination": [
+        "third_party_or_outsourcing"
+      ],
+      "conditions": [
+        "identifying_information_included_for_transfer"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00002"
+    ],
+    "decision": {
+      "action": "BLOCK",
+      "required_controls": [
+        "BLOCK"
+      ],
+      "transform_required": false,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0004",
+    "rule_name": "Outsourced personal data use outside entrusted purpose blocked",
+    "domain": "PRIVACY",
+    "priority": 102,
+    "when": {
+      "data_type": [
+        "개인정보"
+      ],
+      "processing_context": [
+        "third_party_or_outsourcing"
+      ],
+      "destination": [
+        "third_party_or_outsourcing"
+      ],
+      "conditions": [
+        "outside_entrusted_purpose",
+        "unauthorized_third_party_provision"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00015",
+      "EV-00019"
+    ],
+    "decision": {
+      "action": "BLOCK",
+      "required_controls": [
+        "BLOCK"
+      ],
+      "transform_required": false,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0005",
+    "rule_name": "Personal data outsourcing governance review",
+    "domain": "PRIVACY",
+    "priority": 200,
+    "when": {
+      "data_type": [
+        "개인정보"
+      ],
+      "processing_context": [
+        "third_party_or_outsourcing"
+      ],
+      "destination": [
+        "third_party_or_outsourcing"
+      ],
+      "conditions": [
+        "outsourcing_contract_or_supervision_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00014",
+      "EV-00018",
+      "EV-00020"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [
+        "MONITOR"
+      ],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0006",
+    "rule_name": "Cross-border personal data transfer review",
+    "domain": "PRIVACY",
+    "priority": 201,
+    "when": {
+      "data_type": [
+        "개인정보"
+      ],
+      "processing_context": [
+        "cross_border_transfer"
+      ],
+      "destination": [
+        "cross_border_transfer"
+      ],
+      "conditions": [
+        "cross_border_transfer_possible",
+        "data_subject_notice_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00023"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0007",
+    "rule_name": "Internal business system external network connection blocked",
+    "domain": "SAAS_CLOUD",
+    "priority": 103,
+    "when": {
+      "data_type": [
+        "내부 업무용시스템"
+      ],
+      "processing_context": [
+        "network_separation",
+        "saas_cloud_use"
+      ],
+      "destination": [
+        "external_network"
+      ],
+      "conditions": [
+        "internal_business_system_external_network_connection"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00032"
+    ],
+    "decision": {
+      "action": "BLOCK",
+      "required_controls": [
+        "BLOCK"
+      ],
+      "transform_required": false,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0008",
+    "rule_name": "Information security controls review",
+    "domain": "PRIVACY",
+    "priority": 202,
+    "when": {
+      "data_type": [
+        "정보처리시스템",
+        "전자금융거래",
+        "이용자의 비밀번호",
+        "AI/SaaS",
+        "중요정보"
+      ],
+      "processing_context": [
+        "security_control",
+        "ai_use",
+        "saas_cloud_use"
+      ],
+      "destination": [
+        "external_ai",
+        "saas_cloud"
+      ],
+      "conditions": [
+        "security_control_required",
+        "sensitive_or_important_information_processed"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00026",
+      "EV-00033",
+      "EV-00034",
+      "EV-00038",
+      "EV-00039",
+      "EV-00049"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [
+        "ENCRYPT",
+        "LOG",
+        "MONITOR"
+      ],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0009",
+    "rule_name": "AI input privacy transform required",
+    "domain": "AI",
+    "priority": 301,
+    "when": {
+      "data_type": [
+        "고유식별정보",
+        "개인정보",
+        "개인신용정보"
+      ],
+      "processing_context": [
+        "ai_use"
+      ],
+      "destination": [
+        "external_ai"
+      ],
+      "conditions": [
+        "ai_input_contains_personal_or_credit_information"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00040"
+    ],
+    "decision": {
+      "action": "TRANSFORM",
+      "required_controls": [
+        "DETECT"
+      ],
+      "transform_required": true,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0010",
+    "rule_name": "AI model improvement data reuse blocked",
+    "domain": "AI",
+    "priority": 104,
+    "when": {
+      "data_type": [
+        "데이터"
+      ],
+      "processing_context": [
+        "ai_use"
+      ],
+      "destination": [
+        "external_ai"
+      ],
+      "conditions": [
+        "model_improvement_reuse_possible_or_not_contractually_blocked"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00042"
+    ],
+    "decision": {
+      "action": "BLOCK",
+      "required_controls": [
+        "BLOCK"
+      ],
+      "transform_required": false,
+      "human_review_required": false
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0011",
+    "rule_name": "External AI legal and transfer review",
+    "domain": "AI",
+    "priority": 203,
+    "when": {
+      "data_type": [
+        "인공지능",
+        "인공지능시스템",
+        "데이터"
+      ],
+      "processing_context": [
+        "ai_use",
+        "third_party_or_outsourcing",
+        "cross_border_transfer",
+        "saas_cloud_use"
+      ],
+      "destination": [
+        "external_ai",
+        "third_party_or_outsourcing",
+        "cross_border_transfer",
+        "saas_cloud"
+      ],
+      "conditions": [
+        "external_ai_use",
+        "applicable_law_or_transfer_condition_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00035",
+      "EV-00036",
+      "EV-00037",
+      "EV-00041"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [
+        "DETECT"
+      ],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0012",
+    "rule_name": "SaaS and cloud use review",
+    "domain": "SAAS_CLOUD",
+    "priority": 204,
+    "when": {
+      "data_type": [
+        "클라우드컴퓨팅서비스",
+        "SaaS"
+      ],
+      "processing_context": [
+        "saas_cloud_use",
+        "security_control"
+      ],
+      "destination": [
+        "saas_cloud"
+      ],
+      "conditions": [
+        "saas_or_cloud_service_use",
+        "network_protection_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00028",
+      "EV-00043",
+      "EV-00048"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [
+        "ENCRYPT"
+      ],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0013",
+    "rule_name": "General verified evidence routed to compliance review",
+    "domain": "PRIVACY",
+    "priority": 205,
+    "when": {
+      "data_type": [
+        "개인정보",
+        "정보처리시스템",
+        "정보보호시스템"
+      ],
+      "processing_context": [
+        "security_control",
+        "compliance_review"
+      ],
+      "destination": [],
+      "conditions": [
+        "verified_evidence_without_standalone_runtime_decision"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00013",
+      "EV-00016",
+      "EV-00030",
+      "EV-00031"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0014",
+    "rule_name": "Pseudonymized data governance review",
+    "domain": "PRIVACY",
+    "priority": 206,
+    "when": {
+      "data_type": [
+        "가명정보"
+      ],
+      "processing_context": [
+        "pseudonymized_data_processing",
+        "third_party_or_outsourcing"
+      ],
+      "destination": [
+        "third_party_or_outsourcing"
+      ],
+      "conditions": [
+        "pseudonymized_processing_governance_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00005",
+      "EV-00007",
+      "EV-00008"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0015",
+    "rule_name": "Credit information data subject request review",
+    "domain": "PRIVACY",
+    "priority": 207,
+    "when": {
+      "data_type": [
+        "신용정보"
+      ],
+      "processing_context": [
+        "credit_information_processing"
+      ],
+      "destination": [],
+      "conditions": [
+        "credit_information_data_subject_request_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00011",
+      "EV-00012"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0016",
+    "rule_name": "Outsourcing publication compliance review",
+    "domain": "PRIVACY",
+    "priority": 208,
+    "when": {
+      "data_type": [
+        "개인정보"
+      ],
+      "processing_context": [
+        "third_party_or_outsourcing"
+      ],
+      "destination": [
+        "third_party_or_outsourcing"
+      ],
+      "conditions": [
+        "outsourcing_publication_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00017"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0017",
+    "rule_name": "Cross-border transfer legal basis and notice review",
+    "domain": "PRIVACY",
+    "priority": 209,
+    "when": {
+      "data_type": [
+        "개인정보"
+      ],
+      "processing_context": [
+        "cross_border_transfer",
+        "third_party_or_outsourcing"
+      ],
+      "destination": [
+        "cross_border_transfer",
+        "third_party_or_outsourcing"
+      ],
+      "conditions": [
+        "cross_border_transfer_legal_basis_check_required",
+        "data_subject_notice_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00021",
+      "EV-00022",
+      "EV-00024"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0018",
+    "rule_name": "Electronic finance controls requiring human review",
+    "domain": "PRIVACY",
+    "priority": 210,
+    "when": {
+      "data_type": [
+        "정보처리시스템",
+        "운영체제"
+      ],
+      "processing_context": [
+        "security_control"
+      ],
+      "destination": [],
+      "conditions": [
+        "source_evidence_review_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00025",
+      "EV-00027"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0019",
+    "rule_name": "SaaS and cloud evidence requiring human review",
+    "domain": "SAAS_CLOUD",
+    "priority": 211,
+    "when": {
+      "data_type": [
+        "SaaS",
+        "클라우드컴퓨팅서비스"
+      ],
+      "processing_context": [
+        "saas_cloud_use",
+        "security_control"
+      ],
+      "destination": [
+        "saas_cloud"
+      ],
+      "conditions": [
+        "source_evidence_review_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00029",
+      "EV-00044",
+      "EV-00045",
+      "EV-00046",
+      "EV-00047"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0020",
+    "rule_name": "Digital asset safeguarding compliance review",
+    "domain": "DIGITAL_ASSET",
+    "priority": 212,
+    "when": {
+      "data_type": [
+        "이용자의 예치금",
+        "예치금"
+      ],
+      "processing_context": [
+        "digital_asset_activity",
+        "asset_safeguarding"
+      ],
+      "destination": [],
+      "conditions": [
+        "digital_asset_safeguarding_compliance_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00050",
+      "EV-00051",
+      "EV-00052"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0021",
+    "rule_name": "Digital asset definition evidence requiring human review",
+    "domain": "DIGITAL_ASSET",
+    "priority": 213,
+    "when": {
+      "data_type": [
+        "가상자산사업자",
+        "가상자산거래",
+        "가상자산"
+      ],
+      "processing_context": [
+        "digital_asset_activity",
+        "transaction_data"
+      ],
+      "destination": [],
+      "conditions": [
+        "source_evidence_review_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00053",
+      "EV-00054",
+      "EV-00055"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0022",
+    "rule_name": "Digital asset transfer wallet and CDD evidence requiring human review",
+    "domain": "DIGITAL_ASSET",
+    "priority": 214,
+    "when": {
+      "data_type": [
+        "가상자산주소",
+        "가상자산 이전거래",
+        "고객 신원",
+        "실제소유자 여부",
+        "거래 목적"
+      ],
+      "processing_context": [
+        "digital_asset_activity",
+        "transaction_data",
+        "wallet_address",
+        "customer_due_diligence"
+      ],
+      "destination": [],
+      "conditions": [
+        "source_evidence_review_required",
+        "wallet_or_cdd_information_present"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00056",
+      "EV-00057",
+      "EV-00058",
+      "EV-00059"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [
+        "DETECT"
+      ],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  }
+]

@@ -1,0 +1,72 @@
+sources:
+  - source_id: law_pipa
+    organization: 국가법령정보센터
+    document_name: 개인정보 보호법
+    document_type: law
+    official_url: "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351"
+    effective_date: "2025-10-02"
+    collection_method: official_webpage
+    status: CONFIGURED
+
+  - source_id: law_credit_info
+    organization: 국가법령정보센터
+    document_name: 신용정보의 이용 및 보호에 관한 법률 시행령
+    document_type: enforcement_decree
+    official_url: "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=108619"
+    effective_date: "2026-08-13"
+    collection_method: official_webpage
+    status: CONFIGURED
+
+  - source_id: pipc_pseudonym_guide_2026
+    organization: 개인정보보호위원회
+    document_name: 가명정보 처리 가이드라인(2026.03.)
+    document_type: guide_pdf
+    official_url: "https://www.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&mCode=C020010000&nttId=11928"
+    effective_date: "2026-03-31"
+    collection_method: official_webpage_attachment
+    status: MANUAL_REQUIRED
+
+  - source_id: pipc_privacy_policy_guide_2026
+    organization: 개인정보보호위원회
+    document_name: 개인정보 처리방침 작성지침(2026.4. 개정)
+    document_type: guide_pdf
+    official_url: "https://pipc.go.kr/np/cop/bbs/selectBoardList.do?bbsId=BS217&mCode=G010030000"
+    effective_date: "2026-04-23"
+    collection_method: official_webpage_attachment
+    status: MANUAL_REQUIRED
+
+  - source_id: fsc_mydata_service_2021
+    organization: 금융위원회
+    document_name: 금융분야 마이데이터 서비스 가이드라인(2021.7.29.)
+    document_type: guide_pdf
+    official_url: "https://www.fsc.go.kr/po010101/76323"
+    effective_date: "2021-07-29"
+    collection_method: official_webpage_attachment
+    status: MANUAL_REQUIRED
+
+  - source_id: fsc_financial_privacy_guide_2017
+    organization: 금융위원회
+    document_name: 금융분야 개인정보보호 가이드라인 개정본
+    document_type: guide_pdf
+    official_url: "https://fsc.go.kr/po010106/72612"
+    effective_date: "2017-02-24"
+    collection_method: official_webpage_attachment
+    status: MANUAL_REQUIRED
+
+  - source_id: fsec_crypto_guide_2019
+    organization: 금융보안원
+    document_name: 금융부문 암호기술 활용 가이드(2019)
+    document_type: guide_pdf
+    official_url: "https://www.fsec.or.kr/bbs/detail?bbsNo=6158&menuNo=222"
+    effective_date: "2019-01-09"
+    collection_method: official_webpage_attachment
+    status: MANUAL_REQUIRED
+
+  - source_id: fss_privacy_reference
+    organization: 금융감독원
+    document_name: 개인정보보호 업무자료
+    document_type: official_reference_page
+    official_url: "https://www.fss.or.kr"
+    effective_date: ""
+    collection_method: manual_source_discovery
+    status: MANUAL_REQUIRED

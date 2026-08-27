@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-08-27T00:00:00+09:00",
+  "scope": "Final Evidence Verification Audit",
+  "gateway_rules_modified": false,
+  "new_evidence_added": false,
+  "baseline_before_final_audit": {
+    "TOTAL": 59,
+    "VERIFIED": 49,
+    "REVIEW_REQUIRED": 10,
+    "REJECTED": 0
+  },
+  "existing_verified_33_audit": {
+    "direct_reverified": 33,
+    "previous_verification_record_accepted": 0,
+    "converted_to_review_required": 0,
+    "converted_to_rejected": 0
+  },
+  "final_counts": {
+    "TOTAL": 59,
+    "VERIFIED": 49,
+    "REVIEW_REQUIRED": 10,
+    "REJECTED": 0
+  },
+  "validation": {
+    "VERIFIED provenance 누락": 0,
+    "source 검증 실패": 0,
+    "original_text 검증 실패": 0,
+    "location 검증 실패": 0,
+    "structured field 검증 실패": 0,
+    "gateway tag 검증 실패": 0,
+    "인코딩 오류": 0,
+    "중복 Evidence": 0,
+    "source_url 누락": 0,
+    "original_text 누락": 0,
+    "허용되지 않은 review_status": 0
+  },
+  "freeze": {
+    "02_EVIDENCE_ONTOLOGY_FREEZE": "READY",
+    "reason": "모든 VERIFIED Evidence에 추적 가능한 검증 provenance가 있고, REVIEW_REQUIRED는 보류 사유가 격리되어 있으며, schema/중복/reference/encoding validation을 통과함."
+  },
+  "verification_audit": "02_evidence_ontology/review/verification_audit.csv",
+  "review_log": "02_evidence_ontology/review/review_log.csv",
+  "changed_statuses": []
+}

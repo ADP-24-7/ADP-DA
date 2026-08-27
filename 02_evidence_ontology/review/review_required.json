@@ -1,0 +1,335 @@
+[
+  {
+    "evidence_id": "EV-00025",
+    "domain": "PRIVACY",
+    "source_id": "electronic_financial_supervision_regulation",
+    "source_type": "regulation",
+    "source_name": "전자금융감독규정",
+    "article": "제14조",
+    "paragraph": "1",
+    "page": "",
+    "section": "",
+    "original_text": "다음 각 목을 작성ㆍ보관 할 것",
+    "effective_date": "2026-07-15",
+    "source_url": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&docCls=jo&joBrNo=00&joNo=0014&urlMode=admRulScJoRltInfoR",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "정보처리시스템"
+    ],
+    "processing_context": [],
+    "condition": "정보처리시스템의 안전한 운영",
+    "required_action": [
+      "?? ? ?? ????? ? ?"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "LOG",
+      "REVIEW"
+    ],
+    "review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00027",
+    "domain": "PRIVACY",
+    "source_id": "electronic_financial_supervision_regulation",
+    "source_type": "regulation",
+    "source_name": "전자금융감독규정",
+    "article": "제14조",
+    "paragraph": "6",
+    "page": "",
+    "section": "",
+    "original_text": "정보처리시스템의 운영체제(Operating System) 계정으로 로그인(Log in)할 경우 이중인증 절차를 시행하고, 계정에 대한 사용권한, 접근 기록, 작업 내역 등에 대한 상시 모니터링체계를 수립하며, 이상 징후 발생 시 필요한 통제 조치를 즉시 시행할 것",
+    "effective_date": "2026-07-15",
+    "source_url": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&docCls=jo&joBrNo=00&joNo=0014&urlMode=admRulScJoRltInfoR",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "???????? ????(Operating System) ??"
+    ],
+    "processing_context": [
+      "security_control"
+    ],
+    "condition": "정보처리시스템의 운영체제(Operating System) 계정으로 로그인(Log in)할 경우",
+    "required_action": [
+      "이중인증 절차를 시행하고, 계정에 대한 사용권한, 접근 기록, 작업 내역 등에 대한 상시 모니터링체계를 수립하며, 이상 징후 발생 시 필요한 통제 조치를 즉시 시행할 것"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "ACCESS_CONTROL",
+      "LOG",
+      "MONITOR",
+      "REVIEW"
+    ],
+    "review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00029",
+    "domain": "SAAS_CLOUD",
+    "source_id": "electronic_financial_supervision_regulation",
+    "source_type": "regulation",
+    "source_name": "전자금융감독규정",
+    "article": "제14조의2",
+    "paragraph": "①-1",
+    "page": "",
+    "section": "",
+    "original_text": "다음 각 목의 기준에 따른 이용업무의 중요도 평가",
+    "effective_date": "2026-07-15",
+    "source_url": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&docCls=jo&joBrNo=02&joNo=0014&urlMode=admRulScJoRltInfoR",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "클라우드컴퓨팅서비스"
+    ],
+    "processing_context": [
+      "saas_cloud_use"
+    ],
+    "condition": "????",
+    "required_action": [
+      "다음 각 목의 기준에 따른 이용업무의 중요도 평가"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "CLOUD",
+      "REVIEW"
+    ],
+    "review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00046",
+    "domain": "SAAS_CLOUD",
+    "source_id": "fsc_saas_cloud_2026",
+    "source_type": "guideline",
+    "source_name": "4월 20일부터 금융회사는 내부 업무망에서 클라우드 기반 응용소프트웨어(SaaS)를 보다 원활하게 활용할 수 있습니다.",
+    "article": "",
+    "paragraph": "",
+    "page": "5",
+    "section": "전자금융감독규정 시행세칙 개정(안)",
+    "original_text": "이용자의 고유식별정보 또는개인신용정보를 처리하지 않는「클라우드컴퓨팅 발전 및 이용자 보호에 관한 법률 시행령」제3조제2호에 따른 “응용프로그램 등 소프트웨어를 제공하는 서비스”이용 목적의 경우",
+    "effective_date": "2026-04-20",
+    "source_url": "https://www.fsc.go.kr/no010101/86745?srchKey=sj",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "??????",
+      "??????",
+      "?????? ? ?????? ???? ???"
+    ],
+    "processing_context": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "condition": "이용자의 고유식별정보 또는 개인신용정보를 처리하지 않는 응용프로그램 등 소프트웨어를 제공하는 서비스 이용 목적의 경우",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "CLOUD",
+      "REVIEW"
+    ],
+    "review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00047",
+    "domain": "SAAS_CLOUD",
+    "source_id": "fsc_saas_cloud_2026",
+    "source_type": "guideline",
+    "source_name": "4월 20일부터 금융회사는 내부 업무망에서 클라우드 기반 응용소프트웨어(SaaS)를 보다 원활하게 활용할 수 있습니다.",
+    "article": "",
+    "paragraph": "",
+    "page": "6",
+    "section": "시행세칙 별표7 망분리 대체 정보보호통제",
+    "original_text": "ㅇ접속 단말기 및 사용자 등록·관리,안전한 인증 방식*적용,최소 권한 부여 등 접근 제어 및 권한 관리 *SaaS관리자 계정 등 중요계정에 대한 다중 인증 적용(예 :ID/PW+OTP)",
+    "effective_date": "2026-04-20",
+    "source_url": "https://www.fsc.go.kr/no010101/86745?srchKey=sj",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "",
+    "data_type": [
+      "SaaS관리자 계정 등 중요계정"
+    ],
+    "processing_context": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "condition": "내부업무망 SaaS",
+    "required_action": [
+      "?? ??? ? ??? ?????,??? ?? ??*??,?? ?? ?? ? ?? ?? ? ?? ??",
+      "SaaS??? ?? ? ????? ?? ?? ?? ??"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "ACCESS_CONTROL",
+      "SAAS",
+      "REVIEW"
+    ],
+    "review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "1-하",
+    "original_text": "「가상자산 이용자 보호 등에 관한 법률」 제2조제2호에 따른 가상자산사업자(이하 “가상자산사업자”라 한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산사업자"
+    ],
+    "processing_context": [
+      "digital_asset_activity"
+    ],
+    "condition": "?????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "DIGITAL_ASSET",
+      "REVIEW"
+    ],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00053"
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "2-라",
+    "original_text": "가상자산사업자가 「가상자산 이용자 보호 등에 관한 법률」에 따라 수행하는 업무(이하 “가상자산거래”라 한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산거래"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "condition": "?????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "DIGITAL_ASSET",
+      "REVIEW"
+    ],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00054"
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "3",
+    "original_text": "“가상자산”이란 「가상자산 이용자 보호 등에 관한 법률」 제2조제1호에 따른 가상자산을 말한다.",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "",
+    "data_type": [
+      "가상자산"
+    ],
+    "processing_context": [
+      "digital_asset_activity"
+    ],
+    "condition": "????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "DIGITAL_ASSET",
+      "REVIEW"
+    ],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00055"
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info_decree",
+    "source_type": "decree",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+    "article": "제10조의10",
+    "paragraph": "2",
+    "original_text": "가상자산을 이전하는 가상자산사업자는 가상자산을 이전받는 가상자산사업자에게 다음 각 목의 정보를 제공할 것",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1029263261",
+    "applies_to": "가상자산을 이전하는 가상자산사업자",
+    "data_type": [
+      "?? ? ?? ??"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data",
+      "third_party_or_outsourcing"
+    ],
+    "condition": "????? ????",
+    "required_action": [
+      "????? ???? ????????? ?? ? ?? ??? ??? ?"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "DIGITAL_ASSET",
+      "REVIEW"
+    ],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00056"
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info_decree",
+    "source_type": "decree",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+    "article": "제10조의10",
+    "paragraph": "2-나",
+    "original_text": "가상자산을 보내는 고객과 가상자산을 받는 고객의 가상자산주소(가상자산의 전송 기록 및 보관 내역의 관리를 위해 전자적으로 생성시킨 고유식별번호를 말한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1029263261",
+    "applies_to": "",
+    "data_type": [
+      "가상자산주소"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address"
+    ],
+    "condition": "?????? ? ????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "gateway_tags": [
+      "DIGITAL_ASSET",
+      "WALLET",
+      "LOG",
+      "REVIEW"
+    ],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00057"
+  }
+]

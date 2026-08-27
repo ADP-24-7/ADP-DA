@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-08-26T11:32:00+09:00",
+  "note": "Initial manifest records official sources discovered for this module. PDF attachment capture is intentionally marked MANUAL_REQUIRED unless a stable attachment URL is verified.",
+  "sources": [
+    {
+      "source_id": "law_pipa",
+      "status": "COLLECTED",
+      "reason": "Official law text captured from 국가법령정보센터 webpage into seed_law_articles.json."
+    },
+    {
+      "source_id": "law_credit_info",
+      "status": "COLLECTED",
+      "reason": "Official enforcement decree text captured from 국가법령정보센터 webpage into seed_law_articles.json."
+    },
+    {
+      "source_id": "pipc_pseudonym_guide_2026",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Official board page confirmed; stable PDF attachment URL must be downloaded and preserved manually before parsing."
+    },
+    {
+      "source_id": "pipc_privacy_policy_guide_2026",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Official guide list confirmed; exact current guide attachment requires manual selection and preservation."
+    },
+    {
+      "source_id": "fsc_mydata_service_2021",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Official FSC article confirmed; PDF attachment should be saved as original file in data/raw before parsing."
+    },
+    {
+      "source_id": "fsc_financial_privacy_guide_2017",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Official FSC article confirmed; PDF attachment should be saved as original file in data/raw before parsing."
+    },
+    {
+      "source_id": "fsec_crypto_guide_2019",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Official FSEC guide page confirmed; PDF attachment should be saved as original file in data/raw before parsing."
+    },
+    {
+      "source_id": "fss_privacy_reference",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Direct official FSS document URL was not confirmed in this automated pass."
+    }
+  ]
+}

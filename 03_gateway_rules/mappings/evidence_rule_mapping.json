@@ -1,0 +1,356 @@
+[
+  {
+    "evidence_id": "EV-00001",
+    "rule_id": "GR-0001",
+    "rule_action": "TRANSFORM",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00003",
+    "rule_id": "GR-0001",
+    "rule_action": "TRANSFORM",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00004",
+    "rule_id": "GR-0001",
+    "rule_action": "TRANSFORM",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00006",
+    "rule_id": "GR-0001",
+    "rule_action": "TRANSFORM",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00010",
+    "rule_id": "GR-0001",
+    "rule_action": "TRANSFORM",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00009",
+    "rule_id": "GR-0002",
+    "rule_action": "BLOCK",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00002",
+    "rule_id": "GR-0003",
+    "rule_action": "BLOCK",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00015",
+    "rule_id": "GR-0004",
+    "rule_action": "BLOCK",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00019",
+    "rule_id": "GR-0004",
+    "rule_action": "BLOCK",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00014",
+    "rule_id": "GR-0005",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00018",
+    "rule_id": "GR-0005",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00020",
+    "rule_id": "GR-0005",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00023",
+    "rule_id": "GR-0006",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00032",
+    "rule_id": "GR-0007",
+    "rule_action": "BLOCK",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00026",
+    "rule_id": "GR-0008",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00033",
+    "rule_id": "GR-0008",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00034",
+    "rule_id": "GR-0008",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00038",
+    "rule_id": "GR-0008",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00039",
+    "rule_id": "GR-0008",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00049",
+    "rule_id": "GR-0008",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00040",
+    "rule_id": "GR-0009",
+    "rule_action": "TRANSFORM",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00042",
+    "rule_id": "GR-0010",
+    "rule_action": "BLOCK",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00035",
+    "rule_id": "GR-0011",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00036",
+    "rule_id": "GR-0011",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00037",
+    "rule_id": "GR-0011",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00041",
+    "rule_id": "GR-0011",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00028",
+    "rule_id": "GR-0012",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00043",
+    "rule_id": "GR-0012",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00048",
+    "rule_id": "GR-0012",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00013",
+    "rule_id": "GR-0013",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00016",
+    "rule_id": "GR-0013",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00030",
+    "rule_id": "GR-0013",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00031",
+    "rule_id": "GR-0013",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00005",
+    "rule_id": "GR-0014",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00007",
+    "rule_id": "GR-0014",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00008",
+    "rule_id": "GR-0014",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00011",
+    "rule_id": "GR-0015",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00012",
+    "rule_id": "GR-0015",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00017",
+    "rule_id": "GR-0016",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00021",
+    "rule_id": "GR-0017",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00022",
+    "rule_id": "GR-0017",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00024",
+    "rule_id": "GR-0017",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00025",
+    "rule_id": "GR-0018",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00027",
+    "rule_id": "GR-0018",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00029",
+    "rule_id": "GR-0019",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00044",
+    "rule_id": "GR-0019",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00045",
+    "rule_id": "GR-0019",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00046",
+    "rule_id": "GR-0019",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00047",
+    "rule_id": "GR-0019",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00050",
+    "rule_id": "GR-0020",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00051",
+    "rule_id": "GR-0020",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00052",
+    "rule_id": "GR-0020",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00053",
+    "rule_id": "GR-0021",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00054",
+    "rule_id": "GR-0021",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00055",
+    "rule_id": "GR-0021",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00056",
+    "rule_id": "GR-0022",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00057",
+    "rule_id": "GR-0022",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "REVIEW_REQUIRED"
+  },
+  {
+    "evidence_id": "EV-00058",
+    "rule_id": "GR-0022",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  },
+  {
+    "evidence_id": "EV-00059",
+    "rule_id": "GR-0022",
+    "rule_action": "REVIEW",
+    "evidence_review_status": "VERIFIED"
+  }
+]

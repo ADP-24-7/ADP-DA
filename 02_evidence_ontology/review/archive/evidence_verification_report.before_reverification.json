@@ -1,0 +1,861 @@
+{
+  "summary": {
+    "total_evidence": 59,
+    "direct_source_comparison_completed_count": 59,
+    "verified_count": 4,
+    "review_required_count": 55,
+    "original_text_mismatch_count": 33,
+    "location_mismatch_count": 42,
+    "structured_overinterpretation_count": 33,
+    "gateway_tags_modified_count": 9,
+    "review_required_ids": [
+      "EV-00001",
+      "EV-00002",
+      "EV-00003",
+      "EV-00004",
+      "EV-00005",
+      "EV-00006",
+      "EV-00007",
+      "EV-00008",
+      "EV-00009",
+      "EV-00010",
+      "EV-00011",
+      "EV-00012",
+      "EV-00014",
+      "EV-00015",
+      "EV-00016",
+      "EV-00017",
+      "EV-00018",
+      "EV-00019",
+      "EV-00020",
+      "EV-00021",
+      "EV-00022",
+      "EV-00023",
+      "EV-00024",
+      "EV-00025",
+      "EV-00026",
+      "EV-00027",
+      "EV-00028",
+      "EV-00029",
+      "EV-00030",
+      "EV-00031",
+      "EV-00032",
+      "EV-00033",
+      "EV-00034",
+      "EV-00037",
+      "EV-00038",
+      "EV-00039",
+      "EV-00040",
+      "EV-00041",
+      "EV-00042",
+      "EV-00043",
+      "EV-00044",
+      "EV-00046",
+      "EV-00047",
+      "EV-00048",
+      "EV-00049",
+      "EV-00050",
+      "EV-00051",
+      "EV-00052",
+      "EV-00053",
+      "EV-00054",
+      "EV-00055",
+      "EV-00056",
+      "EV-00057",
+      "EV-00058",
+      "EV-00059"
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-00001",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00002",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00003",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00004",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00005",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00006",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: LOG"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00007",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00008",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: LOG"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00009",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: NO_REIDENTIFICATION"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00010",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00011",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00012",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00013",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [],
+      "final_review_status": "VERIFIED"
+    },
+    {
+      "evidence_id": "EV-00014",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00015",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00016",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00017",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00018",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00019",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00020",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00021",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: CROSS_BORDER_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00022",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: CROSS_BORDER_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00023",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00024",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00025",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: LOG"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00026",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: MONITOR"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00027",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: ACCESS_CONTROL"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00028",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: CLOUD"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00029",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00030",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00031",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00032",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00033",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: ENCRYPT"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00034",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: ENCRYPT"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00035",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [],
+      "final_review_status": "VERIFIED"
+    },
+    {
+      "evidence_id": "EV-00036",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [],
+      "final_review_status": "VERIFIED"
+    },
+    {
+      "evidence_id": "EV-00037",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00038",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: MONITOR"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00039",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: LOG"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00040",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: MASK"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00041",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: CROSS_BORDER_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00042",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: EXTERNAL_AI"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00043",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: CLOUD"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00044",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [
+        "location not directly verified: section"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00045",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": true,
+      "issues": [],
+      "final_review_status": "VERIFIED"
+    },
+    {
+      "evidence_id": "EV-00046",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: CLOUD"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00047",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: ACCESS_CONTROL"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00048",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: ENCRYPT"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00049",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: LOG"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00050",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00051",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00052",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00053",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00054",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00055",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00056",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: THIRD_PARTY_TRANSFER"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00057",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": false,
+      "structured_fields_verified": false,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: article",
+        "original_text not found in saved official raw source after normalization",
+        "structured fields require human review against official source",
+        "gateway tag lacks direct textual support: LOG"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00058",
+      "source_verified": true,
+      "location_verified": true,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    },
+    {
+      "evidence_id": "EV-00059",
+      "source_verified": true,
+      "location_verified": false,
+      "original_text_verified": true,
+      "structured_fields_verified": true,
+      "gateway_tags_verified": false,
+      "issues": [
+        "location not directly verified: section",
+        "gateway tag lacks direct textual support: DIGITAL_ASSET"
+      ],
+      "final_review_status": "REVIEW_REQUIRED"
+    }
+  ]
+}

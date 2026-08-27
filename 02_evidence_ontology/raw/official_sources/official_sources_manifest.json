@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-08-26T15:34:42+09:00",
+  "source_priority": [
+    "국가법령정보센터",
+    "금융위원회",
+    "금융감독원",
+    "개인정보보호위원회",
+    "금융보안원",
+    "금융정보분석원"
+  ],
+  "official_sources": [
+    {
+      "source_id": "law_pipa",
+      "organization": "국가법령정보센터",
+      "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "electronic_financial_supervision_regulation",
+      "organization": "국가법령정보센터",
+      "url": "https://law.go.kr/LSW/admRulLsInfoP.do",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "fsc_ai_guideline_2026",
+      "organization": "금융위원회",
+      "url": "https://www.fsc.go.kr/no010101/87142",
+      "raw_path": "raw/official_sources/fsc_ai_guideline_20260618.pdf",
+      "status": "COLLECTED"
+    },
+    {
+      "source_id": "fsc_saas_cloud_2026",
+      "organization": "금융위원회",
+      "url": "https://www.fsc.go.kr/no010101/86745?srchKey=sj",
+      "raw_path": "raw/official_sources/fsc_saas_cloud_20260417.pdf",
+      "status": "COLLECTED"
+    },
+    {
+      "source_id": "law_virtual_asset_user_protection",
+      "organization": "국가법령정보센터",
+      "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027796579",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "law_virtual_asset_user_protection_decree",
+      "organization": "국가법령정보센터",
+      "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027797047",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "law_special_financial_info",
+      "organization": "국가법령정보센터",
+      "url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "law_special_financial_info_decree",
+      "organization": "국가법령정보센터",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=288765",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "fsc_virtual_asset_policy_20260811",
+      "organization": "금융위원회",
+      "url": "https://www.fsc.go.kr/po010103/87499",
+      "status": "REFERENCED"
+    },
+    {
+      "source_id": "fiu_aml_cdd_guide",
+      "organization": "금융정보분석원",
+      "url": "https://www.kofiu.go.kr/kor/policy/guide04.do",
+      "status": "REFERENCED"
+    }
+  ]
+}
