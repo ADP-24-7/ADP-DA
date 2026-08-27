@@ -24,11 +24,11 @@
     ],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "LOG",
-      "REVIEW"
-    ],
-    "review_status": "REVIEW_REQUIRED"
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-07-15",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "공식 원문 위치와 기록된 source URL 직접 재확인이 필요하여 REVIEW_REQUIRED 유지."
   },
   {
     "evidence_id": "EV-00027",
@@ -57,13 +57,11 @@
     ],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "ACCESS_CONTROL",
-      "LOG",
-      "MONITOR",
-      "REVIEW"
-    ],
-    "review_status": "REVIEW_REQUIRED"
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-07-15",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 기존 감사 로그의 source 접근/위치 검증 실패가 남아 REVIEW_REQUIRED 유지."
   },
   {
     "evidence_id": "EV-00029",
@@ -92,11 +90,11 @@
     ],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "CLOUD",
-      "REVIEW"
-    ],
-    "review_status": "REVIEW_REQUIRED"
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-07-15",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 세부 위치와 해석 검증이 불충분하여 REVIEW_REQUIRED 유지."
   },
   {
     "evidence_id": "EV-00046",
@@ -126,11 +124,11 @@
     "required_action": [],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "CLOUD",
-      "REVIEW"
-    ],
-    "review_status": "REVIEW_REQUIRED"
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-04-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "FSC 게시글은 확인되나 PDF 5쪽 원문 위치 직접 검증이 완료되지 않아 REVIEW_REQUIRED 유지."
   },
   {
     "evidence_id": "EV-00047",
@@ -161,12 +159,11 @@
     ],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "ACCESS_CONTROL",
-      "SAAS",
-      "REVIEW"
-    ],
-    "review_status": "REVIEW_REQUIRED"
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-04-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "FSC 게시글은 확인되나 PDF 6쪽 원문 위치 직접 검증이 완료되지 않아 REVIEW_REQUIRED 유지."
   },
   {
     "domain": "DIGITAL_ASSET",
@@ -191,13 +188,13 @@
     "required_action": [],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "DIGITAL_ASSET",
-      "REVIEW"
-    ],
     "page": "",
     "section": "",
-    "evidence_id": "EV-00053"
+    "evidence_id": "EV-00053",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 가능성이 남아 REVIEW_REQUIRED 유지."
   },
   {
     "domain": "DIGITAL_ASSET",
@@ -223,13 +220,13 @@
     "required_action": [],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "DIGITAL_ASSET",
-      "REVIEW"
-    ],
     "page": "",
     "section": "",
-    "evidence_id": "EV-00054"
+    "evidence_id": "EV-00054",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 가능성이 남아 REVIEW_REQUIRED 유지."
   },
   {
     "domain": "DIGITAL_ASSET",
@@ -254,13 +251,13 @@
     "required_action": [],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "DIGITAL_ASSET",
-      "REVIEW"
-    ],
     "page": "",
     "section": "",
-    "evidence_id": "EV-00055"
+    "evidence_id": "EV-00055",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 및 actor 공백이 남아 REVIEW_REQUIRED 유지."
   },
   {
     "domain": "DIGITAL_ASSET",
@@ -289,13 +286,13 @@
     ],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "DIGITAL_ASSET",
-      "REVIEW"
-    ],
     "page": "",
     "section": "",
-    "evidence_id": "EV-00056"
+    "evidence_id": "EV-00056",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 source URL 직접 검증 실패가 남아 REVIEW_REQUIRED 유지."
   },
   {
     "domain": "DIGITAL_ASSET",
@@ -322,14 +319,12 @@
     "required_action": [],
     "prohibition": [],
     "exception": [],
-    "gateway_tags": [
-      "DIGITAL_ASSET",
-      "WALLET",
-      "LOG",
-      "REVIEW"
-    ],
     "page": "",
     "section": "",
-    "evidence_id": "EV-00057"
+    "evidence_id": "EV-00057",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 source URL 직접 검증 실패와 actor 공백이 남아 REVIEW_REQUIRED 유지."
   }
 ]
