@@ -3,11 +3,10 @@ from __future__ import annotations
 import json
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
-
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES_PATH = ROOT / "config" / "sources.yaml"
@@ -54,7 +53,7 @@ def collect_webpage(source: dict) -> dict:
         "source_url": url,
         "document_name": source["document_name"],
         "effective_date": source.get("effective_date", ""),
-        "retrieved_at": datetime.now(timezone.utc).isoformat(),
+        "retrieved_at": datetime.now(UTC).isoformat(),
     }
 
 
@@ -62,25 +61,32 @@ def main() -> int:
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     sources = read_sources(SOURCES_PATH)
     manifest = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(UTC).isoformat(),
         "sources": [],
     }
     for source in sources:
         if source.get("collection_method") not in {"official_webpage"}:
-            manifest["sources"].append({
-                "source_id": source["source_id"],
-                "status": "MANUAL_REQUIRED",
-                "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs.",
-            })
+            manifest["sources"].append(
+                {
+                    "source_id": source["source_id"],
+                    "status": "MANUAL_REQUIRED",
+                    "reason": (
+                        "Configured as attachment/manual collection; "
+                        "do not infer or bypass download URLs."
+                    ),
+                }
+            )
             continue
         try:
             manifest["sources"].append(collect_webpage(source))
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
-            manifest["sources"].append({
-                "source_id": source["source_id"],
-                "status": "MANUAL_REQUIRED",
-                "reason": f"Automated official webpage collection failed: {exc}",
-            })
+            manifest["sources"].append(
+                {
+                    "source_id": source["source_id"],
+                    "status": "MANUAL_REQUIRED",
+                    "reason": f"Automated official webpage collection failed: {exc}",
+                }
+            )
     (RAW_DIR / "collection_manifest.generated.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2),
         encoding="utf-8",
