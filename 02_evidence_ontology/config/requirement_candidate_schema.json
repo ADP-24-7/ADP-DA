@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Privacy Gateway Requirement Candidates",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "requirement_id",
+      "evidence_id",
+      "domain",
+      "candidate_status",
+      "applicability",
+      "source_derived_requirement",
+      "interpretation_tags",
+      "deferred_runtime_considerations",
+      "prohibited_runtime_decision",
+      "review_note"
+    ],
+    "properties": {
+      "requirement_id": {
+        "type": "string",
+        "pattern": "^RC-[0-9]{5}$"
+      },
+      "evidence_id": {
+        "type": "string",
+        "pattern": "^EV-[0-9]{5}$"
+      },
+      "domain": {
+        "type": "string",
+        "enum": ["PRIVACY", "AI", "SAAS_CLOUD", "DIGITAL_ASSET"]
+      },
+      "candidate_status": {
+        "type": "string",
+        "enum": ["CANDIDATE", "REVIEW_REQUIRED"]
+      },
+      "applicability": {
+        "type": "object",
+        "required": ["actor", "data", "processing_context"],
+        "properties": {
+          "actor": { "type": "string" },
+          "data": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "processing_context": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      },
+      "source_derived_requirement": {
+        "type": "object",
+        "required": ["condition", "required_action", "prohibition", "exception"],
+        "properties": {
+          "condition": { "type": "string" },
+          "required_action": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "prohibition": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "exception": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      },
+      "interpretation_tags": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "deferred_runtime_considerations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["source_tag", "deferred_to"],
+          "properties": {
+            "source_tag": { "type": "string" },
+            "deferred_to": {
+              "type": "string",
+              "enum": ["GATEWAY_POLICY_OR_TRANSFORM_STAGE"]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "prohibited_runtime_decision": {
+        "type": "boolean",
+        "const": true
+      },
+      "review_note": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

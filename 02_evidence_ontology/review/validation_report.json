@@ -1,40 +1,41 @@
 {
   "generated_at": "2026-08-27T00:00:00+09:00",
-  "scope": "Final 59 Evidence verification audit; gateway rules not modified",
-  "baseline_before_final_audit": {
-    "TOTAL": 59,
-    "VERIFIED": 49,
-    "REVIEW_REQUIRED": 10,
-    "REJECTED": 0
-  },
-  "existing_verified_33_audit": {
-    "direct_reverified": 33,
-    "previous_verification_record_accepted": 0,
-    "converted_to_review_required": 0,
-    "converted_to_rejected": 0
-  },
+  "scope": "02 Evidence Ontology final freeze validation; 03_gateway_rules not modified",
   "final_counts": {
     "TOTAL": 59,
     "VERIFIED": 49,
-    "REVIEW_REQUIRED": 10,
-    "REJECTED": 0
+    "REVIEW_REQUIRED": 10
   },
-  "audit_counts": {
-    "DIRECT_OFFICIAL_SOURCE": 49,
-    "NOT_VERIFIABLE": 10
+  "domain_counts": {
+    "AI": 8,
+    "DIGITAL_ASSET": 10,
+    "PRIVACY": 32,
+    "SAAS_CLOUD": 9
+  },
+  "source_type_counts": {
+    "decree": 6,
+    "guideline": 15,
+    "law": 26,
+    "official_policy": 2,
+    "regulation": 10
+  },
+  "requirement_candidate_counts": {
+    "TOTAL": 59,
+    "CANDIDATE": 49,
+    "REVIEW_REQUIRED": 10
   },
   "validation": {
-    "VERIFIED provenance 누락": 0,
-    "source 검증 실패": 0,
-    "original_text 검증 실패": 0,
-    "location 검증 실패": 0,
-    "structured field 검증 실패": 0,
-    "gateway tag 검증 실패": 0,
-    "인코딩 오류": 0,
-    "중복 Evidence": 0,
-    "source_url 누락": 0,
-    "original_text 누락": 0,
-    "허용되지 않은 review_status": 0
+    "evidence_schema_errors": [],
+    "requirement_candidate_schema_errors": [],
+    "duplicate_evidence_ids": [],
+    "duplicate_requirement_ids": [],
+    "missing_requirement_evidence_refs": [],
+    "evidence_without_requirement_candidate": [],
+    "runtime_tags_remaining_in_evidence": []
+  },
+  "reference_integrity": {
+    "official_source_to_evidence": "PASS",
+    "evidence_to_requirement_candidate": "PASS"
   },
   "ids": {
     "review_required": [
@@ -48,13 +49,17 @@
       "EV-00055",
       "EV-00056",
       "EV-00057"
-    ],
-    "encoding_errors": [],
-    "duplicate_evidence": []
+    ]
   },
   "freeze": {
-    "02_EVIDENCE_ONTOLOGY_FREEZE": "READY",
-    "reason": "모든 VERIFIED Evidence에 추적 가능한 검증 provenance가 있고, REVIEW_REQUIRED는 보류 사유가 격리되어 있으며, schema/중복/reference/encoding validation을 통과함."
+    "02_EVIDENCE_ONTOLOGY_FREEZE": "FROZEN",
+    "reason": "Official Source -> Evidence -> Requirement Candidate is traceable, runtime policy tags are separated from Evidence, and final artifacts pass schema/reference validation."
   },
-  "changed_statuses": []
+  "downstream_todo": [
+    {
+      "scope": "03_gateway_rules",
+      "item": "GR-0008 references AI Evidence EV-00038 and EV-00039 from a PRIVACY-domain rule.",
+      "action": "Review in Gateway Rule layer; 02 Evidence Ontology not modified for this issue."
+    }
+  ]
 }
