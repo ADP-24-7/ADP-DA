@@ -1,0 +1,172 @@
+﻿{
+    "dataset_name":  "financial_synthetic",
+    "dataset_version":  "financial_synthetic_processed_v1",
+    "schema_version":  "v1",
+    "dataset_stage":  "processed",
+    "source_type":  "synthetic",
+    "preprocessing":  {
+                          "environment":  "Jupyter Notebook",
+                          "cleaning_notebook":  "NOT_LINKED",
+                          "completed_steps":  [
+                                                  "missing-value handling",
+                                                  "duplicate handling"
+                                              ],
+                          "notes":  "Only the completed Jupyter cleaning steps known for this snapshot are recorded. No additional cleaning, transformation, thresholding, or policy generation is asserted."
+                      },
+    "lineage":  {
+                    "source_dataset":  "Source Dataset",
+                    "cleaning":  "Jupyter Cleaning",
+                    "cleaning_notebook":  "NOT_LINKED",
+                    "dataset_snapshot":  "data/processed/financial_synthetic",
+                    "experiment":  "04 Experiment",
+                    "validation_artifact":  "Validation Artifact",
+                    "gateway_policy_candidate_validation":  "Gateway Policy Candidate validation"
+                },
+    "generated_at":  "2026-08-28T16:50:48.7944011+09:00",
+    "file_count":  11,
+    "files":  [
+                  {
+                      "filename":  "account_statuses.csv",
+                      "row_count":  3,
+                      "column_count":  2,
+                      "columns":  [
+                                      "AccountStatusID",
+                                      "StatusName"
+                                  ],
+                      "sha256":  "b646203303c09de885f59a08df6421eb2a9e71ad921c0d9fbd5e4ec0700e13c5",
+                      "size_bytes":  63
+                  },
+                  {
+                      "filename":  "account_types.csv",
+                      "row_count":  5,
+                      "column_count":  2,
+                      "columns":  [
+                                      "AccountTypeID",
+                                      "TypeName"
+                                  ],
+                      "sha256":  "c363b438101f5961b1a037d2c36894bc9503d40ab07266846f98cd61f1e70f20",
+                      "size_bytes":  82
+                  },
+                  {
+                      "filename":  "accounts.csv",
+                      "row_count":  1567,
+                      "column_count":  6,
+                      "columns":  [
+                                      "AccountID",
+                                      "CustomerID",
+                                      "AccountTypeID",
+                                      "AccountStatusID",
+                                      "Balance",
+                                      "OpeningDate"
+                                  ],
+                      "sha256":  "87e1c77c9b5fb80848b7bface9689b23df16e8e60218d4d9f48ba94f1940e0ad",
+                      "size_bytes":  84346
+                  },
+                  {
+                      "filename":  "addresses.csv",
+                      "row_count":  1139,
+                      "column_count":  4,
+                      "columns":  [
+                                      "AddressID",
+                                      "Street",
+                                      "City",
+                                      "Country"
+                                  ],
+                      "sha256":  "f1c2518454e2f06998289293fd4f38696adeab9ee0401428118ef9d5cd9814ba",
+                      "size_bytes":  42857
+                  },
+                  {
+                      "filename":  "branches.csv",
+                      "row_count":  50,
+                      "column_count":  3,
+                      "columns":  [
+                                      "BranchID",
+                                      "BranchName",
+                                      "AddressID"
+                                  ],
+                      "sha256":  "fd5592bd3b3380cafca545491bf520b5447c0641fcf34141d7b33eabe742b3d4",
+                      "size_bytes":  915
+                  },
+                  {
+                      "filename":  "customer_types.csv",
+                      "row_count":  3,
+                      "column_count":  2,
+                      "columns":  [
+                                      "CustomerTypeID",
+                                      "TypeName"
+                                  ],
+                      "sha256":  "14fb239807947475c4877f674fa470306049548fb0b5589faaabb6c45c5ecc18",
+                      "size_bytes":  80
+                  },
+                  {
+                      "filename":  "customers.csv",
+                      "row_count":  1057,
+                      "column_count":  6,
+                      "columns":  [
+                                      "CustomerID",
+                                      "FirstName",
+                                      "LastName",
+                                      "DateOfBirth",
+                                      "AddressID",
+                                      "CustomerTypeID"
+                                  ],
+                      "sha256":  "0011568615fae48ea347162a10d76cf403728c45b3df29d76a55be582ce315ec",
+                      "size_bytes":  56748
+                  },
+                  {
+                      "filename":  "loan_statuses.csv",
+                      "row_count":  3,
+                      "column_count":  2,
+                      "columns":  [
+                                      "LoanStatusID",
+                                      "StatusName"
+                                  ],
+                      "sha256":  "ad71943eddea9978c800de9a5d83a79a071ce9c033563d3d0ccfd4cdb4aa7991",
+                      "size_bytes":  61
+                  },
+                  {
+                      "filename":  "loans.csv",
+                      "row_count":  295,
+                      "column_count":  7,
+                      "columns":  [
+                                      "LoanID",
+                                      "AccountID",
+                                      "LoanStatusID",
+                                      "PrincipalAmount",
+                                      "InterestRate",
+                                      "StartDate",
+                                      "EstimatedEndDate"
+                                  ],
+                      "sha256":  "85edb848a4b9439082ef70e826070b6f5e428cb1ba6ea3b3061edc94610f8513",
+                      "size_bytes":  25668
+                  },
+                  {
+                      "filename":  "transaction_types.csv",
+                      "row_count":  4,
+                      "column_count":  2,
+                      "columns":  [
+                                      "TransactionTypeID",
+                                      "TypeName"
+                                  ],
+                      "sha256":  "be022a68a5f34617d81c1fe6b6010922ffdfa2ecce12cbf7a479d4d8c6e6f942",
+                      "size_bytes":  79
+                  },
+                  {
+                      "filename":  "transactions.csv",
+                      "row_count":  43563,
+                      "column_count":  8,
+                      "columns":  [
+                                      "TransactionID",
+                                      "AccountOriginID",
+                                      "AccountDestinationID",
+                                      "TransactionTypeID",
+                                      "Amount",
+                                      "TransactionDate",
+                                      "BranchID",
+                                      "Description"
+                                  ],
+                      "sha256":  "8246d3cf110ff21e66976254d3abe405d63763a9d5f6c5be12973ef9aa0124d4",
+                      "size_bytes":  3496787
+                  }
+              ]
+}
