@@ -1,0 +1,32 @@
+{
+  "schema_version": "v1",
+  "taxonomy_name": "regulatory_data_categories",
+  "description": "Legal and regulatory data categories supported by DA evidence and requirements.",
+  "categories": [
+    {
+      "id": "PERSONAL_INFORMATION",
+      "label": "Personal Information",
+      "status": "defined"
+    },
+    {
+      "id": "PERSONAL_CREDIT_INFORMATION",
+      "label": "Personal Credit Information",
+      "status": "defined"
+    },
+    {
+      "id": "PSEUDONYMIZED_INFORMATION",
+      "label": "Pseudonymized Information",
+      "status": "defined"
+    }
+  ],
+  "$defs": {
+    "regulatory_data_category": {
+      "type": "string",
+      "enum": [
+        "PERSONAL_INFORMATION",
+        "PERSONAL_CREDIT_INFORMATION",
+        "PSEUDONYMIZED_INFORMATION"
+      ]
+    }
+  }
+}

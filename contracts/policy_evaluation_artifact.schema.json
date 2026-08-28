@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/policy_evaluation_artifact.schema.json",
+  "title": "ADP PolicyEvaluation Artifact",
+  "description": "Handoff contract for BE Runtime to consume validated analysis results. This is not an active runtime policy and does not promote Policy Candidates.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_version",
+    "analysis_status",
+    "policy_action",
+    "matched_policy_refs",
+    "matched_rule_refs",
+    "requirement_refs",
+    "evidence_refs",
+    "required_controls",
+    "validation_artifact_refs",
+    "applicability",
+    "processing_contexts",
+    "regulatory_data_categories",
+    "runtime_binding",
+    "digest"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "artifact_id": { "type": "string" },
+    "artifact_version": { "type": "string" },
+    "analysis_status": {
+      "type": "string",
+      "enum": ["candidate", "validated", "hold", "rejected"]
+    },
+    "policy_action": {
+      "type": "string",
+      "enum": [
+        "candidate_handoff",
+        "requires_evaluation",
+        "hold",
+        "reject",
+        "no_runtime_action"
+      ]
+    },
+    "matched_policy_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/reference" }
+    },
+    "matched_rule_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/reference" }
+    },
+    "requirement_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/reference" }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/reference" }
+    },
+    "required_controls": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/reference" }
+    },
+    "validation_artifact_refs": {
+      "type": "array",
+      "description": "References to Evaluation Artifacts that provide validation evidence. Do not invent IDs for artifacts that do not exist.",
+      "items": { "$ref": "#/$defs/reference" }
+    },
+    "applicability": {
+      "type": "object",
+      "required": ["status", "scope", "limitations"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["candidate", "validated", "hold", "rejected"]
+        },
+        "scope": { "type": "string" },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "processing_contexts": {
+      "type": "array",
+      "items": { "$ref": "taxonomies/processing_contexts.v1.json#/$defs/processing_context" },
+      "minItems": 1
+    },
+    "regulatory_data_categories": {
+      "type": "array",
+      "items": {
+        "$ref": "taxonomies/regulatory_data_categories.v1.json#/$defs/regulatory_data_category"
+      },
+      "minItems": 1
+    },
+    "runtime_binding": { "$ref": "#/$defs/runtime_binding" },
+    "digest": {
+      "type": "object",
+      "required": ["algorithm", "value"],
+      "properties": {
+        "algorithm": { "type": "string" },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "reference": {
+      "type": "object",
+      "required": ["ref_id", "ref_type"],
+      "properties": {
+        "ref_id": { "type": "string" },
+        "ref_type": { "type": "string" },
+        "version": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "runtime_binding": {
+      "type": "object",
+      "required": [
+        "mapping_status",
+        "runtime_data_class",
+        "workload_id",
+        "purpose",
+        "binding_ref"
+      ],
+      "properties": {
+        "mapping_status": {
+          "type": "string",
+          "enum": ["mapped", "unmapped", "tbd"]
+        },
+        "runtime_data_class": {
+          "type": "string",
+          "description": "BE-owned runtime enum value when available. Use UNMAPPED or TBD until BE defines it."
+        },
+        "workload_id": {
+          "type": "string",
+          "description": "BE-owned workload identifier when available. Use TBD until BE defines it."
+        },
+        "purpose": {
+          "type": "string",
+          "description": "BE-owned purpose value when available. Use TBD until BE defines it."
+        },
+        "binding_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to a workload/purpose binding artifact when one exists."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

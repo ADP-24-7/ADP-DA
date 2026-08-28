@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "taxonomy_name": "processing_contexts",
+  "description": "Technical or business processing contexts. These are not regulatory data categories.",
+  "contexts": [
+    {
+      "id": "AI_USE",
+      "label": "AI Use",
+      "status": "defined"
+    },
+    {
+      "id": "SAAS_CLOUD_USE",
+      "label": "SaaS Cloud Use",
+      "status": "defined"
+    }
+  ],
+  "$defs": {
+    "processing_context": {
+      "type": "string",
+      "enum": [
+        "AI_USE",
+        "SAAS_CLOUD_USE"
+      ]
+    }
+  }
+}
