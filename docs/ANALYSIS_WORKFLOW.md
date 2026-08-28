@@ -23,3 +23,30 @@ AI, SaaS, Cloud, Digital Asset 변화와 금융 데이터 활용 환경을 정�
 ## 6. Runtime 검증 피드백
 
 개발 Runtime 결과와 Offline 실험 결과를 비교해 False Allow, Review 부담, Drift, Audit Gap을 분석합니다.
+
+## 7. DA to BE Handoff Boundary
+
+The handoff path is:
+
+```text
+Official Source
+-> Evidence
+-> Requirement Candidate
+-> Control
+-> Test
+-> Policy Candidate
+-> Evaluation
+-> Evaluation Artifact
+-> PolicyEvaluation Artifact
+-> BE Runtime
+```
+
+`02_evidence_ontology` remains the frozen source for Evidence and Requirement
+Candidate artifacts. `03_gateway_rules` remains the frozen source for Control,
+Test, and Policy Candidate artifacts.
+
+`contracts/evaluation_artifact.schema.json` is validation evidence for actual
+analysis and experiment results. `contracts/policy_evaluation_artifact.schema.json`
+is the BE handoff contract for policy judgment derived from validated Evaluation
+Artifacts. PolicyEvaluation Artifacts reference validation evidence through
+`validation_artifact_refs` instead of duplicating experiment metrics.

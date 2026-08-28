@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/workload_purpose_binding.schema.json",
+  "title": "ADP Workload Purpose Binding",
+  "description": "Binds a PolicyEvaluation handoff to BE-owned workload, purpose, processing context, and runtime data class terms.",
+  "type": "object",
+  "required": ["schema_version", "binding_version", "bindings"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "binding_version": { "type": "string" },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "workload_id",
+          "purpose",
+          "processing_context",
+          "runtime_data_class",
+          "binding_status"
+        ],
+        "properties": {
+          "workload_id": {
+            "type": "string",
+            "description": "BE-owned workload identifier, or TBD until BE defines it."
+          },
+          "purpose": {
+            "type": "string",
+            "description": "BE-owned purpose enum/value, or TBD until BE defines it."
+          },
+          "processing_context": {
+            "$ref": "taxonomies/processing_contexts.v1.json#/$defs/processing_context"
+          },
+          "runtime_data_class": {
+            "type": "string",
+            "description": "BE-owned runtime data class, or UNMAPPED/TBD until BE defines it."
+          },
+          "binding_status": {
+            "type": "string",
+            "enum": ["resolved", "unresolved", "tbd"]
+          },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

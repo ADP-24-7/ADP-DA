@@ -102,3 +102,16 @@ make docker-down
 - [분석 실행 흐름](docs/ANALYSIS_WORKFLOW.md)
 - [개발 인수 기준](docs/HANDOFF.md)
 - [환경 설정](docs/SETUP.md)
+
+## DA to BE Handoff Boundary
+
+ADP-DA separates validation evidence from runtime handoff:
+
+- `contracts/evaluation_artifact.schema.json`: actual analysis and experiment
+  validation evidence.
+- `contracts/policy_evaluation_artifact.schema.json`: BE handoff contract for
+  policy judgment based on validated Evaluation Artifacts.
+
+Regulatory categories, processing contexts, runtime DataClass crosswalks, and
+workload/purpose bindings are defined under `contracts/`. BE-owned runtime
+values remain `TBD`, `UNMAPPED`, or `UNRESOLVED` until BE publishes them.

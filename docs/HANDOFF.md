@@ -25,3 +25,23 @@
 - Python 3.12 분석 환경만 고정
 - FastAPI 헬스체크만 제공
 - 실제 데이터, 실험 코드, 정책값은 아직 없음
+
+## DA to BE Handoff Contracts
+
+Evaluation Artifact:
+
+- Actual analysis or experiment validation evidence.
+- Includes metrics, threshold basis, claim scope, limitations, and failure cases.
+- Does not activate a runtime policy.
+
+PolicyEvaluation Artifact:
+
+- BE Runtime handoff contract for policy judgment based on validated Evaluation
+  Artifacts.
+- References validation evidence with `validation_artifact_refs`.
+- Does not store experiment metrics again.
+
+BE owns runtime DataClass enums, workload identifiers, purpose values, database
+migrations, seed loaders, and runtime policy activation. DA records unresolved
+BE bindings explicitly as `TBD`, `UNMAPPED`, or `UNRESOLVED` and does not invent
+BE enum values.
