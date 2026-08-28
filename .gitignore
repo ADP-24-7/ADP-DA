@@ -30,6 +30,8 @@ outputs/
 reports/
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+!data/processed/financial_synthetic/
+!data/processed/financial_synthetic/**
 !artifacts/.gitkeep
 
 # Logs
