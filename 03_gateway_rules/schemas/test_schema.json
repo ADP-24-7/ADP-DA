@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Privacy Gateway Semantic Tests",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "test_id",
+      "control_ids",
+      "test_type",
+      "test_name",
+      "expected_behavior",
+      "failure_condition",
+      "required_artifact",
+      "status"
+    ],
+    "properties": {
+      "test_id": { "type": "string", "pattern": "^TEST-[0-9]{3}$" },
+      "control_ids": {
+        "type": "array",
+        "items": { "type": "string", "pattern": "^CTRL-[A-Z]+-[0-9]{3}$" },
+        "minItems": 1
+      },
+      "test_type": {
+        "type": "string",
+        "enum": ["UNIT", "CONTRACT", "INTEGRATION", "GOLDEN", "ADVERSARIAL", "FAILURE", "REPLAY", "GOVERNANCE"]
+      },
+      "test_name": { "type": "string", "minLength": 1 },
+      "expected_behavior": { "type": "string", "minLength": 1 },
+      "failure_condition": { "type": "string", "minLength": 1 },
+      "required_artifact": { "type": "string", "minLength": 1 },
+      "status": {
+        "type": "string",
+        "enum": ["DEFINED", "VALIDATION_REQUIRED", "VALIDATED"]
+      }
+    },
+    "additionalProperties": false
+  }
+}
