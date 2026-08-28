@@ -7,7 +7,6 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = ROOT.parents[0]
 
@@ -86,7 +85,7 @@ def main() -> None:
     controls = load(CONTROLS)
     tests = load(TESTS)
     policies = load(POLICIES)
-    traceability = load(TRACEABILITY)
+    load(TRACEABILITY)
     requirement_classification = load(REQUIREMENT_CLASSIFICATION)
     migration = load(MIGRATION)
     rules = load(LEGACY_RULES)
@@ -95,7 +94,6 @@ def main() -> None:
 
     control_ids = {record["control_id"] for record in controls}
     test_ids = {record["test_id"] for record in tests}
-    policy_ids = {record["policy_candidate_id"] for record in policies}
     requirement_ids = {record["requirement_id"] for record in requirements}
     review_required_requirement_ids = {
         record["requirement_id"]
@@ -141,7 +139,8 @@ def main() -> None:
         if record["control_type"] in RUNTIME_CONTROL_TYPES
     }
     controls_without_policy = sorted(
-        runtime_controls - {control_id for record in policies for control_id in record["control_ids"]}
+        runtime_controls
+        - {control_id for record in policies for control_id in record["control_ids"]}
     )
     governance_controls_without_policy = sorted(
         control_ids
@@ -176,7 +175,10 @@ def main() -> None:
         for record in policies
         if (
             record["candidate_transform"] in FINAL_TRANSFORMS
-            or any(option in FINAL_TRANSFORMS for option in record.get("candidate_transform_options", []))
+            or any(
+                option in FINAL_TRANSFORMS
+                for option in record.get("candidate_transform_options", [])
+            )
         )
         and "data_evaluation_artifact" not in record["validation_dependencies"]
     )
@@ -207,7 +209,9 @@ def main() -> None:
         and (not record["requirement_ids"] or not record["control_ids"] or not record["test_ids"])
     )
 
-    gr_0008_role = next((record for record in migration if record["legacy_rule_id"] == "GR-0008"), {})
+    gr_0008_role = next(
+        (record for record in migration if record["legacy_rule_id"] == "GR-0008"), {}
+    )
 
     legacy_rule_names = {record["rule_name"] for record in rules}
     controls_using_legacy_names = sorted(
@@ -259,7 +263,11 @@ def main() -> None:
             "tests": len(tests),
             "policy_candidates": len(policies),
             "requirement_classification": dict(
-                sorted(Counter(record["requirement_class"] for record in requirement_classification).items())
+                sorted(
+                    Counter(
+                        record["requirement_class"] for record in requirement_classification
+                    ).items()
+                )
             ),
             "migration_audit_classification": dict(
                 sorted(Counter(record["audit_classification"] for record in migration).items())
@@ -331,8 +339,12 @@ def main() -> None:
         "dangling_test_ids": dangling_test_ids,
     }
 
-    VALIDATION_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    ORPHAN_REPORT.write_text(json.dumps(orphan_report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    VALIDATION_REPORT.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    ORPHAN_REPORT.write_text(
+        json.dumps(orphan_report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
 
     if not validation_passed:
         raise SystemExit(1)

@@ -8,7 +8,6 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-
 ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE_SCHEMA_PATH = ROOT / "config" / "evidence_schema.json"
 REQUIREMENT_SCHEMA_PATH = ROOT / "config" / "requirement_candidate_schema.json"
@@ -78,12 +77,20 @@ def write_evidence_csv(records: list[dict[str, Any]]) -> None:
         "verified_at",
         "review_note",
     ]
-    with (ROOT / "processed" / "evidence_master.csv").open("w", encoding="utf-8-sig", newline="") as fp:
+    with (ROOT / "processed" / "evidence_master.csv").open(
+        "w", encoding="utf-8-sig", newline=""
+    ) as fp:
         writer = csv.DictWriter(fp, fieldnames=fieldnames)
         writer.writeheader()
         for record in records:
             row = {field: record.get(field) for field in fieldnames}
-            for field in ["data_type", "processing_context", "required_action", "prohibition", "exception"]:
+            for field in [
+                "data_type",
+                "processing_context",
+                "required_action",
+                "prohibition",
+                "exception",
+            ]:
                 row[field] = json.dumps(row[field], ensure_ascii=False)
             writer.writerow(row)
 
@@ -114,7 +121,9 @@ def main() -> None:
         }
     )
 
-    review_required = [record for record in evidence if record["review_status"] == "REVIEW_REQUIRED"]
+    review_required = [
+        record for record in evidence if record["review_status"] == "REVIEW_REQUIRED"
+    ]
     status_counts = Counter(record["review_status"] for record in evidence)
     domain_counts = Counter(record["domain"] for record in evidence)
     source_type_counts = Counter(record["source_type"] for record in evidence)
@@ -123,8 +132,14 @@ def main() -> None:
     downstream_todo = [
         {
             "scope": "03_gateway_rules",
-            "item": "GR-0008 references AI Evidence EV-00038 and EV-00039 from a PRIVACY-domain rule.",
-            "action": "Review in Gateway Rule layer; 02 Evidence Ontology not modified for this issue.",
+            "item": (
+                "GR-0008 references AI Evidence EV-00038 and EV-00039 "
+                "from a PRIVACY-domain rule."
+            ),
+            "action": (
+                "Review in Gateway Rule layer; "
+                "02 Evidence Ontology not modified for this issue."
+            ),
         }
     ]
 
@@ -165,7 +180,9 @@ def main() -> None:
         },
         "reference_integrity": {
             "official_source_to_evidence": "PASS",
-            "evidence_to_requirement_candidate": "PASS" if not missing_requirement_refs and not evidence_without_requirement else "FAIL",
+            "evidence_to_requirement_candidate": "PASS"
+            if not missing_requirement_refs and not evidence_without_requirement
+            else "FAIL",
         },
         "ids": {
             "review_required": [record["evidence_id"] for record in review_required],
@@ -174,7 +191,8 @@ def main() -> None:
             "02_EVIDENCE_ONTOLOGY_FREEZE": "FROZEN" if validation_passed else "NOT_READY",
             "reason": (
                 "Official Source -> Evidence -> Requirement Candidate is traceable, "
-                "runtime policy tags are separated from Evidence, and final artifacts pass schema/reference validation."
+                "runtime policy tags are separated from Evidence, "
+                "and final artifacts pass schema/reference validation."
                 if validation_passed
                 else "One or more schema, reference, uniqueness, or boundary checks failed."
             ),
@@ -188,7 +206,9 @@ def main() -> None:
         "total_evidence": len(evidence),
         "status_counts": dict(sorted(status_counts.items())),
         "domains": {
-            domain: sorted(record["evidence_id"] for record in evidence if record["domain"] == domain)
+            domain: sorted(
+                record["evidence_id"] for record in evidence if record["domain"] == domain
+            )
             for domain in sorted(domain_counts)
         },
         "requirement_candidates": {
@@ -199,11 +219,21 @@ def main() -> None:
     }
 
     write_evidence_csv(evidence)
-    REVIEW_REQUIRED_PATH.write_text(json.dumps(review_required, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    VALIDATION_REPORT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    VERIFICATION_REPORT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    ONTOLOGY_PATH.write_text(json.dumps(ontology, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    DOWNSTREAM_TODO_PATH.write_text(json.dumps(downstream_todo, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    REVIEW_REQUIRED_PATH.write_text(
+        json.dumps(review_required, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    VALIDATION_REPORT_PATH.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    VERIFICATION_REPORT_PATH.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    ONTOLOGY_PATH.write_text(
+        json.dumps(ontology, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    DOWNSTREAM_TODO_PATH.write_text(
+        json.dumps(downstream_todo, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
 
     if not validation_passed:
         raise SystemExit(1)
