@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-08-26T12:31:32+09:00",
+  "note": "Coverage expansion evidence provenance. PDF originals are preserved where download succeeded; law/admin-rule snippets are sourced from official ???????? pages and should be compared by human reviewer before CONFIRMED status.",
+  "raw_artifacts": [
+    {
+      "source_id": "fsc_ai_guideline_2026",
+      "raw_path": "data/raw/fsc_ai_guideline_20260618.pdf",
+      "official_page": "https://www.fsc.go.kr/no010101/87142",
+      "status": "COLLECTED"
+    },
+    {
+      "source_id": "fsc_saas_cloud_2026",
+      "raw_path": "data/raw/fsc_saas_cloud_20260417.pdf",
+      "official_page": "https://www.fsc.go.kr/no010101/86745?srchKey=sj",
+      "status": "COLLECTED"
+    },
+    {
+      "source_id": "law_pipa",
+      "official_page": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "status": "WEB_TEXT_REFERENCED"
+    },
+    {
+      "source_id": "electronic_financial_supervision_regulation",
+      "official_page": "https://law.go.kr/LSW/admRulLsInfoP.do?admRulId=2050888&admRulNm=%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95",
+      "status": "WEB_TEXT_REFERENCED"
+    }
+  ],
+  "added_evidence_ids": [
+    "EV-00014",
+    "EV-00015",
+    "EV-00016",
+    "EV-00017",
+    "EV-00018",
+    "EV-00019",
+    "EV-00020",
+    "EV-00021",
+    "EV-00022",
+    "EV-00023",
+    "EV-00024",
+    "EV-00025",
+    "EV-00026",
+    "EV-00027",
+    "EV-00028",
+    "EV-00029",
+    "EV-00030",
+    "EV-00031",
+    "EV-00032",
+    "EV-00033",
+    "EV-00034",
+    "EV-00035",
+    "EV-00036",
+    "EV-00037",
+    "EV-00038",
+    "EV-00039",
+    "EV-00040",
+    "EV-00041",
+    "EV-00042",
+    "EV-00043",
+    "EV-00044",
+    "EV-00045",
+    "EV-00046",
+    "EV-00047",
+    "EV-00048",
+    "EV-00049"
+  ]
+}

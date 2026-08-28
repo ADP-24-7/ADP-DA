@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Privacy Gateway Runtime Rule",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "rule_name",
+    "domain",
+    "priority",
+    "when",
+    "evidence_refs",
+    "decision",
+    "audit"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "pattern": "^GR-[0-9]{4}$"
+    },
+    "rule_name": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "when": {
+      "type": "object",
+      "required": [
+        "data_type",
+        "processing_context",
+        "destination",
+        "conditions"
+      ],
+      "properties": {
+        "data_type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "processing_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "destination": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^EV-[0-9]{5}$"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "action",
+        "required_controls",
+        "transform_required",
+        "human_review_required"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "ALLOW",
+            "BLOCK",
+            "TRANSFORM",
+            "REVIEW"
+          ]
+        },
+        "required_controls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transform_required": {
+          "type": "boolean"
+        },
+        "human_review_required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "audit": {
+      "type": "object",
+      "required": [
+        "log_required",
+        "evidence_trace_required"
+      ],
+      "properties": {
+        "log_required": {
+          "type": "boolean"
+        },
+        "evidence_trace_required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

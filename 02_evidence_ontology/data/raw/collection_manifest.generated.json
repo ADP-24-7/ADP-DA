@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-08-26T02:36:57.735475+00:00",
+  "sources": [
+    {
+      "source_id": "law_pipa",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Automated official webpage collection failed: <urlopen error [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다>"
+    },
+    {
+      "source_id": "law_credit_info",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Automated official webpage collection failed: <urlopen error [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다>"
+    },
+    {
+      "source_id": "pipc_pseudonym_guide_2026",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs."
+    },
+    {
+      "source_id": "pipc_privacy_policy_guide_2026",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs."
+    },
+    {
+      "source_id": "fsc_mydata_service_2021",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs."
+    },
+    {
+      "source_id": "fsc_financial_privacy_guide_2017",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs."
+    },
+    {
+      "source_id": "fsec_crypto_guide_2019",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs."
+    },
+    {
+      "source_id": "fss_privacy_reference",
+      "status": "MANUAL_REQUIRED",
+      "reason": "Configured as attachment/manual collection; do not infer or bypass download URLs."
+    }
+  ]
+}

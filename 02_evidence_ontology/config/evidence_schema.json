@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Privacy Gateway Evidence",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "source_id",
+    "source_type",
+    "source_name",
+    "original_text",
+    "effective_date",
+    "source_url",
+    "retrieved_at",
+    "review_status"
+  ],
+  "properties": {
+    "evidence_id": { "type": "string" },
+    "source_id": { "type": "string" },
+    "source_type": { "type": "string" },
+    "source_name": { "type": "string" },
+    "article": { "type": ["string", "null"] },
+    "paragraph": { "type": ["string", "null"] },
+    "page": { "type": ["string", "null"] },
+    "section": { "type": ["string", "null"] },
+    "original_text": { "type": "string", "minLength": 1 },
+    "applies_to": { "type": ["string", "null"] },
+    "data_type": { "type": ["string", "null"] },
+    "condition": { "type": ["string", "null"] },
+    "required_action": { "type": ["string", "null"] },
+    "prohibition": { "type": ["string", "null"] },
+    "exception": { "type": ["string", "null"] },
+    "effective_date": { "type": ["string", "null"] },
+    "source_url": { "type": "string", "minLength": 1 },
+    "retrieved_at": { "type": "string", "minLength": 1 },
+    "review_status": {
+      "type": "string",
+      "enum": ["PENDING", "CONFIRMED", "REVIEW_REQUIRED", "INVALID"]
+    },
+    "validation_errors": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
