@@ -1,6 +1,7 @@
 SHELL := bash
 
 VENV := .venv
+COMPOSE ?= docker compose
 
 ifeq ($(OS),Windows_NT)
 PYTHON ?= py -3.12
@@ -18,7 +19,7 @@ PIP := $(PY) -m pip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install install-dev env test lint format typecheck contract-check check docker-network docker-build docker-up docker-down docker-logs clean
+.PHONY: help setup install install-dev env test lint format typecheck contract-check check docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
 
 help:
 	@echo "ADP-DA commands"
@@ -32,8 +33,11 @@ help:
 	@echo "  make typecheck      Run mypy"
 	@echo "  make contract-check Validate JSON handoff contracts"
 	@echo "  make check          Run lint, typecheck, test"
-	@echo "  make docker-up      Start local Docker service"
-	@echo "  make docker-down    Stop local Docker service"
+	@echo "  make docker-up      Start BE, FE, DA, Docs and PostgreSQL dev stack"
+	@echo "  make docker-rebuild Rebuild and start the full dev stack"
+	@echo "  make docker-down    Stop full dev stack"
+	@echo "  make docker-logs    Follow full dev stack logs"
+	@echo "  make docker-ps      Show full dev stack containers"
 	@echo "  make clean          Remove local caches"
 
 setup: $(VENV_READY) install-dev env
@@ -73,16 +77,23 @@ docker-network:
 	@docker network inspect adp-local >/dev/null 2>&1 || docker network create adp-local
 
 docker-build:
-	docker compose build
+	$(COMPOSE) build
 
-docker-up: docker-network
-	docker compose up --build
+docker-up: env docker-network
+	$(COMPOSE) up -d --build
+
+docker-rebuild: env docker-network
+	$(COMPOSE) build --no-cache
+	$(COMPOSE) up -d
 
 docker-down:
-	docker compose down
+	$(COMPOSE) down
 
 docker-logs:
-	docker compose logs -f
+	$(COMPOSE) logs -f
+
+docker-ps:
+	$(COMPOSE) ps
 
 clean:
 	rm -rf .pytest_cache .mypy_cache .ruff_cache .pycache
