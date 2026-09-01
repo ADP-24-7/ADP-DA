@@ -63,30 +63,29 @@ make setup PYTHON="py -3.12"
 
 ## Docker 실행
 
-다른 ADP MSA 레포와 같은 Docker 네트워크에서 붙일 수 있도록 `adp-local` 외부 네트워크를 사용합니다.
+ADP-DA의 `docker-compose.yml`은 로컬 통합 개발 스택의 진입점입니다. DA 레포에서 실행하면 같은 상위 폴더에 있는 `ADP-BE`, `ADP-FE`, `ADP-DA`, `ADP-Docs` 네 레포와 PostgreSQL이 함께 실행됩니다.
 
 ```bash
+make setup
 make docker-up
 ```
 
-헬스체크:
+## Docker 파일 기준
 
-```bash
-curl http://localhost:8010/health
-```
+- `Dockerfile`: CI/NCP 배포용 image build
+- `Dockerfile.dev`: 로컬 개발용 FastAPI reload image
+- `docker-compose.yml`: BE/FE/DA/Docs/PostgreSQL 통합 개발 스택
+- `.env.example`: 팀 공통 로컬 환경변수 샘플
 
 ## Make 명령
 
 ```bash
-make help
 make setup
-make test
-make lint
-make format
-make typecheck
-make check
 make docker-up
+make docker-logs
+make docker-ps
 make docker-down
+make check
 ```
 
 ## 개발 원칙
