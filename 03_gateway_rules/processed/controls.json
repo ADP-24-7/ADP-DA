@@ -1,0 +1,631 @@
+[
+  {
+    "control_id": "CTRL-RUNTIME-001",
+    "requirement_ids": [
+      "RC-00002",
+      "RC-00015",
+      "RC-00019"
+    ],
+    "control_type": "EGRESS_CONTROL",
+    "control_name": "Outbound disclosure purpose and recipient gate",
+    "objective": "Prevent outbound disclosure or transfer when purpose, recipient, or included identifying information is outside the allowed requirement scope.",
+    "enforcement_point": [
+      "outbound_gateway",
+      "third_party_transfer_gateway"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "third_party_or_outsourcing"
+    ],
+    "implementation_boundary": "Project runtime guard; does not define the legal transfer basis.",
+    "validation_requirement": "request fixture, recipient/purpose policy snapshot, final outbound payload, decision evidence packet",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0003",
+        "GR-0004"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-002",
+    "requirement_ids": [
+      "RC-00009"
+    ],
+    "control_type": "PURPOSE_LIMITATION",
+    "control_name": "Re-identification purpose guard",
+    "objective": "Detect and block or route attempts whose declared or inferred purpose is re-identification.",
+    "enforcement_point": [
+      "purpose_classifier",
+      "request_gateway"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "implementation_boundary": "Project runtime guard; detection logic requires validation before active use.",
+    "validation_requirement": "purpose classifier eval, adversarial prompts, decision trace",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0002"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-003",
+    "requirement_ids": [
+      "RC-00006"
+    ],
+    "control_type": "VAULT_MAPPING",
+    "control_name": "Pseudonym mapping separation control",
+    "objective": "Keep mapping information logically separated from data use flows and prevent outbound exposure of mapping material.",
+    "enforcement_point": [
+      "vault_boundary",
+      "outbound_gateway"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing"
+    ],
+    "implementation_boundary": "Project technical design candidate; exact vault mechanism is not selected here.",
+    "validation_requirement": "vault access log, mapping egress fixture, policy snapshot",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0001"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-EVAL-001",
+    "requirement_ids": [
+      "RC-00001",
+      "RC-00003",
+      "RC-00004",
+      "RC-00010",
+      "RC-00044"
+    ],
+    "control_type": "TRANSFORM",
+    "control_name": "Pseudonymization suitability evaluation",
+    "objective": "Require evaluation before choosing any concrete pseudonymization or de-identification transform for eligible data.",
+    "enforcement_point": [
+      "evaluation_pipeline"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "saas_cloud_use"
+    ],
+    "implementation_boundary": "Evaluation layer owns final transform choice; this control only defines evaluation need.",
+    "validation_requirement": "privacy risk report, utility report, transform option comparison",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0001",
+        "GR-0019"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-GOV-001",
+    "requirement_ids": [
+      "RC-00005",
+      "RC-00007",
+      "RC-00008"
+    ],
+    "control_type": "AUDIT",
+    "control_name": "Pseudonymized data governance record control",
+    "objective": "Maintain review, logging, and governance evidence for pseudonymized data processing and transfer governance.",
+    "enforcement_point": [
+      "governance_workflow",
+      "audit_log"
+    ],
+    "processing_phase": [
+      "pseudonymized_data_processing",
+      "third_party_or_outsourcing"
+    ],
+    "implementation_boundary": "Governance control; not a runtime allow/block decision.",
+    "validation_requirement": "review record, audit trace, governance checklist",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0014"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-GOV-002",
+    "requirement_ids": [
+      "RC-00011",
+      "RC-00012"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "Credit information consent request handling",
+    "objective": "Route credit information consent withdrawal and marketing contact cases to human or workflow review.",
+    "enforcement_point": [
+      "case_management"
+    ],
+    "processing_phase": [
+      "consent_withdrawal",
+      "marketing_contact"
+    ],
+    "implementation_boundary": "Governance workflow; runtime enforcement can only follow a validated operational policy.",
+    "validation_requirement": "case record, consent state snapshot",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0015"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-GOV-003",
+    "requirement_ids": [
+      "RC-00014",
+      "RC-00017",
+      "RC-00018",
+      "RC-00020"
+    ],
+    "control_type": "PROVIDER_CONTROL",
+    "control_name": "Outsourcing provider governance control",
+    "objective": "Check outsourcing contract, supervision, disclosure, and provider obligations before processing.",
+    "enforcement_point": [
+      "vendor_review",
+      "contract_review"
+    ],
+    "processing_phase": [
+      "third_party_or_outsourcing"
+    ],
+    "implementation_boundary": "Governance and provider control; not an automatic runtime decision by itself.",
+    "validation_requirement": "contract checklist, provider assessment, supervision log",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0005",
+        "GR-0016"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-004",
+    "requirement_ids": [
+      "RC-00021",
+      "RC-00022",
+      "RC-00024",
+      "RC-00041"
+    ],
+    "control_type": "EGRESS_CONTROL",
+    "control_name": "Cross-border transfer review and egress gate",
+    "objective": "Gate cross-border flows on transfer basis, notice, and destination applicability requirements.",
+    "enforcement_point": [
+      "outbound_gateway",
+      "transfer_review"
+    ],
+    "processing_phase": [
+      "cross_border_transfer",
+      "third_party_or_outsourcing",
+      "ai_use",
+      "saas_cloud_use"
+    ],
+    "implementation_boundary": "Candidate runtime gate plus governance dependency; legal basis is not invented here.",
+    "validation_requirement": "destination fixture, notice artifact, transfer basis record, outbound payload",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0011",
+        "GR-0017"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-REF-001",
+    "requirement_ids": [
+      "RC-00013",
+      "RC-00016",
+      "RC-00023"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "General legal reference routing",
+    "objective": "Preserve general legal references as review routing context without making a runtime policy.",
+    "enforcement_point": [
+      "review_queue"
+    ],
+    "processing_phase": [
+      "compliance_review"
+    ],
+    "implementation_boundary": "Non-runtime reference; used for human review context only.",
+    "validation_requirement": "review packet showing cited Evidence",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0006",
+        "GR-0013"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-REF-002",
+    "requirement_ids": [
+      "RC-00025"
+    ],
+    "control_type": "AUDIT",
+    "control_name": "Unverified electronic finance reference backlog",
+    "objective": "Keep REVIEW_REQUIRED electronic finance reference out of promotion until source details are verified.",
+    "enforcement_point": [
+      "evidence_backlog"
+    ],
+    "processing_phase": [],
+    "implementation_boundary": "Backlog tracking only; no runtime control.",
+    "validation_requirement": "source verification result",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0018"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-GOV-004",
+    "requirement_ids": [
+      "RC-00026",
+      "RC-00030",
+      "RC-00031",
+      "RC-00049"
+    ],
+    "control_type": "MONITORING",
+    "control_name": "Information system monitoring governance",
+    "objective": "Maintain monitoring and governance evidence for information processing and security systems.",
+    "enforcement_point": [
+      "monitoring_console",
+      "governance_workflow"
+    ],
+    "processing_phase": [
+      "security_control"
+    ],
+    "implementation_boundary": "Governance monitoring; does not select a runtime action.",
+    "validation_requirement": "monitoring policy, audit log, review record",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0008",
+        "GR-0013"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-005",
+    "requirement_ids": [
+      "RC-00027",
+      "RC-00045",
+      "RC-00047"
+    ],
+    "control_type": "AUTHORIZATION",
+    "control_name": "Privileged and administrator account access control",
+    "objective": "Restrict privileged or administrator account use and require account-control evidence before promotion.",
+    "enforcement_point": [
+      "identity_gateway",
+      "admin_console"
+    ],
+    "processing_phase": [
+      "security_control",
+      "saas_cloud_use"
+    ],
+    "implementation_boundary": "Runtime authorization candidate; REVIEW_REQUIRED dependencies block promotion.",
+    "validation_requirement": "account inventory, access policy, negative access fixture, audit trace",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0018",
+        "GR-0019"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-006",
+    "requirement_ids": [
+      "RC-00032"
+    ],
+    "control_type": "NETWORK_CONTROL",
+    "control_name": "Internal business system network boundary control",
+    "objective": "Prevent unsupported external network connection patterns for internal business systems.",
+    "enforcement_point": [
+      "network_gateway"
+    ],
+    "processing_phase": [
+      "network_separation",
+      "saas_cloud_use"
+    ],
+    "implementation_boundary": "Network control candidate; active blocking requires validation artifact.",
+    "validation_requirement": "network path fixture, policy snapshot, connection decision log",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0007"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-007",
+    "requirement_ids": [
+      "RC-00033",
+      "RC-00034",
+      "RC-00048"
+    ],
+    "control_type": "ENCRYPTION",
+    "control_name": "Credential and regulated-data protection control",
+    "objective": "Require protection checks for credentials, electronic-finance data, and SaaS security handling without choosing a specific encryption implementation.",
+    "enforcement_point": [
+      "secret_scanner",
+      "data_protection_gateway"
+    ],
+    "processing_phase": [
+      "security_control",
+      "saas_cloud_use"
+    ],
+    "implementation_boundary": "Project technical control; exact cryptographic implementation is outside this artifact.",
+    "validation_requirement": "secret fixture, scan report, protected payload evidence",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0008",
+        "GR-0012"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-REF-003",
+    "requirement_ids": [
+      "RC-00035",
+      "RC-00036"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "AI scope reference control",
+    "objective": "Use AI definition and scope references for review context without producing runtime policy.",
+    "enforcement_point": [
+      "review_queue"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "implementation_boundary": "Non-runtime AI reference only.",
+    "validation_requirement": "AI scope review packet",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0011"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-GOV-005",
+    "requirement_ids": [
+      "RC-00037",
+      "RC-00038",
+      "RC-00039"
+    ],
+    "control_type": "MONITORING",
+    "control_name": "AI usage security governance control",
+    "objective": "Require governance review, logging, and monitoring for AI usage involving important or sensitive data.",
+    "enforcement_point": [
+      "ai_governance_workflow",
+      "monitoring_console"
+    ],
+    "processing_phase": [
+      "ai_use",
+      "security_control",
+      "third_party_or_outsourcing"
+    ],
+    "implementation_boundary": "Governance control; runtime prompt/payload controls require separate policy candidates.",
+    "validation_requirement": "AI usage register, monitoring log, review checklist",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0008",
+        "GR-0011"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-008",
+    "requirement_ids": [
+      "RC-00040"
+    ],
+    "control_type": "SENSITIVE_DETECTION",
+    "control_name": "AI input sensitive-data detection control",
+    "objective": "Detect sensitive or credit/personal information in AI input before external AI use.",
+    "enforcement_point": [
+      "ai_input_gateway",
+      "sensitive_data_detector"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "implementation_boundary": "Detection candidate; transform or blocking action remains validation-dependent.",
+    "validation_requirement": "labeled input fixture, detector report, decision trace",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0009"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-009",
+    "requirement_ids": [
+      "RC-00042"
+    ],
+    "control_type": "PROVIDER_CONTROL",
+    "control_name": "External AI reuse restriction control",
+    "objective": "Check provider terms or contract controls for model-improvement reuse before external AI routing.",
+    "enforcement_point": [
+      "provider_policy_gateway",
+      "ai_input_gateway"
+    ],
+    "processing_phase": [
+      "ai_use"
+    ],
+    "implementation_boundary": "Runtime/provider gate candidate; legal and contract review remains dependency.",
+    "validation_requirement": "provider terms snapshot, request fixture, routing decision trace",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0010"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-GOV-006",
+    "requirement_ids": [
+      "RC-00028",
+      "RC-00029",
+      "RC-00043",
+      "RC-00046"
+    ],
+    "control_type": "PROVIDER_CONTROL",
+    "control_name": "SaaS and cloud provider assurance control",
+    "objective": "Route SaaS/cloud provider eligibility and security assurance requirements through governance review.",
+    "enforcement_point": [
+      "vendor_review",
+      "cloud_review"
+    ],
+    "processing_phase": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "implementation_boundary": "Governance control; REVIEW_REQUIRED requirements block promotion of dependent runtime controls.",
+    "validation_requirement": "provider assessment, cloud security checklist, source verification result",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0012",
+        "GR-0019"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-GOV-007",
+    "requirement_ids": [
+      "RC-00050",
+      "RC-00051",
+      "RC-00052"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "Digital asset safeguarding review control",
+    "objective": "Preserve digital asset safeguarding requirements as compliance review controls.",
+    "enforcement_point": [
+      "digital_asset_review"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "implementation_boundary": "Governance control; not a field-level runtime policy.",
+    "validation_requirement": "safeguarding review packet",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0020"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-REF-004",
+    "requirement_ids": [
+      "RC-00053",
+      "RC-00054",
+      "RC-00055",
+      "RC-00056"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "Digital asset definition and transfer backlog control",
+    "objective": "Keep REVIEW_REQUIRED digital asset definition and transfer references in backlog until verified.",
+    "enforcement_point": [
+      "evidence_backlog",
+      "digital_asset_review"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "implementation_boundary": "Backlog and reference control only.",
+    "validation_requirement": "source verification result",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0021",
+        "GR-0022"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-010",
+    "requirement_ids": [
+      "RC-00057",
+      "RC-00058",
+      "RC-00059"
+    ],
+    "control_type": "DIGITAL_ASSET_FIELD_SEPARATION",
+    "control_name": "Digital asset wallet and CDD field separation control",
+    "objective": "Separate wallet, transaction, and customer due-diligence fields for routing and review without deciding a final transform.",
+    "enforcement_point": [
+      "digital_asset_gateway",
+      "field_classifier"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address",
+      "customer_due_diligence"
+    ],
+    "implementation_boundary": "Runtime field classification candidate; REVIEW_REQUIRED wallet requirement blocks promotion.",
+    "validation_requirement": "wallet/CDD fixture, field classification report, audit trace",
+    "provenance": {
+      "source": "02_evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0022"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  }
+]

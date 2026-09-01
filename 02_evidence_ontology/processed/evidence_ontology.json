@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-27T00:00:00+09:00",
-  "scope": "Final Evidence Verification Audit; 03_gateway_rules not modified",
+  "scope": "Frozen 02 Evidence Ontology index",
   "total_evidence": 59,
   "status_counts": {
-    "VERIFIED": 49,
-    "REVIEW_REQUIRED": 10
+    "REVIEW_REQUIRED": 10,
+    "VERIFIED": 49
   },
   "domains": {
     "AI": [
@@ -75,164 +75,9 @@
       "EV-00048"
     ]
   },
-  "gateway_tags": {
-    "ACCESS_CONTROL": [
-      "EV-00027",
-      "EV-00047"
-    ],
-    "ALLOW": [
-      "EV-00001",
-      "EV-00007",
-      "EV-00011",
-      "EV-00012",
-      "EV-00021",
-      "EV-00022",
-      "EV-00033",
-      "EV-00044"
-    ],
-    "BLOCK": [
-      "EV-00002",
-      "EV-00009",
-      "EV-00015",
-      "EV-00019",
-      "EV-00021",
-      "EV-00032",
-      "EV-00042",
-      "EV-00044",
-      "EV-00051"
-    ],
-    "CLOUD": [
-      "EV-00028",
-      "EV-00029",
-      "EV-00041",
-      "EV-00043",
-      "EV-00046"
-    ],
-    "CROSS_BORDER_TRANSFER": [
-      "EV-00021",
-      "EV-00022",
-      "EV-00024",
-      "EV-00041"
-    ],
-    "DETECT": [
-      "EV-00040",
-      "EV-00041",
-      "EV-00059"
-    ],
-    "DIGITAL_ASSET": [
-      "EV-00050",
-      "EV-00051",
-      "EV-00052",
-      "EV-00053",
-      "EV-00054",
-      "EV-00055",
-      "EV-00056",
-      "EV-00057",
-      "EV-00058",
-      "EV-00059"
-    ],
-    "ENCRYPT": [
-      "EV-00033",
-      "EV-00034",
-      "EV-00048"
-    ],
-    "EXTERNAL_AI": [
-      "EV-00041",
-      "EV-00042"
-    ],
-    "LOG": [
-      "EV-00008",
-      "EV-00025",
-      "EV-00027",
-      "EV-00034",
-      "EV-00039",
-      "EV-00049",
-      "EV-00057"
-    ],
-    "MASK": [
-      "EV-00040"
-    ],
-    "MONITOR": [
-      "EV-00026",
-      "EV-00027",
-      "EV-00038",
-      "EV-00039",
-      "EV-00049"
-    ],
-    "NOTICE": [
-      "EV-00024"
-    ],
-    "NO_REIDENTIFICATION": [
-      "EV-00009"
-    ],
-    "PSEUDONYMIZE": [
-      "EV-00001",
-      "EV-00002",
-      "EV-00003",
-      "EV-00004",
-      "EV-00005",
-      "EV-00006",
-      "EV-00007",
-      "EV-00008",
-      "EV-00009",
-      "EV-00010",
-      "EV-00044"
-    ],
-    "REVIEW": [
-      "EV-00005",
-      "EV-00007",
-      "EV-00008",
-      "EV-00011",
-      "EV-00012",
-      "EV-00017",
-      "EV-00021",
-      "EV-00022",
-      "EV-00024",
-      "EV-00025",
-      "EV-00027",
-      "EV-00029",
-      "EV-00044",
-      "EV-00045",
-      "EV-00046",
-      "EV-00047",
-      "EV-00050",
-      "EV-00051",
-      "EV-00052",
-      "EV-00053",
-      "EV-00054",
-      "EV-00055",
-      "EV-00056",
-      "EV-00057",
-      "EV-00058",
-      "EV-00059"
-    ],
-    "SAAS": [
-      "EV-00044",
-      "EV-00045",
-      "EV-00047",
-      "EV-00048"
-    ],
-    "SECURITY_CONTROL": [
-      "EV-00045"
-    ],
-    "SEPARATE_MAPPING": [
-      "EV-00006"
-    ],
-    "THIRD_PARTY_TRANSFER": [
-      "EV-00002",
-      "EV-00008",
-      "EV-00014",
-      "EV-00015",
-      "EV-00017",
-      "EV-00018",
-      "EV-00019",
-      "EV-00020",
-      "EV-00021",
-      "EV-00037"
-    ],
-    "WALLET": [
-      "EV-00057",
-      "EV-00058"
-    ]
-  }
+  "requirement_candidates": {
+    "path": "processed/requirement_candidates.json",
+    "total": 59
+  },
+  "freeze_status": "FROZEN"
 }

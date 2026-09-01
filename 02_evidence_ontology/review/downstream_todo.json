@@ -1,0 +1,7 @@
+[
+  {
+    "scope": "03_gateway_rules",
+    "item": "GR-0008 references AI Evidence EV-00038 and EV-00039 from a PRIVACY-domain rule.",
+    "action": "Review in Gateway Rule layer; 02 Evidence Ontology not modified for this issue."
+  }
+]

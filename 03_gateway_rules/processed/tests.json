@@ -1,0 +1,350 @@
+[
+  {
+    "test_id": "TEST-001",
+    "control_ids": [
+      "CTRL-RUNTIME-001"
+    ],
+    "test_type": "CONTRACT",
+    "test_name": "Outbound disclosure allowlist excludes unauthorized fields",
+    "expected_behavior": "Unapproved identifying or recipient-inapplicable fields must not reach the final outbound payload.",
+    "failure_condition": "An unapproved field exists in the final outbound payload.",
+    "required_artifact": "request fixture; recipient/purpose policy snapshot; final outbound payload; decision evidence packet",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-002",
+    "control_ids": [
+      "CTRL-RUNTIME-001"
+    ],
+    "test_type": "FAILURE",
+    "test_name": "Purpose and recipient mismatch fails closed",
+    "expected_behavior": "A transfer with mismatched purpose or recipient must be blocked or routed to review.",
+    "failure_condition": "Mismatched purpose or recipient is allowed without review.",
+    "required_artifact": "negative transfer fixture; routing decision trace; audit trace",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-003",
+    "control_ids": [
+      "CTRL-RUNTIME-002"
+    ],
+    "test_type": "ADVERSARIAL",
+    "test_name": "Re-identification purpose adversarial detection",
+    "expected_behavior": "Re-identification intent must be detected across direct and indirect prompt/request forms.",
+    "failure_condition": "A re-identification request reaches execution without block or review.",
+    "required_artifact": "adversarial request set; classifier output; decision trace",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-004",
+    "control_ids": [
+      "CTRL-RUNTIME-003"
+    ],
+    "test_type": "INTEGRATION",
+    "test_name": "Mapping material cannot exit vault boundary",
+    "expected_behavior": "Mapping keys or re-identification material must not be included in outbound payloads.",
+    "failure_condition": "Mapping material is present outside the approved vault boundary.",
+    "required_artifact": "vault access log; outbound payload; deny decision packet",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-005",
+    "control_ids": [
+      "CTRL-EVAL-001"
+    ],
+    "test_type": "GOLDEN",
+    "test_name": "Transform option evaluation compares privacy and utility",
+    "expected_behavior": "Candidate transform options must be compared before any transform is promoted.",
+    "failure_condition": "A transform is selected without privacy and utility evaluation.",
+    "required_artifact": "privacy risk report; utility report; transform comparison table",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-006",
+    "control_ids": [
+      "CTRL-GOV-001"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Pseudonymized processing review record exists",
+    "expected_behavior": "Governance workflow must retain review and audit records for pseudonymized processing.",
+    "failure_condition": "No review or audit record exists for the processing case.",
+    "required_artifact": "review checklist; audit trace",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-007",
+    "control_ids": [
+      "CTRL-GOV-002"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Consent request case is routed for handling",
+    "expected_behavior": "Consent withdrawal or marketing contact cases must create a reviewable case record.",
+    "failure_condition": "No case record is created for a request requiring handling.",
+    "required_artifact": "case record; consent state snapshot",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-008",
+    "control_ids": [
+      "CTRL-GOV-003"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Provider contract evidence is attached",
+    "expected_behavior": "Outsourcing processing must have provider and contract review evidence before approval.",
+    "failure_condition": "Provider processing proceeds without contract or supervision evidence.",
+    "required_artifact": "contract checklist; provider assessment",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-009",
+    "control_ids": [
+      "CTRL-RUNTIME-004"
+    ],
+    "test_type": "CONTRACT",
+    "test_name": "Cross-border destination requires transfer basis",
+    "expected_behavior": "Cross-border outbound flow must include transfer basis and destination metadata.",
+    "failure_condition": "Outbound cross-border payload is routed without transfer basis metadata.",
+    "required_artifact": "destination fixture; transfer basis record; outbound decision trace",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-010",
+    "control_ids": [
+      "CTRL-RUNTIME-004"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Notice dependency is present where required",
+    "expected_behavior": "Notice or review artifacts must be attached when the requirement depends on notice.",
+    "failure_condition": "Transfer review lacks required notice artifact.",
+    "required_artifact": "notice artifact; review record",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-011",
+    "control_ids": [
+      "CTRL-REF-001"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "General references remain review-only",
+    "expected_behavior": "Reference-only requirements must create review context and no runtime decision.",
+    "failure_condition": "A runtime policy candidate is generated from reference-only requirements.",
+    "required_artifact": "traceability report; policy candidate inventory",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-012",
+    "control_ids": [
+      "CTRL-REF-002"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Unverified electronic finance reference is blocked from promotion",
+    "expected_behavior": "REVIEW_REQUIRED reference must remain in backlog until source verification.",
+    "failure_condition": "Dependent control or policy is promoted without source verification.",
+    "required_artifact": "evidence backlog item; source verification result",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-013",
+    "control_ids": [
+      "CTRL-GOV-004"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Security monitoring evidence is retained",
+    "expected_behavior": "Monitoring governance must retain policy, log, and review evidence.",
+    "failure_condition": "Monitoring control lacks audit or review record.",
+    "required_artifact": "monitoring policy; audit log; review record",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-014",
+    "control_ids": [
+      "CTRL-RUNTIME-005"
+    ],
+    "test_type": "UNIT",
+    "test_name": "Privileged account allowlist is enforced",
+    "expected_behavior": "Only approved privileged accounts may access protected administration flows.",
+    "failure_condition": "Unapproved privileged account gains access.",
+    "required_artifact": "account inventory; access policy; negative access fixture",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-015",
+    "control_ids": [
+      "CTRL-RUNTIME-005"
+    ],
+    "test_type": "REPLAY",
+    "test_name": "Admin account event is auditable",
+    "expected_behavior": "Privileged account decisions must be replayable from audit traces.",
+    "failure_condition": "Access decision cannot be reconstructed from audit trace.",
+    "required_artifact": "audit trace; decision packet",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-016",
+    "control_ids": [
+      "CTRL-RUNTIME-006"
+    ],
+    "test_type": "INTEGRATION",
+    "test_name": "External network path is denied or reviewed",
+    "expected_behavior": "Unsupported internal-system external network path must not proceed silently.",
+    "failure_condition": "Unsupported external path succeeds without denial or review.",
+    "required_artifact": "network path fixture; connection decision log",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-017",
+    "control_ids": [
+      "CTRL-RUNTIME-007"
+    ],
+    "test_type": "UNIT",
+    "test_name": "Credential and regulated-data detector flags protected fields",
+    "expected_behavior": "Credential or regulated-data fields must be detected before egress or storage handling.",
+    "failure_condition": "Protected field is not detected in fixture.",
+    "required_artifact": "secret fixture; scan report",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-018",
+    "control_ids": [
+      "CTRL-RUNTIME-007"
+    ],
+    "test_type": "CONTRACT",
+    "test_name": "Protection evidence is attached before routing",
+    "expected_behavior": "Protected data routing must include protection evidence.",
+    "failure_condition": "Protected data is routed without protection evidence.",
+    "required_artifact": "protected payload evidence; policy snapshot",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-019",
+    "control_ids": [
+      "CTRL-REF-003"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "AI scope references do not create runtime policy",
+    "expected_behavior": "AI definition references must remain review context only.",
+    "failure_condition": "Runtime policy candidate is generated from definition-only references.",
+    "required_artifact": "AI scope traceability report; policy candidate inventory",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-020",
+    "control_ids": [
+      "CTRL-GOV-005"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "AI usage monitoring record exists",
+    "expected_behavior": "AI usage involving important data must have monitoring or review records.",
+    "failure_condition": "AI usage record lacks monitoring or review evidence.",
+    "required_artifact": "AI usage register; monitoring log",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-021",
+    "control_ids": [
+      "CTRL-RUNTIME-008"
+    ],
+    "test_type": "ADVERSARIAL",
+    "test_name": "Sensitive AI input detector catches labeled sensitive examples",
+    "expected_behavior": "Labeled sensitive AI inputs must be detected before external routing.",
+    "failure_condition": "Sensitive labeled input reaches external AI without detection.",
+    "required_artifact": "labeled input fixture; detector report; decision trace",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-022",
+    "control_ids": [
+      "CTRL-RUNTIME-008"
+    ],
+    "test_type": "GOLDEN",
+    "test_name": "Transform options remain candidates until evaluated",
+    "expected_behavior": "Candidate transform options must not be marked final without evaluation artifacts.",
+    "failure_condition": "A final transform appears without evaluation artifact.",
+    "required_artifact": "transform option list; evaluation dependency report",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-023",
+    "control_ids": [
+      "CTRL-RUNTIME-009"
+    ],
+    "test_type": "CONTRACT",
+    "test_name": "Provider reuse restriction is checked before routing",
+    "expected_behavior": "External AI routing must verify provider/model-improvement reuse restriction dependency.",
+    "failure_condition": "Request is routed without provider reuse evidence.",
+    "required_artifact": "provider terms snapshot; routing decision trace",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-024",
+    "control_ids": [
+      "CTRL-GOV-006"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "SaaS provider review packet exists",
+    "expected_behavior": "SaaS/cloud provider use must retain provider and security review artifacts.",
+    "failure_condition": "SaaS use proceeds without provider review packet.",
+    "required_artifact": "provider assessment; cloud security checklist",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-025",
+    "control_ids": [
+      "CTRL-GOV-006"
+    ],
+    "test_type": "FAILURE",
+    "test_name": "Unverified SaaS requirements block promotion",
+    "expected_behavior": "REVIEW_REQUIRED SaaS requirements must prevent dependent promotion.",
+    "failure_condition": "Dependent policy is promoted with unresolved SaaS review requirements.",
+    "required_artifact": "evidence backlog item; validation report",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-026",
+    "control_ids": [
+      "CTRL-GOV-007"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Digital asset safeguarding review is retained",
+    "expected_behavior": "Digital asset safeguarding requirements must produce review evidence, not runtime policy by default.",
+    "failure_condition": "Runtime policy is generated without safeguarding review basis.",
+    "required_artifact": "safeguarding review packet; traceability report",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-027",
+    "control_ids": [
+      "CTRL-REF-004"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Digital asset REVIEW_REQUIRED references remain backlog",
+    "expected_behavior": "Unverified digital asset references must remain non-runtime until verified.",
+    "failure_condition": "Dependent policy is promoted before source verification.",
+    "required_artifact": "source verification result; evidence backlog item",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-028",
+    "control_ids": [
+      "CTRL-RUNTIME-010"
+    ],
+    "test_type": "UNIT",
+    "test_name": "Wallet and CDD field classifier separates field classes",
+    "expected_behavior": "Wallet, transaction, and CDD fields must be classified into separate field groups.",
+    "failure_condition": "Wallet or CDD field is not classified or is mixed with unrelated fields.",
+    "required_artifact": "wallet/CDD fixture; field classification report",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-029",
+    "control_ids": [
+      "CTRL-RUNTIME-010"
+    ],
+    "test_type": "CONTRACT",
+    "test_name": "Digital asset field routing is auditable",
+    "expected_behavior": "Digital asset field routing must produce an audit trace and decision packet.",
+    "failure_condition": "Field routing occurs without audit trace.",
+    "required_artifact": "audit trace; decision evidence packet",
+    "status": "VALIDATION_REQUIRED"
+  }
+]

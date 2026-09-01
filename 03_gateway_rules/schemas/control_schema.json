@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Privacy Gateway Semantic Controls",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "control_id",
+      "requirement_ids",
+      "control_type",
+      "control_name",
+      "objective",
+      "enforcement_point",
+      "processing_phase",
+      "implementation_boundary",
+      "validation_requirement",
+      "provenance",
+      "maturity"
+    ],
+    "properties": {
+      "control_id": { "type": "string", "pattern": "^CTRL-[A-Z]+-[0-9]{3}$" },
+      "requirement_ids": {
+        "type": "array",
+        "items": { "type": "string", "pattern": "^RC-[0-9]{5}$" },
+        "minItems": 1
+      },
+      "control_type": {
+        "type": "string",
+        "enum": [
+          "AUTHORIZATION",
+          "SUBJECT_SCOPE",
+          "PURPOSE_LIMITATION",
+          "DATA_ACCESS",
+          "DATA_MINIMIZATION",
+          "FIELD_ALLOWLIST",
+          "SENSITIVE_DETECTION",
+          "EGRESS_CONTROL",
+          "TRANSFORM",
+          "VAULT_MAPPING",
+          "ENCRYPTION",
+          "PROVIDER_CONTROL",
+          "RETENTION",
+          "NETWORK_CONTROL",
+          "AUDIT",
+          "MONITORING",
+          "APPROVAL",
+          "HUMAN_REVIEW",
+          "FAIL_CLOSED",
+          "DIGITAL_ASSET_FIELD_SEPARATION"
+        ]
+      },
+      "control_name": { "type": "string", "minLength": 1 },
+      "objective": { "type": "string", "minLength": 1 },
+      "enforcement_point": { "type": "array", "items": { "type": "string" } },
+      "processing_phase": { "type": "array", "items": { "type": "string" } },
+      "implementation_boundary": { "type": "string", "minLength": 1 },
+      "validation_requirement": { "type": "string", "minLength": 1 },
+      "provenance": {
+        "type": "object",
+        "required": ["source", "legacy_rule_ids", "note"],
+        "properties": {
+          "source": { "type": "string" },
+          "legacy_rule_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^GR-[0-9]{4}$" }
+          },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "maturity": {
+        "type": "string",
+        "enum": ["PROJECT_PROVISIONAL", "VALIDATION_REQUIRED"]
+      }
+    },
+    "additionalProperties": false
+  }
+}

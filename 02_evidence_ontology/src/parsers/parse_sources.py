@@ -4,7 +4,6 @@ import json
 import re
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[2]
 RAW_PATH = ROOT / "data" / "raw" / "seed_law_articles.json"
 PARSED_PATH = ROOT / "data" / "parsed" / "parsed_segments.json"

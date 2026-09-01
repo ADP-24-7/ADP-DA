@@ -12,8 +12,14 @@ Final outputs:
 - `processed/evidence_master.json`
 - `processed/evidence_master.csv`
 - `processed/evidence_ontology.json`
+- `processed/requirement_candidates.json`
 - `review/review_required.json`
 - `review/validation_report.json`
+- `review/downstream_todo.json`
+
+Schemas:
+- `config/evidence_schema.json`
+- `config/requirement_candidate_schema.json`
 
 Coverage:
 - `PRIVACY`: privacy, pseudonymization, outsourcing, third-party transfer, cross-border transfer, re-identification, additional information separation, retention/logging.
@@ -27,3 +33,8 @@ Rules:
 - Do not infer legal conclusions that are absent from source text.
 - Do not mark `REVIEW_REQUIRED` as `VERIFIED` automatically.
 - Do not create `policy_rules.json`.
+
+Layer boundary:
+- Evidence records preserve official source text, source location, applicability, and verification status.
+- Requirement candidates provide `requirement_id -> evidence_id` traceability for downstream interpretation.
+- Runtime decisions such as `ALLOW`, `BLOCK`, `TRANSFORM`, transform methods, and thresholds are not decided in this module.

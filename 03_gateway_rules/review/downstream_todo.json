@@ -1,0 +1,17 @@
+[
+  {
+    "item": "GR-0008 decomposed at Requirement level, not as a legacy control.",
+    "status": "DEFERRED_DESIGN_WORK",
+    "next_step": "Validate whether RC-00026/33/34/49 security governance and RC-00038/39 AI governance need separate promoted runtime policies."
+  },
+  {
+    "item": "Transform options for CTRL-EVAL-001 and CTRL-RUNTIME-008 require data evaluation.",
+    "status": "VALIDATION_REQUIRED",
+    "next_step": "Evaluate privacy risk, utility, and relationship preservation before selecting final transform."
+  },
+  {
+    "item": "REVIEW_REQUIRED requirements remain connected but block dependent promotion only where policy dependency exists.",
+    "status": "VALIDATION_REQUIRED",
+    "next_step": "Resolve source verification backlog for RC-00025/27/29/46/47/53/54/55/56/57."
+  }
+]

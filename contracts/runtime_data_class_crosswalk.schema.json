@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/runtime_data_class_crosswalk.schema.json",
+  "title": "ADP Regulatory to Runtime DataClass Crosswalk",
+  "description": "Maps DA regulatory data categories to BE-owned runtime data classes without making DA the source of truth for BE enums.",
+  "type": "object",
+  "required": ["schema_version", "crosswalk_version", "mappings"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "crosswalk_version": { "type": "string" },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "regulatory_data_category",
+          "runtime_data_class",
+          "mapping_status",
+          "mapping_basis",
+          "version"
+        ],
+        "properties": {
+          "regulatory_data_category": {
+            "$ref": "taxonomies/regulatory_data_categories.v1.json#/$defs/regulatory_data_category"
+          },
+          "runtime_data_class": {
+            "type": "string",
+            "description": "BE-owned runtime data class, or UNMAPPED/TBD until BE defines it."
+          },
+          "mapping_status": {
+            "type": "string",
+            "enum": ["mapped", "unmapped", "tbd"]
+          },
+          "mapping_basis": {
+            "type": "string",
+            "description": "Reference, decision note, or TBD marker explaining the mapping basis."
+          },
+          "version": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

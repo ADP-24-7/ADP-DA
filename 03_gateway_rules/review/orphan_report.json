@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-08-27T00:00:00+09:00",
+  "orphan_requirements": [],
+  "controls_without_tests": [],
+  "runtime_controls_without_policy": [],
+  "governance_controls_without_policy": [
+    "CTRL-GOV-001",
+    "CTRL-GOV-002",
+    "CTRL-GOV-003",
+    "CTRL-GOV-004",
+    "CTRL-GOV-005",
+    "CTRL-GOV-006",
+    "CTRL-GOV-007",
+    "CTRL-REF-001",
+    "CTRL-REF-002",
+    "CTRL-REF-003",
+    "CTRL-REF-004"
+  ],
+  "dangling_requirement_ids": [],
+  "dangling_control_ids": [],
+  "dangling_test_ids": []
+}

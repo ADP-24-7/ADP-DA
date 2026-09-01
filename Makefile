@@ -18,7 +18,7 @@ PIP := $(PY) -m pip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install install-dev env test lint format typecheck check docker-network docker-build docker-up docker-down docker-logs clean
+.PHONY: help setup install install-dev env test lint format typecheck contract-check check docker-network docker-build docker-up docker-down docker-logs clean
 
 help:
 	@echo "ADP-DA commands"
@@ -30,6 +30,7 @@ help:
 	@echo "  make lint           Run ruff lint"
 	@echo "  make format         Run ruff formatter"
 	@echo "  make typecheck      Run mypy"
+	@echo "  make contract-check Validate JSON handoff contracts"
 	@echo "  make check          Run lint, typecheck, test"
 	@echo "  make docker-up      Start local Docker service"
 	@echo "  make docker-down    Stop local Docker service"
@@ -63,7 +64,10 @@ format:
 typecheck:
 	$(PY) -m mypy src
 
-check: lint typecheck test
+contract-check:
+	$(PY) scripts/validate_contracts.py
+
+check: lint typecheck contract-check test
 
 docker-network:
 	@docker network inspect adp-local >/dev/null 2>&1 || docker network create adp-local

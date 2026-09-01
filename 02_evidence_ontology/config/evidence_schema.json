@@ -1,45 +1,143 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Financial Privacy Gateway Evidence",
-  "type": "object",
-  "required": [
-    "evidence_id",
-    "source_id",
-    "source_type",
-    "source_name",
-    "original_text",
-    "effective_date",
-    "source_url",
-    "retrieved_at",
-    "review_status"
-  ],
-  "properties": {
-    "evidence_id": { "type": "string" },
-    "source_id": { "type": "string" },
-    "source_type": { "type": "string" },
-    "source_name": { "type": "string" },
-    "article": { "type": ["string", "null"] },
-    "paragraph": { "type": ["string", "null"] },
-    "page": { "type": ["string", "null"] },
-    "section": { "type": ["string", "null"] },
-    "original_text": { "type": "string", "minLength": 1 },
-    "applies_to": { "type": ["string", "null"] },
-    "data_type": { "type": ["string", "null"] },
-    "condition": { "type": ["string", "null"] },
-    "required_action": { "type": ["string", "null"] },
-    "prohibition": { "type": ["string", "null"] },
-    "exception": { "type": ["string", "null"] },
-    "effective_date": { "type": ["string", "null"] },
-    "source_url": { "type": "string", "minLength": 1 },
-    "retrieved_at": { "type": "string", "minLength": 1 },
-    "review_status": {
-      "type": "string",
-      "enum": ["PENDING", "CONFIRMED", "REVIEW_REQUIRED", "INVALID"]
+  "title": "Financial Privacy Gateway Evidence Master",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "evidence_id",
+      "domain",
+      "source_id",
+      "source_type",
+      "source_name",
+      "article",
+      "paragraph",
+      "page",
+      "section",
+      "original_text",
+      "effective_date",
+      "reference_date",
+      "source_url",
+      "retrieved_at",
+      "applies_to",
+      "data_type",
+      "processing_context",
+      "condition",
+      "required_action",
+      "prohibition",
+      "exception",
+      "review_status",
+      "verification_method",
+      "verified_at",
+      "review_note"
+    ],
+    "properties": {
+      "evidence_id": {
+        "type": "string",
+        "pattern": "^EV-[0-9]{5}$"
+      },
+      "domain": {
+        "type": "string",
+        "enum": ["PRIVACY", "AI", "SAAS_CLOUD", "DIGITAL_ASSET"]
+      },
+      "source_id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "source_type": {
+        "type": "string",
+        "enum": ["law", "decree", "regulation", "guideline", "official_policy"]
+      },
+      "source_name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "article": {
+        "type": "string"
+      },
+      "paragraph": {
+        "type": "string"
+      },
+      "page": {
+        "type": "string"
+      },
+      "section": {
+        "type": "string"
+      },
+      "original_text": {
+        "type": "string",
+        "minLength": 1
+      },
+      "effective_date": {
+        "type": "string"
+      },
+      "reference_date": {
+        "type": "string",
+        "minLength": 1
+      },
+      "source_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "retrieved_at": {
+        "type": "string",
+        "minLength": 1
+      },
+      "applies_to": {
+        "type": "string"
+      },
+      "data_type": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "processing_context": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "condition": {
+        "type": "string"
+      },
+      "required_action": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "prohibition": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "exception": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "review_status": {
+        "type": "string",
+        "enum": ["VERIFIED", "REVIEW_REQUIRED"]
+      },
+      "verification_method": {
+        "type": "string",
+        "enum": ["DIRECT_OFFICIAL_SOURCE", "NOT_VERIFIABLE"]
+      },
+      "verified_at": {
+        "type": ["string", "null"]
+      },
+      "review_note": {
+        "type": "string"
+      }
     },
-    "validation_errors": {
-      "type": "array",
-      "items": { "type": "string" }
-    }
-  },
-  "additionalProperties": false
+    "anyOf": [
+      {
+        "required": ["effective_date"],
+        "properties": {
+          "effective_date": { "type": "string", "minLength": 1 }
+        }
+      },
+      {
+        "required": ["reference_date"],
+        "properties": {
+          "reference_date": { "type": "string", "minLength": 1 }
+        }
+      }
+    ],
+    "additionalProperties": false
+  }
 }
