@@ -1,0 +1,149 @@
+[
+  {
+    "control_id": "DA-CTRL-001",
+    "control_type": "ADDRESS_VERIFY",
+    "required_fields": [
+      "asset"
+    ],
+    "legal_basis": [
+      "DA-OBL-013"
+    ],
+    "evidence_source": [
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "DIRECT_ENFORCEMENT"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-002",
+    "control_type": "BENEFICIARY_VERIFY",
+    "required_fields": [
+      "beneficiary_identity"
+    ],
+    "legal_basis": [
+      "DA-OBL-005",
+      "DA-OBL-009"
+    ],
+    "evidence_source": [
+      "FATF",
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "FPG_REQUIRED_INPUT"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-003",
+    "control_type": "COUNTERPARTY_VASP_VERIFY",
+    "required_fields": [
+      "counterparty_vasp"
+    ],
+    "legal_basis": [
+      "DA-OBL-001"
+    ],
+    "evidence_source": [
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "EXTERNAL_RESULT_CHECK"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-004",
+    "control_type": "INFORMATION_TRANSFER",
+    "required_fields": [
+      "transaction_id"
+    ],
+    "legal_basis": [
+      "DA-OBL-006",
+      "DA-OBL-010"
+    ],
+    "evidence_source": [
+      "FATF",
+      "KOFIU"
+    ],
+    "fpg_scope": [
+      "EXTERNAL_RESULT_CHECK"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-005",
+    "control_type": "KYC_STATUS_CHECK",
+    "required_fields": [
+      "kyc_status"
+    ],
+    "legal_basis": [
+      "DA-OBL-002"
+    ],
+    "evidence_source": [
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "EXTERNAL_RESULT_CHECK"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-006",
+    "control_type": "ORIGINATOR_VERIFY",
+    "required_fields": [
+      "originator_identity"
+    ],
+    "legal_basis": [
+      "DA-OBL-004",
+      "DA-OBL-008"
+    ],
+    "evidence_source": [
+      "FATF",
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "FPG_REQUIRED_INPUT"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-007",
+    "control_type": "RECORD_KEEPING",
+    "required_fields": [
+      "execution_status"
+    ],
+    "legal_basis": [
+      "DA-OBL-007",
+      "DA-OBL-011"
+    ],
+    "evidence_source": [
+      "FATF",
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "EXTERNAL_RESULT_CHECK"
+    ],
+    "status": "CANDIDATE"
+  },
+  {
+    "control_id": "DA-CTRL-008",
+    "control_type": "TRANSFER_RESTRICTION",
+    "required_fields": [
+      "execution_status",
+      "kyc_status"
+    ],
+    "legal_basis": [
+      "DA-OBL-003",
+      "DA-OBL-012"
+    ],
+    "evidence_source": [
+      "FATF",
+      "LAW_GO_KR"
+    ],
+    "fpg_scope": [
+      "DIRECT_ENFORCEMENT"
+    ],
+    "status": "CANDIDATE"
+  }
+]

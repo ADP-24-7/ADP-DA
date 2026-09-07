@@ -1,0 +1,41 @@
+[
+  {
+    "dataset_id": "ELLIPTIC_BITCOIN_DATASET",
+    "public": true,
+    "download_path": "https://www.kaggle.com/datasets/ellipticco/elliptic-data-set/data",
+    "license": "CC BY-NC-ND 4.0",
+    "columns": "txId, class, time_step, 166 anonymized transaction/graph features, edge list",
+    "transaction_unit": "Bitcoin transaction graph node",
+    "label_available": true,
+    "actual_transaction_fields": "time_step, graph links, anonymized local/aggregate features; exact addresses and identities not disclosed",
+    "fpg_usefulness": "Useful for risk/status distribution and temporal bins; insufficient for pre-execution identity/KYC/VASP enforcement.",
+    "selected_for_synthetic_basis": true,
+    "selection_reason": "Officially documented class proportions and 49 time steps can seed non-arbitrary risk and temporal distributions."
+  },
+  {
+    "dataset_id": "DUNE_ETHEREUM_TRANSACTIONS",
+    "public": true,
+    "download_path": "https://dune.mintlify.app/data-catalog/evm/ethereum/raw/transactions",
+    "license": "Platform/query access terms; not bundled",
+    "columns": "block_time, block_number, value, gas fields, success, from, to, hash, type",
+    "transaction_unit": "Ethereum on-chain transaction",
+    "label_available": false,
+    "actual_transaction_fields": "from, to, value, hash, success, timestamp, gas fields",
+    "fpg_usefulness": "Useful for on-chain field availability mapping; lacks identity, KYC, approved policy, and counterparty VASP status.",
+    "selected_for_synthetic_basis": true,
+    "selection_reason": "Column documentation supports ONCHAIN_AVAILABLE classification for address, amount, tx hash, timestamp, and execution status."
+  },
+  {
+    "dataset_id": "ETHEREUM_ORG_TRANSACTION_OBJECT",
+    "public": true,
+    "download_path": "https://ethereum.org/developers/docs/transactions",
+    "license": "Ethereum.org documentation terms",
+    "columns": "from, to, signature, nonce, value, input data, gasLimit, fee fields",
+    "transaction_unit": "Ethereum transaction object reference",
+    "label_available": false,
+    "actual_transaction_fields": "from, to, value, nonce, signature, input data, gas fields",
+    "fpg_usefulness": "Confirms on-chain transaction object does not provide legal identity, KYC, or approved policy fields.",
+    "selected_for_synthetic_basis": false,
+    "selection_reason": "Used for schema gap evidence only, not distribution generation."
+  }
+]

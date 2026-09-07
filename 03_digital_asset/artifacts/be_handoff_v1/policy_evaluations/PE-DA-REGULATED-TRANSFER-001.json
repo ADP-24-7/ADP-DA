@@ -1,0 +1,77 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "PE-DA-REGULATED-TRANSFER-001",
+  "artifact_version": "v1",
+  "analysis_status": "candidate",
+  "policy_action": "candidate_handoff",
+  "approved_policy_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-001",
+  "execution_request_ref": "synthetic_regulatory_transfer_v1",
+  "policy_rule_refs": [
+    {
+      "ref_id": "DA-POL-001",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    },
+    {
+      "ref_id": "DA-POL-002",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    },
+    {
+      "ref_id": "DA-POL-003",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    },
+    {
+      "ref_id": "DA-POL-004",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    },
+    {
+      "ref_id": "DA-POL-005",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    },
+    {
+      "ref_id": "DA-POL-006",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    },
+    {
+      "ref_id": "DA-POL-007",
+      "ref_type": "candidate_policy_rule",
+      "version": "v1"
+    }
+  ],
+  "required_input_fields": [
+    "originator_identity",
+    "beneficiary_identity",
+    "counterparty_vasp",
+    "kyc_status",
+    "transaction_id",
+    "execution_status"
+  ],
+  "decision_values": [
+    "PASS",
+    "BLOCK",
+    "REVIEW"
+  ],
+  "handoff_chain": [
+    "Approved Policy",
+    "Execution Request",
+    "Policy Evaluation",
+    "PASS/BLOCK/REVIEW",
+    "External Execution Handoff",
+    "Execution Status",
+    "Reconciliation/Audit"
+  ],
+  "limitations": [
+    "Public on-chain datasets do not contain legal identity, KYC status, approved policy, or counterparty VASP verification.",
+    "Synthetic data is derived from documented public dataset shape and proportions, not from downloaded raw blockchain records.",
+    "No final production threshold, latency SLO, or settlement-finality rule is asserted."
+  ],
+  "digest": {
+    "algorithm": "sha256",
+    "value": "99a1ac68b7d6eae56e5a4afa8f22b92d3fc946a01617ecd89dd0a85c145d135b"
+  }
+}

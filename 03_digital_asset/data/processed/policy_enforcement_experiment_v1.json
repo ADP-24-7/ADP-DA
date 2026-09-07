@@ -1,0 +1,20 @@
+{
+  "experiment_id": "DA-POLICY-EXPERIMENT-001",
+  "dataset": "synthetic_regulatory_transfer_v1",
+  "rows": 240,
+  "decision_counts": {
+    "BLOCK": 113,
+    "PASS": 82,
+    "REVIEW": 45
+  },
+  "check_failure_counts": {
+    "asset_match": 19,
+    "amount_within_limit": 120,
+    "destination_match": 15,
+    "period_valid": 12,
+    "kyc_verified": 44,
+    "counterparty_registered": 15,
+    "execution_trace_present": 0
+  },
+  "claim_scope": "Structural policy-enforcement experiment only; no production threshold or legal conclusion."
+}

@@ -1,0 +1,18 @@
+{
+  "dataset_id": "synthetic_regulatory_transfer_v1",
+  "rows": 240,
+  "generation_basis": [
+    "Elliptic Bitcoin dataset documented 49 time steps and licit/illicit/unknown class proportions.",
+    "Ethereum transaction documentation for on-chain field availability.",
+    "Regulatory required fields from crypto_regulation_raw.csv."
+  ],
+  "non_claims": [
+    "Not real customer data.",
+    "Not a production fraud model dataset.",
+    "Not a settlement or asset execution ledger."
+  ],
+  "digest": {
+    "algorithm": "sha256",
+    "value": "f9f2c6d404c942aafe096d4159034cecb2e04e38682d5ef56eccc3cefafa1eb0"
+  }
+}

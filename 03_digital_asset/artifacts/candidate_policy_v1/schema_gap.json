@@ -1,0 +1,122 @@
+[
+  {
+    "field": "originator_identity",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-004|DA-OBL-008",
+    "public_transaction_field": "",
+    "availability_class": "VASP_INTERNAL",
+    "fpg_enforcement_input": true,
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "notes": "Public chain data alone is insufficient for pre-execution enforcement."
+  },
+  {
+    "field": "beneficiary_identity",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-005|DA-OBL-009",
+    "public_transaction_field": "",
+    "availability_class": "VASP_INTERNAL",
+    "fpg_enforcement_input": true,
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "notes": "Public chain data alone is insufficient for pre-execution enforcement."
+  },
+  {
+    "field": "originator_address",
+    "legal_required": false,
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "public_transaction_field": "from / input address surrogate",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "fpg_enforcement_input": false,
+    "gap_status": "AVAILABLE",
+    "notes": "Available from public on-chain transaction data or documented transaction object."
+  },
+  {
+    "field": "beneficiary_address",
+    "legal_required": false,
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "public_transaction_field": "to / output address surrogate",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "fpg_enforcement_input": false,
+    "gap_status": "AVAILABLE",
+    "notes": "Available from public on-chain transaction data or documented transaction object."
+  },
+  {
+    "field": "amount",
+    "legal_required": false,
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "public_transaction_field": "value / output volume",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "fpg_enforcement_input": false,
+    "gap_status": "AVAILABLE",
+    "notes": "Available from public on-chain transaction data or documented transaction object."
+  },
+  {
+    "field": "asset",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-013",
+    "public_transaction_field": "chain/native asset or token context",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "fpg_enforcement_input": false,
+    "gap_status": "AVAILABLE",
+    "notes": "Available from public on-chain transaction data or documented transaction object."
+  },
+  {
+    "field": "counterparty_vasp",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-001",
+    "public_transaction_field": "",
+    "availability_class": "VASP_INTERNAL",
+    "fpg_enforcement_input": true,
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "notes": "Public chain data alone is insufficient for pre-execution enforcement."
+  },
+  {
+    "field": "kyc_status",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-002|DA-OBL-003",
+    "public_transaction_field": "",
+    "availability_class": "EXTERNAL_CONTROL_RESULT",
+    "fpg_enforcement_input": true,
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "notes": "Public chain data alone is insufficient for pre-execution enforcement."
+  },
+  {
+    "field": "transaction_id",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-006|DA-OBL-010",
+    "public_transaction_field": "",
+    "availability_class": "FPG_REQUIRED_INPUT",
+    "fpg_enforcement_input": true,
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "notes": "Public chain data alone is insufficient for pre-execution enforcement."
+  },
+  {
+    "field": "tx_hash",
+    "legal_required": false,
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "public_transaction_field": "hash / txId",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "fpg_enforcement_input": false,
+    "gap_status": "AVAILABLE",
+    "notes": "Available from public on-chain transaction data or documented transaction object."
+  },
+  {
+    "field": "execution_status",
+    "legal_required": true,
+    "legal_basis": "DA-OBL-007|DA-OBL-011|DA-OBL-012",
+    "public_transaction_field": "success / receipt_status",
+    "availability_class": "EXTERNAL_CONTROL_RESULT",
+    "fpg_enforcement_input": true,
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "notes": "Public chain data alone is insufficient for pre-execution enforcement."
+  },
+  {
+    "field": "timestamp",
+    "legal_required": false,
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "public_transaction_field": "block_time / time_step",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "fpg_enforcement_input": false,
+    "gap_status": "AVAILABLE",
+    "notes": "Available from public on-chain transaction data or documented transaction object."
+  }
+]
