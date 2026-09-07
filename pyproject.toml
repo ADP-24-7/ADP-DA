@@ -9,6 +9,7 @@ description = "Data analysis and evaluation workspace for ADP Financial Privacy 
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "jsonschema==4.25.1",
     "fastapi==0.116.1",
     "numpy==2.2.6",
     "openai==3.6.0",
@@ -16,18 +17,19 @@ dependencies = [
     "pydantic==2.11.7",
     "python-dotenv==1.1.1",
     "scikit-learn==1.7.1",
+    "scipy==1.18.1",
     "uvicorn[standard]==0.35.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "httpx==0.28.1",
-    "jsonschema==4.25.1",
     "mypy==1.17.1",
     "pytest==8.4.1",
     "ruff==0.12.10",
 ]
 notebook = [
+    "pyarrow==23.0.1",
     "ipykernel==6.30.1",
     "jupyterlab==4.4.6",
     "matplotlib==3.10.5",
@@ -55,3 +57,7 @@ python_version = "3.12"
 strict = true
 packages = ["adp_da"]
 mypy_path = "02_ai/src"
+
+[[tool.mypy.overrides]]
+module = ["pandas", "pandas.*", "scipy", "scipy.*", "jsonschema", "jsonschema.*"]
+ignore_missing_imports = true

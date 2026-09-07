@@ -1,0 +1,652 @@
+{
+  "findings": [
+    {
+      "metric": "runtime_status_distribution",
+      "estimate": {
+        "BLOCKED": {
+          "count": 1,
+          "rate": 0.125
+        },
+        "COMPLETED": {
+          "count": 4,
+          "rate": 0.5
+        },
+        "FAILED": {
+          "count": 3,
+          "rate": 0.375
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "final_action_distribution",
+      "estimate": {
+        "ALLOW": {
+          "count": 7,
+          "rate": 0.875
+        },
+        "BLOCK": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "response_guard_status_distribution",
+      "estimate": {
+        "NOT_EVALUATED": {
+          "count": 5,
+          "rate": 0.625
+        },
+        "PASSED": {
+          "count": 3,
+          "rate": 0.375
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "controlled_delivery_status_distribution",
+      "estimate": {
+        "DELIVERED": {
+          "count": 3,
+          "rate": 0.375
+        },
+        "WITHHELD": {
+          "count": 5,
+          "rate": 0.625
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "provider_status_distribution",
+      "estimate": {
+        "COMPLETED": {
+          "count": 4,
+          "rate": 0.5
+        },
+        "FAILED": {
+          "count": 2,
+          "rate": 0.25
+        },
+        "NOT_SENT": {
+          "count": 1,
+          "rate": 0.125
+        },
+        "SENT_UNKNOWN": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "error_category_distribution",
+      "estimate": {
+        "NONE": {
+          "count": 5,
+          "rate": 0.625
+        },
+        "PROVIDER_SERVER_ERROR": {
+          "count": 2,
+          "rate": 0.25
+        },
+        "TRANSPORT": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "runtime_status_distribution",
+      "estimate": {
+        "BLOCKED": {
+          "count": 1,
+          "rate": 0.125
+        },
+        "COMPLETED": {
+          "count": 6,
+          "rate": 0.75
+        },
+        "FAILED": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    },
+    {
+      "metric": "final_action_distribution",
+      "estimate": {
+        "ALLOW": {
+          "count": 7,
+          "rate": 0.875
+        },
+        "BLOCK": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    },
+    {
+      "metric": "response_guard_status_distribution",
+      "estimate": {
+        "NOT_EVALUATED": {
+          "count": 3,
+          "rate": 0.375
+        },
+        "PASSED": {
+          "count": 5,
+          "rate": 0.625
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    },
+    {
+      "metric": "controlled_delivery_status_distribution",
+      "estimate": {
+        "DELIVERED": {
+          "count": 5,
+          "rate": 0.625
+        },
+        "WITHHELD": {
+          "count": 3,
+          "rate": 0.375
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    },
+    {
+      "metric": "provider_status_distribution",
+      "estimate": {
+        "COMPLETED": {
+          "count": 6,
+          "rate": 0.75
+        },
+        "NOT_SENT": {
+          "count": 1,
+          "rate": 0.125
+        },
+        "SENT_UNKNOWN": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    },
+    {
+      "metric": "error_category_distribution",
+      "estimate": {
+        "NONE": {
+          "count": 7,
+          "rate": 0.875
+        },
+        "TRANSPORT": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Producer enums; runtime completion does not measure quality.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    }
+  ],
+  "paired_test": {
+    "metric": "operational_completion_paired_comparison",
+    "estimate": -0.2857142857142857,
+    "statistical_test": null,
+    "p_value": null,
+    "effect_size": {
+      "name": "paired_rate_difference",
+      "value": -0.2857142857142857,
+      "direction": "first model minus second model"
+    },
+    "sample_size": 7,
+    "interpretation": "No inferential conclusion: Case independence is not in the bundle; analyst confirmation is required.",
+    "test_not_performed_reason": "Case independence is not in the bundle; analyst confirmation is required.",
+    "evidence": {
+      "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+      "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+      "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+      "execution_ids": [
+        "synthetic-0-0",
+        "synthetic-0-1",
+        "synthetic-1-0",
+        "synthetic-1-1",
+        "synthetic-2-0",
+        "synthetic-2-1",
+        "synthetic-3-0",
+        "synthetic-3-1",
+        "synthetic-4-0",
+        "synthetic-4-1",
+        "synthetic-5-0",
+        "synthetic-5-1",
+        "synthetic-6-0",
+        "synthetic-6-1",
+        "synthetic-7-0",
+        "synthetic-7-1"
+      ],
+      "data_origin": "SYNTHETIC_FIXTURE"
+    },
+    "models": [
+      "synthetic-profile-0",
+      "synthetic-profile-1"
+    ],
+    "excluded_case_count": 1,
+    "hypothesis": "Equal operational outcome distributions across model profiles."
+  },
+  "case_comparison": [
+    {
+      "eval_case_id": "case-0",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-0-0",
+      "runtime_status": "FAILED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-0",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-0-1",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-1",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-1-0",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-1",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-1-1",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-2",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-2-0",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-2",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-2-1",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-3",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-3-0",
+      "runtime_status": "FAILED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-3",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-3-1",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-4",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-4-0",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-4",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-4-1",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-5",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-5-0",
+      "runtime_status": "FAILED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-5",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-5-1",
+      "runtime_status": "FAILED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-6",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-6-0",
+      "runtime_status": "BLOCKED",
+      "final_action": "BLOCK"
+    },
+    {
+      "eval_case_id": "case-6",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-6-1",
+      "runtime_status": "BLOCKED",
+      "final_action": "BLOCK"
+    },
+    {
+      "eval_case_id": "case-7",
+      "model_profile_id": "synthetic-profile-0",
+      "execution_id": "synthetic-7-0",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    },
+    {
+      "eval_case_id": "case-7",
+      "model_profile_id": "synthetic-profile-1",
+      "execution_id": "synthetic-7-1",
+      "runtime_status": "COMPLETED",
+      "final_action": "ALLOW"
+    }
+  ],
+  "workload_analysis": {
+    "metric": "workload_model_comparison",
+    "estimate": null,
+    "statistical_test": null,
+    "p_value": null,
+    "effect_size": null,
+    "sample_size": 16,
+    "interpretation": "Observed snapshot only.",
+    "test_not_performed_reason": "workload_id is absent; do not infer it from run or case names.",
+    "evidence": {
+      "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+      "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+      "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+      "execution_ids": [
+        "synthetic-0-0",
+        "synthetic-0-1",
+        "synthetic-1-0",
+        "synthetic-1-1",
+        "synthetic-2-0",
+        "synthetic-2-1",
+        "synthetic-3-0",
+        "synthetic-3-1",
+        "synthetic-4-0",
+        "synthetic-4-1",
+        "synthetic-5-0",
+        "synthetic-5-1",
+        "synthetic-6-0",
+        "synthetic-6-1",
+        "synthetic-7-0",
+        "synthetic-7-1"
+      ],
+      "data_origin": "SYNTHETIC_FIXTURE"
+    }
+  }
+}

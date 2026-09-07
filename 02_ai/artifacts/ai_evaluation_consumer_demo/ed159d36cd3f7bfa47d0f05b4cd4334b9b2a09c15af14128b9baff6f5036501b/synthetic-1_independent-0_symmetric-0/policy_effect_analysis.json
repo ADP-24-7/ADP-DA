@@ -1,0 +1,42 @@
+{
+  "metric": "policy_transform_effect",
+  "estimate": null,
+  "statistical_test": null,
+  "p_value": null,
+  "effect_size": null,
+  "sample_size": 16,
+  "interpretation": "NOT EVALUABLE WITH CURRENT BUNDLE",
+  "test_not_performed_reason": "One policy_snapshot_digest per bundle; model profiles are not treatment arms. No privacy outcome, utility score, transform strength or randomized paired experiment.",
+  "evidence": {
+    "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+    "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+    "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+    "execution_ids": [
+      "synthetic-0-0",
+      "synthetic-0-1",
+      "synthetic-1-0",
+      "synthetic-1-1",
+      "synthetic-2-0",
+      "synthetic-2-1",
+      "synthetic-3-0",
+      "synthetic-3-1",
+      "synthetic-4-0",
+      "synthetic-4-1",
+      "synthetic-5-0",
+      "synthetic-5-1",
+      "synthetic-6-0",
+      "synthetic-6-1",
+      "synthetic-7-0",
+      "synthetic-7-1"
+    ],
+    "data_origin": "SYNTHETIC_FIXTURE"
+  },
+  "status": "NOT_EVALUABLE",
+  "additional_experiment": [
+    "Export versioned case-to-workload mapping and expected case/model catalog.",
+    "Use identical cases, model, sampling and destination across randomized policy arms.",
+    "Record transform method/strength and independent privacy and utility outcome scores.",
+    "Collect repeated time-separated runs, failures and full-response/attempt timing.",
+    "Pre-register practical margins, SLA/risk budget and sample-size/power plan."
+  ]
+}

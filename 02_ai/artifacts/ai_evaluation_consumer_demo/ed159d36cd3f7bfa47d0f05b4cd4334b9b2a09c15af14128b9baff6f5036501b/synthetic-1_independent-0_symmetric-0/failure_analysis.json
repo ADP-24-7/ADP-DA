@@ -1,0 +1,412 @@
+{
+  "findings": [
+    {
+      "metric": "provider_failed_rate",
+      "estimate": 0.25,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "matching_execution_ids": [
+          "synthetic-0-0",
+          "synthetic-3-0"
+        ]
+      }
+    },
+    {
+      "metric": "sent_unknown_rate",
+      "estimate": 0.125,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "matching_execution_ids": [
+          "synthetic-5-0"
+        ]
+      }
+    },
+    {
+      "metric": "not_attempted_rate",
+      "estimate": 0.125,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "matching_execution_ids": [
+          "synthetic-6-0"
+        ]
+      }
+    },
+    {
+      "metric": "http_failure_rate",
+      "estimate": 0.25,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "matching_execution_ids": [
+          "synthetic-0-0",
+          "synthetic-3-0"
+        ]
+      }
+    },
+    {
+      "metric": "transport_error_rate",
+      "estimate": 0.125,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "matching_execution_ids": [
+          "synthetic-5-0"
+        ]
+      }
+    },
+    {
+      "metric": "error_category_distribution",
+      "estimate": {
+        "NONE": {
+          "count": 5,
+          "rate": 0.625
+        },
+        "PROVIDER_SERVER_ERROR": {
+          "count": 2,
+          "rate": 0.25
+        },
+        "TRANSPORT": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "provider_failed_rate",
+      "estimate": 0.0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "matching_execution_ids": []
+      }
+    },
+    {
+      "metric": "sent_unknown_rate",
+      "estimate": 0.125,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "matching_execution_ids": [
+          "synthetic-5-1"
+        ]
+      }
+    },
+    {
+      "metric": "not_attempted_rate",
+      "estimate": 0.125,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "matching_execution_ids": [
+          "synthetic-6-1"
+        ]
+      }
+    },
+    {
+      "metric": "http_failure_rate",
+      "estimate": 0.0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "matching_execution_ids": []
+      }
+    },
+    {
+      "metric": "transport_error_rate",
+      "estimate": 0.125,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Overlapping failure dimensions; rates must not be summed.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "matching_execution_ids": [
+          "synthetic-5-1"
+        ]
+      }
+    },
+    {
+      "metric": "error_category_distribution",
+      "estimate": {
+        "NONE": {
+          "count": 7,
+          "rate": 0.875
+        },
+        "TRANSPORT": {
+          "count": 1,
+          "rate": 0.125
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    }
+  ],
+  "timeout": {
+    "metric": "timeout_rate",
+    "estimate": null,
+    "statistical_test": null,
+    "p_value": null,
+    "effect_size": null,
+    "sample_size": 16,
+    "interpretation": "Observed snapshot only.",
+    "test_not_performed_reason": "TRANSPORT is broader than timeout; no timeout reason is exported.",
+    "evidence": {
+      "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+      "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+      "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+      "execution_ids": [
+        "synthetic-0-0",
+        "synthetic-0-1",
+        "synthetic-1-0",
+        "synthetic-1-1",
+        "synthetic-2-0",
+        "synthetic-2-1",
+        "synthetic-3-0",
+        "synthetic-3-1",
+        "synthetic-4-0",
+        "synthetic-4-1",
+        "synthetic-5-0",
+        "synthetic-5-1",
+        "synthetic-6-0",
+        "synthetic-6-1",
+        "synthetic-7-0",
+        "synthetic-7-1"
+      ],
+      "data_origin": "SYNTHETIC_FIXTURE"
+    }
+  }
+}

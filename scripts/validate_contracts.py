@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTRACTS = ROOT / "02_ai" / "contracts"
 
 SCHEMA_FILES = [
+    CONTRACTS / "ai-evaluation-bundle.schema.json",
     CONTRACTS / "ai_runtime_contract_vnext.schema.json",
     CONTRACTS / "ai_runtime_validation_vnext.schema.json",
     CONTRACTS / "evaluation_artifact.schema.json",

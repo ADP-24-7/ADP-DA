@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checks": {
+    "schema": "PASS",
+    "content_digest": "PASS",
+    "case_results_cardinality": "PASS",
+    "runtime_metrics_cardinality": "PASS",
+    "trace_index_cardinality": "PASS",
+    "execution_identity": "PASS",
+    "model_count": "PASS",
+    "case_count": "PASS",
+    "case_model_uniqueness": "PASS",
+    "cartesian_completeness": "PASS",
+    "run_provenance": "PASS",
+    "bundle_identity": "PASS",
+    "case_model_execution_relationship": "PASS",
+    "input_digest": "PASS",
+    "cross_model_input_provenance": "PASS",
+    "complete_evidence": "PASS",
+    "token_usage": "PASS",
+    "failure_summary": "PASS",
+    "measurement_enum_and_latency": "PASS (schema conditional validation)",
+    "trace_time_order": "PASS",
+    "execution_from": "PASS",
+    "execution_cutoff_at": "PASS",
+    "generated_at": "PASS"
+  },
+  "calculated_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+  "execution_count": 16,
+  "recomputed_failure_summary": {
+    "evaluated_execution_count": 16,
+    "failed": 2,
+    "sent_unknown": 2,
+    "not_attempted": 2,
+    "by_error_category": {
+      "PROVIDER_SERVER_ERROR": 2,
+      "TRANSPORT": 2
+    }
+  },
+  "complete_token_total": 120,
+  "provenance_scope": "Internal consistency only; no independent catalog or signature. An entirely omitted case with adjusted manifest cannot be detected without a catalog."
+}
