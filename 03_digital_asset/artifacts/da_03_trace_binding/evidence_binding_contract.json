@@ -1,0 +1,84 @@
+{
+  "artifact_id": "DA_03_TRACE_BINDING:evidence_binding_contract",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T21:13:56.222388+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+  "source_notebook_sha256": "aae7be8a7c29a43316f8e5ceffc1e5ad680568e3e07787427a0a98ed182dc57b",
+  "binding_key": "transaction_hash",
+  "source_phase": "POST_EXECUTION",
+  "binding_chain": [
+    {
+      "step": 1,
+      "name": "Transaction Record",
+      "required_fields": [
+        "transaction_hash",
+        "block_number",
+        "block_timestamp",
+        "transaction_value"
+      ],
+      "runtime_meaning": "On-chain transaction identification and direct ETH value."
+    },
+    {
+      "step": 2,
+      "name": "Receipt Execution Result",
+      "required_fields": [
+        "transaction_hash",
+        "receipt_status"
+      ],
+      "runtime_meaning": "Execution success/failure evidence distinct from transaction record."
+    },
+    {
+      "step": 3,
+      "name": "Trace Internal ETH Movement",
+      "required_fields": [
+        "transaction_hash",
+        "trace_present",
+        "internal_eth_movement"
+      ],
+      "runtime_meaning": "Internal ETH movement evidence from execution trace."
+    },
+    {
+      "step": 4,
+      "name": "Token Transfer Asset Movement",
+      "required_fields": [
+        "transaction_hash",
+        "token_transfer_present"
+      ],
+      "runtime_meaning": "ERC token movement evidence not represented by transaction.value."
+    },
+    {
+      "step": 5,
+      "name": "Final Execution State",
+      "required_fields": [
+        "transaction_hash",
+        "asset_movement_detected",
+        "final_execution_state"
+      ],
+      "runtime_meaning": "Final state produced only after receipt and asset movement evidence binding."
+    }
+  ],
+  "required_runtime_fields": [
+    "transaction_hash",
+    "block_number",
+    "block_timestamp",
+    "transaction_value",
+    "receipt_status",
+    "trace_present",
+    "internal_eth_movement",
+    "token_transfer_present",
+    "asset_movement_detected",
+    "final_execution_state"
+  ],
+  "forbidden_inference": {
+    "rule": "transaction_value == 0 -> no asset movement",
+    "reason": "DA-03 observed Token Transfer or Internal ETH Movement in 2,233 of 3,452 ZERO_VALUE transactions."
+  },
+  "contract_gaps": [
+    "BE-owned final execution state enum",
+    "provider-specific receipt schema",
+    "provider-specific trace schema",
+    "provider-specific token transfer schema",
+    "missing evidence reconciliation event schema",
+    "audit event schema"
+  ]
+}
