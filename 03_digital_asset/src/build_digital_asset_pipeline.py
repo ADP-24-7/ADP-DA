@@ -20,7 +20,7 @@ PROCESSED = DA / "data" / "processed"
 ARTIFACTS = DA / "artifacts" / "candidate_policy_v1"
 HANDOFF = DA / "artifacts" / "be_handoff_v1"
 CONTRACTS = DA / "contracts"
-NOTEBOOK = DA / "notebooks" / "01_crypto_regulatory_analysis.ipynb"
+NOTEBOOK = DA / "notebooks" / "foundation" / "01_crypto_regulatory_analysis.ipynb"
 
 
 def write_json(path: Path, data: Any) -> None:

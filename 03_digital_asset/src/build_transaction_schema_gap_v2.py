@@ -20,7 +20,7 @@ RAW_CARD = DA / "data" / "raw" / "crypto_card"
 PROCESSED = DA / "data" / "processed"
 V1 = DA / "artifacts" / "candidate_policy_v1"
 V2 = DA / "artifacts" / "candidate_policy_v2"
-NOTEBOOK = DA / "notebooks" / "02_crypto_transaction_schema_analysis.ipynb"
+NOTEBOOK = DA / "notebooks" / "foundation" / "02_crypto_transaction_schema_analysis.ipynb"
 
 
 def read_json(path: Path) -> Any:

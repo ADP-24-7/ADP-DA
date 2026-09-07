@@ -28,7 +28,7 @@ RAW_CARD = DA / "data" / "raw" / "crypto_card"
 PROCESSED = DA / "data" / "processed"
 V2 = DA / "artifacts" / "candidate_policy_v2"
 V3 = DA / "artifacts" / "candidate_policy_v3"
-NOTEBOOK = DA / "notebooks" / "03_ethereum_transaction_schema_validation.ipynb"
+NOTEBOOK = DA / "notebooks" / "foundation" / "03_ethereum_transaction_schema_validation.ipynb"
 
 RPC_URL = os.getenv("ETHEREUM_RPC_URL", "https://ethereum.publicnode.com")
 TARGET_ROWS = int(os.getenv("FPG_ETHEREUM_SAMPLE_ROWS", "50000"))

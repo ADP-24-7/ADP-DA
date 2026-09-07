@@ -23,7 +23,7 @@ BE_V3 = DA / "artifacts" / "be_handoff_v3"
 BE_VNEXT = DA / "artifacts" / "be_handoff_vNext"
 DOC = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_V3.md"
 DOC_VNEXT = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_VNEXT.md"
-NOTEBOOK = DA / "notebooks" / "05_fpg_control_boundary_validation.ipynb"
+NOTEBOOK = DA / "notebooks" / "foundation" / "05_fpg_control_boundary_validation.ipynb"
 
 FORBIDDEN_RUNTIME_CONTROLS = {
     "KYC_STATUS_CHECK",
