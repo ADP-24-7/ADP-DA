@@ -145,7 +145,13 @@ def validate_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
             require(all(value is None for value in tokens), "token_usage")
     require(failure_summary(metrics) == bundle["failure_summary"], "failure_summary")
     checks["measurement_enum_and_latency"] = "PASS (schema conditional validation)"
-    parse_time = datetime.fromisoformat
+
+    def parse_time(value: str) -> datetime:
+        try:
+            return datetime.fromisoformat(value)
+        except (ValueError, TypeError):
+            raise BundleValidationError("timestamp_format") from None
+
     require(
         all(parse_time(row["created_at"]) <= parse_time(row["updated_at"]) for row in traces),
         "trace_time_order",
