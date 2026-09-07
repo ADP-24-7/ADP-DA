@@ -1,0 +1,46 @@
+{
+  "artifact_id": "DA_03_TRACE_BINDING:runtime_requirements",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T21:13:56.222388+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+  "source_notebook_sha256": "aae7be8a7c29a43316f8e5ceffc1e5ad680568e3e07787427a0a98ed182dc57b",
+  "runtime_rule": "Transaction -> Receipt -> Trace / Token Transfer -> Final Execution State must be bound by transaction_hash.",
+  "forbidden_runtime_rule": "transaction_value == 0 -> no asset movement",
+  "post_execution_ordering": [
+    "Transaction identification",
+    "Receipt binding",
+    "Execution success/failure decision",
+    "Trace / Token Transfer evidence lookup",
+    "Asset movement decision",
+    "Final execution state settlement"
+  ],
+  "be_implementation_requirements": [
+    "transaction hash based receipt resolver",
+    "transaction hash based trace resolver",
+    "transaction hash based token transfer resolver",
+    "receipt execution status binder",
+    "trace internal ETH movement detector",
+    "token transfer evidence binder",
+    "asset movement decision builder",
+    "final execution state builder",
+    "missing evidence reconciliation connection",
+    "POST_EXECUTION evidence trace writer"
+  ],
+  "decision_semantics": {
+    "receipt_missing": "Do not finalize execution success; route to existing review/pending/reconciliation semantics.",
+    "receipt_status_0": "Execution failure evidence.",
+    "receipt_status_1": "Execution success evidence, not sufficient alone for total asset movement reconstruction.",
+    "token_transfer_present": "Asset movement evidence even when transaction_value is zero.",
+    "internal_eth_movement": "Asset movement evidence even when transaction_value is zero and token transfer is absent.",
+    "no_value_movement_detected": "No additional movement detected in DA-03 evidence scope; not proof that all possible asset movement is impossible."
+  },
+  "out_of_scope": [
+    "KYC",
+    "AML",
+    "Sanctions",
+    "Wallet Risk",
+    "VASP Risk",
+    "New transaction approval judgment",
+    "Ethereum-wide population rate inference from the 3,452 transaction DA-03 analysis population"
+  ]
+}

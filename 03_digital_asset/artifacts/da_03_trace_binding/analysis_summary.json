@@ -1,0 +1,85 @@
+{
+  "artifact_id": "DA_03_TRACE_BINDING:analysis_summary",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T21:13:56.222388+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+  "source_notebook_sha256": "aae7be8a7c29a43316f8e5ceffc1e5ad680568e3e07787427a0a98ed182dc57b",
+  "source_document": "03_digital_asset/docs/handoff/DA_03_trace_binding.md",
+  "source_document_sha256": "606de32e893fcfe06f1f755864181e9a2d0f893c5962df0949d7958a6886327e",
+  "analysis_scope": "2026-01 ZERO_VALUE transactions selected from Ethereum Master Sample; not an Ethereum-wide population estimate.",
+  "evidence_type": "PROCESSED_ANALYSIS_ARTIFACT",
+  "metrics": {
+    "ethereum_master_sample": 73410,
+    "zero_value_transactions": 44422,
+    "analysis_population": {
+      "month": "2026-01",
+      "zero_value_transactions": 3452
+    },
+    "receipt_binding": {
+      "bound": 3452,
+      "total": 3452,
+      "rate_pct": 100.0,
+      "status_1": 3364,
+      "status_0": 88
+    },
+    "token_transfer": {
+      "present": 2131,
+      "missing": 1321,
+      "present_rate_pct": 61.73
+    },
+    "trace_followup_for_token_missing": {
+      "queried": 1321,
+      "internal_eth_movement": 102
+    },
+    "asset_movement": {
+      "token_transfer_or_internal_eth_movement": 2233,
+      "neither_detected": 1219,
+      "detected_rate_pct": 64.69,
+      "wilson_95_ci_pct": {
+        "lower": 63.08,
+        "upper": 66.26
+      }
+    }
+  },
+  "result": {
+    "transaction_record_is_execution_result": false,
+    "transaction_value_is_total_asset_movement": false,
+    "runtime_evidence_chain": [
+      "Transaction",
+      "Receipt",
+      "Trace / Token Transfer",
+      "Final Execution State"
+    ]
+  },
+  "interpretation": "transaction.value = 0 alone must not be interpreted as no asset movement. Observed 64.69% applies only to the DA-03 analysis population of 3,452 transactions.",
+  "runtime_implication": "Digital Asset POST_EXECUTION runtime must bind Transaction, Receipt, Trace, and Token Transfer evidence by transaction_hash before final execution state is settled.",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+      "cell_index": 0
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+      "cell_index": 15
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+      "cell_index": 17
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+      "cell_index": 22
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+      "cell_index": 25
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+      "cell_index": 27
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA_03_trace_binding.md"
+    }
+  ]
+}
