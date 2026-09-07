@@ -1,0 +1,1551 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T22:52:17.903956+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_04_outbound_destination.ipynb",
+  "source_notebook_code_sha256": "082d2eed78d838034e4dbf585b0069f2ca1a3406f2c60a75d324ee1a118d95dd",
+  "notebook_digest_scope": "ordered code cell sources; outputs excluded to avoid self-reference",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/regulatory_outbound_requirements.csv",
+      "sha256": "f499723f86b09d82cfe3cd3954606c61a3b26f2c2d518764d3faa12e3e8ee604",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/data/processed/outbound_requirement_execution_mapping.csv",
+      "sha256": "c2e0b74ec891bff12f278340988a893b87cf9c0f2ab3dc15d7a7a0033c7640b3",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json",
+      "sha256": "f651576ec3d08660c5fb3e5b71acda2ad533a6c63e4ff2a13906319eb25f093c",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/runtime_pipeline.json",
+      "sha256": "6c1966f20a30e545ee7eb5003b3522fe19ffe1a9cb529400e54ca3502f87e062",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/control_boundary_validation.json",
+      "sha256": "63355a27f715520285d7b4be936c6356317b54773602fd8380a372be2c2c9d35",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/validation_report.json",
+      "sha256": "ea581b9e3ec4eecf0d4d0628da240db572cdef298c534ff31ae588b3d6f828e9",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/01_crypto_regulatory_analysis.ipynb",
+      "sha256": "0e48f803781a941f7f5a5a535023edefec015f01231117210f911c7fb3b73fab",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/04_regulatory_outbound_design_analysis.ipynb",
+      "sha256": "b105a503c950058b97d1ce3370338d89dbce63924d2aef388adf2415758f951d",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/05_fpg_control_boundary_validation.ipynb",
+      "sha256": "06466aaa12ed98dae41b06ff1a11ff437e338cda1a8a3c6e7df9bbefdd4e69cb",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_00_master_sample/sampling_contract.json",
+      "sha256": "7126a6284055cd94a57fa3bc255cd6cf52c802a520756f4aa3ec0900817f48a0",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_01_external_execution/runtime_requirements.json",
+      "sha256": "c7b90a6b0ef0dd852ebdb23a9e11c21020fd6623dba4b9dfc81369ed35ca3318",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
+      "sha256": "bd24585910807ed866a87c7933560a3c7097f1c0f0e0a5a74866d3ed92c228e4",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_03_trace_binding/evidence_binding_contract.json",
+      "sha256": "1fc61e255146483d61eb224729da03728da88dfb8df5cce50fd778fb4c228e40",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/build_control_boundary_v2.py",
+      "sha256": "c297829e3205a402544da7744dae5c238e7cd3a6d6cb8ad7a10cc43c56421d87",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/da_04_outbound_destination.py",
+      "sha256": "0c96fee669aae03c55bad397a1cd1c3a8d9f5f38db19ad9af5ae6e62232f616f",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/contracts/da_04_evidence.schema.json",
+      "sha256": "effbf2334567f576c80723a8b0f182b4ef827e75361b9534ae31997ab6d9b4f5",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    }
+  ],
+  "analysis_scope": "DETERMINISTIC_CONTRACT_AND_OBSERVED_SAMPLE",
+  "provider_wire_schema": false,
+  "live_be_evaluation": false,
+  "artifact_id": "DA_04_OUTBOUND_DESTINATION:destination_payload_profile",
+  "contract_level": "FPG_FIELD_LEVEL_DESTINATION_CONTRACT",
+  "profiles": [
+    {
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "runtime_phase": "PRE_EXECUTION",
+      "allowed_fields": [
+        "amount",
+        "asset",
+        "beneficiary_address",
+        "originator_address"
+      ],
+      "required_fields": [
+        "amount",
+        "asset",
+        "beneficiary_address",
+        "originator_address"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "amount",
+        "asset",
+        "beneficiary_address",
+        "originator_address"
+      ],
+      "omitted_fields": [],
+      "required_exact_fields": [
+        "amount",
+        "asset",
+        "beneficiary_address",
+        "originator_address"
+      ],
+      "on_missing_action": {
+        "amount": [
+          "BLOCK"
+        ],
+        "asset": [
+          "BLOCK"
+        ],
+        "beneficiary_address": [
+          "BLOCK"
+        ],
+        "originator_address": [
+          "BLOCK"
+        ]
+      },
+      "transform_by_field": {
+        "amount": [
+          "PASS_THROUGH"
+        ],
+        "asset": [
+          "PASS_THROUGH"
+        ],
+        "beneficiary_address": [
+          "PASS_THROUGH"
+        ],
+        "originator_address": [
+          "PASS_THROUGH"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-013",
+        "OR-DA-014",
+        "OR-DA-015",
+        "OR-DA-016"
+      ],
+      "wire_schema_status": "CONTRACT_GAP"
+    },
+    {
+      "destination": "EXTERNAL_VASP",
+      "runtime_phase": "PRE_EXECUTION",
+      "allowed_fields": [
+        "beneficiary_identity",
+        "originator_identity"
+      ],
+      "required_fields": [
+        "beneficiary_identity",
+        "originator_identity"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "beneficiary_identity",
+        "originator_identity"
+      ],
+      "omitted_fields": [],
+      "required_exact_fields": [],
+      "on_missing_action": {
+        "beneficiary_identity": [
+          "REVIEW"
+        ],
+        "originator_identity": [
+          "REVIEW"
+        ]
+      },
+      "transform_by_field": {
+        "beneficiary_identity": [
+          "MINIMIZE"
+        ],
+        "originator_identity": [
+          "MINIMIZE"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-004",
+        "OR-DA-005",
+        "OR-DA-008",
+        "OR-DA-009"
+      ],
+      "wire_schema_status": "CONTRACT_GAP"
+    },
+    {
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "runtime_phase": "POST_EXECUTION",
+      "allowed_fields": [
+        "execution_status",
+        "timestamp"
+      ],
+      "required_fields": [
+        "execution_status",
+        "timestamp"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "execution_status",
+        "timestamp"
+      ],
+      "omitted_fields": [],
+      "required_exact_fields": [
+        "execution_status",
+        "timestamp"
+      ],
+      "on_missing_action": {
+        "execution_status": [
+          "BLOCK",
+          "REVIEW"
+        ],
+        "timestamp": [
+          "REVIEW_AFTER_HANDOFF"
+        ]
+      },
+      "transform_by_field": {
+        "execution_status": [
+          "PASS_THROUGH"
+        ],
+        "timestamp": [
+          "PASS_THROUGH"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-007",
+        "OR-DA-011",
+        "OR-DA-012",
+        "OR-DA-018"
+      ],
+      "wire_schema_status": "INTERNAL_FIELD_PROFILE_ONLY"
+    },
+    {
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "runtime_phase": "PRE_EXECUTION",
+      "allowed_fields": [
+        "counterparty_vasp"
+      ],
+      "required_fields": [
+        "counterparty_vasp"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "counterparty_vasp",
+        "kyc_status"
+      ],
+      "omitted_fields": [
+        "kyc_status"
+      ],
+      "required_exact_fields": [],
+      "on_missing_action": {
+        "counterparty_vasp": [
+          "REVIEW"
+        ],
+        "kyc_status": [
+          "REVIEW"
+        ]
+      },
+      "transform_by_field": {
+        "counterparty_vasp": [
+          "FORMAT_NORMALIZE"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-001",
+        "OR-DA-002",
+        "OR-DA-003"
+      ],
+      "wire_schema_status": "INTERNAL_FIELD_PROFILE_ONLY"
+    },
+    {
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "runtime_phase": "POST_EXECUTION",
+      "allowed_fields": [
+        "execution_status",
+        "timestamp",
+        "tx_hash"
+      ],
+      "required_fields": [
+        "execution_status",
+        "timestamp",
+        "tx_hash"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "execution_status",
+        "timestamp",
+        "tx_hash"
+      ],
+      "omitted_fields": [],
+      "required_exact_fields": [
+        "execution_status",
+        "timestamp",
+        "tx_hash"
+      ],
+      "on_missing_action": {
+        "execution_status": [
+          "BLOCK",
+          "REVIEW"
+        ],
+        "timestamp": [
+          "REVIEW_AFTER_HANDOFF"
+        ],
+        "tx_hash": [
+          "REVIEW_AFTER_HANDOFF"
+        ]
+      },
+      "transform_by_field": {
+        "execution_status": [
+          "PASS_THROUGH"
+        ],
+        "timestamp": [
+          "PASS_THROUGH"
+        ],
+        "tx_hash": [
+          "PASS_THROUGH"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-007",
+        "OR-DA-011",
+        "OR-DA-012",
+        "OR-DA-017",
+        "OR-DA-018"
+      ],
+      "wire_schema_status": "INTERNAL_FIELD_PROFILE_ONLY"
+    },
+    {
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "runtime_phase": "PRE_EXECUTION",
+      "allowed_fields": [
+        "amount",
+        "beneficiary_address",
+        "originator_address",
+        "transaction_id"
+      ],
+      "required_fields": [
+        "amount",
+        "beneficiary_address",
+        "originator_address",
+        "transaction_id"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "amount",
+        "beneficiary_address",
+        "originator_address",
+        "transaction_id"
+      ],
+      "omitted_fields": [],
+      "required_exact_fields": [
+        "amount",
+        "beneficiary_address",
+        "originator_address",
+        "transaction_id"
+      ],
+      "on_missing_action": {
+        "amount": [
+          "BLOCK"
+        ],
+        "beneficiary_address": [
+          "BLOCK"
+        ],
+        "originator_address": [
+          "BLOCK"
+        ],
+        "transaction_id": [
+          "REVIEW"
+        ]
+      },
+      "transform_by_field": {
+        "amount": [
+          "PASS_THROUGH"
+        ],
+        "beneficiary_address": [
+          "PASS_THROUGH"
+        ],
+        "originator_address": [
+          "PASS_THROUGH"
+        ],
+        "transaction_id": [
+          "PASS_THROUGH"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-006",
+        "OR-DA-010",
+        "OR-DA-014",
+        "OR-DA-015",
+        "OR-DA-016"
+      ],
+      "wire_schema_status": "INTERNAL_FIELD_PROFILE_ONLY"
+    },
+    {
+      "destination": "NOT_EXTERNALIZED",
+      "runtime_phase": "PRE_EXECUTION",
+      "allowed_fields": [],
+      "required_fields": [],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "kyc_status"
+      ],
+      "omitted_fields": [
+        "kyc_status"
+      ],
+      "required_exact_fields": [],
+      "on_missing_action": {
+        "kyc_status": [
+          "REVIEW"
+        ]
+      },
+      "transform_by_field": {},
+      "requirement_ids": [
+        "OR-DA-002",
+        "OR-DA-003"
+      ],
+      "wire_schema_status": "INTERNAL_FIELD_PROFILE_ONLY"
+    },
+    {
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "runtime_phase": "PRE_EXECUTION",
+      "allowed_fields": [
+        "asset",
+        "beneficiary_identity",
+        "counterparty_vasp",
+        "originator_identity",
+        "transaction_id"
+      ],
+      "required_fields": [
+        "asset",
+        "beneficiary_identity",
+        "counterparty_vasp",
+        "originator_identity",
+        "transaction_id"
+      ],
+      "internal_only_fields": [
+        "kyc_status"
+      ],
+      "required_input_fields": [
+        "asset",
+        "beneficiary_identity",
+        "counterparty_vasp",
+        "originator_identity",
+        "transaction_id"
+      ],
+      "omitted_fields": [],
+      "required_exact_fields": [
+        "asset",
+        "transaction_id"
+      ],
+      "on_missing_action": {
+        "asset": [
+          "BLOCK"
+        ],
+        "beneficiary_identity": [
+          "REVIEW"
+        ],
+        "counterparty_vasp": [
+          "REVIEW"
+        ],
+        "originator_identity": [
+          "REVIEW"
+        ],
+        "transaction_id": [
+          "REVIEW"
+        ]
+      },
+      "transform_by_field": {
+        "asset": [
+          "PASS_THROUGH"
+        ],
+        "beneficiary_identity": [
+          "MINIMIZE"
+        ],
+        "counterparty_vasp": [
+          "MAP_TO_EXTERNAL_SCHEMA"
+        ],
+        "originator_identity": [
+          "MINIMIZE"
+        ],
+        "transaction_id": [
+          "PASS_THROUGH"
+        ]
+      },
+      "requirement_ids": [
+        "OR-DA-001",
+        "OR-DA-004",
+        "OR-DA-005",
+        "OR-DA-006",
+        "OR-DA-008",
+        "OR-DA-009",
+        "OR-DA-010",
+        "OR-DA-013"
+      ],
+      "wire_schema_status": "CONTRACT_GAP"
+    }
+  ],
+  "lineage": [
+    {
+      "requirement_id": "OR-DA-001",
+      "required_field": "counterparty_vasp",
+      "regulation_name": "Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 2",
+      "obligation_id": "DA-OBL-001",
+      "legal_basis_reference": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 2::1-ha",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Official law portal; current law page observed as effective 2026-08-20.",
+      "source_system": "VASP_DIRECTORY_OR_PROVIDER|TRAVEL_RULE_PROVIDER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MAP_TO_EXTERNAL_SCHEMA",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "FORMAT_TRANSFORM_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "MAP_TO_EXTERNAL_SCHEMA|SPLIT_INTERNAL_EXTERNAL",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-001",
+      "required_field": "counterparty_vasp",
+      "regulation_name": "Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 2",
+      "obligation_id": "DA-OBL-001",
+      "legal_basis_reference": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 2::1-ha",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Official law portal; current law page observed as effective 2026-08-20.",
+      "source_system": "VASP_DIRECTORY_OR_PROVIDER|TRAVEL_RULE_PROVIDER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "FORMAT_NORMALIZE",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "FORMAT_TRANSFORM_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "MAP_TO_EXTERNAL_SCHEMA|SPLIT_INTERNAL_EXTERNAL",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-002",
+      "required_field": "kyc_status",
+      "regulation_name": "Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 5-2",
+      "obligation_id": "DA-OBL-002",
+      "legal_basis_reference": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-2::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FPG checks returned status only; KYC execution remains outside FPG.",
+      "source_system": "KYC_AML_SYSTEM",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "EXTERNAL_CONTROL_RESULT",
+      "ethereum_field": "",
+      "transform_type": "OMIT",
+      "destination": "NOT_EXTERNALIZED",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "INTERNAL_ONLY",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "NOT_EXTERNALIZED|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "OMIT",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-002",
+      "required_field": "kyc_status",
+      "regulation_name": "Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 5-2",
+      "obligation_id": "DA-OBL-002",
+      "legal_basis_reference": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-2::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FPG checks returned status only; KYC execution remains outside FPG.",
+      "source_system": "KYC_AML_SYSTEM",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "EXTERNAL_CONTROL_RESULT",
+      "ethereum_field": "",
+      "transform_type": "OMIT",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "INTERNAL_ONLY",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "NOT_EXTERNALIZED|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "OMIT",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-003",
+      "required_field": "kyc_status",
+      "regulation_name": "Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 5-3",
+      "obligation_id": "DA-OBL-003",
+      "legal_basis_reference": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-3::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Legal basis is represented as candidate control, not final legal judgment.",
+      "source_system": "KYC_AML_SYSTEM",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "EXTERNAL_CONTROL_RESULT",
+      "ethereum_field": "",
+      "transform_type": "OMIT",
+      "destination": "NOT_EXTERNALIZED",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "INTERNAL_ONLY",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "LEGAL_REVIEW",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "NOT_EXTERNALIZED|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "OMIT",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-003",
+      "required_field": "kyc_status",
+      "regulation_name": "Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 5-3",
+      "obligation_id": "DA-OBL-003",
+      "legal_basis_reference": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-3::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Legal basis is represented as candidate control, not final legal judgment.",
+      "source_system": "KYC_AML_SYSTEM",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "EXTERNAL_CONTROL_RESULT",
+      "ethereum_field": "",
+      "transform_type": "OMIT",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "INTERNAL_ONLY",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "LEGAL_REVIEW",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "NOT_EXTERNALIZED|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "OMIT",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-004",
+      "required_field": "originator_identity",
+      "regulation_name": "Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 10-10",
+      "obligation_id": "DA-OBL-004",
+      "legal_basis_reference": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Identity itself is not on-chain; FPG requires a trusted input or result.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_INTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-004",
+      "required_field": "originator_identity",
+      "regulation_name": "Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 10-10",
+      "obligation_id": "DA-OBL-004",
+      "legal_basis_reference": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Identity itself is not on-chain; FPG requires a trusted input or result.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_INTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "EXTERNAL_VASP",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-005",
+      "required_field": "beneficiary_identity",
+      "regulation_name": "Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 10-10",
+      "obligation_id": "DA-OBL-005",
+      "legal_basis_reference": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Identity itself is not on-chain; FPG requires a trusted input or result.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER|TRAVEL_RULE_PROVIDER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-005",
+      "required_field": "beneficiary_identity",
+      "regulation_name": "Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information",
+      "article": "Article 10-10",
+      "obligation_id": "DA-OBL-005",
+      "legal_basis_reference": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Identity itself is not on-chain; FPG requires a trusted input or result.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER|TRAVEL_RULE_PROVIDER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "EXTERNAL_VASP",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-006",
+      "required_field": "transaction_id",
+      "regulation_name": "KoFIU AML/CDD virtual asset guidance",
+      "article": "Travel Rule guidance",
+      "obligation_id": "DA-OBL-006",
+      "legal_basis_reference": "KOFIU::KoFIU AML/CDD virtual asset guidance::Travel Rule guidance::originator-beneficiary information",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Official KoFIU guidance page; exact paragraph remains REVIEW_REQUIRED.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "hash",
+      "transform_type": "PASS_THROUGH",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "LEGAL_REVIEW",
+        "TRANSACTION_ID_PHASE"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-006",
+      "required_field": "transaction_id",
+      "regulation_name": "KoFIU AML/CDD virtual asset guidance",
+      "article": "Travel Rule guidance",
+      "obligation_id": "DA-OBL-006",
+      "legal_basis_reference": "KOFIU::KoFIU AML/CDD virtual asset guidance::Travel Rule guidance::originator-beneficiary information",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Official KoFIU guidance page; exact paragraph remains REVIEW_REQUIRED.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "hash",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "LEGAL_REVIEW",
+        "TRANSACTION_ID_PHASE"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-007",
+      "required_field": "execution_status",
+      "regulation_name": "Virtual Asset User Protection Act",
+      "article": "Article 9",
+      "obligation_id": "DA-OBL-007",
+      "legal_basis_reference": "LAW_GO_KR::Virtual Asset User Protection Act::Article 9::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FPG records execution handoff/result, not direct asset transfer.",
+      "source_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING"
+      ],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-007",
+      "required_field": "execution_status",
+      "regulation_name": "Virtual Asset User Protection Act",
+      "article": "Article 9",
+      "obligation_id": "DA-OBL-007",
+      "legal_basis_reference": "LAW_GO_KR::Virtual Asset User Protection Act::Article 9::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FPG records execution handoff/result, not direct asset transfer.",
+      "source_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING"
+      ],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-008",
+      "required_field": "originator_identity",
+      "regulation_name": "FATF Recommendation 15 Interpretive Note",
+      "article": "INR.15",
+      "obligation_id": "DA-OBL-008",
+      "legal_basis_reference": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF official public statement with INR.15 draft/final adoption context.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_INTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-008",
+      "required_field": "originator_identity",
+      "regulation_name": "FATF Recommendation 15 Interpretive Note",
+      "article": "INR.15",
+      "obligation_id": "DA-OBL-008",
+      "legal_basis_reference": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF official public statement with INR.15 draft/final adoption context.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_INTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "EXTERNAL_VASP",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-009",
+      "required_field": "beneficiary_identity",
+      "regulation_name": "FATF Recommendation 15 Interpretive Note",
+      "article": "INR.15",
+      "obligation_id": "DA-OBL-009",
+      "legal_basis_reference": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF official public statement with INR.15 draft/final adoption context.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER|TRAVEL_RULE_PROVIDER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-009",
+      "required_field": "beneficiary_identity",
+      "regulation_name": "FATF Recommendation 15 Interpretive Note",
+      "article": "INR.15",
+      "obligation_id": "DA-OBL-009",
+      "legal_basis_reference": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF official public statement with INR.15 draft/final adoption context.",
+      "source_system": "INTERNAL_CUSTOMER_MASTER|TRAVEL_RULE_PROVIDER",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "ethereum_field": "",
+      "transform_type": "MINIMIZE",
+      "destination": "EXTERNAL_VASP",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|EXTERNAL_VASP",
+      "legacy_transform": "MINIMIZE|MAP_TO_EXTERNAL_SCHEMA",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-010",
+      "required_field": "transaction_id",
+      "regulation_name": "FATF Recommendations",
+      "article": "Recommendation 16",
+      "obligation_id": "DA-OBL-010",
+      "legal_basis_reference": "FATF::FATF Recommendations::Recommendation 16::payment transparency",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF Recommendations page observed as amended June 2026.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "hash",
+      "transform_type": "PASS_THROUGH",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "TRANSACTION_ID_PHASE"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-010",
+      "required_field": "transaction_id",
+      "regulation_name": "FATF Recommendations",
+      "article": "Recommendation 16",
+      "obligation_id": "DA-OBL-010",
+      "legal_basis_reference": "FATF::FATF Recommendations::Recommendation 16::payment transparency",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF Recommendations page observed as amended June 2026.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "hash",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "TRANSACTION_ID_PHASE"
+      ],
+      "legacy_destination": "TRAVEL_RULE_PROVIDER|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-011",
+      "required_field": "execution_status",
+      "regulation_name": "FATF Virtual Assets guidance",
+      "article": "Virtual assets topic page",
+      "obligation_id": "DA-OBL-011",
+      "legal_basis_reference": "FATF::FATF Virtual Assets guidance::Virtual assets topic page::VASP preventive measures",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF virtual assets topic page includes 2026 targeted update.",
+      "source_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING"
+      ],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-011",
+      "required_field": "execution_status",
+      "regulation_name": "FATF Virtual Assets guidance",
+      "article": "Virtual assets topic page",
+      "obligation_id": "DA-OBL-011",
+      "legal_basis_reference": "FATF::FATF Virtual Assets guidance::Virtual assets topic page::VASP preventive measures",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "FATF virtual assets topic page includes 2026 targeted update.",
+      "source_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING"
+      ],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW"
+    },
+    {
+      "requirement_id": "OR-DA-012",
+      "required_field": "execution_status",
+      "regulation_name": "FATF Recommendation 15 Interpretive Note",
+      "article": "INR.15",
+      "obligation_id": "DA-OBL-012",
+      "legal_basis_reference": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Candidate control only; designated-person screening engine is external to this repo.",
+      "source_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING",
+        "LEGAL_REVIEW"
+      ],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-012",
+      "required_field": "execution_status",
+      "regulation_name": "FATF Recommendation 15 Interpretive Note",
+      "article": "INR.15",
+      "obligation_id": "DA-OBL-012",
+      "legal_basis_reference": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Candidate control only; designated-person screening engine is external to this repo.",
+      "source_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING",
+        "LEGAL_REVIEW"
+      ],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-013",
+      "required_field": "asset",
+      "regulation_name": "Virtual Asset User Protection Act",
+      "article": "Article 6",
+      "obligation_id": "DA-OBL-013",
+      "legal_basis_reference": "LAW_GO_KR::Virtual Asset User Protection Act::Article 6::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Used only as an asset binding candidate, not settlement execution.",
+      "source_system": "APPROVED_TRANSACTION|INTERNAL_POLICY_STORE",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "BOTH",
+      "execution_availability": "DERIVABLE_FROM_ONCHAIN",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "ASSET_CONTEXT",
+        "LEGAL_REVIEW"
+      ],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|TRAVEL_RULE_PROVIDER",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-013",
+      "required_field": "asset",
+      "regulation_name": "Virtual Asset User Protection Act",
+      "article": "Article 6",
+      "obligation_id": "DA-OBL-013",
+      "legal_basis_reference": "LAW_GO_KR::Virtual Asset User Protection Act::Article 6::1",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "legal_note": "Used only as an asset binding candidate, not settlement execution.",
+      "source_system": "APPROVED_TRANSACTION|INTERNAL_POLICY_STORE",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "BOTH",
+      "execution_availability": "DERIVABLE_FROM_ONCHAIN",
+      "ethereum_field": "",
+      "transform_type": "PASS_THROUGH",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "mandatory_level": "MANDATORY",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [
+        "ASSET_CONTEXT",
+        "LEGAL_REVIEW"
+      ],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|TRAVEL_RULE_PROVIDER",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-014",
+      "required_field": "originator_address",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-014",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "from_address",
+      "transform_type": "PASS_THROUGH",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-014",
+      "required_field": "originator_address",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-014",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "from_address",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-015",
+      "required_field": "beneficiary_address",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-015",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "to_address",
+      "transform_type": "PASS_THROUGH",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-015",
+      "required_field": "beneficiary_address",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-015",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "to_address",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-016",
+      "required_field": "amount",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-016",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "value_eth|value_wei",
+      "transform_type": "PASS_THROUGH",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": true,
+      "contract_gap": [],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-016",
+      "required_field": "amount",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-016",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "value_eth|value_wei",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "BLOCK",
+      "runtime_phase": "PRE_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [],
+      "legacy_destination": "BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "FORMAT_NORMALIZE",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "BLOCK"
+    },
+    {
+      "requirement_id": "OR-DA-017",
+      "required_field": "tx_hash",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-017",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "EXECUTION_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "BLOCKCHAIN_EXECUTION_LAYER|EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "hash",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW_AFTER_HANDOFF",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW_AFTER_HANDOFF"
+    },
+    {
+      "requirement_id": "OR-DA-018",
+      "required_field": "timestamp",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-018",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "EXECUTION_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "BLOCKCHAIN_EXECUTION_LAYER|EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "block_timestamp",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW_AFTER_HANDOFF",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW_AFTER_HANDOFF"
+    },
+    {
+      "requirement_id": "OR-DA-018",
+      "required_field": "timestamp",
+      "regulation_name": "FPG Digital Asset outbound design",
+      "article": "N/A",
+      "obligation_id": "DA-DESIGN-018",
+      "legal_basis_reference": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "evidence_type": "EXECUTION_REQUIREMENT",
+      "legal_note": "Separated from legal obligation rows to avoid inventing legal basis.",
+      "source_system": "BLOCKCHAIN_EXECUTION_LAYER|EXTERNAL_EXECUTION_RESPONSE",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "ethereum_field": "block_timestamp",
+      "transform_type": "PASS_THROUGH",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "mandatory_level": "MANDATORY_FOR_HANDOFF_DESIGN",
+      "required_exact": "EXACT_REQUIRED",
+      "on_missing_action": "REVIEW_AFTER_HANDOFF",
+      "runtime_phase": "POST_EXECUTION",
+      "externalizable": false,
+      "contract_gap": [],
+      "legacy_destination": "INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY",
+      "legacy_transform": "PASS_THROUGH",
+      "legacy_required_exact": "TRUE",
+      "legacy_on_missing": "REVIEW_AFTER_HANDOFF"
+    }
+  ]
+}

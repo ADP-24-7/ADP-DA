@@ -1,0 +1,301 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T22:52:17.903956+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_04_outbound_destination.ipynb",
+  "source_notebook_code_sha256": "082d2eed78d838034e4dbf585b0069f2ca1a3406f2c60a75d324ee1a118d95dd",
+  "notebook_digest_scope": "ordered code cell sources; outputs excluded to avoid self-reference",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/regulatory_outbound_requirements.csv",
+      "sha256": "f499723f86b09d82cfe3cd3954606c61a3b26f2c2d518764d3faa12e3e8ee604",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/data/processed/outbound_requirement_execution_mapping.csv",
+      "sha256": "c2e0b74ec891bff12f278340988a893b87cf9c0f2ab3dc15d7a7a0033c7640b3",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json",
+      "sha256": "f651576ec3d08660c5fb3e5b71acda2ad533a6c63e4ff2a13906319eb25f093c",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/runtime_pipeline.json",
+      "sha256": "6c1966f20a30e545ee7eb5003b3522fe19ffe1a9cb529400e54ca3502f87e062",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/control_boundary_validation.json",
+      "sha256": "63355a27f715520285d7b4be936c6356317b54773602fd8380a372be2c2c9d35",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/validation_report.json",
+      "sha256": "ea581b9e3ec4eecf0d4d0628da240db572cdef298c534ff31ae588b3d6f828e9",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/01_crypto_regulatory_analysis.ipynb",
+      "sha256": "0e48f803781a941f7f5a5a535023edefec015f01231117210f911c7fb3b73fab",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/04_regulatory_outbound_design_analysis.ipynb",
+      "sha256": "b105a503c950058b97d1ce3370338d89dbce63924d2aef388adf2415758f951d",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/05_fpg_control_boundary_validation.ipynb",
+      "sha256": "06466aaa12ed98dae41b06ff1a11ff437e338cda1a8a3c6e7df9bbefdd4e69cb",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_00_master_sample/sampling_contract.json",
+      "sha256": "7126a6284055cd94a57fa3bc255cd6cf52c802a520756f4aa3ec0900817f48a0",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_01_external_execution/runtime_requirements.json",
+      "sha256": "c7b90a6b0ef0dd852ebdb23a9e11c21020fd6623dba4b9dfc81369ed35ca3318",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
+      "sha256": "bd24585910807ed866a87c7933560a3c7097f1c0f0e0a5a74866d3ed92c228e4",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_03_trace_binding/evidence_binding_contract.json",
+      "sha256": "1fc61e255146483d61eb224729da03728da88dfb8df5cce50fd778fb4c228e40",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/build_control_boundary_v2.py",
+      "sha256": "c297829e3205a402544da7744dae5c238e7cd3a6d6cb8ad7a10cc43c56421d87",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/da_04_outbound_destination.py",
+      "sha256": "0c96fee669aae03c55bad397a1cd1c3a8d9f5f38db19ad9af5ae6e62232f616f",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/contracts/da_04_evidence.schema.json",
+      "sha256": "effbf2334567f576c80723a8b0f182b4ef827e75361b9534ae31997ab6d9b4f5",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    }
+  ],
+  "analysis_scope": "DETERMINISTIC_CONTRACT_AND_OBSERVED_SAMPLE",
+  "provider_wire_schema": false,
+  "live_be_evaluation": false,
+  "artifact_id": "DA_04_OUTBOUND_DESTINATION:validation_metrics",
+  "exposure": [
+    {
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "externalizable_superset_field_count": 8,
+      "destination_payload_field_count": 4,
+      "unnecessary_external_field_count_in_superset": 4,
+      "unnecessary_external_field_count_in_profile": 0,
+      "absolute_field_reduction": 4,
+      "relative_exposure_reduction_pct": 50.0,
+      "required_field_retention_pct": 100.0,
+      "retention_scope": "CONTRACT_FIELD_SET_NOT_OBSERVED_VALUES_OR_WIRE_SCHEMA"
+    },
+    {
+      "destination": "EXTERNAL_VASP",
+      "externalizable_superset_field_count": 8,
+      "destination_payload_field_count": 2,
+      "unnecessary_external_field_count_in_superset": 6,
+      "unnecessary_external_field_count_in_profile": 0,
+      "absolute_field_reduction": 6,
+      "relative_exposure_reduction_pct": 75.0,
+      "required_field_retention_pct": 100.0,
+      "retention_scope": "CONTRACT_FIELD_SET_NOT_OBSERVED_VALUES_OR_WIRE_SCHEMA"
+    },
+    {
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "externalizable_superset_field_count": 8,
+      "destination_payload_field_count": 5,
+      "unnecessary_external_field_count_in_superset": 3,
+      "unnecessary_external_field_count_in_profile": 0,
+      "absolute_field_reduction": 3,
+      "relative_exposure_reduction_pct": 37.5,
+      "required_field_retention_pct": 100.0,
+      "retention_scope": "CONTRACT_FIELD_SET_NOT_OBSERVED_VALUES_OR_WIRE_SCHEMA"
+    }
+  ],
+  "invariants": {
+    "not_externalized_leakage": 0,
+    "omit_externalized_rows": 0,
+    "exact_lossy_rows": 0,
+    "external_pre_payload_post_field_count": 0,
+    "contract_violation_count": 0,
+    "negative_control_failures": 0,
+    "pass_through_internal_only_destination_rows": 14
+  },
+  "negative_controls": [
+    {
+      "case": "NORMAL_FIELD_PROFILE",
+      "evidence_type": "SIMULATION",
+      "expected_rule": null,
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "PASS",
+      "issues": []
+    },
+    {
+      "case": "A_INTERNAL_ONLY_LEAKAGE:kyc_status",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "FORBIDDEN_OR_UNRELATED_FIELD",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "FORBIDDEN_OR_UNRELATED_FIELD",
+          "field": "kyc_status",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "B_REQUIRED_MISSING",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "REQUIRED_PAYLOAD_MISSING",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "REQUIRED_PAYLOAD_MISSING",
+          "field": "amount",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "C_EXACT_LOSSY_TRANSFORM",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "EXACT_OR_TRANSFORM_VIOLATION",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "EXACT_OR_TRANSFORM_VIOLATION",
+          "field": "amount",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "D_POST_IN_PRE",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "POST_EXECUTION_IN_PRE_EXECUTION",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "FORBIDDEN_OR_UNRELATED_FIELD",
+          "field": "tx_hash",
+          "action": "BLOCK"
+        },
+        {
+          "rule": "POST_EXECUTION_IN_PRE_EXECUTION",
+          "field": "tx_hash",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "E_UNSUPPORTED_DESTINATION",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "UNSUPPORTED_DESTINATION_OR_PHASE",
+      "detected_as_expected": true,
+      "decision": "REVIEW",
+      "scope": "FIELD_PROFILE_ONLY",
+      "issues": [
+        {
+          "rule": "UNSUPPORTED_DESTINATION_OR_PHASE"
+        }
+      ]
+    },
+    {
+      "case": "F_EXACT_VALUE_MUTATED",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "EXACT_VALUE_MISMATCH",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "EXACT_VALUE_MISMATCH",
+          "field": "amount",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "G_UNRELATED_EXTERNAL_FIELD",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "FORBIDDEN_OR_UNRELATED_FIELD",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "FORBIDDEN_OR_UNRELATED_FIELD",
+          "field": "originator_identity",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "H_FLOAT_AMOUNT",
+      "evidence_type": "SIMULATION",
+      "expected_rule": "NON_EXACT_AMOUNT_REPRESENTATION",
+      "detected_as_expected": true,
+      "scope": "SIMULATION_FIELD_PROFILE",
+      "decision": "BLOCK",
+      "issues": [
+        {
+          "rule": "EXACT_VALUE_MISMATCH",
+          "field": "amount",
+          "action": "BLOCK"
+        },
+        {
+          "rule": "NON_EXACT_AMOUNT_REPRESENTATION",
+          "field": "amount",
+          "action": "BLOCK"
+        }
+      ]
+    },
+    {
+      "case": "I_CONTRACT_POST_REQUIREMENT_IN_PRE",
+      "evidence_type": "SIMULATION",
+      "decision": "BLOCK",
+      "scope": "CONTRACT_VALIDATION",
+      "detected_as_expected": true,
+      "issues": [
+        {
+          "assertion": "execution_result_not_pre_execution_payload",
+          "status": "FAIL",
+          "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+          "field": "tx_hash",
+          "destination": null,
+          "detail": "source_phase=PRE_EXECUTION source_type=EXTERNAL_EXECUTION_RESPONSE pre_execution_required=True"
+        }
+      ]
+    }
+  ],
+  "contract_violations": []
+}

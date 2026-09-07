@@ -1,0 +1,266 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T22:52:17.903956+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_04_outbound_destination.ipynb",
+  "source_notebook_code_sha256": "082d2eed78d838034e4dbf585b0069f2ca1a3406f2c60a75d324ee1a118d95dd",
+  "notebook_digest_scope": "ordered code cell sources; outputs excluded to avoid self-reference",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/regulatory_outbound_requirements.csv",
+      "sha256": "f499723f86b09d82cfe3cd3954606c61a3b26f2c2d518764d3faa12e3e8ee604",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/data/processed/outbound_requirement_execution_mapping.csv",
+      "sha256": "c2e0b74ec891bff12f278340988a893b87cf9c0f2ab3dc15d7a7a0033c7640b3",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json",
+      "sha256": "f651576ec3d08660c5fb3e5b71acda2ad533a6c63e4ff2a13906319eb25f093c",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/runtime_pipeline.json",
+      "sha256": "6c1966f20a30e545ee7eb5003b3522fe19ffe1a9cb529400e54ca3502f87e062",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/control_boundary_validation.json",
+      "sha256": "63355a27f715520285d7b4be936c6356317b54773602fd8380a372be2c2c9d35",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/validation_report.json",
+      "sha256": "ea581b9e3ec4eecf0d4d0628da240db572cdef298c534ff31ae588b3d6f828e9",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/01_crypto_regulatory_analysis.ipynb",
+      "sha256": "0e48f803781a941f7f5a5a535023edefec015f01231117210f911c7fb3b73fab",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/04_regulatory_outbound_design_analysis.ipynb",
+      "sha256": "b105a503c950058b97d1ce3370338d89dbce63924d2aef388adf2415758f951d",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/05_fpg_control_boundary_validation.ipynb",
+      "sha256": "06466aaa12ed98dae41b06ff1a11ff437e338cda1a8a3c6e7df9bbefdd4e69cb",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_00_master_sample/sampling_contract.json",
+      "sha256": "7126a6284055cd94a57fa3bc255cd6cf52c802a520756f4aa3ec0900817f48a0",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_01_external_execution/runtime_requirements.json",
+      "sha256": "c7b90a6b0ef0dd852ebdb23a9e11c21020fd6623dba4b9dfc81369ed35ca3318",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
+      "sha256": "bd24585910807ed866a87c7933560a3c7097f1c0f0e0a5a74866d3ed92c228e4",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_03_trace_binding/evidence_binding_contract.json",
+      "sha256": "1fc61e255146483d61eb224729da03728da88dfb8df5cce50fd778fb4c228e40",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/build_control_boundary_v2.py",
+      "sha256": "c297829e3205a402544da7744dae5c238e7cd3a6d6cb8ad7a10cc43c56421d87",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/da_04_outbound_destination.py",
+      "sha256": "0c96fee669aae03c55bad397a1cd1c3a8d9f5f38db19ad9af5ae6e62232f616f",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/contracts/da_04_evidence.schema.json",
+      "sha256": "effbf2334567f576c80723a8b0f182b4ef827e75361b9534ae31997ab6d9b4f5",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    }
+  ],
+  "analysis_scope": "DETERMINISTIC_CONTRACT_AND_OBSERVED_SAMPLE",
+  "provider_wire_schema": false,
+  "live_be_evaluation": false,
+  "artifact_id": "DA_04_OUTBOUND_DESTINATION:runtime_requirements",
+  "pipeline": [
+    {
+      "step_number": 1,
+      "name": "Approved Transaction Load",
+      "input": "approved transaction record",
+      "output": "approved transaction context",
+      "responsible_system": "BE_APPROVAL_SYSTEM",
+      "failure_mode": "missing approved transaction",
+      "fpg_responsibility": "load existing approval; do not approve transactions"
+    },
+    {
+      "step_number": 2,
+      "name": "Approved Policy Snapshot Load",
+      "input": "approved policy snapshot id",
+      "output": "approved constraints",
+      "responsible_system": "BE_POLICY_STORE",
+      "failure_mode": "missing approved policy snapshot",
+      "fpg_responsibility": "load snapshot; do not invent policy"
+    },
+    {
+      "step_number": 3,
+      "name": "Regulatory Outbound Requirement Load",
+      "input": "outbound matrix",
+      "output": "applicable requirement list",
+      "responsible_system": "FPG",
+      "failure_mode": "missing outbound matrix",
+      "fpg_responsibility": "load handoff requirements"
+    },
+    {
+      "step_number": 4,
+      "name": "Required Field Resolution",
+      "input": "approved transaction plus upstream-produced fields",
+      "output": "resolved field set",
+      "responsible_system": "FPG",
+      "failure_mode": "required source unresolved",
+      "fpg_responsibility": "consume upstream data; do not determine KYC/AML/VASP eligibility"
+    },
+    {
+      "step_number": 5,
+      "name": "Approved Value vs Requested Value Match",
+      "input": "approved/requested asset amount destination beneficiary period",
+      "output": "match result",
+      "responsible_system": "FPG",
+      "failure_mode": "approved/requested mismatch",
+      "fpg_responsibility": "compare values"
+    },
+    {
+      "step_number": 6,
+      "name": "Required Field Presence Check",
+      "input": "resolved field set",
+      "output": "presence result",
+      "responsible_system": "FPG",
+      "failure_mode": "required outbound field missing",
+      "fpg_responsibility": "check required outbound information exists"
+    },
+    {
+      "step_number": 7,
+      "name": "Required Exact Validation",
+      "input": "exact-class fields",
+      "output": "exactness result",
+      "responsible_system": "FPG",
+      "failure_mode": "lossy transform or altered exact value",
+      "fpg_responsibility": "verify exact fields are not lossy-transformed"
+    },
+    {
+      "step_number": 8,
+      "name": "Transform / Field Separation",
+      "input": "resolved field set",
+      "output": "destination partitions",
+      "responsible_system": "FPG",
+      "failure_mode": "unsafe field externalization",
+      "fpg_responsibility": "normalize, minimize, omit, split, and map fields"
+    },
+    {
+      "step_number": 9,
+      "name": "Destination-specific Payload Build",
+      "input": "field partitions",
+      "output": "payloads per destination",
+      "responsible_system": "FPG",
+      "failure_mode": "destination schema unmapped",
+      "fpg_responsibility": "build execution, Travel Rule, VASP, audit, reconciliation payloads"
+    },
+    {
+      "step_number": 10,
+      "name": "Outbound Handoff Decision",
+      "input": "validation results",
+      "output": "PASS/BLOCK/REVIEW",
+      "responsible_system": "FPG",
+      "failure_mode": "unresolved handoff readiness",
+      "fpg_responsibility": "decide handoff readiness only"
+    },
+    {
+      "step_number": 11,
+      "name": "External Execution Handoff",
+      "input": "destination payload",
+      "output": "outbound handoff id",
+      "responsible_system": "EXTERNAL_EXECUTION_SYSTEM",
+      "failure_mode": "handoff rejected or unavailable",
+      "fpg_responsibility": "forward payload; no wallet/signing/custody responsibility"
+    },
+    {
+      "step_number": 12,
+      "name": "Execution Result Binding",
+      "input": "external response",
+      "output": "tx hash/status binding",
+      "responsible_system": "EXTERNAL_EXECUTION_SYSTEM",
+      "failure_mode": "execution response missing",
+      "fpg_responsibility": "bind returned execution references only"
+    },
+    {
+      "step_number": 13,
+      "name": "Audit / Reconciliation Trace",
+      "input": "handoff ids and decision refs",
+      "output": "audit trace",
+      "responsible_system": "FPG",
+      "failure_mode": "trace binding incomplete",
+      "fpg_responsibility": "retain lineage for audit and reconciliation"
+    }
+  ],
+  "decision_semantics": {
+    "PASS": "Current outbound handoff requirements are satisfied. This is not transaction approval.",
+    "BLOCK": "The transaction may already be approved, but the current outbound request does not satisfy approved values or mandatory outbound handoff conditions.",
+    "REVIEW": "Information required to construct outbound handoff is unresolved, unmapped, pending, or ambiguous. Do not use KYC/AML/VASP risk judgment as FPG runtime control."
+  },
+  "fpg_boundary": {
+    "role": "Policy Enforcement Gateway for already-approved transactions before external execution handoff.",
+    "not_responsible_for": [
+      "AML_CHECK",
+      "COUNTERPARTY_VASP_VERIFY",
+      "CUSTOMER_RISK_CHECK",
+      "KYC_STATUS_CHECK",
+      "SANCTIONS_CHECK",
+      "SETTLEMENT_FINALITY",
+      "VASP_ELIGIBILITY_CHECK",
+      "WALLET_SIGNING_CUSTODY"
+    ],
+    "runtime_controls": [
+      "APPROVED_VS_REQUESTED_MATCH",
+      "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "REQUIRED_EXACT_PRESERVATION",
+      "TRANSFORM_FIELD_SEPARATION",
+      "DESTINATION_SPECIFIC_PAYLOAD",
+      "TRACE_BINDING"
+    ]
+  },
+  "validation_requirements": [
+    "required_field_presence",
+    "exact_preservation",
+    "transform_compatibility",
+    "externalization_policy",
+    "phase_validation",
+    "destination_validation"
+  ],
+  "fail_closed": {
+    "BLOCK": [
+      "exact/value mismatch",
+      "forbidden externalization",
+      "phase violation"
+    ],
+    "REVIEW": [
+      "unsupported destination",
+      "provider wire schema unresolved"
+    ],
+    "missing_input": "Preserve requirement on_missing action; never PASS on mandatory absence.",
+    "scope": "Analysis guard requirements; reuse BE naming, no new production enum."
+  }
+}

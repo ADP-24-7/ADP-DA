@@ -1,0 +1,644 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T22:52:17.903956+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_04_outbound_destination.ipynb",
+  "source_notebook_code_sha256": "082d2eed78d838034e4dbf585b0069f2ca1a3406f2c60a75d324ee1a118d95dd",
+  "notebook_digest_scope": "ordered code cell sources; outputs excluded to avoid self-reference",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/regulatory_outbound_requirements.csv",
+      "sha256": "f499723f86b09d82cfe3cd3954606c61a3b26f2c2d518764d3faa12e3e8ee604",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/data/processed/outbound_requirement_execution_mapping.csv",
+      "sha256": "c2e0b74ec891bff12f278340988a893b87cf9c0f2ab3dc15d7a7a0033c7640b3",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json",
+      "sha256": "f651576ec3d08660c5fb3e5b71acda2ad533a6c63e4ff2a13906319eb25f093c",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/runtime_pipeline.json",
+      "sha256": "6c1966f20a30e545ee7eb5003b3522fe19ffe1a9cb529400e54ca3502f87e062",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/control_boundary_validation.json",
+      "sha256": "63355a27f715520285d7b4be936c6356317b54773602fd8380a372be2c2c9d35",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/validation_report.json",
+      "sha256": "ea581b9e3ec4eecf0d4d0628da240db572cdef298c534ff31ae588b3d6f828e9",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/01_crypto_regulatory_analysis.ipynb",
+      "sha256": "0e48f803781a941f7f5a5a535023edefec015f01231117210f911c7fb3b73fab",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/04_regulatory_outbound_design_analysis.ipynb",
+      "sha256": "b105a503c950058b97d1ce3370338d89dbce63924d2aef388adf2415758f951d",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/notebooks/foundation/05_fpg_control_boundary_validation.ipynb",
+      "sha256": "06466aaa12ed98dae41b06ff1a11ff437e338cda1a8a3c6e7df9bbefdd4e69cb",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_00_master_sample/sampling_contract.json",
+      "sha256": "7126a6284055cd94a57fa3bc255cd6cf52c802a520756f4aa3ec0900817f48a0",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_01_external_execution/runtime_requirements.json",
+      "sha256": "c7b90a6b0ef0dd852ebdb23a9e11c21020fd6623dba4b9dfc81369ed35ca3318",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
+      "sha256": "bd24585910807ed866a87c7933560a3c7097f1c0f0e0a5a74866d3ed92c228e4",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_03_trace_binding/evidence_binding_contract.json",
+      "sha256": "1fc61e255146483d61eb224729da03728da88dfb8df5cce50fd778fb4c228e40",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/build_control_boundary_v2.py",
+      "sha256": "c297829e3205a402544da7744dae5c238e7cd3a6d6cb8ad7a10cc43c56421d87",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/src/da_04_outbound_destination.py",
+      "sha256": "0c96fee669aae03c55bad397a1cd1c3a8d9f5f38db19ad9af5ae6e62232f616f",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    },
+    {
+      "path": "03_digital_asset/contracts/da_04_evidence.schema.json",
+      "sha256": "effbf2334567f576c80723a8b0f182b4ef827e75361b9534ae31997ab6d9b4f5",
+      "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
+    }
+  ],
+  "analysis_scope": "DETERMINISTIC_CONTRACT_AND_OBSERVED_SAMPLE",
+  "provider_wire_schema": false,
+  "live_be_evaluation": false,
+  "artifact_id": "DA_04_OUTBOUND_DESTINATION:analysis_summary",
+  "metrics": {
+    "sample_rows": 73410,
+    "unique_transaction_hashes": 73410,
+    "missing_to_address": 46,
+    "amount_representation_valid_count": 73410,
+    "requirement_count": 18,
+    "destination_count": 6,
+    "field_count": 12,
+    "normalized_row_count": 35,
+    "safely_mapped_onchain_field_count": 5,
+    "legacy_onchain_candidate_count": 6,
+    "offchain_pre_execution_dependency_count": 6,
+    "post_execution_dependency_count": 3,
+    "contract_gap_category_count": 9,
+    "externalizable_superset": [
+      "amount",
+      "asset",
+      "beneficiary_address",
+      "beneficiary_identity",
+      "counterparty_vasp",
+      "originator_address",
+      "originator_identity",
+      "transaction_id"
+    ],
+    "safely_mapped_onchain_field_rate_pct": 41.666666666666664,
+    "offchain_pre_execution_dependency_rate_pct": 50.0,
+    "post_execution_dependency_rate_pct": 25.0
+  },
+  "destination_summary": [
+    {
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "requirement_count": 4,
+      "unique_required_field_count": 4,
+      "onchain_field_count": 3,
+      "offchain_dependency_count": 1,
+      "post_execution_dependency_count": 0,
+      "exact_required_count": 4,
+      "omit_internal_only_count": 0,
+      "contract_gap_count": 1
+    },
+    {
+      "destination": "EXTERNAL_VASP",
+      "requirement_count": 4,
+      "unique_required_field_count": 2,
+      "onchain_field_count": 0,
+      "offchain_dependency_count": 2,
+      "post_execution_dependency_count": 0,
+      "exact_required_count": 0,
+      "omit_internal_only_count": 0,
+      "contract_gap_count": 4
+    },
+    {
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "requirement_count": 7,
+      "unique_required_field_count": 4,
+      "onchain_field_count": 1,
+      "offchain_dependency_count": 2,
+      "post_execution_dependency_count": 2,
+      "exact_required_count": 2,
+      "omit_internal_only_count": 1,
+      "contract_gap_count": 6
+    },
+    {
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "requirement_count": 10,
+      "unique_required_field_count": 7,
+      "onchain_field_count": 5,
+      "offchain_dependency_count": 1,
+      "post_execution_dependency_count": 3,
+      "exact_required_count": 7,
+      "omit_internal_only_count": 0,
+      "contract_gap_count": 5
+    },
+    {
+      "destination": "NOT_EXTERNALIZED",
+      "requirement_count": 2,
+      "unique_required_field_count": 1,
+      "onchain_field_count": 0,
+      "offchain_dependency_count": 1,
+      "post_execution_dependency_count": 0,
+      "exact_required_count": 0,
+      "omit_internal_only_count": 1,
+      "contract_gap_count": 2
+    },
+    {
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "requirement_count": 8,
+      "unique_required_field_count": 5,
+      "onchain_field_count": 0,
+      "offchain_dependency_count": 5,
+      "post_execution_dependency_count": 0,
+      "exact_required_count": 2,
+      "omit_internal_only_count": 0,
+      "contract_gap_count": 8
+    }
+  ],
+  "field_availability": [
+    {
+      "required_field": "amount",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": "value_lossless",
+      "legacy_onchain_candidate": true,
+      "safely_mapped_sample_field": true,
+      "offchain_pre_execution_dependency": false,
+      "post_execution_dependency": false,
+      "sample_value_count": 73410,
+      "sample_value_rate_pct": 100.0,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": []
+    },
+    {
+      "required_field": "asset",
+      "availability_layer": "BOTH",
+      "execution_availability": "DERIVABLE_FROM_ONCHAIN",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": false,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": true,
+      "post_execution_dependency": false,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "ASSET_CONTEXT",
+        "LEGAL_REVIEW"
+      ]
+    },
+    {
+      "required_field": "beneficiary_address",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": "to_address",
+      "legacy_onchain_candidate": true,
+      "safely_mapped_sample_field": true,
+      "offchain_pre_execution_dependency": false,
+      "post_execution_dependency": false,
+      "sample_value_count": 73364,
+      "sample_value_rate_pct": 99.93733823729737,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": []
+    },
+    {
+      "required_field": "beneficiary_identity",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": false,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": true,
+      "post_execution_dependency": false,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ]
+    },
+    {
+      "required_field": "counterparty_vasp",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": false,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": true,
+      "post_execution_dependency": false,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ]
+    },
+    {
+      "required_field": "execution_status",
+      "availability_layer": "NOT_AVAILABLE",
+      "execution_availability": "MISSING",
+      "runtime_phase": "POST_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": false,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": false,
+      "post_execution_dependency": true,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": "receipt_status",
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "EXECUTION_STATUS_MAPPING",
+        "LEGAL_REVIEW"
+      ]
+    },
+    {
+      "required_field": "kyc_status",
+      "availability_layer": "OFFCHAIN_EXTERNAL",
+      "execution_availability": "EXTERNAL_CONTROL_RESULT",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": false,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": true,
+      "post_execution_dependency": false,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "LEGAL_REVIEW",
+        "UPSTREAM_INPUT"
+      ]
+    },
+    {
+      "required_field": "originator_address",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": "from_address",
+      "legacy_onchain_candidate": true,
+      "safely_mapped_sample_field": true,
+      "offchain_pre_execution_dependency": false,
+      "post_execution_dependency": false,
+      "sample_value_count": 73410,
+      "sample_value_rate_pct": 100.0,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": []
+    },
+    {
+      "required_field": "originator_identity",
+      "availability_layer": "OFFCHAIN_INTERNAL",
+      "execution_availability": "VASP_INTERNAL",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": false,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": true,
+      "post_execution_dependency": false,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "PROVIDER_SCHEMA",
+        "UPSTREAM_INPUT"
+      ]
+    },
+    {
+      "required_field": "timestamp",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "runtime_phase": "POST_EXECUTION",
+      "sample_column": "block_timestamp",
+      "legacy_onchain_candidate": true,
+      "safely_mapped_sample_field": true,
+      "offchain_pre_execution_dependency": false,
+      "post_execution_dependency": true,
+      "sample_value_count": 73410,
+      "sample_value_rate_pct": 100.0,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": []
+    },
+    {
+      "required_field": "transaction_id",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "runtime_phase": "PRE_EXECUTION",
+      "sample_column": null,
+      "legacy_onchain_candidate": true,
+      "safely_mapped_sample_field": false,
+      "offchain_pre_execution_dependency": true,
+      "post_execution_dependency": false,
+      "sample_value_count": null,
+      "sample_value_rate_pct": null,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": [
+        "LEGAL_REVIEW",
+        "TRANSACTION_ID_PHASE"
+      ]
+    },
+    {
+      "required_field": "tx_hash",
+      "availability_layer": "ONCHAIN",
+      "execution_availability": "ONCHAIN_AVAILABLE",
+      "runtime_phase": "POST_EXECUTION",
+      "sample_column": "transaction_hash",
+      "legacy_onchain_candidate": true,
+      "safely_mapped_sample_field": true,
+      "offchain_pre_execution_dependency": false,
+      "post_execution_dependency": true,
+      "sample_value_count": 73410,
+      "sample_value_rate_pct": 100.0,
+      "unmapped_candidate_column": null,
+      "sample_phase": "POST_EXECUTION",
+      "pre_execution_approval_verified": false,
+      "contract_gap": []
+    }
+  ],
+  "legacy_to_vnext": [
+    {
+      "requirement_id": "OR-DA-001",
+      "changes": {
+        "destination": {
+          "legacy_csv": [
+            "EXTERNAL_VASP",
+            "INTERNAL_AUDIT_ONLY",
+            "TRAVEL_RULE_PROVIDER"
+          ],
+          "vnext_authority": [
+            "INTERNAL_AUDIT_ONLY",
+            "TRAVEL_RULE_PROVIDER"
+          ]
+        },
+        "transform": {
+          "legacy_csv": [
+            "MAP_TO_EXTERNAL_SCHEMA",
+            "SPLIT_INTERNAL_EXTERNAL"
+          ],
+          "vnext_authority": [
+            "FORMAT_NORMALIZE",
+            "MAP_TO_EXTERNAL_SCHEMA"
+          ]
+        },
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "FORMAT_TRANSFORM_ALLOWED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-002",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "INTERNAL_ONLY"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-003",
+      "changes": {
+        "on_missing": {
+          "legacy_csv": "BLOCK",
+          "vnext_authority": "REVIEW"
+        },
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "INTERNAL_ONLY"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-004",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "MINIMIZATION_ALLOWED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-005",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "MINIMIZATION_ALLOWED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-006",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-007",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-008",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "MINIMIZATION_ALLOWED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-009",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "MINIMIZATION_ALLOWED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-010",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-011",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-012",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-013",
+      "changes": {
+        "transform": {
+          "legacy_csv": [
+            "FORMAT_NORMALIZE"
+          ],
+          "vnext_authority": [
+            "PASS_THROUGH"
+          ]
+        },
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-014",
+      "changes": {
+        "transform": {
+          "legacy_csv": [
+            "FORMAT_NORMALIZE"
+          ],
+          "vnext_authority": [
+            "PASS_THROUGH"
+          ]
+        },
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-015",
+      "changes": {
+        "transform": {
+          "legacy_csv": [
+            "FORMAT_NORMALIZE"
+          ],
+          "vnext_authority": [
+            "PASS_THROUGH"
+          ]
+        },
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-016",
+      "changes": {
+        "transform": {
+          "legacy_csv": [
+            "FORMAT_NORMALIZE"
+          ],
+          "vnext_authority": [
+            "PASS_THROUGH"
+          ]
+        },
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-017",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    },
+    {
+      "requirement_id": "OR-DA-018",
+      "changes": {
+        "exact_class": {
+          "legacy_csv": "TRUE",
+          "vnext_authority": "EXACT_REQUIRED"
+        }
+      }
+    }
+  ]
+}
