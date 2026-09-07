@@ -1,0 +1,515 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "OR-DA-REGULATED-TRANSFER-001",
+  "artifact_version": "v1",
+  "matrix_ref": "ORM-DA-REGULATED-TRANSFER-001",
+  "requirements": [
+    {
+      "requirement_id": "OR-DA-001",
+      "legal_basis": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 2::1-ha",
+      "trigger": "regulated virtual asset transfer context",
+      "source": "VASP_DIRECTORY_OR_PROVIDER|TRAVEL_RULE_PROVIDER",
+      "required_fields": [
+        "counterparty_vasp"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "DESTINATION_ATTRIBUTE"
+      ],
+      "transform": [
+        "MAP_TO_EXTERNAL_SCHEMA",
+        "SPLIT_INTERNAL_EXTERNAL"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-002",
+      "legal_basis": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-2::1",
+      "trigger": "before regulated transfer request is handed off",
+      "source": "KYC_AML_SYSTEM",
+      "required_fields": [
+        "kyc_status"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "TRANSFORM_INPUT"
+      ],
+      "transform": [
+        "OMIT"
+      ],
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-003",
+      "legal_basis": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-3::1",
+      "trigger": "required customer verification is not satisfied",
+      "source": "KYC_AML_SYSTEM",
+      "required_fields": [
+        "kyc_status"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "TRANSFORM_INPUT"
+      ],
+      "transform": [
+        "OMIT"
+      ],
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-004",
+      "legal_basis": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "trigger": "virtual asset transfer between VASPs",
+      "source": "INTERNAL_CUSTOMER_MASTER",
+      "required_fields": [
+        "originator_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-005",
+      "legal_basis": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "trigger": "virtual asset transfer between VASPs",
+      "source": "INTERNAL_CUSTOMER_MASTER|TRAVEL_RULE_PROVIDER",
+      "required_fields": [
+        "beneficiary_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-006",
+      "legal_basis": "KOFIU::KoFIU AML/CDD virtual asset guidance::Travel Rule guidance::originator-beneficiary information",
+      "trigger": "travel-rule applicable transfer",
+      "source": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "required_fields": [
+        "transaction_id"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-007",
+      "legal_basis": "LAW_GO_KR::Virtual Asset User Protection Act::Article 9::1",
+      "trigger": "after virtual asset transaction",
+      "source": "EXTERNAL_EXECUTION_RESPONSE",
+      "required_fields": [
+        "execution_status"
+      ],
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-008",
+      "legal_basis": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "trigger": "virtual asset transfer",
+      "source": "INTERNAL_CUSTOMER_MASTER",
+      "required_fields": [
+        "originator_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-009",
+      "legal_basis": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "trigger": "virtual asset transfer",
+      "source": "INTERNAL_CUSTOMER_MASTER|TRAVEL_RULE_PROVIDER",
+      "required_fields": [
+        "beneficiary_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-010",
+      "legal_basis": "FATF::FATF Recommendations::Recommendation 16::payment transparency",
+      "trigger": "transfer transparency requirement applies",
+      "source": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "required_fields": [
+        "transaction_id"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-011",
+      "legal_basis": "FATF::FATF Virtual Assets guidance::Virtual assets topic page::VASP preventive measures",
+      "trigger": "virtual asset services",
+      "source": "EXTERNAL_EXECUTION_RESPONSE",
+      "required_fields": [
+        "execution_status"
+      ],
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-012",
+      "legal_basis": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "trigger": "information unavailable or designated-person restriction applies",
+      "source": "EXTERNAL_EXECUTION_RESPONSE",
+      "required_fields": [
+        "execution_status"
+      ],
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-013",
+      "legal_basis": "LAW_GO_KR::Virtual Asset User Protection Act::Article 6::1",
+      "trigger": "virtual asset user asset transfer",
+      "source": "APPROVED_TRANSACTION|INTERNAL_POLICY_STORE",
+      "required_fields": [
+        "asset"
+      ],
+      "field_roles": [
+        "PRE_APPROVED_VALUE",
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "FORMAT_NORMALIZE"
+      ],
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "TRAVEL_RULE_PROVIDER"
+      ],
+      "required_exact": true,
+      "validation": "Required input must be resolved before outbound handoff.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "evidence_type": "LEGAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-014",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "trigger": "approved transaction is prepared for outbound handoff",
+      "source": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "required_fields": [
+        "originator_address"
+      ],
+      "field_roles": [
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "FORMAT_NORMALIZE"
+      ],
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required exact value must be present or resolvable for its destination layer.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-015",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "trigger": "approved transaction is prepared for outbound handoff",
+      "source": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "required_fields": [
+        "beneficiary_address"
+      ],
+      "field_roles": [
+        "REQUEST_VALUE",
+        "DESTINATION_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "FORMAT_NORMALIZE"
+      ],
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required exact value must be present or resolvable for its destination layer.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-016",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "trigger": "approved transaction is prepared for outbound handoff",
+      "source": "APPROVED_TRANSACTION|BLOCKCHAIN_EXECUTION_LAYER",
+      "required_fields": [
+        "amount"
+      ],
+      "field_roles": [
+        "PRE_APPROVED_VALUE",
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "FORMAT_NORMALIZE"
+      ],
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required exact value must be present or resolvable for its destination layer.",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-017",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "trigger": "approved transaction is prepared for outbound handoff",
+      "source": "BLOCKCHAIN_EXECUTION_LAYER|EXTERNAL_EXECUTION_RESPONSE",
+      "required_fields": [
+        "tx_hash"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "EXECUTION_RESULT_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required exact value must be present or resolvable for its destination layer.",
+      "on_missing": "REVIEW_AFTER_HANDOFF",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "evidence_type": "EXECUTION_REQUIREMENT"
+    },
+    {
+      "requirement_id": "OR-DA-018",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "trigger": "approved transaction is prepared for outbound handoff",
+      "source": "BLOCKCHAIN_EXECUTION_LAYER|EXTERNAL_EXECUTION_RESPONSE",
+      "required_fields": [
+        "timestamp"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "EXECUTION_RESULT_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": true,
+      "validation": "Required exact value must be present or resolvable for its destination layer.",
+      "on_missing": "REVIEW_AFTER_HANDOFF",
+      "on_mismatch": "BLOCK for required exact approved/request mismatch; REVIEW when external status is pending.",
+      "audit": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "evidence_type": "EXECUTION_REQUIREMENT"
+    }
+  ],
+  "contract_gap": [
+    "Travel Rule provider payload schema",
+    "VASP directory/provider response schema",
+    "Approved transaction runtime input schema",
+    "Destination profile enum",
+    "Execution handoff id lifecycle",
+    "Execution receipt/status ingestion",
+    "Retry/reconciliation event schema",
+    "Audit event schema"
+  ]
+}

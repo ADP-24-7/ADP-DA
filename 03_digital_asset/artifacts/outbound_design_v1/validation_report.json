@@ -1,0 +1,16 @@
+{
+  "validations": [
+    {
+      "schema": "03_digital_asset\\contracts\\outbound_requirement_matrix.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset\\contracts\\runtime_pipeline.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset\\contracts\\digital_asset_policy_evaluation.schema.json",
+      "status": "PASS"
+    }
+  ]
+}
