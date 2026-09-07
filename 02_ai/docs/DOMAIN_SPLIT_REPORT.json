@@ -1,0 +1,102 @@
+﻿{
+    "evidence":  {
+                     "records":  49,
+                     "requirement_candidates":  49,
+                     "sources":  [
+                                     "electronic_financial_supervision_regulation",
+                                     "fsc_ai_guideline_2026",
+                                     "fsc_saas_cloud_2026",
+                                     "law_credit_info",
+                                     "law_pipa"
+                                 ]
+                 },
+    "gateway_rules":  {
+                          "rules":  [
+                                        "GR-0001",
+                                        "GR-0002",
+                                        "GR-0003",
+                                        "GR-0004",
+                                        "GR-0005",
+                                        "GR-0006",
+                                        "GR-0007",
+                                        "GR-0008",
+                                        "GR-0009",
+                                        "GR-0010",
+                                        "GR-0011",
+                                        "GR-0012",
+                                        "GR-0013",
+                                        "GR-0014",
+                                        "GR-0015",
+                                        "GR-0016",
+                                        "GR-0017",
+                                        "GR-0018",
+                                        "GR-0019"
+                                    ],
+                          "controls":  [
+                                           "CTRL-EVAL-001",
+                                           "CTRL-GOV-001",
+                                           "CTRL-GOV-002",
+                                           "CTRL-GOV-003",
+                                           "CTRL-GOV-004",
+                                           "CTRL-GOV-005",
+                                           "CTRL-GOV-006",
+                                           "CTRL-REF-001",
+                                           "CTRL-REF-002",
+                                           "CTRL-REF-003",
+                                           "CTRL-RUNTIME-001",
+                                           "CTRL-RUNTIME-002",
+                                           "CTRL-RUNTIME-003",
+                                           "CTRL-RUNTIME-004",
+                                           "CTRL-RUNTIME-005",
+                                           "CTRL-RUNTIME-006",
+                                           "CTRL-RUNTIME-007",
+                                           "CTRL-RUNTIME-008",
+                                           "CTRL-RUNTIME-009"
+                                       ],
+                          "tests":  [
+                                        "TEST-001",
+                                        "TEST-002",
+                                        "TEST-003",
+                                        "TEST-004",
+                                        "TEST-005",
+                                        "TEST-006",
+                                        "TEST-007",
+                                        "TEST-008",
+                                        "TEST-009",
+                                        "TEST-010",
+                                        "TEST-011",
+                                        "TEST-012",
+                                        "TEST-013",
+                                        "TEST-014",
+                                        "TEST-015",
+                                        "TEST-016",
+                                        "TEST-017",
+                                        "TEST-018",
+                                        "TEST-019",
+                                        "TEST-020",
+                                        "TEST-021",
+                                        "TEST-022",
+                                        "TEST-023",
+                                        "TEST-024",
+                                        "TEST-025"
+                                    ],
+                          "policy_candidates":  [
+                                                    "PC-001",
+                                                    "PC-002",
+                                                    "PC-003",
+                                                    "PC-004",
+                                                    "PC-005",
+                                                    "PC-006",
+                                                    "PC-007",
+                                                    "PC-008",
+                                                    "PC-009",
+                                                    "PC-010"
+                                                ]
+                      },
+    "classification_unresolved":  [
+
+                                  ],
+    "shared_candidates":  [
+
+                          ]
+}

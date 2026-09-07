@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 COPY pyproject.toml README.md ./
-COPY src ./src
+COPY 02_ai/src ./02_ai/src
 
 RUN python -m pip install --upgrade pip \
     && python -m pip install --no-cache-dir -e ".[dev]"

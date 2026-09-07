@@ -1,0 +1,73 @@
+[
+  {
+    "policy_candidate_id": "PC-011",
+    "requirement_ids": [
+      "RC-00057",
+      "RC-00058",
+      "RC-00059"
+    ],
+    "control_ids": [
+      "CTRL-RUNTIME-010"
+    ],
+    "test_ids": [
+      "TEST-028",
+      "TEST-029"
+    ],
+    "workload_scope": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address",
+      "customer_due_diligence"
+    ],
+    "actor_scope": [
+      "가상자산사업자",
+      "금융기관"
+    ],
+    "purpose_scope": [
+      "?????? ? ????",
+      "고객과 거래 시",
+      "해외 가상자산사업자 및 개인지갑과의 거래"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address",
+      "customer_due_diligence"
+    ],
+    "data_class": [
+      "가상자산주소",
+      "가상자산 이전거래",
+      "개인지갑",
+      "고객 신원",
+      "실제소유자 여부",
+      "거래 목적"
+    ],
+    "applicability": "Candidate applicability derived from linked Requirement Candidates; not an active runtime policy.",
+    "conditions": [
+      "?????? ? ????",
+      "고객과 거래 시",
+      "해외 가상자산사업자 및 개인지갑과의 거래"
+    ],
+    "candidate_action": "REVIEW",
+    "candidate_transform": "UNRESOLVED",
+    "candidate_transform_options": [
+      "FIELD-SEPARATION",
+      "MASK",
+      "KEEP"
+    ],
+    "reason_codes": [
+      "GR-0022",
+      "REQUIREMENT_DERIVED_CANDIDATE"
+    ],
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "policy_maturity": "VALIDATION_REQUIRED",
+    "validation_dependencies": [
+      "data_evaluation_artifact",
+      "evidence_backlog_resolution",
+      "runtime_policy_validation"
+    ],
+    "promotion_blocked": true,
+    "status": "VALIDATION_REQUIRED",
+    "rationale": "Digital asset field separation is runtime-relevant, but REVIEW_REQUIRED wallet evidence blocks promotion."
+  }
+]

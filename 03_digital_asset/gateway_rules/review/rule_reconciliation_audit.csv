@@ -1,0 +1,4 @@
+rule_id,previous_decision,final_decision,evidence_refs_before,evidence_refs_after,verified_evidence_count,review_required_evidence_count,invalid_evidence_count,decision_supported,controls_supported,boundary_violation,action,reason
+GR-0020,REVIEW,REVIEW,EV-00050;EV-00051;EV-00052,EV-00050;EV-00051;EV-00052,3,0,0,Y,Y,N,UPDATE,condition label updated because referenced Evidence is now VERIFIED but still requires human legal/policy review; rule_name updated to remove stale source-review wording
+GR-0021,REVIEW,REVIEW,EV-00053;EV-00054;EV-00055,EV-00053;EV-00054;EV-00055,0,3,0,Y,Y,N,KEEP,"decision, evidence_refs, and controls reconcile with frozen Evidence"
+GR-0022,REVIEW,REVIEW,EV-00056;EV-00057;EV-00058;EV-00059,EV-00056;EV-00057;EV-00058;EV-00059,2,2,0,Y,Y,N,UPDATE,unsupported required_controls removed or reduced to VERIFIED-supported controls

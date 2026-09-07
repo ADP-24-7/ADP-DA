@@ -1,0 +1,76 @@
+{
+  "artifact_id": "EVAL-AI-004",
+  "artifact_version": "v1",
+  "status": "candidate",
+  "workload_id": "UNMAPPED",
+  "experiment_id": "EVAL-AI-004",
+  "dataset_version": "TBD",
+  "source_ids": [
+    "02_ai/notebooks/04_evaluation_ai_legal_constraint_v1.ipynb",
+    "02_ai/evidence_ontology/processed/evidence_master.json",
+    "02_ai/evidence_ontology/processed/requirement_candidates.json",
+    "02_ai/docs/AI_POLICY_VALIDATION.md"
+  ],
+  "metrics": [
+    {
+      "name": "legal_raw_article_count",
+      "value": 248,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "constraint_candidate_article_count",
+      "value": 120,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "core_legal_constraint_count",
+      "value": 27,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "consent_third_party_co_occurrence",
+      "value": 9,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "purpose_limitation_third_party_co_occurrence",
+      "value": 8,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "consent_security_co_occurrence",
+      "value": 7,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "pseudonymization_reidentification_lift",
+      "value": 4.167,
+      "unit": "lift",
+      "baseline": null,
+      "threshold": null
+    }
+  ],
+  "threshold_basis": "UNRESOLVED: legal constraints are structured as control candidates, not final legal approval or runtime thresholds.",
+  "claim_scope": "Legal Constraint analysis supports Law -> Article -> Obligation/Condition -> Gateway Control Candidate traceability for AI-related data handling.",
+  "limitations": [
+    "Final legal judgment remains UNRESOLVED.",
+    "Final ALLOW/BLOCK/TRANSFORM/REVIEW remains UNRESOLVED.",
+    "This artifact does not promote any Policy Candidate to Runtime Policy."
+  ],
+  "failure_cases": [
+    "UNRESOLVED: legal/runtime failure cases were not executed as BE runtime tests in this notebook."
+  ],
+  "digest": "TBD"
+}

@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-08-26T11:32:00+09:00",
+  "note": "Initial manifest records official sources discovered for this module. PDF attachment capture is intentionally marked MANUAL_REQUIRED unless a stable attachment URL is verified.",
+  "sources": [
+    {
+      "source_id": "law_pipa",
+      "status": "COLLECTED",
+      "reason": "Official law text captured from 국가법령정보센터 webpage into seed_law_articles.json."
+    },
+    {
+      "source_id": "law_credit_info",
+      "status": "COLLECTED",
+      "reason": "Official enforcement decree text captured from 국가법령정보센터 webpage into seed_law_articles.json."
+    }
+  ]
+}

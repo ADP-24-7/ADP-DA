@@ -1,0 +1,92 @@
+[
+  {
+    "control_id": "CTRL-GOV-007",
+    "requirement_ids": [
+      "RC-00050",
+      "RC-00051",
+      "RC-00052"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "Digital asset safeguarding review control",
+    "objective": "Preserve digital asset safeguarding requirements as compliance review controls.",
+    "enforcement_point": [
+      "digital_asset_review"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "implementation_boundary": "Governance control; not a field-level runtime policy.",
+    "validation_requirement": "safeguarding review packet",
+    "provenance": {
+      "source": "03_digital_asset/evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0020"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "PROJECT_PROVISIONAL"
+  },
+  {
+    "control_id": "CTRL-REF-004",
+    "requirement_ids": [
+      "RC-00053",
+      "RC-00054",
+      "RC-00055",
+      "RC-00056"
+    ],
+    "control_type": "HUMAN_REVIEW",
+    "control_name": "Digital asset definition and transfer backlog control",
+    "objective": "Keep REVIEW_REQUIRED digital asset definition and transfer references in backlog until verified.",
+    "enforcement_point": [
+      "evidence_backlog",
+      "digital_asset_review"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "implementation_boundary": "Backlog and reference control only.",
+    "validation_requirement": "source verification result",
+    "provenance": {
+      "source": "03_digital_asset/evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0021",
+        "GR-0022"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  },
+  {
+    "control_id": "CTRL-RUNTIME-010",
+    "requirement_ids": [
+      "RC-00057",
+      "RC-00058",
+      "RC-00059"
+    ],
+    "control_type": "DIGITAL_ASSET_FIELD_SEPARATION",
+    "control_name": "Digital asset wallet and CDD field separation control",
+    "objective": "Separate wallet, transaction, and customer due-diligence fields for routing and review without deciding a final transform.",
+    "enforcement_point": [
+      "digital_asset_gateway",
+      "field_classifier"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address",
+      "customer_due_diligence"
+    ],
+    "implementation_boundary": "Runtime field classification candidate; REVIEW_REQUIRED wallet requirement blocks promotion.",
+    "validation_requirement": "wallet/CDD fixture, field classification report, audit trace",
+    "provenance": {
+      "source": "03_digital_asset/evidence_ontology/processed/requirement_candidates.json",
+      "legacy_rule_ids": [
+        "GR-0022"
+      ],
+      "note": "Designed from Requirement Candidate meaning; legacy GR is provenance only."
+    },
+    "maturity": "VALIDATION_REQUIRED"
+  }
+]

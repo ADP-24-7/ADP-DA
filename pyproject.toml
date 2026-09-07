@@ -11,6 +11,7 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "fastapi==0.116.1",
     "numpy==2.2.6",
+    "openai==3.6.0",
     "pandas==2.3.2",
     "pydantic==2.11.7",
     "python-dotenv==1.1.1",
@@ -29,15 +30,17 @@ notebook = [
     "ipykernel==6.30.1",
     "jupyterlab==4.4.6",
     "matplotlib==3.10.5",
+    "nbconvert==7.16.6",
+    "nbformat==5.10.4",
     "seaborn==0.13.2",
 ]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["02_ai/src"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src"]
+testpaths = ["02_ai/tests"]
+pythonpath = ["02_ai/src"]
 
 [tool.ruff]
 line-length = 100
@@ -50,3 +53,4 @@ select = ["E", "F", "I", "B", "UP"]
 python_version = "3.12"
 strict = true
 packages = ["adp_da"]
+mypy_path = "02_ai/src"

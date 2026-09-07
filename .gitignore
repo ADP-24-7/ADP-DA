@@ -6,8 +6,10 @@ __pycache__/
 .pycache/
 *.py[cod]
 .pytest_cache/
+pytest-cache-files-*/
 .mypy_cache/
 .ruff_cache/
+.tmp/
 .venv/
 venv/
 dist/

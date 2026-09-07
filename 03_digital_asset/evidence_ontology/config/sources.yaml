@@ -1,0 +1,24 @@
+﻿sources:
+  - source_id: fiu_aml_cdd_guide
+    source_domain: DIGITAL_ASSET
+    status: REFERENCED
+
+  - source_id: fsc_virtual_asset_policy_20260811
+    source_domain: DIGITAL_ASSET
+    status: REFERENCED
+
+  - source_id: law_special_financial_info
+    source_domain: DIGITAL_ASSET
+    status: REFERENCED
+
+  - source_id: law_special_financial_info_decree
+    source_domain: DIGITAL_ASSET
+    status: REFERENCED
+
+  - source_id: law_virtual_asset_user_protection
+    source_domain: DIGITAL_ASSET
+    status: REFERENCED
+
+  - source_id: law_virtual_asset_user_protection_decree
+    source_domain: DIGITAL_ASSET
+    status: REFERENCED

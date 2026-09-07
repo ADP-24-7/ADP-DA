@@ -1,0 +1,117 @@
+[
+  {
+    "rule_id": "GR-0020",
+    "rule_name": "Digital asset safeguarding compliance review",
+    "domain": "DIGITAL_ASSET",
+    "priority": 212,
+    "when": {
+      "data_type": [
+        "이용자의 예치금",
+        "예치금"
+      ],
+      "processing_context": [
+        "digital_asset_activity",
+        "asset_safeguarding"
+      ],
+      "destination": [],
+      "conditions": [
+        "digital_asset_safeguarding_compliance_check_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00050",
+      "EV-00051",
+      "EV-00052"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0021",
+    "rule_name": "Digital asset definition evidence requiring human review",
+    "domain": "DIGITAL_ASSET",
+    "priority": 213,
+    "when": {
+      "data_type": [
+        "가상자산사업자",
+        "가상자산거래",
+        "가상자산"
+      ],
+      "processing_context": [
+        "digital_asset_activity",
+        "transaction_data"
+      ],
+      "destination": [],
+      "conditions": [
+        "source_evidence_review_required"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00053",
+      "EV-00054",
+      "EV-00055"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  },
+  {
+    "rule_id": "GR-0022",
+    "rule_name": "Digital asset transfer wallet and CDD evidence requiring human review",
+    "domain": "DIGITAL_ASSET",
+    "priority": 214,
+    "when": {
+      "data_type": [
+        "가상자산주소",
+        "가상자산 이전거래",
+        "고객 신원",
+        "실제소유자 여부",
+        "거래 목적"
+      ],
+      "processing_context": [
+        "digital_asset_activity",
+        "transaction_data",
+        "wallet_address",
+        "customer_due_diligence"
+      ],
+      "destination": [],
+      "conditions": [
+        "source_evidence_review_required",
+        "wallet_or_cdd_information_present"
+      ]
+    },
+    "evidence_refs": [
+      "EV-00056",
+      "EV-00057",
+      "EV-00058",
+      "EV-00059"
+    ],
+    "decision": {
+      "action": "REVIEW",
+      "required_controls": [
+        "DETECT"
+      ],
+      "transform_required": false,
+      "human_review_required": true
+    },
+    "audit": {
+      "log_required": true,
+      "evidence_trace_required": true
+    }
+  }
+]

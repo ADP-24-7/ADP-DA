@@ -1,0 +1,18 @@
+﻿field,obligation,treatment,decision,reason
+LoanID,REQUIRED_EXACT,KEEP_EXACT_PROTECTED,ALLOW,대출 업무 수행에 정확한 고유 식별자가 필수적임
+AccountID,PSEUDONYMIZABLE,HMAC_PSEUDO,TRANSFORM,관계 보존이 필요하지만 실제 식별자는 외부 AI에 노출되지 않도록 가명 처리 필요
+LoanStatusID,REQUIRED_EXACT,KEEP_EXACT_PROTECTED,ALLOW,대출 상태 확인에 정확한 값이 필수
+PrincipalAmount,CONDITIONAL_EXACT,KEEP_EXACT_PROTECTED,ALLOW,대출 심사 및 상담에 정확한 원금 수치가 필요하나 Utility 손실을 고려하여 보호 필요
+InterestRate,CONDITIONAL_EXACT,KEEP_EXACT_PROTECTED,ALLOW,금리 정보는 대출 업무에 필수적이지만 정확도와 프라이버시 균형 필요
+StartDate,MINIMIZABLE,GENERALIZE,TRANSFORM,시작일자 정확한 날짜가 업무에 불필요하므로 기간 정보로 일반화 처리
+EstimatedEndDate,MINIMIZABLE,GENERALIZE,TRANSFORM,종료일자 정확한 날짜가 업무에 불필요하므로 기간 정보로 일반화 처리
+CustomerID,PSEUDONYMIZABLE,VAULT_TOKEN,TRANSFORM,관계 식별자이지만 실제 값은 외부 AI에 노출되지 않도록 바우트 토큰으로 치환 필요
+AccountTypeID,REQUIRED_EXACT,KEEP_EXACT_PROTECTED,ALLOW,계좌 유형 식별에 정확한 값이 필요
+AccountStatusID,REQUIRED_EXACT,KEEP_EXACT_PROTECTED,ALLOW,계좌 상태 확인에 정확한 값이 필수
+Balance,CONDITIONAL_EXACT,KEEP_EXACT_PROTECTED,ALLOW,잔액 정보는 대출 업무 핵심 수치이나 Utility 손실을 고려하여 보호 필요
+OpeningDate,MINIMIZABLE,GENERALIZE,TRANSFORM,개설일자 정확한 날짜가 업무에 불필요하므로 기간 정보로 일반화 처리
+FirstName,PROHIBITED,REMOVE,BLOCK,이름은 직접식별정보이며 외부 AI 업무에 실제값이 불필요하므로 차단
+LastName,PROHIBITED,REMOVE,BLOCK,성명은 직접식별정보이며 외부 AI 업무에 실제값이 불필요하므로 차단
+DateOfBirth,MINIMIZABLE,MASK,TRANSFORM,생년월일은 정확한 날짜가 업무에 불필요하므로 연도만 마스킹 또는 일반화 처리
+AddressID,PROHIBITED,BLOCK,BLOCK,주소 식별자는 외부 전송 금지 대상이며 차단 처리
+CustomerTypeID,REQUIRED_EXACT,KEEP_EXACT_PROTECTED,ALLOW,고객 유형 분류에 정확한 값이 필요
