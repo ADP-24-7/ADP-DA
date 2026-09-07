@@ -40,3 +40,6 @@ jobs:
 
       - name: Test
         run: python -m pytest 02_ai/tests
+
+      - name: Digital Asset Test
+        run: python -m pytest 03_digital_asset/tests
