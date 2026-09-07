@@ -1,0 +1,217 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "AI-TRANSFORM-DECISION-MATRIX-FINAL",
+  "artifact_version": "final",
+  "source_artifact_ref": "02_ai/artifacts/ai_handoff_vNext/runtime_contract/RTC-AI-CUSTOMER-SUPPORT-VNEXT.json",
+  "decisions": [
+    {
+      "field": "caller",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "role",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "workload",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "purpose",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001",
+        "EVAL-AI-004"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "requested_field_scope",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-002",
+        "EVAL-AI-004"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "model_identifier",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "MODEL_PROVIDER",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "tool_action_identifier",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "TOOL_PROVIDER",
+        "FPG_TRACE"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "model_or_tool_request_payload",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "MINIMIZATION_ALLOWED",
+      "transform_intent": "MINIMIZE",
+      "transform_method": "CONTRACT_GAP",
+      "transform_parameter": "MASK_PARAMETER=ANALYST_DECISION_REQUIRED",
+      "destination": [
+        "MODEL_PROVIDER",
+        "TOOL_PROVIDER"
+      ],
+      "rationale": "EVAL-AI-003 supports transform tradeoff behavior, but does not select a field-level MASK/HMAC/TOKEN method or parameter.",
+      "evidence_refs": [
+        "EVAL-AI-002",
+        "EVAL-AI-003",
+        "EVAL-AI-004"
+      ],
+      "decision_status": "ANALYST_DECISION_REQUIRED"
+    },
+    {
+      "field": "internal_policy_evidence",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "INTERNAL_ONLY",
+      "transform_intent": "OMIT",
+      "transform_method": "FIELD_DROP",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-004"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "request_id",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-001"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "model_output",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "FORMAT_TRANSFORM_ALLOWED",
+      "transform_intent": "CANONICALIZE",
+      "transform_method": "FORMAT_NORMALIZE",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "rationale": "FORMAT_NORMALIZE is limited to non-lossy post-execution response formatting/canonicalization; it must not rewrite model output meaning.",
+      "evidence_refs": [
+        "EVAL-AI-002",
+        "EVAL-AI-004"
+      ],
+      "decision_status": "RESOLVED"
+    },
+    {
+      "field": "response_metadata",
+      "runtime_data_class": "UNMAPPED",
+      "field_requirement": "FORMAT_TRANSFORM_ALLOWED",
+      "transform_intent": "MAP_SCHEMA",
+      "transform_method": "SCHEMA_MAPPING",
+      "transform_parameter": "NOT_APPLICABLE",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "rationale": "Resolved from AI vNext runtime contract and referenced v1 evidence.",
+      "evidence_refs": [
+        "EVAL-AI-004"
+      ],
+      "decision_status": "RESOLVED"
+    }
+  ]
+}

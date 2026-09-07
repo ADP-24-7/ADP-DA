@@ -1,0 +1,49 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "FPG-FINAL-COMMON-CONSISTENCY",
+  "artifact_version": "final",
+  "status": "PASS",
+  "validation_errors": [],
+  "assertions": [
+    {
+      "assertion": "ai_common_fields_compatible",
+      "status": "PASS",
+      "field": null,
+      "destination": null,
+      "rule": "ai_common_fields_compatible",
+      "detail": "AI contract exposes all common fields."
+    },
+    {
+      "assertion": "da_common_fields_compatible",
+      "status": "PASS",
+      "field": null,
+      "destination": null,
+      "rule": "da_common_fields_compatible",
+      "detail": "Digital Asset contract exposes all common fields."
+    },
+    {
+      "assertion": "decision_enum_consistent",
+      "status": "PASS",
+      "field": null,
+      "destination": null,
+      "rule": "decision_enum_consistent",
+      "detail": "Common decisions are PASS/BLOCK/REVIEW."
+    },
+    {
+      "assertion": "ai_validation_pass",
+      "status": "PASS",
+      "field": null,
+      "destination": null,
+      "rule": "ai_validation_pass",
+      "detail": "AI vNext validation artifact passes."
+    },
+    {
+      "assertion": "da_validation_pass",
+      "status": "PASS",
+      "field": null,
+      "destination": null,
+      "rule": "da_validation_pass",
+      "detail": "Digital Asset vNext validation artifact passes."
+    }
+  ]
+}

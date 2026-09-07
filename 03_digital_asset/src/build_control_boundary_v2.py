@@ -19,8 +19,11 @@ PROCESSED = DA / "data" / "processed"
 CONTRACTS = DA / "contracts"
 OUTBOUND_V1 = DA / "artifacts" / "outbound_design_v1"
 OUTBOUND_V2 = DA / "artifacts" / "outbound_design_v2"
+OUTBOUND_VNEXT = DA / "artifacts" / "outbound_design_vNext"
 BE_V3 = DA / "artifacts" / "be_handoff_v3"
+BE_VNEXT = DA / "artifacts" / "be_handoff_vNext"
 DOC = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_V3.md"
+DOC_VNEXT = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_VNEXT.md"
 NOTEBOOK = DA / "notebooks" / "05_fpg_control_boundary_validation.ipynb"
 
 FORBIDDEN_RUNTIME_CONTROLS = {
@@ -37,6 +40,21 @@ UPSTREAM_BY_FIELD = {
     "counterparty_vasp": "Counterparty VASP status or reference must be produced by upstream VASP directory, Travel Rule, or compliance systems. FPG does not determine eligibility.",
     "originator_identity": "Customer identity is upstream/customer-master data. FPG checks presence and maps it to outbound requirement only.",
     "beneficiary_identity": "Beneficiary identity is upstream/customer-master or Travel Rule data. FPG checks presence and maps it to outbound requirement only.",
+}
+
+EXECUTION_RESULT_FIELDS = {"tx_hash", "execution_status", "timestamp"}
+
+APPROVED_REQUESTED_MATCH_FIELDS = {"amount", "asset", "originator_address", "beneficiary_address"}
+
+INTERNAL_DESTINATIONS = {"NOT_EXTERNALIZED", "INTERNAL_AUDIT_ONLY", "INTERNAL_RECONCILIATION_ONLY"}
+EXTERNAL_DESTINATIONS = {"BLOCKCHAIN_EXECUTION_SYSTEM", "TRAVEL_RULE_PROVIDER", "EXTERNAL_VASP"}
+
+PIPELINE_STAGE_BY_PHASE = {
+    "APPROVED_SOURCE_LOAD": "Approved Transaction Load",
+    "REQUEST_SOURCE_LOAD": "Approved Value vs Requested Value Match",
+    "UPSTREAM_SOURCE_RESOLUTION": "Required Field Resolution",
+    "PRE_EXECUTION_PAYLOAD_BUILD": "Destination-specific Payload Build",
+    "EXTERNAL_EXECUTION_RESPONSE_BINDING": "Execution Result Binding",
 }
 
 RUNTIME_CONTROL_BY_FIELD = {
@@ -79,10 +97,32 @@ EXACT_CLASS_BY_FIELD = {
 }
 
 TRANSFORM_BY_EXACT_CLASS = {
-    "EXACT_REQUIRED": ["PASS_THROUGH", "FORMAT_NORMALIZE"],
+    "EXACT_REQUIRED": ["PASS_THROUGH"],
     "FORMAT_TRANSFORM_ALLOWED": ["MAP_TO_EXTERNAL_SCHEMA", "FORMAT_NORMALIZE"],
     "MINIMIZATION_ALLOWED": ["MINIMIZE", "MAP_TO_EXTERNAL_SCHEMA"],
     "INTERNAL_ONLY": ["OMIT"],
+}
+
+ALLOWED_TRANSFORM_BY_EXACT_CLASS = {
+    "EXACT_REQUIRED": {"PASS_THROUGH"},
+    "FORMAT_TRANSFORM_ALLOWED": {"MAP_TO_EXTERNAL_SCHEMA", "FORMAT_NORMALIZE"},
+    "MINIMIZATION_ALLOWED": {"MINIMIZE", "MAP_TO_EXTERNAL_SCHEMA"},
+    "INTERNAL_ONLY": {"OMIT"},
+}
+
+NON_MUTATING_CANONICALIZATION_BY_FIELD = {
+    "amount": "NONE_CONTRACTED",
+    "asset": "NONE_CONTRACTED",
+    "originator_address": "NONE_CONTRACTED",
+    "beneficiary_address": "NONE_CONTRACTED",
+    "transaction_id": "NONE_CONTRACTED",
+    "tx_hash": "NONE_CONTRACTED",
+    "timestamp": "NONE_CONTRACTED",
+    "execution_status": "NONE_CONTRACTED",
+    "originator_identity": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+    "beneficiary_identity": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+    "counterparty_vasp": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+    "kyc_status": "NONE_CONTRACTED_INTERNAL_ONLY",
 }
 
 DESTINATION_BY_FIELD = {
@@ -146,7 +186,68 @@ def digest(payload: Any) -> dict[str, str]:
 def normalize_source(source: str, field: str) -> tuple[str, str, str]:
     if field in UPSTREAM_BY_FIELD:
         return "UPSTREAM_PRODUCED_DATA", "REQUIRED_OUTBOUND_FIELD_PRESENCE", UPSTREAM_BY_FIELD[field]
+    if field in EXECUTION_RESULT_FIELDS:
+        return "EXTERNAL_EXECUTION_RESPONSE", "TRACE_BINDING", "External execution result fields are bound only after external handoff; they are not pre-execution outbound inputs."
     return "FPG_ENFORCEMENT_INPUT", RUNTIME_CONTROL_BY_FIELD[field], "FPG validates outbound handoff readiness only."
+
+
+def source_contract_for_field(field: str, runtime_control: str) -> dict[str, Any]:
+    if field in EXECUTION_RESULT_FIELDS:
+        return {
+            "source_phase": "POST_EXECUTION",
+            "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+            "approved_source": "NOT_APPLICABLE",
+            "requested_source": "NOT_PRE_EXECUTION_INPUT",
+            "comparison_sources": [],
+            "pre_execution_required": False,
+            "post_execution_binding": True,
+            "pipeline_stage": PIPELINE_STAGE_BY_PHASE["EXTERNAL_EXECUTION_RESPONSE_BINDING"],
+        }
+    if runtime_control == "APPROVED_VS_REQUESTED_MATCH":
+        return {
+            "source_phase": "PRE_EXECUTION",
+            "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+            "approved_source": "APPROVED_TRANSACTION|APPROVED_POLICY_SNAPSHOT",
+            "requested_source": "OUTBOUND_REQUEST",
+            "comparison_sources": ["APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT", "OUTBOUND_REQUEST"],
+            "pre_execution_required": True,
+            "post_execution_binding": False,
+            "pipeline_stage": PIPELINE_STAGE_BY_PHASE["REQUEST_SOURCE_LOAD"],
+        }
+    if field in UPSTREAM_BY_FIELD:
+        return {
+            "source_phase": "PRE_EXECUTION",
+            "source_type": "UPSTREAM_PRODUCED_DATA",
+            "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+            "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+            "comparison_sources": [],
+            "pre_execution_required": True,
+            "post_execution_binding": False,
+            "pipeline_stage": PIPELINE_STAGE_BY_PHASE["UPSTREAM_SOURCE_RESOLUTION"],
+        }
+    return {
+        "source_phase": "PRE_EXECUTION",
+        "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+        "approved_source": "APPROVED_TRANSACTION",
+        "requested_source": "OUTBOUND_REQUEST",
+        "comparison_sources": [],
+        "pre_execution_required": True,
+        "post_execution_binding": False,
+        "pipeline_stage": PIPELINE_STAGE_BY_PHASE["APPROVED_SOURCE_LOAD"],
+    }
+
+
+def destination_transform_for_field(field: str, exact_class: str) -> dict[str, str]:
+    destinations = DESTINATION_BY_FIELD[field]
+    if exact_class == "EXACT_REQUIRED":
+        return {destination: "PASS_THROUGH" for destination in destinations}
+    if exact_class == "INTERNAL_ONLY":
+        return {destination: "OMIT" for destination in destinations}
+    if exact_class == "MINIMIZATION_ALLOWED":
+        return {destination: "MINIMIZE" if destination in EXTERNAL_DESTINATIONS else "MAP_TO_EXTERNAL_SCHEMA" for destination in destinations}
+    if exact_class == "FORMAT_TRANSFORM_ALLOWED":
+        return {destination: "MAP_TO_EXTERNAL_SCHEMA" if destination in EXTERNAL_DESTINATIONS else "FORMAT_NORMALIZE" for destination in destinations}
+    return {destination: "CONTRACT_GAP" for destination in destinations}
 
 
 def build_matrix_v2() -> dict[str, Any]:
@@ -157,6 +258,8 @@ def build_matrix_v2() -> dict[str, Any]:
         responsibility_layer, runtime_control, boundary_note = normalize_source(item["source"], field)
         exact_class = EXACT_CLASS_BY_FIELD[field]
         transforms = TRANSFORM_BY_EXACT_CLASS[exact_class]
+        source_contract = source_contract_for_field(field, runtime_control)
+        destination_transform = destination_transform_for_field(field, exact_class)
         requirement_type = "REQUIRED_FIELD_PRESENCE" if field in UPSTREAM_BY_FIELD else item["evidence_type"]
         if runtime_control == "APPROVED_VS_REQUESTED_MATCH":
             validation_type = "MATCH_APPROVED_VALUE"
@@ -172,11 +275,19 @@ def build_matrix_v2() -> dict[str, Any]:
                 "responsibility_layer": responsibility_layer,
                 "runtime_control": runtime_control,
                 "legal_basis": item["legal_basis"],
-                "approved_source": "APPROVED_TRANSACTION|APPROVED_POLICY_SNAPSHOT" if runtime_control == "APPROVED_VS_REQUESTED_MATCH" else "UPSTREAM_SYSTEM_OR_PROVIDER",
-                "requested_source": "OUTBOUND_REQUEST",
+                "approved_source": source_contract["approved_source"],
+                "requested_source": source_contract["requested_source"],
+                "source_phase": source_contract["source_phase"],
+                "source_type": source_contract["source_type"],
+                "comparison_sources": source_contract["comparison_sources"],
+                "pipeline_stage": source_contract["pipeline_stage"],
+                "pre_execution_required": source_contract["pre_execution_required"],
+                "post_execution_binding": source_contract["post_execution_binding"],
                 "required_fields": item["required_fields"],
                 "field_roles": ROLE_BY_FIELD[field],
                 "transform": transforms,
+                "comparison_canonicalization": NON_MUTATING_CANONICALIZATION_BY_FIELD[field],
+                "outbound_transform_by_destination": destination_transform,
                 "destination": DESTINATION_BY_FIELD[field],
                 "required_exact": exact_class,
                 "validation_type": validation_type,
@@ -189,9 +300,9 @@ def build_matrix_v2() -> dict[str, Any]:
         )
     return {
         "schema_version": "v2",
-        "artifact_id": "ORM-DA-REGULATED-TRANSFER-002",
-        "artifact_version": "v2",
-        "scope": "Control-boundary-corrected Digital Asset outbound handoff requirement matrix.",
+        "artifact_id": "ORM-DA-REGULATED-TRANSFER-VNEXT",
+        "artifact_version": "vNext",
+        "scope": "BE handoff-ready Digital Asset outbound runtime contract matrix.",
         "fpg_boundary": {
             "role": "Policy Enforcement Gateway for already-approved transactions before external execution handoff.",
             "not_responsible_for": sorted(FORBIDDEN_RUNTIME_CONTROLS | {"WALLET_SIGNING_CUSTODY", "SETTLEMENT_FINALITY"}),
@@ -208,6 +319,13 @@ def build_matrix_v2() -> dict[str, Any]:
             "PASS": "Current outbound handoff requirements are satisfied. This is not transaction approval.",
             "BLOCK": "The transaction may already be approved, but the current outbound request does not satisfy approved values or mandatory outbound handoff conditions.",
             "REVIEW": "Information required to construct outbound handoff is unresolved, unmapped, pending, or ambiguous. Do not use KYC/AML/VASP risk judgment as FPG runtime control.",
+        },
+        "transform_semantics": {
+            "PASS_THROUGH": "Outbound value must be emitted without mutation.",
+            "FORMAT_NORMALIZE": "Allowed only as non-lossy, non-mutating comparison canonicalization unless explicitly destination-scoped for FORMAT_TRANSFORM_ALLOWED fields.",
+            "MINIMIZE": "Destination-specific payload reduction for MINIMIZATION_ALLOWED fields; schema remains CONTRACT_GAP until BE/provider contract exists.",
+            "MAP_TO_EXTERNAL_SCHEMA": "Destination-specific mapping into provider schema; provider schema remains CONTRACT_GAP.",
+            "OMIT": "Do not externalize the field value.",
         },
         "requirements": requirements,
     }
@@ -231,8 +349,8 @@ def runtime_pipeline_v2() -> dict[str, Any]:
     ]
     return {
         "schema_version": "v1",
-        "artifact_id": "RTP-DA-REGULATED-TRANSFER-002",
-        "artifact_version": "v2",
+        "artifact_id": "RTP-DA-REGULATED-TRANSFER-VNEXT",
+        "artifact_version": "vNext",
         "steps": [
             {
                 "step_number": i,
@@ -255,7 +373,7 @@ def schema_files() -> None:
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "title": "Digital Asset Outbound Requirement Matrix v2",
             "type": "object",
-            "required": ["schema_version", "artifact_id", "artifact_version", "fpg_boundary", "decision_semantics", "requirements"],
+            "required": ["schema_version", "artifact_id", "artifact_version", "fpg_boundary", "decision_semantics", "transform_semantics", "requirements"],
             "properties": {
                 "schema_version": {"type": "string", "const": "v2"},
                 "artifact_id": {"type": "string"},
@@ -263,6 +381,7 @@ def schema_files() -> None:
                 "scope": {"type": "string"},
                 "fpg_boundary": {"type": "object"},
                 "decision_semantics": {"type": "object"},
+                "transform_semantics": {"type": "object"},
                 "requirements": {
                     "type": "array",
                     "items": {
@@ -276,9 +395,17 @@ def schema_files() -> None:
                             "legal_basis",
                             "approved_source",
                             "requested_source",
+                            "source_phase",
+                            "source_type",
+                            "comparison_sources",
+                            "pipeline_stage",
+                            "pre_execution_required",
+                            "post_execution_binding",
                             "required_fields",
                             "field_roles",
                             "transform",
+                            "comparison_canonicalization",
+                            "outbound_transform_by_destination",
                             "destination",
                             "required_exact",
                             "validation_type",
@@ -297,9 +424,17 @@ def schema_files() -> None:
                             "legal_basis": {"type": "string"},
                             "approved_source": {"type": "string"},
                             "requested_source": {"type": "string"},
+                            "source_phase": {"type": "string"},
+                            "source_type": {"type": "string"},
+                            "comparison_sources": {"type": "array", "items": {"type": "string"}},
+                            "pipeline_stage": {"type": "string"},
+                            "pre_execution_required": {"type": "boolean"},
+                            "post_execution_binding": {"type": "boolean"},
                             "required_fields": {"type": "array", "items": {"type": "string"}},
                             "field_roles": {"type": "array", "items": {"type": "string"}},
                             "transform": {"type": "array", "items": {"type": "string"}},
+                            "comparison_canonicalization": {"type": "string"},
+                            "outbound_transform_by_destination": {"type": "object", "additionalProperties": {"type": "string"}},
                             "destination": {"type": "array", "items": {"type": "string"}},
                             "required_exact": {"type": "string"},
                             "validation_type": {"type": "string"},
@@ -322,11 +457,13 @@ def schema_files() -> None:
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "title": "Digital Asset Control Boundary Validation",
             "type": "object",
-            "required": ["schema_version", "artifact_id", "artifact_version", "assertions"],
+            "required": ["schema_version", "artifact_id", "artifact_version", "status", "failures", "assertions"],
             "properties": {
                 "schema_version": {"type": "string", "const": "v1"},
                 "artifact_id": {"type": "string"},
                 "artifact_version": {"type": "string"},
+                "status": {"type": "string"},
+                "failures": {"type": "array", "items": {"type": "object"}},
                 "assertions": {"type": "array", "items": {"type": "object"}},
             },
             "additionalProperties": False,
@@ -338,14 +475,14 @@ def be_handoff_v3(matrix: dict[str, Any], pipeline: dict[str, Any]) -> None:
     requirements = matrix["requirements"]
     policy_eval = {
         "schema_version": "v1",
-        "artifact_id": "PE-DA-REGULATED-TRANSFER-003",
-        "artifact_version": "v3",
+        "artifact_id": "PE-DA-REGULATED-TRANSFER-VNEXT",
+        "artifact_version": "vNext",
         "analysis_status": "candidate",
         "policy_action": "candidate_handoff",
-        "approved_policy_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-003",
+        "approved_policy_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-VNEXT",
         "execution_request_ref": "APPROVED_TRANSACTION_RUNTIME_INPUT",
-        "policy_rule_refs": [{"ref_id": row["requirement_id"], "ref_type": "outbound_requirement", "version": "v2"} for row in requirements],
-        "required_input_fields": sorted({field for row in requirements for field in row["required_fields"]}),
+        "policy_rule_refs": [{"ref_id": row["requirement_id"], "ref_type": "outbound_requirement", "version": "vNext"} for row in requirements],
+        "required_input_fields": sorted({field for row in requirements if row["pre_execution_required"] for field in row["required_fields"]}),
         "decision_values": ["PASS", "BLOCK", "REVIEW"],
         "handoff_chain": [
             "Approved Transaction",
@@ -366,7 +503,7 @@ def be_handoff_v3(matrix: dict[str, Any], pipeline: dict[str, Any]) -> None:
     }
     binding = {
         "schema_version": "v1",
-        "binding_version": "v3",
+        "binding_version": "vNext",
         "bindings": [
             {
                 "digital_asset_runtime": "REGULATED_VIRTUAL_ASSET_TRANSFER_OUTBOUND_HANDOFF",
@@ -384,15 +521,19 @@ def be_handoff_v3(matrix: dict[str, Any], pipeline: dict[str, Any]) -> None:
     }
     crosswalk = {
         "schema_version": "v1",
-        "crosswalk_version": "v3",
+        "crosswalk_version": "vNext",
         "mappings": [
             {
                 "required_field": field,
                 "runtime_data_class": "UNMAPPED",
                 "runtime_control": row["runtime_control"],
                 "responsibility_layer": row["responsibility_layer"],
+                "source_phase": row["source_phase"],
+                "source_type": row["source_type"],
                 "field_roles": row["field_roles"],
                 "transform_instruction": row["transform"],
+                "comparison_canonicalization": row["comparison_canonicalization"],
+                "outbound_transform_by_destination": row["outbound_transform_by_destination"],
                 "destination": row["destination"],
                 "required_exact": row["required_exact"],
                 "mapping_status": "unmapped",
@@ -404,12 +545,13 @@ def be_handoff_v3(matrix: dict[str, Any], pipeline: dict[str, Any]) -> None:
     }
     outbound = {
         "schema_version": "v2",
-        "artifact_id": "OR-DA-REGULATED-TRANSFER-002",
-        "artifact_version": "v2",
+        "artifact_id": "OR-DA-REGULATED-TRANSFER-VNEXT",
+        "artifact_version": "vNext",
         "matrix_ref": matrix["artifact_id"],
         "pipeline_ref": pipeline["artifact_id"],
         "requirements": requirements,
         "contract_gap": [
+            "BE-owned runtime enum",
             "Approved transaction runtime input schema",
             "Approved policy snapshot schema",
             "Travel Rule provider payload schema",
@@ -421,34 +563,207 @@ def be_handoff_v3(matrix: dict[str, Any], pipeline: dict[str, Any]) -> None:
             "Audit event schema",
         ],
     }
-    write_json(BE_V3 / "policy_evaluations" / "PE-DA-REGULATED-TRANSFER-003.json", policy_eval)
-    write_json(BE_V3 / "bindings" / "DAB-REGULATED-TRANSFER-003.json", binding)
-    write_json(BE_V3 / "crosswalks" / "DA-RDC-REGULATED-TRANSFER-003.json", crosswalk)
-    write_json(BE_V3 / "outbound_requirements" / "OR-DA-REGULATED-TRANSFER-002.json", outbound)
+    write_json(BE_VNEXT / "policy_evaluations" / "PE-DA-REGULATED-TRANSFER-VNEXT.json", policy_eval)
+    write_json(BE_VNEXT / "bindings" / "DAB-REGULATED-TRANSFER-VNEXT.json", binding)
+    write_json(BE_VNEXT / "crosswalks" / "DA-RDC-REGULATED-TRANSFER-VNEXT.json", crosswalk)
+    write_json(BE_VNEXT / "outbound_requirements" / "OR-DA-REGULATED-TRANSFER-VNEXT.json", outbound)
 
 
 def validate_boundary(matrix: dict[str, Any], pipeline: dict[str, Any]) -> dict[str, Any]:
     runtime_controls = {row["runtime_control"] for row in matrix["requirements"]}
     text = json.dumps({"matrix": matrix, "pipeline": pipeline}, ensure_ascii=False)
-    assertions = [
-        ("no_KYC_STATUS_CHECK_runtime_control", "KYC_STATUS_CHECK" not in runtime_controls),
-        ("no_AML_CHECK_runtime_control", "AML_CHECK" not in runtime_controls),
-        ("no_VASP_ELIGIBILITY_CHECK_runtime_control", "VASP_ELIGIBILITY_CHECK" not in runtime_controls),
-        ("pass_not_transaction_approval", "not transaction approval" in matrix["decision_semantics"]["PASS"].lower()),
-        ("block_not_approval_cancellation", "approval cancellation" not in matrix["decision_semantics"]["BLOCK"].lower()),
-        ("approved_transaction_input_exists", "Approved Transaction Load" in text),
-        ("approved_requested_match_exists", "APPROVED_VS_REQUESTED_MATCH" in runtime_controls),
-        ("required_field_presence_exists", "REQUIRED_OUTBOUND_FIELD_PRESENCE" in runtime_controls),
-        ("transform_instruction_exists", "TRANSFORM_FIELD_SEPARATION" in matrix["fpg_boundary"]["runtime_controls"]),
-        ("destination_mapping_exists", "DESTINATION_SPECIFIC_PAYLOAD" in matrix["fpg_boundary"]["runtime_controls"]),
-        ("trace_binding_exists", "TRACE_BINDING" in runtime_controls),
-        ("required_exact_transform_no_conflict", all(not (row["required_exact"] == "INTERNAL_ONLY" and "PASS_THROUGH" in row["transform"]) for row in matrix["requirements"])),
-    ]
+    pipeline_steps = {step["name"]: step["step_number"] for step in pipeline["steps"]}
+    assertions = []
+
+    def add_assertion(
+        assertion: str,
+        passed: bool,
+        rule: str,
+        *,
+        field: str | None = None,
+        destination: str | None = None,
+        detail: str = "",
+    ) -> None:
+        assertions.append(
+            {
+                "assertion": assertion,
+                "status": "PASS" if passed else "FAIL",
+                "rule": rule,
+                "field": field,
+                "destination": destination,
+                "detail": detail,
+            }
+        )
+
+    add_assertion("no_KYC_STATUS_CHECK_runtime_control", "KYC_STATUS_CHECK" not in runtime_controls, "FORBIDDEN_RUNTIME_CONTROL")
+    add_assertion("no_AML_CHECK_runtime_control", "AML_CHECK" not in runtime_controls, "FORBIDDEN_RUNTIME_CONTROL")
+    add_assertion("no_VASP_ELIGIBILITY_CHECK_runtime_control", "VASP_ELIGIBILITY_CHECK" not in runtime_controls, "FORBIDDEN_RUNTIME_CONTROL")
+    add_assertion("pass_not_transaction_approval", "not transaction approval" in matrix["decision_semantics"]["PASS"].lower(), "DECISION_SEMANTICS")
+    add_assertion("block_not_approval_cancellation", "approval cancellation" not in matrix["decision_semantics"]["BLOCK"].lower(), "DECISION_SEMANTICS")
+    add_assertion("review_keeps_unresolved_mapping", "unresolved" in matrix["decision_semantics"]["REVIEW"].lower(), "DECISION_SEMANTICS")
+    add_assertion("approved_transaction_input_exists", "Approved Transaction Load" in text, "PIPELINE_REQUIRED_STEP")
+    add_assertion("approved_requested_match_exists", "APPROVED_VS_REQUESTED_MATCH" in runtime_controls, "RUNTIME_CONTROL_REQUIRED")
+    add_assertion("required_field_presence_exists", "REQUIRED_OUTBOUND_FIELD_PRESENCE" in runtime_controls, "RUNTIME_CONTROL_REQUIRED")
+    add_assertion("transform_instruction_exists", "TRANSFORM_FIELD_SEPARATION" in matrix["fpg_boundary"]["runtime_controls"], "RUNTIME_CONTROL_REQUIRED")
+    add_assertion("destination_mapping_exists", "DESTINATION_SPECIFIC_PAYLOAD" in matrix["fpg_boundary"]["runtime_controls"], "RUNTIME_CONTROL_REQUIRED")
+    add_assertion("trace_binding_exists", "TRACE_BINDING" in runtime_controls, "RUNTIME_CONTROL_REQUIRED")
+
+    for row in matrix["requirements"]:
+        field = row["required_fields"][0]
+        exact_class = row["required_exact"]
+        transforms = set(row["transform"])
+        destinations = set(row["destination"])
+        external_destinations = destinations & EXTERNAL_DESTINATIONS
+        destination_transform = row.get("outbound_transform_by_destination", {})
+        source_phase = row.get("source_phase")
+        source_type = row.get("source_type")
+        pipeline_stage = row.get("pipeline_stage")
+
+        disallowed = transforms - ALLOWED_TRANSFORM_BY_EXACT_CLASS[exact_class]
+        add_assertion(
+            "transform_allowed_for_class",
+            not disallowed,
+            "TRANSFORM_CLASS_COMPATIBILITY",
+            field=field,
+            detail=f"disallowed={sorted(disallowed)} allowed={sorted(ALLOWED_TRANSFORM_BY_EXACT_CLASS[exact_class])}",
+        )
+        add_assertion(
+            "exact_required_outbound_transform_whitelist",
+            exact_class != "EXACT_REQUIRED" or transforms <= {"PASS_THROUGH"},
+            "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+            field=field,
+            detail=f"transforms={sorted(transforms)}",
+        )
+        add_assertion(
+            "exact_required_no_mutating_normalization",
+            exact_class != "EXACT_REQUIRED" or "FORMAT_NORMALIZE" not in transforms,
+            "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+            field=field,
+            detail="FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform.",
+        )
+        add_assertion(
+            "internal_only_not_externalized",
+            exact_class != "INTERNAL_ONLY" or not external_destinations,
+            "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+            field=field,
+            detail=f"external_destinations={sorted(external_destinations)}",
+        )
+        add_assertion(
+            "internal_only_transform_omit_only",
+            exact_class != "INTERNAL_ONLY" or transforms <= {"OMIT"},
+            "INTERNAL_ONLY_OMIT_ONLY",
+            field=field,
+            detail=f"transforms={sorted(transforms)}",
+        )
+        add_assertion(
+            "minimization_destination_transform_explicit",
+            exact_class != "MINIMIZATION_ALLOWED" or destinations <= set(destination_transform),
+            "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+            field=field,
+            detail=f"destinations={sorted(destinations)} mapped={sorted(destination_transform)}",
+        )
+        for destination, transform in destination_transform.items():
+            add_assertion(
+                "destination_specific_transform_allowed",
+                transform in ALLOWED_TRANSFORM_BY_EXACT_CLASS[exact_class],
+                "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+                field=field,
+                destination=destination,
+                detail=f"transform={transform} class={exact_class}",
+            )
+        add_assertion(
+            "format_transform_class_whitelist",
+            exact_class != "FORMAT_TRANSFORM_ALLOWED" or transforms <= ALLOWED_TRANSFORM_BY_EXACT_CLASS["FORMAT_TRANSFORM_ALLOWED"],
+            "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+            field=field,
+            detail=f"transforms={sorted(transforms)}",
+        )
+        add_assertion(
+            "execution_result_not_pre_execution_payload",
+            field not in EXECUTION_RESULT_FIELDS or (source_phase == "POST_EXECUTION" and source_type == "EXTERNAL_EXECUTION_RESPONSE" and row.get("pre_execution_required") is False),
+            "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+            field=field,
+            detail=f"source_phase={source_phase} source_type={source_type} pre_execution_required={row.get('pre_execution_required')}",
+        )
+        add_assertion(
+            "transaction_id_not_external_execution_result",
+            field != "transaction_id" or source_type != "EXTERNAL_EXECUTION_RESPONSE",
+            "TRACE_IDENTIFIER_SEPARATION",
+            field=field,
+            detail=f"source_type={source_type}",
+        )
+        add_assertion(
+            "source_phase_pipeline_stage_exists",
+            pipeline_stage in PIPELINE_STAGE_BY_PHASE.values() and pipeline_stage in pipeline_steps,
+            "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+            field=field,
+            detail=f"pipeline_stage={pipeline_stage}",
+        )
+        if source_phase == "POST_EXECUTION":
+            add_assertion(
+                "post_execution_after_handoff",
+                pipeline_steps.get("Execution Result Binding", 0) > pipeline_steps.get("External Execution Handoff", 999),
+                "SOURCE_PHASE_PIPELINE_ORDERING",
+                field=field,
+                detail="Execution Result Binding must occur after External Execution Handoff.",
+            )
+        if row["runtime_control"] == "APPROVED_VS_REQUESTED_MATCH":
+            add_assertion(
+                "approved_requested_sources_present",
+                set(row.get("comparison_sources", [])) == {"APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT", "OUTBOUND_REQUEST"},
+                "APPROVED_REQUESTED_COMPARISON_SOURCE_PAIR",
+                field=field,
+                detail=f"comparison_sources={row.get('comparison_sources', [])}",
+            )
+
+    for forbidden in FORBIDDEN_RUNTIME_CONTROLS:
+        add_assertion(
+            f"no_forbidden_runtime_control_reentry_{forbidden}",
+            forbidden not in runtime_controls,
+            "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+            detail=forbidden,
+        )
+
+    failed = [assertion for assertion in assertions if assertion["status"] == "FAIL"]
     return {
         "schema_version": "v1",
-        "artifact_id": "CBV-DA-REGULATED-TRANSFER-001",
-        "artifact_version": "v1",
-        "assertions": [{"assertion": name, "status": "PASS" if passed else "FAIL"} for name, passed in assertions],
+        "artifact_id": "CBV-DA-REGULATED-TRANSFER-VNEXT",
+        "artifact_version": "vNext",
+        "status": "PASS" if not failed else "FAIL",
+        "failures": failed,
+        "assertions": assertions,
+    }
+
+
+def evaluate_handoff_decision(
+    *,
+    approved_requested_match: bool,
+    required_fields_resolved: bool,
+    mapping_resolved: bool,
+    forbidden_runtime_control: str | None = None,
+) -> dict[str, str]:
+    if forbidden_runtime_control in FORBIDDEN_RUNTIME_CONTROLS:
+        return {
+            "decision": "REVIEW",
+            "reason": "FORBIDDEN_RUNTIME_CONTROL",
+            "detail": "KYC/AML/VASP eligibility/risk/sanctions controls must remain upstream or external.",
+        }
+    if not approved_requested_match:
+        return {
+            "decision": "BLOCK",
+            "reason": "APPROVED_REQUESTED_MISMATCH",
+            "detail": "Outbound handoff stops; this is not transaction approval cancellation.",
+        }
+    if not required_fields_resolved or not mapping_resolved:
+        return {
+            "decision": "REVIEW",
+            "reason": "UNRESOLVED_MAPPING_OR_FIELD",
+            "detail": "Required handoff data or destination mapping is unresolved.",
+        }
+    return {
+        "decision": "PASS",
+        "reason": "HANDOFF_READY",
+        "detail": "Outbound handoff contract requirements are satisfied.",
     }
 
 
@@ -457,57 +772,44 @@ def developer_doc(matrix: dict[str, Any], pipeline: dict[str, Any], validation: 
     transform = Counter(t for row in reqs for t in row["transform"])
     destination = Counter(d for row in reqs for d in row["destination"])
     exact = Counter(row["required_exact"] for row in reqs)
-    DOC.parent.mkdir(parents=True, exist_ok=True)
-    DOC.write_text(
+    source_phase = Counter(row["source_phase"] for row in reqs)
+    DOC_VNEXT.parent.mkdir(parents=True, exist_ok=True)
+    DOC_VNEXT.write_text(
         "\n".join(
             [
-                "# BE Handoff Digital Asset V3",
+                "# BE Handoff Digital Asset vNext",
                 "",
-                "## 1. FPG Role",
+                "## A. DA에서 확정된 것",
                 "",
-                "FPG Digital Asset is a Policy Enforcement Gateway. It enforces approved-vs-requested consistency, outbound field presence, exact preservation, transform, destination payload mapping, and trace binding for already-approved transactions.",
+                "### Field responsibility",
                 "",
-                "## 2. Approved Transaction Input Layer",
+                "FPG Digital Asset is a Policy Enforcement Gateway for already-approved transactions before external execution handoff. It enforces approved-vs-requested consistency, upstream-produced outbound field presence, exact preservation, transform compatibility, destination payload separation, and trace binding.",
                 "",
-                "FPG input starts from an Approved Transaction plus an Approved Policy Snapshot. BE-owned identifiers remain CONTRACT_GAP until BE defines the runtime shape.",
+                "KYC execution, AML screening, VASP eligibility, sanctions screening, fraud/risk scoring, transaction approval, wallet custody/signing, and settlement finality are not FPG runtime controls.",
                 "",
-                "## 3. Upstream Responsibility",
-                "",
-                "KYC execution, AML screening, VASP eligibility, sanctions screening, fraud/risk scoring, and transaction approval are upstream or external responsibilities.",
-                "",
-                "## 4. FPG Runtime Responsibility",
-                "",
-                ", ".join(matrix["fpg_boundary"]["runtime_controls"]),
-                "",
-                "## 5. Legal Obligation vs Runtime Control",
-                "",
-                "Legal obligations remain represented, but KYC/AML/VASP eligibility obligations are not converted into FPG runtime decision controls.",
-                "",
-                "## 6. Required Field",
-                "",
-                ", ".join(sorted({field for row in reqs for field in row["required_fields"]})),
-                "",
-                "## 7. Source",
-                "",
-                "Sources are approved transaction, approved policy snapshot, upstream customer/compliance/provider data, blockchain execution layer, and external execution response.",
-                "",
-                "## 8. Match",
-                "",
-                "FPG compares approved asset, amount/limit, destination, beneficiary reference, and approved period against the outbound request.",
-                "",
-                "## 9. Transform",
-                "",
-                json.dumps(dict(transform), ensure_ascii=False),
-                "",
-                "## 10. Destination",
-                "",
-                json.dumps(dict(destination), ensure_ascii=False),
-                "",
-                "## 11. Required Exact",
+                "### Exact/minimization/internal classification",
                 "",
                 json.dumps(dict(exact), ensure_ascii=False),
                 "",
-                "## 12. PASS / BLOCK / REVIEW",
+                "### Source phase",
+                "",
+                json.dumps(dict(source_phase), ensure_ascii=False),
+                "",
+                "`tx_hash`, `execution_status`, and `timestamp` are POST_EXECUTION fields sourced from EXTERNAL_EXECUTION_RESPONSE. They are not pre-execution outbound request inputs. `transaction_id` remains an approved/request trace identifier and is distinct from external execution result fields.",
+                "",
+                "### Allowed transform semantics",
+                "",
+                json.dumps(matrix["transform_semantics"], ensure_ascii=False),
+                "",
+                "EXACT_REQUIRED outbound transform is restricted to PASS_THROUGH. Non-mutating comparison canonicalization is represented separately as `comparison_canonicalization`; chain-specific or lossy normalization remains CONTRACT_GAP.",
+                "",
+                "### Destination separation",
+                "",
+                json.dumps(dict(destination), ensure_ascii=False),
+                "",
+                "External destinations are separated from internal audit/reconciliation destinations by `destination` and `outbound_transform_by_destination`.",
+                "",
+                "### PASS/BLOCK/REVIEW semantics",
                 "",
                 f"PASS: {matrix['decision_semantics']['PASS']}",
                 "",
@@ -515,45 +817,49 @@ def developer_doc(matrix: dict[str, Any], pipeline: dict[str, Any], validation: 
                 "",
                 f"REVIEW: {matrix['decision_semantics']['REVIEW']}",
                 "",
-                "## 13. Runtime Pipeline",
+                "## B. BE가 구현할 것",
+                "",
+                "- Runtime loading: load vNext matrix, runtime pipeline, binding, crosswalk, and outbound requirement artifacts.",
+                "- Validator: enforce machine-readable validation rules from control boundary validation, including field/destination/rule failure reporting.",
+                "- Transform executor: execute only allowed outbound transforms; keep comparison canonicalization non-mutating.",
+                "- Destination payload builder: build destination-specific payloads without leaking INTERNAL_ONLY values to external destinations.",
+                "- Trace binding: bind approved transaction identifiers and FPG internal trace identifiers separately from external execution result fields.",
+                "- Execution response binding: bind `tx_hash`, `execution_status`, and `timestamp` only from EXTERNAL_EXECUTION_RESPONSE after external handoff.",
+                "",
+                "## C. CONTRACT_GAP",
+                "",
+                "- BE-owned runtime enum",
+                "- Approved transaction schema",
+                "- Approved policy snapshot schema",
+                "- Provider-specific payload schema",
+                "- Execution receipt/status schema",
+                "- Retry/reconciliation event schema",
+                "- Audit event schema",
+                "",
+                "These gaps are intentionally not filled with inferred enum values, legal rules, provider schemas, or chain-specific normalization behavior.",
+                "",
+                "## Runtime Pipeline",
                 "",
                 "\n".join(f"{step['step_number']}. {step['name']} - {step['fpg_responsibility']}" for step in pipeline["steps"]),
                 "",
-                "## 14. Artifact Description",
+                "## Artifact Description",
                 "",
-                "- `03_digital_asset/artifacts/outbound_design_v2/outbound_requirement_matrix.json`",
-                "- `03_digital_asset/artifacts/outbound_design_v2/runtime_pipeline.json`",
-                "- `03_digital_asset/artifacts/outbound_design_v2/control_boundary_validation.json`",
-                "- `03_digital_asset/artifacts/be_handoff_v3/policy_evaluations/PE-DA-REGULATED-TRANSFER-003.json`",
-                "- `03_digital_asset/artifacts/be_handoff_v3/bindings/DAB-REGULATED-TRANSFER-003.json`",
-                "- `03_digital_asset/artifacts/be_handoff_v3/crosswalks/DA-RDC-REGULATED-TRANSFER-003.json`",
-                "- `03_digital_asset/artifacts/be_handoff_v3/outbound_requirements/OR-DA-REGULATED-TRANSFER-002.json`",
-                "",
-                "## 15. BE Implementation Scope",
-                "",
-                "BE can implement artifact loading, field resolution, approved/requested match, exact validation, transform instruction application, destination-specific payload build, PASS/BLOCK/REVIEW return, handoff trace creation, and execution result binding.",
-                "",
-                "## 16. BE Non-Implementation Scope",
-                "",
-                "BE should not implement KYC engine, AML engine, VASP eligibility engine, sanctions screening, fraud detection, wallet/custody/signing, or settlement engine as FPG runtime controls.",
-                "",
-                "## 17. Contract Gap",
-                "",
-                "Approved transaction schema, approved policy snapshot schema, provider response schemas, destination profile enum, retry/reconciliation event schema, audit event schema, and execution receipt ingestion remain CONTRACT_GAP.",
-                "",
-                "## 18. Example Flow",
-                "",
-                "CASE 1 normal outbound: approved transaction exists -> requested values match -> required outbound fields exist -> transform -> payload build -> PASS -> external handoff.",
-                "",
-                "CASE 2 destination mismatch: approved destination differs from requested destination -> BLOCK. This stops outbound handoff, not transaction approval itself.",
-                "",
-                "CASE 3 required regulatory field missing: approval may exist but outbound field cannot resolve -> REVIEW when source is unresolved, BLOCK when exact request mismatch is confirmed.",
-                "",
-                "CASE 4 KYC/AML/VASP: upstream systems produce statuses or references; FPG does not re-score or re-decide them.",
+                "- `03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json`",
+                "- `03_digital_asset/artifacts/outbound_design_vNext/runtime_pipeline.json`",
+                "- `03_digital_asset/artifacts/outbound_design_vNext/control_boundary_validation.json`",
+                "- `03_digital_asset/artifacts/be_handoff_vNext/policy_evaluations/PE-DA-REGULATED-TRANSFER-VNEXT.json`",
+                "- `03_digital_asset/artifacts/be_handoff_vNext/bindings/DAB-REGULATED-TRANSFER-VNEXT.json`",
+                "- `03_digital_asset/artifacts/be_handoff_vNext/crosswalks/DA-RDC-REGULATED-TRANSFER-VNEXT.json`",
+                "- `03_digital_asset/artifacts/be_handoff_vNext/outbound_requirements/OR-DA-REGULATED-TRANSFER-VNEXT.json`",
                 "",
                 "## Boundary Validation",
                 "",
-                json.dumps(validation["assertions"], ensure_ascii=False),
+                json.dumps({"status": validation["status"], "failures": validation["failures"], "transform_counts": dict(transform)}, ensure_ascii=False),
+                "",
+                "## ANALYST_DECISION_REQUIRED",
+                "",
+                "- Provider-specific exact schemas for Travel Rule and external VASP identity payloads.",
+                "- Whether any future chain-specific address, amount, timestamp, status, or tx hash canonicalization can be contractually non-lossy.",
                 "",
                 "## Synthetic Position",
                 "",
@@ -576,9 +882,9 @@ def build_notebook() -> None:
             "\n"
             "from pathlib import Path\nimport json\nimport pandas as pd\nimport matplotlib.pyplot as plt\n"
             "ROOT = Path.cwd().resolve()\nif ROOT.name != 'ADP-DA': ROOT = next(p for p in [ROOT, *ROOT.parents] if p.name == 'ADP-DA')\n"
-            "matrix = json.loads((ROOT/'03_digital_asset/artifacts/outbound_design_v2/outbound_requirement_matrix.json').read_text(encoding='utf-8'))\n"
-            "pipeline = json.loads((ROOT/'03_digital_asset/artifacts/outbound_design_v2/runtime_pipeline.json').read_text(encoding='utf-8'))\n"
-            "validation = json.loads((ROOT/'03_digital_asset/artifacts/outbound_design_v2/control_boundary_validation.json').read_text(encoding='utf-8'))\n"
+            "matrix = json.loads((ROOT/'03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json').read_text(encoding='utf-8'))\n"
+            "pipeline = json.loads((ROOT/'03_digital_asset/artifacts/outbound_design_vNext/runtime_pipeline.json').read_text(encoding='utf-8'))\n"
+            "validation = json.loads((ROOT/'03_digital_asset/artifacts/outbound_design_vNext/control_boundary_validation.json').read_text(encoding='utf-8'))\n"
             "req = pd.DataFrame(matrix['requirements'])\n"
             "print({'requirements': len(req), 'pipeline_steps': len(pipeline['steps']), 'validation_assertions': len(validation['assertions'])})"
         ),
@@ -613,17 +919,17 @@ def main() -> None:
     matrix = build_matrix_v2()
     pipeline = runtime_pipeline_v2()
     schema_files()
-    write_json(OUTBOUND_V2 / "outbound_requirement_matrix.json", matrix)
-    write_json(OUTBOUND_V2 / "runtime_pipeline.json", pipeline)
+    write_json(OUTBOUND_VNEXT / "outbound_requirement_matrix.json", matrix)
+    write_json(OUTBOUND_VNEXT / "runtime_pipeline.json", pipeline)
     validation = validate_boundary(matrix, pipeline)
-    write_json(OUTBOUND_V2 / "control_boundary_validation.json", validation)
-    write_json(OUTBOUND_V2 / "validation_report.json", {"validations": []})
+    write_json(OUTBOUND_VNEXT / "control_boundary_validation.json", validation)
+    write_json(OUTBOUND_VNEXT / "validation_report.json", {"validations": []})
     jsonschema.validate(matrix, read_json(CONTRACTS / "outbound_requirement_matrix_v2.schema.json"))
     jsonschema.validate(validation, read_json(CONTRACTS / "control_boundary_validation.schema.json"))
     jsonschema.validate(pipeline, read_json(CONTRACTS / "runtime_pipeline.schema.json"))
     be_handoff_v3(matrix, pipeline)
     jsonschema.validate(
-        read_json(BE_V3 / "policy_evaluations" / "PE-DA-REGULATED-TRANSFER-003.json"),
+        read_json(BE_VNEXT / "policy_evaluations" / "PE-DA-REGULATED-TRANSFER-VNEXT.json"),
         read_json(CONTRACTS / "digital_asset_policy_evaluation.schema.json"),
     )
     report = {
@@ -631,11 +937,11 @@ def main() -> None:
             {"schema": "03_digital_asset/contracts/outbound_requirement_matrix_v2.schema.json", "status": "PASS"},
             {"schema": "03_digital_asset/contracts/control_boundary_validation.schema.json", "status": "PASS"},
             {"schema": "03_digital_asset/contracts/runtime_pipeline.schema.json", "status": "PASS"},
-            {"schema": "03_digital_asset/contracts/digital_asset_policy_evaluation.schema.json", "artifact": "PE-DA-REGULATED-TRANSFER-003", "status": "PASS"},
+            {"schema": "03_digital_asset/contracts/digital_asset_policy_evaluation.schema.json", "artifact": "PE-DA-REGULATED-TRANSFER-VNEXT", "status": "PASS"},
         ],
         "assertions": validation["assertions"],
     }
-    write_json(OUTBOUND_V2 / "validation_report.json", report)
+    write_json(OUTBOUND_VNEXT / "validation_report.json", report)
     developer_doc(matrix, pipeline, validation)
     build_notebook()
 

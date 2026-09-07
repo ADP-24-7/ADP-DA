@@ -1,0 +1,37 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "FPG-COMMON-RUNTIME-CONTRACT-FINAL",
+  "artifact_version": "final",
+  "scope": "Common FPG runtime contract structure shared by AI and Digital Asset.",
+  "common_fields": [
+    "source_phase",
+    "source_type",
+    "comparison_sources",
+    "field_requirement",
+    "transform_intent",
+    "transform_method",
+    "destination",
+    "decision",
+    "trace_binding",
+    "validation_errors"
+  ],
+  "decision_values": [
+    "PASS",
+    "BLOCK",
+    "REVIEW"
+  ],
+  "validation_error_shape": {
+    "field": "string|null",
+    "destination": "string|null",
+    "rule": "string",
+    "detail": "string"
+  },
+  "transform_destination_separation": {
+    "PASS_THROUGH": "The value is not mutated inside FPG runtime. This does not imply inclusion in any external payload.",
+    "EXTERNALIZE": "External payload inclusion is decided separately by destination policy and payload builder rules."
+  },
+  "post_execution_format_normalize": {
+    "model_output": "FORMAT_NORMALIZE is limited to non-lossy post-execution response formatting/canonicalization and must not rewrite model answer meaning."
+  },
+  "principle": "Domains are not processed identically; they are governed through the same runtime contract structure."
+}

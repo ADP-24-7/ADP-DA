@@ -1,0 +1,54 @@
+{
+  "artifact_id": "EVAL-AI-001",
+  "artifact_version": "v1",
+  "status": "candidate",
+  "workload_id": "UNMAPPED",
+  "experiment_id": "EVAL-AI-001",
+  "dataset_version": "TBD",
+  "source_ids": [
+    "02_ai/notebooks/02_evaluation_ai_workload_v1.ipynb",
+    "02_ai/docs/AI_POLICY_VALIDATION.md"
+  ],
+  "metrics": [
+    {
+      "name": "consulting_topic_count",
+      "value": 9,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "top_topic_action_jaccard_similarity",
+      "value": 0.929,
+      "unit": "ratio",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "foreign_exchange_action_cramers_v",
+      "value": 0.909,
+      "unit": "ratio",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "extension_action_cramers_v",
+      "value": 0.905,
+      "unit": "ratio",
+      "baseline": null,
+      "threshold": null
+    }
+  ],
+  "threshold_basis": "UNRESOLVED: no AI utility, latency, model quality, or failure threshold is established in this analysis.",
+  "claim_scope": "Workload analysis supports a first-pass FPG AI access-scope structure based on Role + Purpose + Action rather than fixed business-part permissions.",
+  "limitations": [
+    "BE-owned workload_id remains UNMAPPED.",
+    "BE-owned purpose values remain UNMAPPED.",
+    "This artifact does not define a final field access list.",
+    "This artifact does not activate a runtime policy."
+  ],
+  "failure_cases": [
+    "UNRESOLVED: AI runtime failure cases were listed as follow-up work but not measured in this notebook."
+  ],
+  "digest": "TBD"
+}

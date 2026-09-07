@@ -1,0 +1,365 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "DIGITAL-ASSET-RUNTIME-CONTRACT-FINAL",
+  "artifact_version": "final",
+  "source_artifact_ref": "03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json",
+  "common_contract_fields": [
+    "source_phase",
+    "source_type",
+    "comparison_sources",
+    "field_requirement",
+    "transform_intent",
+    "transform_method",
+    "destination",
+    "decision",
+    "trace_binding",
+    "validation_errors"
+  ],
+  "domain_specific_contract": {
+    "purpose": "source_type/comparison_sources",
+    "asset": "asset",
+    "amount": "amount",
+    "counterparty": "counterparty_vasp",
+    "destination": "beneficiary_address",
+    "period": "CONTRACT_GAP",
+    "state": "execution_status",
+    "idempotency": "CONTRACT_GAP",
+    "reconciliation": "INTERNAL_RECONCILIATION_ONLY",
+    "external_execution_result": [
+      "tx_hash",
+      "execution_status",
+      "timestamp"
+    ]
+  },
+  "fields": [
+    {
+      "field": "counterparty_vasp",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "FORMAT_TRANSFORM_ALLOWED",
+      "transform_intent": "MAP_SCHEMA",
+      "transform_method": "SCHEMA_MAPPING",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-001"
+    },
+    {
+      "field": "kyc_status",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "INTERNAL_ONLY",
+      "transform_intent": "OMIT",
+      "transform_method": "FIELD_DROP",
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-002"
+    },
+    {
+      "field": "kyc_status",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "INTERNAL_ONLY",
+      "transform_intent": "OMIT",
+      "transform_method": "FIELD_DROP",
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-003"
+    },
+    {
+      "field": "originator_identity",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "MINIMIZATION_ALLOWED",
+      "transform_intent": "MINIMIZE",
+      "transform_method": "SCHEMA_MAPPING",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-004"
+    },
+    {
+      "field": "beneficiary_identity",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "MINIMIZATION_ALLOWED",
+      "transform_intent": "MINIMIZE",
+      "transform_method": "SCHEMA_MAPPING",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-005"
+    },
+    {
+      "field": "transaction_id",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-006"
+    },
+    {
+      "field": "execution_status",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-007"
+    },
+    {
+      "field": "originator_identity",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "MINIMIZATION_ALLOWED",
+      "transform_intent": "MINIMIZE",
+      "transform_method": "SCHEMA_MAPPING",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-008"
+    },
+    {
+      "field": "beneficiary_identity",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "field_requirement": "MINIMIZATION_ALLOWED",
+      "transform_intent": "MINIMIZE",
+      "transform_method": "SCHEMA_MAPPING",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "decision": "REQUIRED_FIELD_PRESENT",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-009"
+    },
+    {
+      "field": "transaction_id",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-010"
+    },
+    {
+      "field": "execution_status",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-011"
+    },
+    {
+      "field": "execution_status",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-012"
+    },
+    {
+      "field": "asset",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "TRAVEL_RULE_PROVIDER"
+      ],
+      "decision": "MATCH_APPROVED_VALUE",
+      "trace_binding": "TRACE_OPTIONAL",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-013"
+    },
+    {
+      "field": "originator_address",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "decision": "MATCH_APPROVED_VALUE",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-014"
+    },
+    {
+      "field": "beneficiary_address",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "decision": "MATCH_APPROVED_VALUE",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-015"
+    },
+    {
+      "field": "amount",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "decision": "MATCH_APPROVED_VALUE",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-016"
+    },
+    {
+      "field": "tx_hash",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-017"
+    },
+    {
+      "field": "timestamp",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "TRACE_BINDING_VALID",
+      "trace_binding": "TRACE_REQUIRED",
+      "validation_errors": [],
+      "source_requirement_ref": "OR-DA-018"
+    }
+  ],
+  "decision_semantics": {
+    "PASS": "Current outbound handoff requirements are satisfied. This is not transaction approval.",
+    "BLOCK": "The transaction may already be approved, but the current outbound request does not satisfy approved values or mandatory outbound handoff conditions.",
+    "REVIEW": "Information required to construct outbound handoff is unresolved, unmapped, pending, or ambiguous. Do not use KYC/AML/VASP risk judgment as FPG runtime control."
+  },
+  "forbidden_runtime_controls": [
+    "KYC_STATUS_CHECK",
+    "AML_CHECK",
+    "SANCTIONS_CHECK",
+    "VASP_ELIGIBILITY_CHECK",
+    "COUNTERPARTY_VASP_VERIFY"
+  ]
+}

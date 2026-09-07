@@ -1,0 +1,27 @@
+{
+  "schema_version": "v1",
+  "crosswalk_version": "vNext",
+  "mappings": [
+    {
+      "regulatory_data_category": "PERSONAL_INFORMATION",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "EVAL-AI-004 and the 02 evidence artifacts support the regulatory category, but BE-owned runtime data class values are not defined.",
+      "version": "v1"
+    },
+    {
+      "regulatory_data_category": "PERSONAL_CREDIT_INFORMATION",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "EVAL-AI-004 and the 02 evidence artifacts support the regulatory category, but BE-owned runtime data class values are not defined.",
+      "version": "v1"
+    },
+    {
+      "regulatory_data_category": "PSEUDONYMIZED_INFORMATION",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "EVAL-AI-002 and EVAL-AI-003 support utility and transform-candidate analysis, but BE-owned runtime data class values are not defined.",
+      "version": "v1"
+    }
+  ]
+}

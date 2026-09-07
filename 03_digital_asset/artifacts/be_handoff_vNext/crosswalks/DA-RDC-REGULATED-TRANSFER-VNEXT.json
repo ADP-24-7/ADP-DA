@@ -1,0 +1,501 @@
+{
+  "schema_version": "v1",
+  "crosswalk_version": "vNext",
+  "mappings": [
+    {
+      "required_field": "counterparty_vasp",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "DESTINATION_ATTRIBUTE"
+      ],
+      "transform_instruction": [
+        "MAP_TO_EXTERNAL_SCHEMA",
+        "FORMAT_NORMALIZE"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MAP_TO_EXTERNAL_SCHEMA",
+        "INTERNAL_AUDIT_ONLY": "FORMAT_NORMALIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "FORMAT_TRANSFORM_ALLOWED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-001"
+    },
+    {
+      "required_field": "kyc_status",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "TRANSFORM_INPUT"
+      ],
+      "transform_instruction": [
+        "OMIT"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED_INTERNAL_ONLY",
+      "outbound_transform_by_destination": {
+        "NOT_EXTERNALIZED": "OMIT",
+        "INTERNAL_AUDIT_ONLY": "OMIT"
+      },
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "INTERNAL_ONLY",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-002"
+    },
+    {
+      "required_field": "kyc_status",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "TRANSFORM_INPUT"
+      ],
+      "transform_instruction": [
+        "OMIT"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED_INTERNAL_ONLY",
+      "outbound_transform_by_destination": {
+        "NOT_EXTERNALIZED": "OMIT",
+        "INTERNAL_AUDIT_ONLY": "OMIT"
+      },
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "INTERNAL_ONLY",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-003"
+    },
+    {
+      "required_field": "originator_identity",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-004"
+    },
+    {
+      "required_field": "beneficiary_identity",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-005"
+    },
+    {
+      "required_field": "transaction_id",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "field_roles": [
+        "TRACE_FIELD",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-006"
+    },
+    {
+      "required_field": "execution_status",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-007"
+    },
+    {
+      "required_field": "originator_identity",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-008"
+    },
+    {
+      "required_field": "beneficiary_identity",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-009"
+    },
+    {
+      "required_field": "transaction_id",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "field_roles": [
+        "TRACE_FIELD",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-010"
+    },
+    {
+      "required_field": "execution_status",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-011"
+    },
+    {
+      "required_field": "execution_status",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-012"
+    },
+    {
+      "required_field": "asset",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "field_roles": [
+        "PRE_APPROVED_VALUE",
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "TRAVEL_RULE_PROVIDER": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "TRAVEL_RULE_PROVIDER"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-013"
+    },
+    {
+      "required_field": "originator_address",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "field_roles": [
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-014"
+    },
+    {
+      "required_field": "beneficiary_address",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "field_roles": [
+        "REQUEST_VALUE",
+        "DESTINATION_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-015"
+    },
+    {
+      "required_field": "amount",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "field_roles": [
+        "PRE_APPROVED_VALUE",
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-016"
+    },
+    {
+      "required_field": "tx_hash",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "field_roles": [
+        "TRACE_FIELD",
+        "EXECUTION_RESULT_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-017"
+    },
+    {
+      "required_field": "timestamp",
+      "runtime_data_class": "UNMAPPED",
+      "runtime_control": "TRACE_BINDING",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "field_roles": [
+        "TRACE_FIELD",
+        "EXECUTION_RESULT_FIELD"
+      ],
+      "transform_instruction": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "OR-DA-018"
+    }
+  ]
+}

@@ -1,0 +1,1959 @@
+{
+  "validations": [
+    {
+      "schema": "03_digital_asset/contracts/outbound_requirement_matrix_v2.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset/contracts/control_boundary_validation.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset/contracts/runtime_pipeline.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset/contracts/digital_asset_policy_evaluation.schema.json",
+      "artifact": "PE-DA-REGULATED-TRANSFER-VNEXT",
+      "status": "PASS"
+    }
+  ],
+  "assertions": [
+    {
+      "assertion": "no_KYC_STATUS_CHECK_runtime_control",
+      "status": "PASS",
+      "rule": "FORBIDDEN_RUNTIME_CONTROL",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "no_AML_CHECK_runtime_control",
+      "status": "PASS",
+      "rule": "FORBIDDEN_RUNTIME_CONTROL",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "no_VASP_ELIGIBILITY_CHECK_runtime_control",
+      "status": "PASS",
+      "rule": "FORBIDDEN_RUNTIME_CONTROL",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "pass_not_transaction_approval",
+      "status": "PASS",
+      "rule": "DECISION_SEMANTICS",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "block_not_approval_cancellation",
+      "status": "PASS",
+      "rule": "DECISION_SEMANTICS",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "review_keeps_unresolved_mapping",
+      "status": "PASS",
+      "rule": "DECISION_SEMANTICS",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "approved_transaction_input_exists",
+      "status": "PASS",
+      "rule": "PIPELINE_REQUIRED_STEP",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "approved_requested_match_exists",
+      "status": "PASS",
+      "rule": "RUNTIME_CONTROL_REQUIRED",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "required_field_presence_exists",
+      "status": "PASS",
+      "rule": "RUNTIME_CONTROL_REQUIRED",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "transform_instruction_exists",
+      "status": "PASS",
+      "rule": "RUNTIME_CONTROL_REQUIRED",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "destination_mapping_exists",
+      "status": "PASS",
+      "rule": "RUNTIME_CONTROL_REQUIRED",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "trace_binding_exists",
+      "status": "PASS",
+      "rule": "RUNTIME_CONTROL_REQUIRED",
+      "field": null,
+      "destination": null,
+      "detail": ""
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['FORMAT_NORMALIZE', 'MAP_TO_EXTERNAL_SCHEMA']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "transforms=['FORMAT_NORMALIZE', 'MAP_TO_EXTERNAL_SCHEMA']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "external_destinations=['TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "transforms=['FORMAT_NORMALIZE', 'MAP_TO_EXTERNAL_SCHEMA']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'TRAVEL_RULE_PROVIDER'] mapped=['INTERNAL_AUDIT_ONLY', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "counterparty_vasp",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=MAP_TO_EXTERNAL_SCHEMA class=FORMAT_TRANSFORM_ALLOWED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "counterparty_vasp",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=FORMAT_NORMALIZE class=FORMAT_TRANSFORM_ALLOWED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "transforms=['FORMAT_NORMALIZE', 'MAP_TO_EXTERNAL_SCHEMA']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "counterparty_vasp",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['OMIT']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "transforms=['OMIT']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "transforms=['OMIT']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'NOT_EXTERNALIZED'] mapped=['INTERNAL_AUDIT_ONLY', 'NOT_EXTERNALIZED']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "kyc_status",
+      "destination": "NOT_EXTERNALIZED",
+      "detail": "transform=OMIT class=INTERNAL_ONLY"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "kyc_status",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=OMIT class=INTERNAL_ONLY"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "transforms=['OMIT']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['OMIT']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "transforms=['OMIT']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "transforms=['OMIT']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'NOT_EXTERNALIZED'] mapped=['INTERNAL_AUDIT_ONLY', 'NOT_EXTERNALIZED']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "kyc_status",
+      "destination": "NOT_EXTERNALIZED",
+      "detail": "transform=OMIT class=INTERNAL_ONLY"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "kyc_status",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=OMIT class=INTERNAL_ONLY"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "transforms=['OMIT']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "kyc_status",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "external_destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER'] mapped=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_identity",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_identity",
+      "destination": "EXTERNAL_VASP",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "external_destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER'] mapped=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_identity",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_identity",
+      "destination": "EXTERNAL_VASP",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "external_destinations=['TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_RECONCILIATION_ONLY', 'TRAVEL_RULE_PROVIDER'] mapped=['INTERNAL_RECONCILIATION_ONLY', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "transaction_id",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "transaction_id",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=APPROVED_TRANSACTION_TRACE_INPUT pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "source_type=APPROVED_TRANSACTION_TRACE_INPUT"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "pipeline_stage=Approved Transaction Load"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "source_phase=POST_EXECUTION source_type=EXTERNAL_EXECUTION_RESPONSE pre_execution_required=False"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "source_type=EXTERNAL_EXECUTION_RESPONSE"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "pipeline_stage=Execution Result Binding"
+    },
+    {
+      "assertion": "post_execution_after_handoff",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_ORDERING",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "Execution Result Binding must occur after External Execution Handoff."
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "external_destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER'] mapped=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_identity",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_identity",
+      "destination": "EXTERNAL_VASP",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "originator_identity",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "external_destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "destinations=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER'] mapped=['EXTERNAL_VASP', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_identity",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_identity",
+      "destination": "EXTERNAL_VASP",
+      "detail": "transform=MINIMIZE class=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "transforms=['MAP_TO_EXTERNAL_SCHEMA', 'MINIMIZE']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=UPSTREAM_PRODUCED_DATA pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "source_type=UPSTREAM_PRODUCED_DATA"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "beneficiary_identity",
+      "destination": null,
+      "detail": "pipeline_stage=Required Field Resolution"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "external_destinations=['TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_RECONCILIATION_ONLY', 'TRAVEL_RULE_PROVIDER'] mapped=['INTERNAL_RECONCILIATION_ONLY', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "transaction_id",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "transaction_id",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=APPROVED_TRANSACTION_TRACE_INPUT pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "source_type=APPROVED_TRANSACTION_TRACE_INPUT"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "transaction_id",
+      "destination": null,
+      "detail": "pipeline_stage=Approved Transaction Load"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "source_phase=POST_EXECUTION source_type=EXTERNAL_EXECUTION_RESPONSE pre_execution_required=False"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "source_type=EXTERNAL_EXECUTION_RESPONSE"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "pipeline_stage=Execution Result Binding"
+    },
+    {
+      "assertion": "post_execution_after_handoff",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_ORDERING",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "Execution Result Binding must occur after External Execution Handoff."
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "execution_status",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "source_phase=POST_EXECUTION source_type=EXTERNAL_EXECUTION_RESPONSE pre_execution_required=False"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "source_type=EXTERNAL_EXECUTION_RESPONSE"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "pipeline_stage=Execution Result Binding"
+    },
+    {
+      "assertion": "post_execution_after_handoff",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_ORDERING",
+      "field": "execution_status",
+      "destination": null,
+      "detail": "Execution Result Binding must occur after External Execution Handoff."
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "asset",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "asset",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "asset",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "asset",
+      "destination": null,
+      "detail": "external_destinations=['BLOCKCHAIN_EXECUTION_SYSTEM', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "asset",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "asset",
+      "destination": null,
+      "detail": "destinations=['BLOCKCHAIN_EXECUTION_SYSTEM', 'TRAVEL_RULE_PROVIDER'] mapped=['BLOCKCHAIN_EXECUTION_SYSTEM', 'TRAVEL_RULE_PROVIDER']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "asset",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "asset",
+      "destination": "TRAVEL_RULE_PROVIDER",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "asset",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "asset",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=APPROVED_AND_REQUESTED_VALUE_PAIR pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "asset",
+      "destination": null,
+      "detail": "source_type=APPROVED_AND_REQUESTED_VALUE_PAIR"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "asset",
+      "destination": null,
+      "detail": "pipeline_stage=Approved Value vs Requested Value Match"
+    },
+    {
+      "assertion": "approved_requested_sources_present",
+      "status": "PASS",
+      "rule": "APPROVED_REQUESTED_COMPARISON_SOURCE_PAIR",
+      "field": "asset",
+      "destination": null,
+      "detail": "comparison_sources=['APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT', 'OUTBOUND_REQUEST']"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "external_destinations=['BLOCKCHAIN_EXECUTION_SYSTEM']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "destinations=['BLOCKCHAIN_EXECUTION_SYSTEM', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['BLOCKCHAIN_EXECUTION_SYSTEM', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_address",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "originator_address",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=APPROVED_AND_REQUESTED_VALUE_PAIR pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "source_type=APPROVED_AND_REQUESTED_VALUE_PAIR"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "pipeline_stage=Approved Value vs Requested Value Match"
+    },
+    {
+      "assertion": "approved_requested_sources_present",
+      "status": "PASS",
+      "rule": "APPROVED_REQUESTED_COMPARISON_SOURCE_PAIR",
+      "field": "originator_address",
+      "destination": null,
+      "detail": "comparison_sources=['APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT', 'OUTBOUND_REQUEST']"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "external_destinations=['BLOCKCHAIN_EXECUTION_SYSTEM']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "destinations=['BLOCKCHAIN_EXECUTION_SYSTEM', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['BLOCKCHAIN_EXECUTION_SYSTEM', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_address",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "beneficiary_address",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=APPROVED_AND_REQUESTED_VALUE_PAIR pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "source_type=APPROVED_AND_REQUESTED_VALUE_PAIR"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "pipeline_stage=Approved Value vs Requested Value Match"
+    },
+    {
+      "assertion": "approved_requested_sources_present",
+      "status": "PASS",
+      "rule": "APPROVED_REQUESTED_COMPARISON_SOURCE_PAIR",
+      "field": "beneficiary_address",
+      "destination": null,
+      "detail": "comparison_sources=['APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT', 'OUTBOUND_REQUEST']"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "amount",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "amount",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "amount",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "amount",
+      "destination": null,
+      "detail": "external_destinations=['BLOCKCHAIN_EXECUTION_SYSTEM']"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "amount",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "amount",
+      "destination": null,
+      "detail": "destinations=['BLOCKCHAIN_EXECUTION_SYSTEM', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['BLOCKCHAIN_EXECUTION_SYSTEM', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "amount",
+      "destination": "BLOCKCHAIN_EXECUTION_SYSTEM",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "amount",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "amount",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "amount",
+      "destination": null,
+      "detail": "source_phase=PRE_EXECUTION source_type=APPROVED_AND_REQUESTED_VALUE_PAIR pre_execution_required=True"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "amount",
+      "destination": null,
+      "detail": "source_type=APPROVED_AND_REQUESTED_VALUE_PAIR"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "amount",
+      "destination": null,
+      "detail": "pipeline_stage=Approved Value vs Requested Value Match"
+    },
+    {
+      "assertion": "approved_requested_sources_present",
+      "status": "PASS",
+      "rule": "APPROVED_REQUESTED_COMPARISON_SOURCE_PAIR",
+      "field": "amount",
+      "destination": null,
+      "detail": "comparison_sources=['APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT', 'OUTBOUND_REQUEST']"
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_RECONCILIATION_ONLY'] mapped=['INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "tx_hash",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "source_phase=POST_EXECUTION source_type=EXTERNAL_EXECUTION_RESPONSE pre_execution_required=False"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "source_type=EXTERNAL_EXECUTION_RESPONSE"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "pipeline_stage=Execution Result Binding"
+    },
+    {
+      "assertion": "post_execution_after_handoff",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_ORDERING",
+      "field": "tx_hash",
+      "destination": null,
+      "detail": "Execution Result Binding must occur after External Execution Handoff."
+    },
+    {
+      "assertion": "transform_allowed_for_class",
+      "status": "PASS",
+      "rule": "TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "disallowed=[] allowed=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_outbound_transform_whitelist",
+      "status": "PASS",
+      "rule": "EXACT_REQUIRED_NO_LOSSY_OUTBOUND_TRANSFORM",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "exact_required_no_mutating_normalization",
+      "status": "PASS",
+      "rule": "COMPARISON_NORMALIZATION_SEPARATED_FROM_OUTBOUND_TRANSFORM",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "FORMAT_NORMALIZE cannot be an EXACT_REQUIRED outbound transform."
+    },
+    {
+      "assertion": "internal_only_not_externalized",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "internal_only_transform_omit_only",
+      "status": "PASS",
+      "rule": "INTERNAL_ONLY_OMIT_ONLY",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "minimization_destination_transform_explicit",
+      "status": "PASS",
+      "rule": "MINIMIZATION_REQUIRES_DESTINATION_SPECIFIC_TRANSFORM",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "destinations=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY'] mapped=['INTERNAL_AUDIT_ONLY', 'INTERNAL_RECONCILIATION_ONLY']"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "timestamp",
+      "destination": "INTERNAL_RECONCILIATION_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "destination_specific_transform_allowed",
+      "status": "PASS",
+      "rule": "DESTINATION_TRANSFORM_CLASS_COMPATIBILITY",
+      "field": "timestamp",
+      "destination": "INTERNAL_AUDIT_ONLY",
+      "detail": "transform=PASS_THROUGH class=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "format_transform_class_whitelist",
+      "status": "PASS",
+      "rule": "FORMAT_TRANSFORM_ALLOWED_WHITELIST",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "transforms=['PASS_THROUGH']"
+    },
+    {
+      "assertion": "execution_result_not_pre_execution_payload",
+      "status": "PASS",
+      "rule": "EXECUTION_RESULT_POST_EXECUTION_ONLY",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "source_phase=POST_EXECUTION source_type=EXTERNAL_EXECUTION_RESPONSE pre_execution_required=False"
+    },
+    {
+      "assertion": "transaction_id_not_external_execution_result",
+      "status": "PASS",
+      "rule": "TRACE_IDENTIFIER_SEPARATION",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "source_type=EXTERNAL_EXECUTION_RESPONSE"
+    },
+    {
+      "assertion": "source_phase_pipeline_stage_exists",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_STAGE_EXISTS",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "pipeline_stage=Execution Result Binding"
+    },
+    {
+      "assertion": "post_execution_after_handoff",
+      "status": "PASS",
+      "rule": "SOURCE_PHASE_PIPELINE_ORDERING",
+      "field": "timestamp",
+      "destination": null,
+      "detail": "Execution Result Binding must occur after External Execution Handoff."
+    },
+    {
+      "assertion": "no_forbidden_runtime_control_reentry_COUNTERPARTY_VASP_VERIFY",
+      "status": "PASS",
+      "rule": "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+      "field": null,
+      "destination": null,
+      "detail": "COUNTERPARTY_VASP_VERIFY"
+    },
+    {
+      "assertion": "no_forbidden_runtime_control_reentry_SANCTIONS_CHECK",
+      "status": "PASS",
+      "rule": "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+      "field": null,
+      "destination": null,
+      "detail": "SANCTIONS_CHECK"
+    },
+    {
+      "assertion": "no_forbidden_runtime_control_reentry_AML_CHECK",
+      "status": "PASS",
+      "rule": "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+      "field": null,
+      "destination": null,
+      "detail": "AML_CHECK"
+    },
+    {
+      "assertion": "no_forbidden_runtime_control_reentry_VASP_ELIGIBILITY_CHECK",
+      "status": "PASS",
+      "rule": "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+      "field": null,
+      "destination": null,
+      "detail": "VASP_ELIGIBILITY_CHECK"
+    },
+    {
+      "assertion": "no_forbidden_runtime_control_reentry_KYC_STATUS_CHECK",
+      "status": "PASS",
+      "rule": "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+      "field": null,
+      "destination": null,
+      "detail": "KYC_STATUS_CHECK"
+    },
+    {
+      "assertion": "no_forbidden_runtime_control_reentry_CUSTOMER_RISK_CHECK",
+      "status": "PASS",
+      "rule": "FORBIDDEN_KYC_AML_VASP_RUNTIME_CONTROL_REENTRY",
+      "field": null,
+      "destination": null,
+      "detail": "CUSTOMER_RISK_CHECK"
+    }
+  ]
+}
