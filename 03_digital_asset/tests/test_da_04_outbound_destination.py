@@ -108,6 +108,25 @@ def test_negative_controls_and_normal_contract(result):
     assert all(case["detected_as_expected"] for case in result["negative_controls"])
     assert all(case["evidence_type"] == "SIMULATION" for case in result["negative_controls"])
     assert result["invariants"]["pass_through_internal_only_destination_rows"] > 0
+    unsupported = next(
+        c for c in result["negative_controls"] if c["case"] == "E_UNSUPPORTED_DESTINATION"
+    )
+    assert unsupported["decision"] == "BLOCK"
+
+
+@pytest.mark.parametrize(
+    "destination,phase",
+    [
+        ("UNKNOWN", "PRE_EXECUTION"),
+        ("BLOCKCHAIN_EXECUTION_SYSTEM", "POST_EXECUTION"),
+    ],
+)
+@pytest.mark.parametrize("fixture", [False, True])
+def test_unknown_or_disallowed_destination_phase_blocks(result, destination, phase, fixture):
+    frame = pd.DataFrame(result["normalized_requirements"])
+    outcome = da04.validate_payload(frame, destination, phase, {}, {}, fixture=fixture)
+    assert outcome["decision"] == "BLOCK"
+    assert outcome["issues"] == [{"rule": "UNSUPPORTED_DESTINATION_OR_PHASE", "action": "BLOCK"}]
 
 
 @pytest.mark.parametrize("destination", sorted(da04.EXTERNAL_DESTINATIONS))

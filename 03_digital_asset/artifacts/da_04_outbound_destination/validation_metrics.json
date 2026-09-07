@@ -84,7 +84,7 @@
     },
     {
       "path": "03_digital_asset/src/da_04_outbound_destination.py",
-      "sha256": "0c96fee669aae03c55bad397a1cd1c3a8d9f5f38db19ad9af5ae6e62232f616f",
+      "sha256": "0e651883688bb9a024b5519534067f95a755542689d982a57ee2e8479a36c5be",
       "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
     },
     {
@@ -221,11 +221,12 @@
       "evidence_type": "SIMULATION",
       "expected_rule": "UNSUPPORTED_DESTINATION_OR_PHASE",
       "detected_as_expected": true,
-      "decision": "REVIEW",
+      "decision": "BLOCK",
       "scope": "FIELD_PROFILE_ONLY",
       "issues": [
         {
-          "rule": "UNSUPPORTED_DESTINATION_OR_PHASE"
+          "rule": "UNSUPPORTED_DESTINATION_OR_PHASE",
+          "action": "BLOCK"
         }
       ]
     },
@@ -297,5 +298,7 @@
       ]
     }
   ],
-  "contract_violations": []
+  "contract_violations": [],
+  "retention_label": "Contract Required Field Retention",
+  "retention_definition": "Destination-specific payload preserves the Contract-required field set; not transaction value availability, off-chain identity availability, provider delivery success, or Runtime E2E success."
 }

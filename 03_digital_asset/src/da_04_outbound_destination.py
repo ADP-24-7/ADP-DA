@@ -232,9 +232,9 @@ def validate_payload(
     group = frame[(frame.destination == destination) & (frame.runtime_phase == phase)]
     if group.empty:
         return {
-            "decision": "REVIEW",
+            "decision": "BLOCK",
             "scope": "FIELD_PROFILE_ONLY",
-            "issues": [{"rule": "UNSUPPORTED_DESTINATION_OR_PHASE"}],
+            "issues": [{"rule": "UNSUPPORTED_DESTINATION_OR_PHASE", "action": "BLOCK"}],
         }
     allowed = set(group.loc[group.transform_type != "OMIT", "required_field"])
     if destination == "NOT_EXTERNALIZED":
@@ -311,6 +311,8 @@ def negative_controls(frame: pd.DataFrame, matrix: dict, pipeline: dict) -> list
         detected = result["decision"] != "PASS" if rule else result["decision"] == "PASS"
         if rule:
             detected = detected and any(i["rule"] == rule for i in result["issues"])
+        if rule == "UNSUPPORTED_DESTINATION_OR_PHASE":
+            detected = detected and result["decision"] == "BLOCK"
         results.append(
             {
                 "case": name,
@@ -688,9 +690,20 @@ def artifacts(result: dict, generated_at: str, root: Path = ROOT) -> dict[str, d
         "phase_validation",
         "destination_validation",
     ]
+    payloads["validation_metrics"]["retention_label"] = "Contract Required Field Retention"
+    payloads["validation_metrics"]["retention_definition"] = (
+        "Destination-specific payload preserves the Contract-required field set; "
+        "not transaction value availability, off-chain identity availability, "
+        "provider delivery success, or Runtime E2E success."
+    )
     payloads["runtime_requirements"]["fail_closed"] = {
-        "BLOCK": ["exact/value mismatch", "forbidden externalization", "phase violation"],
-        "REVIEW": ["unsupported destination", "provider wire schema unresolved"],
+        "BLOCK": [
+            "exact/value mismatch",
+            "forbidden externalization",
+            "phase violation",
+            "unknown or unsupported destination",
+        ],
+        "REVIEW": ["known destination with unresolved provider wire schema"],
         "missing_input": "Preserve requirement on_missing action; never PASS on mandatory absence.",
         "scope": "Analysis guard requirements; reuse BE naming, no new production enum.",
     }

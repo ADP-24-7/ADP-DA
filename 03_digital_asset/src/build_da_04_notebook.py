@@ -21,7 +21,8 @@ def final_summary(result: dict) -> str:
         f"POST_EXECUTION 의존 {s['post_execution_dependency_count']}/{s['field_count']}.",
         f"to_address 결측 {s['missing_to_address']}건은 임의 보완하지 않는다.",
         "",
-        "| Destination | Superset | Payload | 감소 Field | 상대 감소율 | 필수 Field 유지율 |",
+        "| Destination | Superset | Payload | 감소 Field | 상대 감소율 | "
+        "Contract Required Field Retention |",
         "|---|---:|---:|---:|---:|---:|",
     ]
     for e in result["exposure"]:
@@ -38,7 +39,10 @@ def final_summary(result: dict) -> str:
         f"Negative SIMULATION {sum(r['detected_as_expected'] for r in negatives)}/"
         f"{len(negatives)} 탐지.",
         f"CONTRACT_GAP {s['contract_gap_category_count']}종은 유지한다.",
-        "Field 집합 유지율은 실제 값 coverage·Provider wire 수용률이 아니다.",
+        "Contract Required Field Retention은 Destination-specific payload가 "
+        "Contract에서 요구한 Field 집합을 보존했다는 의미다.",
+        "실제 transaction value availability, off-chain identity 확보율, "
+        "Provider 전송 성공률, Runtime E2E 성공률을 의미하지 않는다.",
         "FPG는 목적지·phase·exact·누락을 검증하고, 미확정 정보를 생성하지 않는다.",
         "Transaction Record != Execution Result; tx_hash != Final Settlement.",
         "PASS_THROUGH != EXTERNALIZE. PASS는 거래 승인·AML 적합·Settlement 성공이 아니다.",
@@ -197,7 +201,9 @@ def build() -> None:
 
     Provider-specific key/nesting/IVMS schema는 정의하지 않는다. MINIMIZE와
     MAP_TO_EXTERNAL_SCHEMA의 실제 wire 구현은 CONTRACT_GAP이다.
-    Field retention 100%는 집합 연산 결과이며 off-chain 데이터 coverage 100%가 아니다.
+    Contract Required Field Retention 100%는 Contract가 요구한 Field 집합 보존이다.
+    실제 transaction value availability, off-chain identity 확보율,
+    Provider 전송 성공률, Runtime E2E 성공률을 의미하지 않는다.
     """)
     code("""
     # 06. Field-level profile와 설계 효과크기
@@ -245,7 +251,8 @@ def build() -> None:
     - 검증 방식: 실제 표본 기술통계 + deterministic contract validation + Negative SIMULATION.
     - 추정 대상: 현재 계약의 연결 완전성, Field availability, partition, invariant.
     - 비교단위: 같은 외부 목적지의 superset/profile Field 집합. 표본추출 평균 비교가 아니다.
-    - 효과: Absolute Field Reduction, Relative Exposure Reduction, Required Field Retention.
+    - 효과: Absolute Field Reduction, Relative Exposure Reduction,
+      Contract Required Field Retention.
     - 추론통계: 무작위 처리/독립 반복 실험이 없으므로 t-test/ANOVA/χ²/McNemar를 쓰지 않는다.
     - 관측/Simulation: Master의 실제 결측·값과 fixture detector 성공을 분리했다.
     - 일반화: Field 감소를 개인정보 위험 감소율이나 Provider 성능/실행 성공률로 일반화하지 않는다.
@@ -267,7 +274,9 @@ def build() -> None:
     BE는 required_field_presence, exact_preservation, transform_compatibility,
     externalization_policy, phase_validation, destination_validation을 실행해야 한다.
     필수 누락 시 현재 on_missing action을 보존하고 PASS를 금지한다.
-    Exact mismatch/금지 외부화/phase 위반은 BLOCK, 미지원/미해결 provider schema는 REVIEW다.
+    Exact mismatch/금지 외부화/phase 위반 및 Unknown/Unsupported Destination은 BLOCK이다.
+    허용된 Destination의 미확정 Provider wire schema만 REVIEW/CONTRACT_GAP이다.
+    Unsupported Destination != Unresolved Provider Schema.
     REVIEW_AFTER_HANDOFF는 원래 missing action이고 새 Decision enum이 아니다.
 
     PASS는 현 outbound handoff 조건 충족이며 거래 승인·AML 적합·settlement 성공이 아니다.

@@ -62,14 +62,16 @@ baseline `EXTERNALIZABLE_SUPERSET`은 최소 한 외부 목적지에 허용된 8
 OMIT/NOT_EXTERNALIZED/Internal-only 및 POST 내부 trace-only는 제외한다.
 이는 비교용 Field 집합이며 실제 baseline payload를 송신하지 않았다.
 
-| Destination | Superset | Payload Field | 절대 감소 | 상대 감소 | 필수 Field 집합 유지 |
+| Destination | Superset | Payload Field | 절대 감소 | 상대 감소 | Contract Required Field Retention |
 |---|---:|---:|---:|---:|---:|
 | BLOCKCHAIN_EXECUTION_SYSTEM | 8 | 4 | 4 | 50.0% | 100% |
 | EXTERNAL_VASP | 8 | 2 | 6 | 75.0% | 100% |
 | TRAVEL_RULE_PROVIDER | 8 | 5 | 3 | 37.5% | 100% |
 
-목적지와 무관한 Field의 profile 잔존은 0이다. 이 결과는 개인정보 위험의 감소율,
-실제 Required Value coverage, Provider 전송 수용률, 실행 성공률이 아니다.
+Contract Required Field Retention은 Destination-specific payload가 Contract에서 요구한
+Field 집합을 보존했다는 의미다. 실제 transaction value availability, off-chain identity
+확보율, Provider 전송 성공률, Runtime E2E 성공률을 의미하지 않는다.
+목적지와 무관한 Field의 profile 잔존은 0이다. Field 감소율은 개인정보 위험의 감소율이 아니다.
 특히 MINIMIZE/MAP_TO_EXTERNAL_SCHEMA의 실제 wire 구현은 미확정이다.
 
 ## 정상 Contract와 SIMULATION 분리
@@ -84,7 +86,7 @@ Negative **SIMULATION 9개 중 9개 탐지**, 정상 Field-profile fixture 1개 
 - 필수 amount 누락
 - EXACT_REQUIRED + MINIMIZE
 - POST tx_hash를 PRE payload에 삽입
-- 정의되지 않은 Destination
+- 정의되지 않은 Destination → fail-closed/BLOCK
 - exact value 변경
 - 목적지에 무관한 external identity Field
 - FLOAT amount
@@ -118,10 +120,12 @@ externalization policy, phase validation, destination validation이다.
 |---|---|
 | mandatory 입력 또는 payload 누락 | 원래 `on_missing_action` 보존, PASS 불가 |
 | 승인값/Exact 불일치, 금지 유출, 허용되지 않은 phase 혼입 | BLOCK |
-| unsupported Destination, unmapped/ambiguous Provider schema | REVIEW |
+| 정의되지 않거나 허용되지 않은 Destination | fail-closed/BLOCK, PASS 불가 |
+| 허용된 Destination의 미확정 Provider wire schema/외부 계약 | REVIEW/CONTRACT_GAP, 임의 schema 생성 금지 |
 | POST missing `REVIEW_AFTER_HANDOFF` | 원래 action 유지 후 기존 BE 상태/복구 계약에 연결 |
 
 `REVIEW_AFTER_HANDOFF`는 source의 action이며 새 Decision enum이 아니다.
+`Unsupported Destination != Unresolved Provider Schema`다.
 `PASS`는 현 handoff 조건 충족이고 거래 승인·AML 적합·Settlement 성공이 아니다.
 `REVIEW`는 정보 미확정이며 KYC/AML judgment가 아니다.
 
