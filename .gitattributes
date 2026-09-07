@@ -2,3 +2,5 @@
 03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb -text
 03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb -text
 03_digital_asset/data/processed/da_master_transaction_sample_73410.csv -text
+03_digital_asset/notebooks/runtime_validation/DA_05_approved_requested_match.ipynb -text
+03_digital_asset/docs/handoff/DA_05_approved_requested_match.md -text
