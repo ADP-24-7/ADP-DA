@@ -1,0 +1,13 @@
+field,legal_required,legal_basis,public_transaction_field,availability_class,fpg_enforcement_input,gap_status,notes
+originator_identity,True,DA-OBL-004|DA-OBL-008,,VASP_INTERNAL,True,FPG_REQUIRED_INPUT,Public chain data alone is insufficient for pre-execution enforcement.
+beneficiary_identity,True,DA-OBL-005|DA-OBL-009,,VASP_INTERNAL,True,FPG_REQUIRED_INPUT,Public chain data alone is insufficient for pre-execution enforcement.
+originator_address,False,ANALYSIS_REQUIRED,from / input address surrogate,ONCHAIN_AVAILABLE,False,AVAILABLE,Available from public on-chain transaction data or documented transaction object.
+beneficiary_address,False,ANALYSIS_REQUIRED,to / output address surrogate,ONCHAIN_AVAILABLE,False,AVAILABLE,Available from public on-chain transaction data or documented transaction object.
+amount,False,ANALYSIS_REQUIRED,value / output volume,ONCHAIN_AVAILABLE,False,AVAILABLE,Available from public on-chain transaction data or documented transaction object.
+asset,True,DA-OBL-013,chain/native asset or token context,ONCHAIN_AVAILABLE,False,AVAILABLE,Available from public on-chain transaction data or documented transaction object.
+counterparty_vasp,True,DA-OBL-001,,VASP_INTERNAL,True,FPG_REQUIRED_INPUT,Public chain data alone is insufficient for pre-execution enforcement.
+kyc_status,True,DA-OBL-002|DA-OBL-003,,EXTERNAL_CONTROL_RESULT,True,FPG_REQUIRED_INPUT,Public chain data alone is insufficient for pre-execution enforcement.
+transaction_id,True,DA-OBL-006|DA-OBL-010,,FPG_REQUIRED_INPUT,True,FPG_REQUIRED_INPUT,Public chain data alone is insufficient for pre-execution enforcement.
+tx_hash,False,ANALYSIS_REQUIRED,hash / txId,ONCHAIN_AVAILABLE,False,AVAILABLE,Available from public on-chain transaction data or documented transaction object.
+execution_status,True,DA-OBL-007|DA-OBL-011|DA-OBL-012,success / receipt_status,EXTERNAL_CONTROL_RESULT,True,FPG_REQUIRED_INPUT,Public chain data alone is insufficient for pre-execution enforcement.
+timestamp,False,ANALYSIS_REQUIRED,block_time / time_step,ONCHAIN_AVAILABLE,False,AVAILABLE,Available from public on-chain transaction data or documented transaction object.

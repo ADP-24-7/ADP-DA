@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digital Asset PolicyEvaluation Handoff",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_version",
+    "analysis_status",
+    "policy_action",
+    "approved_policy_ref",
+    "execution_request_ref",
+    "policy_rule_refs",
+    "required_input_fields",
+    "decision_values",
+    "handoff_chain",
+    "limitations",
+    "digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "v1"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "analysis_status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "validated",
+        "hold",
+        "rejected"
+      ]
+    },
+    "policy_action": {
+      "type": "string",
+      "enum": [
+        "candidate_handoff",
+        "requires_evaluation",
+        "hold",
+        "reject"
+      ]
+    },
+    "approved_policy_ref": {
+      "type": "string"
+    },
+    "execution_request_ref": {
+      "type": "string"
+    },
+    "policy_rule_refs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "required_input_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoff_chain": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "digest": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

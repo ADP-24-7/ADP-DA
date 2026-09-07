@@ -1,0 +1,90 @@
+{
+  "schema_version": "v1",
+  "crosswalk_version": "v1",
+  "mappings": [
+    {
+      "regulatory_required_field": "originator_identity",
+      "availability_class": "VASP_INTERNAL",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "DA-OBL-004|DA-OBL-008"
+    },
+    {
+      "regulatory_required_field": "beneficiary_identity",
+      "availability_class": "VASP_INTERNAL",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "DA-OBL-005|DA-OBL-009"
+    },
+    {
+      "regulatory_required_field": "originator_address",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "candidate",
+      "mapping_basis": "ANALYSIS_REQUIRED"
+    },
+    {
+      "regulatory_required_field": "beneficiary_address",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "candidate",
+      "mapping_basis": "ANALYSIS_REQUIRED"
+    },
+    {
+      "regulatory_required_field": "amount",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "candidate",
+      "mapping_basis": "ANALYSIS_REQUIRED"
+    },
+    {
+      "regulatory_required_field": "asset",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "candidate",
+      "mapping_basis": "DA-OBL-013"
+    },
+    {
+      "regulatory_required_field": "counterparty_vasp",
+      "availability_class": "VASP_INTERNAL",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "DA-OBL-001"
+    },
+    {
+      "regulatory_required_field": "kyc_status",
+      "availability_class": "EXTERNAL_CONTROL_RESULT",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "DA-OBL-002|DA-OBL-003"
+    },
+    {
+      "regulatory_required_field": "transaction_id",
+      "availability_class": "FPG_REQUIRED_INPUT",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "DA-OBL-006|DA-OBL-010"
+    },
+    {
+      "regulatory_required_field": "tx_hash",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "candidate",
+      "mapping_basis": "ANALYSIS_REQUIRED"
+    },
+    {
+      "regulatory_required_field": "execution_status",
+      "availability_class": "EXTERNAL_CONTROL_RESULT",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "unmapped",
+      "mapping_basis": "DA-OBL-007|DA-OBL-011|DA-OBL-012"
+    },
+    {
+      "regulatory_required_field": "timestamp",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "runtime_data_class": "UNMAPPED",
+      "mapping_status": "candidate",
+      "mapping_basis": "ANALYSIS_REQUIRED"
+    }
+  ]
+}

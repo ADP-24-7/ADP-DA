@@ -1,0 +1,86 @@
+[
+  {
+    "field": "originator_identity",
+    "availability_class": "VASP_INTERNAL",
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "legal_basis": "DA-OBL-004|DA-OBL-008",
+    "fpg_required_input": true
+  },
+  {
+    "field": "beneficiary_identity",
+    "availability_class": "VASP_INTERNAL",
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "legal_basis": "DA-OBL-005|DA-OBL-009",
+    "fpg_required_input": true
+  },
+  {
+    "field": "originator_address",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "gap_status": "AVAILABLE",
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "fpg_required_input": false
+  },
+  {
+    "field": "beneficiary_address",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "gap_status": "AVAILABLE",
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "fpg_required_input": false
+  },
+  {
+    "field": "amount",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "gap_status": "AVAILABLE",
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "fpg_required_input": false
+  },
+  {
+    "field": "asset",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "gap_status": "AVAILABLE",
+    "legal_basis": "DA-OBL-013",
+    "fpg_required_input": false
+  },
+  {
+    "field": "counterparty_vasp",
+    "availability_class": "VASP_INTERNAL",
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "legal_basis": "DA-OBL-001",
+    "fpg_required_input": true
+  },
+  {
+    "field": "kyc_status",
+    "availability_class": "EXTERNAL_CONTROL_RESULT",
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "legal_basis": "DA-OBL-002|DA-OBL-003",
+    "fpg_required_input": true
+  },
+  {
+    "field": "transaction_id",
+    "availability_class": "FPG_REQUIRED_INPUT",
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "legal_basis": "DA-OBL-006|DA-OBL-010",
+    "fpg_required_input": true
+  },
+  {
+    "field": "tx_hash",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "gap_status": "AVAILABLE",
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "fpg_required_input": false
+  },
+  {
+    "field": "execution_status",
+    "availability_class": "EXTERNAL_CONTROL_RESULT",
+    "gap_status": "FPG_REQUIRED_INPUT",
+    "legal_basis": "DA-OBL-007|DA-OBL-011|DA-OBL-012",
+    "fpg_required_input": true
+  },
+  {
+    "field": "timestamp",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "gap_status": "AVAILABLE",
+    "legal_basis": "ANALYSIS_REQUIRED",
+    "fpg_required_input": false
+  }
+]

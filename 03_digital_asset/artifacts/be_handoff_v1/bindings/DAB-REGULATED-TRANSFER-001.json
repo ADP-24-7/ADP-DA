@@ -1,0 +1,13 @@
+{
+  "schema_version": "v1",
+  "binding_version": "v1",
+  "bindings": [
+    {
+      "digital_asset_runtime": "REGULATED_VIRTUAL_ASSET_TRANSFER",
+      "workload_id": "UNMAPPED",
+      "purpose": "regulated_virtual_asset_transfer_pre_execution_check",
+      "execution_boundary": "FPG_PRE_EXECUTION_GATEWAY_ONLY",
+      "binding_status": "candidate"
+    }
+  ]
+}
