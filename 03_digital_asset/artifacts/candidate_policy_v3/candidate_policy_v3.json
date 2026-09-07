@@ -1,0 +1,139 @@
+{
+  "artifact_id": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-003",
+  "artifact_version": "v3",
+  "status": "candidate",
+  "v2_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-002",
+  "main_dataset": "Ethereum mainnet JSON-RPC transaction sample",
+  "supporting_dataset": "SNAP Bitcoin OTC trust weighted signed network",
+  "policy_rules": [
+    {
+      "policy_rule_id": "DA-V3-RULE-001",
+      "required_field": "originator_identity",
+      "ethereum_field": "",
+      "availability_class": "VASP_INTERNAL",
+      "status": "CANDIDATE",
+      "evidence": "Ethereum schema has from_address but not customer identity.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-002",
+      "required_field": "beneficiary_identity",
+      "ethereum_field": "",
+      "availability_class": "VASP_INTERNAL",
+      "status": "CANDIDATE",
+      "evidence": "Ethereum schema has to_address but not customer identity.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-003",
+      "required_field": "originator_address",
+      "ethereum_field": "from_address",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "status": "CANDIDATE",
+      "evidence": "Present in Ethereum transactions.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-004",
+      "required_field": "beneficiary_address",
+      "ethereum_field": "to_address",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "status": "CANDIDATE",
+      "evidence": "Present in Ethereum transactions with nullable contract-creation cases.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-005",
+      "required_field": "amount",
+      "ethereum_field": "value_eth|value_wei",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "status": "CANDIDATE",
+      "evidence": "Present in Ethereum transactions.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-006",
+      "required_field": "asset",
+      "ethereum_field": "",
+      "availability_class": "DERIVABLE_FROM_ONCHAIN",
+      "status": "CANDIDATE",
+      "evidence": "This sample is native transaction table, not token-transfer table.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-007",
+      "required_field": "counterparty_vasp",
+      "ethereum_field": "",
+      "availability_class": "VASP_INTERNAL",
+      "status": "CANDIDATE",
+      "evidence": "Not present on public chain.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-008",
+      "required_field": "kyc_status",
+      "ethereum_field": "",
+      "availability_class": "EXTERNAL_CONTROL_RESULT",
+      "status": "CANDIDATE",
+      "evidence": "Not present on public chain.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-009",
+      "required_field": "transaction_id",
+      "ethereum_field": "hash",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "status": "CANDIDATE",
+      "evidence": "Present and unique in sample.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-010",
+      "required_field": "tx_hash",
+      "ethereum_field": "hash",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "status": "CANDIDATE",
+      "evidence": "Present and unique in sample.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-011",
+      "required_field": "execution_status",
+      "ethereum_field": "",
+      "availability_class": "MISSING",
+      "status": "CANDIDATE",
+      "evidence": "Not populated in ethereum_transactions_sample.csv.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    },
+    {
+      "policy_rule_id": "DA-V3-RULE-012",
+      "required_field": "timestamp",
+      "ethereum_field": "block_timestamp",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "status": "CANDIDATE",
+      "evidence": "Present via block data.",
+      "non_decision": "Candidate only; not promoted to runtime policy."
+    }
+  ],
+  "v2_to_v3_changes": {
+    "snap_dataset_role_changed_to": "SUPPORTING_NETWORK_DATA",
+    "main_transaction_dataset_changed_to": "Ethereum mainnet JSON-RPC transaction sample",
+    "v2_snap_onchain_ratio_deprecated_for_main_conclusion": true,
+    "v3_onchain_direct_coverage_ratio": 0.5,
+    "v3_onchain_extended_coverage_ratio": 0.5833,
+    "synthetic_v3_real_distribution_inputs": [
+      "value_eth",
+      "block_timestamp",
+      "from_address",
+      "to_address",
+      "hash"
+    ],
+    "receipt_status_status": "UNRESOLVED_IN_LOCAL_SAMPLE",
+    "candidate_rule_changes": "Retained candidate boundary; evidence upgraded for on-chain fields only."
+  },
+  "non_decisions": [
+    "No BE handoff artifact, runtime enum, execution API, reconciliation API, or audit schema was modified.",
+    "Synthetic v3 sensitivity results are policy scenario outputs, not real fraud or regulatory failure rates.",
+    "H5 is structural evidence only because no retry/reconciliation event dataset is present."
+  ]
+}

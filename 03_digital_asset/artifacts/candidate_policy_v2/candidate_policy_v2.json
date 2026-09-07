@@ -1,0 +1,205 @@
+{
+  "artifact_id": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-002",
+  "artifact_version": "v2",
+  "status": "candidate",
+  "v1_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-001",
+  "policy_rules": [
+    {
+      "policy_rule_id": "DA-POL-001",
+      "control_type": "KYC_STATUS_CHECK",
+      "required_field": "kyc_status",
+      "legal_basis": [
+        "DA-OBL-002"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "equals",
+      "expected_value_or_constraint": "VERIFIED",
+      "on_fail_action": "REVIEW",
+      "fpg_scope": "EXTERNAL_RESULT_CHECK",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-002"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "EXTERNAL_CONTROL_RESULT",
+      "v2_change": "kept_with_actual_data_gap"
+    },
+    {
+      "policy_rule_id": "DA-POL-002",
+      "control_type": "COUNTERPARTY_VASP_VERIFY",
+      "required_field": "counterparty_vasp",
+      "legal_basis": [
+        "DA-OBL-001"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "not_equals",
+      "expected_value_or_constraint": "UNREGISTERED",
+      "on_fail_action": "REVIEW",
+      "fpg_scope": "EXTERNAL_RESULT_CHECK",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-001"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "VASP_INTERNAL",
+      "v2_change": "kept_with_actual_data_gap"
+    },
+    {
+      "policy_rule_id": "DA-POL-003",
+      "control_type": "TRANSFER_RESTRICTION",
+      "required_field": "requested_amount",
+      "legal_basis": [
+        "DA-OBL-003",
+        "DA-OBL-012"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "less_or_equal_field",
+      "expected_value_or_constraint": "approved_amount_limit",
+      "on_fail_action": "BLOCK",
+      "fpg_scope": "DIRECT_ENFORCEMENT",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-003",
+          "DA-OBL-012"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "MISSING",
+      "v2_change": "kept_but_actual_data_validation_unavailable"
+    },
+    {
+      "policy_rule_id": "DA-POL-004",
+      "control_type": "ADDRESS_VERIFY",
+      "required_field": "requested_destination",
+      "legal_basis": [
+        "DA-OBL-013"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "equals_field",
+      "expected_value_or_constraint": "approved_destination",
+      "on_fail_action": "REVIEW",
+      "fpg_scope": "DIRECT_ENFORCEMENT",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-013"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "MISSING",
+      "v2_change": "kept_but_actual_data_validation_unavailable"
+    },
+    {
+      "policy_rule_id": "DA-POL-005",
+      "control_type": "ADDRESS_VERIFY",
+      "required_field": "requested_asset",
+      "legal_basis": [
+        "DA-OBL-013"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "equals_field",
+      "expected_value_or_constraint": "approved_asset",
+      "on_fail_action": "BLOCK",
+      "fpg_scope": "DIRECT_ENFORCEMENT",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-013"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "MISSING",
+      "v2_change": "kept_but_actual_data_validation_unavailable"
+    },
+    {
+      "policy_rule_id": "DA-POL-006",
+      "control_type": "TRANSFER_RESTRICTION",
+      "required_field": "requested_at",
+      "legal_basis": [
+        "DA-OBL-003",
+        "DA-OBL-012"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "within_period",
+      "expected_value_or_constraint": "approved_period_start..approved_period_end",
+      "on_fail_action": "BLOCK",
+      "fpg_scope": "DIRECT_ENFORCEMENT",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-003",
+          "DA-OBL-012"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "MISSING",
+      "v2_change": "kept_but_actual_data_validation_unavailable"
+    },
+    {
+      "policy_rule_id": "DA-POL-007",
+      "control_type": "RECORD_KEEPING",
+      "required_field": "external_tx_id",
+      "legal_basis": [
+        "DA-OBL-007",
+        "DA-OBL-011"
+      ],
+      "evidence_source": "03_digital_asset/data/raw/regulatory/crypto_regulation_raw.csv",
+      "evaluation_operator": "required_when_executed",
+      "expected_value_or_constraint": "present",
+      "on_fail_action": "REVIEW",
+      "fpg_scope": "EXTERNAL_RESULT_CHECK",
+      "traceability": {
+        "regulatory_basis": [
+          "DA-OBL-007",
+          "DA-OBL-011"
+        ],
+        "data_basis": "03_digital_asset/data/processed/regulatory_schema_gap.json",
+        "experiment_basis": "03_digital_asset/data/processed/policy_enforcement_experiment_v1.json"
+      },
+      "actual_dataset_evidence": "MISSING",
+      "v2_change": "kept_but_actual_data_validation_unavailable"
+    }
+  ],
+  "v1_to_v2_changes": {
+    "retained_rules": [
+      "DA-POL-001",
+      "DA-POL-002",
+      "DA-POL-003",
+      "DA-POL-004",
+      "DA-POL-005",
+      "DA-POL-006",
+      "DA-POL-007"
+    ],
+    "removed_rules": [],
+    "actual_data_evidence_added_rules": [
+      "DA-POL-001",
+      "DA-POL-002"
+    ],
+    "regulatory_only_rules": [
+      "DA-POL-003",
+      "DA-POL-004",
+      "DA-POL-005",
+      "DA-POL-006",
+      "DA-POL-007"
+    ],
+    "future_vasp_internal_data_required_rules": [
+      "DA-POL-001",
+      "DA-POL-002",
+      "DA-POL-003",
+      "DA-POL-004",
+      "DA-POL-005",
+      "DA-POL-006",
+      "DA-POL-007"
+    ]
+  },
+  "non_decisions": [
+    "No BE handoff artifact or runtime API was modified.",
+    "Synthetic v2 is not represented as real market or production transaction statistics.",
+    "Amount generation remains synthetic because the actual downloaded file has no amount column."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "total_required_fields": 12,
+  "availability_counts": {
+    "DERIVABLE_FROM_ONCHAIN": 1,
+    "EXTERNAL_CONTROL_RESULT": 1,
+    "MISSING": 1,
+    "NOT_APPLICABLE": 0,
+    "ONCHAIN_AVAILABLE": 6,
+    "PRE_EXECUTION_INTERNAL": 0,
+    "VASP_INTERNAL": 3
+  },
+  "availability_ratios": {
+    "DERIVABLE_FROM_ONCHAIN": 0.0833,
+    "EXTERNAL_CONTROL_RESULT": 0.0833,
+    "MISSING": 0.0833,
+    "NOT_APPLICABLE": 0.0,
+    "ONCHAIN_AVAILABLE": 0.5,
+    "PRE_EXECUTION_INTERNAL": 0.0,
+    "VASP_INTERNAL": 0.25
+  },
+  "metric_definitions": {
+    "On-chain Direct Coverage Ratio": "ONCHAIN_AVAILABLE / Total Required Fields.",
+    "On-chain Extended Coverage Ratio": "(ONCHAIN_AVAILABLE + DERIVABLE_FROM_ONCHAIN) / Total Required Fields.",
+    "Non-chain Dependency Ratio": "(VASP_INTERNAL + EXTERNAL_CONTROL_RESULT + PRE_EXECUTION_INTERNAL) / Total Required Fields.",
+    "FPG Runtime Dependency Ratio": "Fields FPG must receive from internal/external runtime systems rather than public blockchain execution data."
+  },
+  "onchain_direct_coverage_ratio": 0.5,
+  "onchain_extended_coverage_ratio": 0.5833,
+  "non_chain_dependency_ratio": 0.3333,
+  "fpg_runtime_dependency_ratio": 0.3333,
+  "v2_snap_ratio_deprecated_for_main_conclusion": true
+}

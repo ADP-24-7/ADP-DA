@@ -1,0 +1,157 @@
+{
+  "mapping": [
+    {
+      "required_field": "originator_identity",
+      "legal_control": "DA-OBL-004|DA-OBL-008",
+      "ethereum_field": "",
+      "availability_class": "VASP_INTERNAL",
+      "derivation_method": "Blockchain from_address is wallet address, not legal originator identity.",
+      "confidence": "high",
+      "evidence": "Ethereum schema has from_address but not customer identity.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "beneficiary_identity",
+      "legal_control": "DA-OBL-005|DA-OBL-009",
+      "ethereum_field": "",
+      "availability_class": "VASP_INTERNAL",
+      "derivation_method": "Blockchain to_address is wallet/contract address, not legal beneficiary identity.",
+      "confidence": "high",
+      "evidence": "Ethereum schema has to_address but not customer identity.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "originator_address",
+      "legal_control": "ANALYSIS_REQUIRED",
+      "ethereum_field": "from_address",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "derivation_method": "Use transaction from_address.",
+      "confidence": "high",
+      "evidence": "Present in Ethereum transactions.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "beneficiary_address",
+      "legal_control": "ANALYSIS_REQUIRED",
+      "ethereum_field": "to_address",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "derivation_method": "Use transaction to_address; missing for contract creation.",
+      "confidence": "high",
+      "evidence": "Present in Ethereum transactions with nullable contract-creation cases.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "amount",
+      "legal_control": "ANALYSIS_REQUIRED",
+      "ethereum_field": "value_eth|value_wei",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "derivation_method": "Convert value_wei to ETH as value_eth.",
+      "confidence": "high",
+      "evidence": "Present in Ethereum transactions.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "asset",
+      "legal_control": "DA-OBL-013",
+      "ethereum_field": "",
+      "availability_class": "DERIVABLE_FROM_ONCHAIN",
+      "derivation_method": "Native ETH is derivable from chain context for this sample; token asset needs logs/token_transfers.",
+      "confidence": "medium",
+      "evidence": "This sample is native transaction table, not token-transfer table.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "counterparty_vasp",
+      "legal_control": "DA-OBL-001",
+      "ethereum_field": "",
+      "availability_class": "VASP_INTERNAL",
+      "derivation_method": "Requires VASP/customer registry or counterparty VASP verification service.",
+      "confidence": "high",
+      "evidence": "Not present on public chain.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "kyc_status",
+      "legal_control": "DA-OBL-002|DA-OBL-003",
+      "ethereum_field": "",
+      "availability_class": "EXTERNAL_CONTROL_RESULT",
+      "derivation_method": "Requires KYC/compliance provider or VASP internal result.",
+      "confidence": "high",
+      "evidence": "Not present on public chain.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "transaction_id",
+      "legal_control": "DA-OBL-006|DA-OBL-010",
+      "ethereum_field": "hash",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "derivation_method": "Use Ethereum transaction hash.",
+      "confidence": "high",
+      "evidence": "Present and unique in sample.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "tx_hash",
+      "legal_control": "ANALYSIS_REQUIRED",
+      "ethereum_field": "hash",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "derivation_method": "Use Ethereum transaction hash.",
+      "confidence": "high",
+      "evidence": "Present and unique in sample.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "execution_status",
+      "legal_control": "DA-OBL-007|DA-OBL-011|DA-OBL-012",
+      "ethereum_field": "",
+      "availability_class": "MISSING",
+      "derivation_method": "Receipt status extraction was rate-limited or unavailable in the local sample.",
+      "confidence": "high",
+      "evidence": "Not populated in ethereum_transactions_sample.csv.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    },
+    {
+      "required_field": "timestamp",
+      "legal_control": "ANALYSIS_REQUIRED",
+      "ethereum_field": "block_timestamp",
+      "availability_class": "ONCHAIN_AVAILABLE",
+      "derivation_method": "Use block timestamp.",
+      "confidence": "high",
+      "evidence": "Present via block data.",
+      "note": "v3 mapping uses Ethereum transaction-level data as MAIN_TRANSACTION_DATA."
+    }
+  ],
+  "metrics": {
+    "total_required_fields": 12,
+    "availability_counts": {
+      "DERIVABLE_FROM_ONCHAIN": 1,
+      "EXTERNAL_CONTROL_RESULT": 1,
+      "MISSING": 1,
+      "NOT_APPLICABLE": 0,
+      "ONCHAIN_AVAILABLE": 6,
+      "PRE_EXECUTION_INTERNAL": 0,
+      "VASP_INTERNAL": 3
+    },
+    "availability_ratios": {
+      "DERIVABLE_FROM_ONCHAIN": 0.0833,
+      "EXTERNAL_CONTROL_RESULT": 0.0833,
+      "MISSING": 0.0833,
+      "NOT_APPLICABLE": 0.0,
+      "ONCHAIN_AVAILABLE": 0.5,
+      "PRE_EXECUTION_INTERNAL": 0.0,
+      "VASP_INTERNAL": 0.25
+    },
+    "metric_definitions": {
+      "On-chain Direct Coverage Ratio": "ONCHAIN_AVAILABLE / Total Required Fields.",
+      "On-chain Extended Coverage Ratio": "(ONCHAIN_AVAILABLE + DERIVABLE_FROM_ONCHAIN) / Total Required Fields.",
+      "Non-chain Dependency Ratio": "(VASP_INTERNAL + EXTERNAL_CONTROL_RESULT + PRE_EXECUTION_INTERNAL) / Total Required Fields.",
+      "FPG Runtime Dependency Ratio": "Fields FPG must receive from internal/external runtime systems rather than public blockchain execution data."
+    },
+    "onchain_direct_coverage_ratio": 0.5,
+    "onchain_extended_coverage_ratio": 0.5833,
+    "non_chain_dependency_ratio": 0.3333,
+    "fpg_runtime_dependency_ratio": 0.3333,
+    "v2_snap_ratio_deprecated_for_main_conclusion": true
+  },
+  "profile_ref": "03_digital_asset/data/processed/ethereum_transaction_profile_v3.json"
+}

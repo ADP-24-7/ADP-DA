@@ -1,0 +1,29 @@
+{
+  "total_regulatory_required_fields": 12,
+  "availability_counts": {
+    "DERIVABLE_FROM_ONCHAIN": 1,
+    "EXTERNAL_CONTROL_RESULT": 2,
+    "MISSING": 4,
+    "NOT_APPLICABLE": 1,
+    "ONCHAIN_AVAILABLE": 1,
+    "VASP_INTERNAL": 3
+  },
+  "availability_ratios": {
+    "DERIVABLE_FROM_ONCHAIN": 0.0833,
+    "EXTERNAL_CONTROL_RESULT": 0.1667,
+    "MISSING": 0.3333,
+    "NOT_APPLICABLE": 0.0833,
+    "ONCHAIN_AVAILABLE": 0.0833,
+    "VASP_INTERNAL": 0.25
+  },
+  "metric_definitions": {
+    "Field Coverage Ratio": "Fields with any directly usable actual dataset column divided by total required fields.",
+    "On-chain Coverage Ratio": "ONCHAIN_AVAILABLE or DERIVABLE_FROM_ONCHAIN fields divided by total required fields.",
+    "External Dependency Ratio": "EXTERNAL_CONTROL_RESULT fields divided by total required fields.",
+    "FPG Required Input Ratio": "VASP_INTERNAL, EXTERNAL_CONTROL_RESULT, PRE_EXECUTION_INTERNAL, or MISSING fields divided by total required fields."
+  },
+  "field_coverage_ratio": 0.3333,
+  "onchain_coverage_ratio": 0.1667,
+  "external_dependency_ratio": 0.1667,
+  "fpg_required_input_ratio": 0.75
+}

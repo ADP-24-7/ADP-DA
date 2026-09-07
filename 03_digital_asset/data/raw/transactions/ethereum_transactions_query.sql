@@ -1,0 +1,7 @@
+-- JSON-RPC extraction equivalent to:
+-- eth_blockNumber
+-- eth_getBlockByNumber(block_number, true)
+-- eth_getTransactionReceipt(transaction_hash)
+-- endpoint: https://ethereum.publicnode.com
+-- target_rows: 50000
+-- max_blocks: 650

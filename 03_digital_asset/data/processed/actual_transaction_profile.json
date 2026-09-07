@@ -1,0 +1,74 @@
+{
+  "dataset_name": "SNAP Bitcoin OTC trust weighted signed network",
+  "row_count": 35592,
+  "columns": [
+    "event_id",
+    "source_user_id",
+    "target_user_id",
+    "rating",
+    "timestamp",
+    "event_time"
+  ],
+  "dtypes": {
+    "event_id": "string",
+    "source_user_id": "integer",
+    "target_user_id": "integer",
+    "rating": "integer",
+    "timestamp": "float_unix_timestamp",
+    "event_time": "datetime_utc"
+  },
+  "missing_rate": {
+    "event_id": 0,
+    "source_user_id": 0,
+    "target_user_id": 0,
+    "rating": 0,
+    "timestamp": 0,
+    "event_time": 0
+  },
+  "duplicate_transaction": "NOT_APPLICABLE - no transaction hash/id field",
+  "tx_identifier_uniqueness": "NOT_APPLICABLE",
+  "address_availability": "MISSING - user ids are platform ids, not blockchain addresses",
+  "amount_distribution": "MISSING - no amount column in actual file",
+  "timestamp_distribution": {
+    "min_event_time": "2010-11-08T18:45:11.728360+00:00",
+    "max_event_time": "2016-01-25T01:12:03.757280+00:00",
+    "active_days": 1769,
+    "top_day_count": 319
+  },
+  "transaction_frequency": {
+    "mean_events_per_day": 20.1198,
+    "max_events_per_day": 319
+  },
+  "sender_receiver_relationship": {
+    "unique_senders": 4814,
+    "unique_receivers": 5858,
+    "duplicate_source_target_pairs": 0,
+    "top_10_sender_share": 0.0969,
+    "top_10_receiver_share": 0.0803
+  },
+  "status_confirmation_field_exists": false,
+  "graph_link_info_exists": true,
+  "label_risk_info_exists": true,
+  "rating_distribution": {
+    "-10": 2413,
+    "-9": 20,
+    "-8": 31,
+    "-7": 14,
+    "-6": 5,
+    "-5": 179,
+    "-4": 27,
+    "-3": 91,
+    "-2": 182,
+    "-1": 601,
+    "1": 20048,
+    "2": 5562,
+    "3": 2561,
+    "4": 967,
+    "5": 1268,
+    "6": 265,
+    "7": 208,
+    "8": 277,
+    "9": 108,
+    "10": 765
+  }
+}

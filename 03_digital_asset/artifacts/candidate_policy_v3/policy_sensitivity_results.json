@@ -1,0 +1,112 @@
+[
+  {
+    "scenario": "baseline_all_fields",
+    "removed_fields": [],
+    "pass_count": 474,
+    "block_count": 99,
+    "review_count": 147,
+    "false_allow": 0,
+    "false_block": 0,
+    "review_increase": 0,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 0,
+    "delta_review": 0,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  },
+  {
+    "scenario": "remove_KYC_STATUS_CHECK",
+    "removed_fields": [
+      "KYC_STATUS_CHECK"
+    ],
+    "pass_count": 536,
+    "block_count": 118,
+    "review_count": 66,
+    "false_allow": 62,
+    "false_block": 0,
+    "review_increase": -81,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 62,
+    "delta_review": -81,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  },
+  {
+    "scenario": "remove_ADDRESS_VERIFY",
+    "removed_fields": [
+      "ADDRESS_VERIFY"
+    ],
+    "pass_count": 474,
+    "block_count": 99,
+    "review_count": 147,
+    "false_allow": 0,
+    "false_block": 0,
+    "review_increase": 0,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 0,
+    "delta_review": 0,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  },
+  {
+    "scenario": "remove_COUNTERPARTY_VASP_VERIFY",
+    "removed_fields": [
+      "COUNTERPARTY_VASP_VERIFY"
+    ],
+    "pass_count": 523,
+    "block_count": 107,
+    "review_count": 90,
+    "false_allow": 49,
+    "false_block": 0,
+    "review_increase": -57,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 49,
+    "delta_review": -57,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  },
+  {
+    "scenario": "remove_AMOUNT_CONSTRAINT",
+    "removed_fields": [
+      "AMOUNT_CONSTRAINT"
+    ],
+    "pass_count": 511,
+    "block_count": 62,
+    "review_count": 147,
+    "false_allow": 37,
+    "false_block": 0,
+    "review_increase": 0,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 37,
+    "delta_review": 0,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  },
+  {
+    "scenario": "remove_DESTINATION_CONSTRAINT",
+    "removed_fields": [
+      "DESTINATION_CONSTRAINT"
+    ],
+    "pass_count": 501,
+    "block_count": 72,
+    "review_count": 147,
+    "false_allow": 27,
+    "false_block": 0,
+    "review_increase": 0,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 27,
+    "delta_review": 0,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  },
+  {
+    "scenario": "remove_ASSET_CONSTRAINT",
+    "removed_fields": [
+      "ASSET_CONSTRAINT"
+    ],
+    "pass_count": 503,
+    "block_count": 70,
+    "review_count": 147,
+    "false_allow": 29,
+    "false_block": 0,
+    "review_increase": 0,
+    "normal_preservation_rate": 1.0,
+    "delta_false_allow": 29,
+    "delta_review": 0,
+    "evidence_boundary": "Synthetic policy scenario result, not real market fraud/failure rate."
+  }
+]
