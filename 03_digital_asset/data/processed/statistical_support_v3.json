@@ -1,0 +1,19 @@
+{
+  "categorical_effect_sizes": {
+    "kyc_status_vs_decision_cramers_v": 0.5277,
+    "counterparty_vasp_status_vs_decision_cramers_v": 0.6272,
+    "requested_asset_vs_decision_cramers_v": 0.4888
+  },
+  "unsupported_tests_not_run": [
+    "No Mann-Whitney/Kruskal claim is made for real regulatory failure because labels are synthetic policy scenarios.",
+    "No real fraud-rate or regulatory failure-rate inference is made from synthetic v3.",
+    "No retry/reconciliation statistical validation is made because no retry/reconciliation event dataset is present."
+  ],
+  "hypotheses": {
+    "H1": "REAL_SCHEMA_EVIDENCE",
+    "H2": "REGULATORY_STRUCTURE_EVIDENCE",
+    "H3": "SYNTHETIC_POLICY_EXPERIMENT",
+    "H4": "SYNTHETIC_POLICY_EXPERIMENT",
+    "H5": "STRUCTURAL_EVIDENCE_ONLY"
+  }
+}

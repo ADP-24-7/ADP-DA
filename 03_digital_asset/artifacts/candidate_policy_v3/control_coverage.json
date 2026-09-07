@@ -1,0 +1,110 @@
+[
+  {
+    "control": "ORIGINATOR_VERIFY",
+    "required_field_count": 2,
+    "onchain_field_count": 1,
+    "internal_dependency_count": 1,
+    "external_dependency_count": 0,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "REQUIRES_NON_CHAIN_INPUT",
+    "fields": [
+      "originator_identity",
+      "originator_address"
+    ]
+  },
+  {
+    "control": "BENEFICIARY_VERIFY",
+    "required_field_count": 2,
+    "onchain_field_count": 1,
+    "internal_dependency_count": 1,
+    "external_dependency_count": 0,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "REQUIRES_NON_CHAIN_INPUT",
+    "fields": [
+      "beneficiary_identity",
+      "beneficiary_address"
+    ]
+  },
+  {
+    "control": "ADDRESS_VERIFY",
+    "required_field_count": 2,
+    "onchain_field_count": 2,
+    "internal_dependency_count": 0,
+    "external_dependency_count": 0,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "READY_WITH_CHAIN_DATA",
+    "fields": [
+      "originator_address",
+      "beneficiary_address"
+    ]
+  },
+  {
+    "control": "COUNTERPARTY_VASP_VERIFY",
+    "required_field_count": 1,
+    "onchain_field_count": 0,
+    "internal_dependency_count": 1,
+    "external_dependency_count": 0,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "REQUIRES_NON_CHAIN_INPUT",
+    "fields": [
+      "counterparty_vasp"
+    ]
+  },
+  {
+    "control": "KYC_STATUS_CHECK",
+    "required_field_count": 1,
+    "onchain_field_count": 0,
+    "internal_dependency_count": 0,
+    "external_dependency_count": 1,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "REQUIRES_NON_CHAIN_INPUT",
+    "fields": [
+      "kyc_status"
+    ]
+  },
+  {
+    "control": "TRANSFER_RESTRICTION",
+    "required_field_count": 5,
+    "onchain_field_count": 3,
+    "internal_dependency_count": 1,
+    "external_dependency_count": 1,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "REQUIRES_NON_CHAIN_INPUT",
+    "fields": [
+      "asset",
+      "amount",
+      "timestamp",
+      "kyc_status",
+      "counterparty_vasp"
+    ]
+  },
+  {
+    "control": "INFORMATION_TRANSFER",
+    "required_field_count": 3,
+    "onchain_field_count": 3,
+    "internal_dependency_count": 0,
+    "external_dependency_count": 0,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "READY_WITH_CHAIN_DATA",
+    "fields": [
+      "transaction_id",
+      "tx_hash",
+      "timestamp"
+    ]
+  },
+  {
+    "control": "RECORD_KEEPING",
+    "required_field_count": 4,
+    "onchain_field_count": 3,
+    "internal_dependency_count": 0,
+    "external_dependency_count": 0,
+    "pre_execution_dependency_count": 0,
+    "runtime_readiness": "REQUIRES_NON_CHAIN_INPUT",
+    "fields": [
+      "transaction_id",
+      "tx_hash",
+      "execution_status",
+      "timestamp"
+    ]
+  }
+]

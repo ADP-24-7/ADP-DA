@@ -1,0 +1,56 @@
+[
+  {
+    "column": "originator_address",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Sample from Ethereum from_address distribution.",
+    "rationale": "Uses actual sender concentration."
+  },
+  {
+    "column": "beneficiary_address",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Sample from Ethereum to_address distribution.",
+    "rationale": "Uses actual receiver concentration."
+  },
+  {
+    "column": "requested_amount_eth",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Sample positive Ethereum value_eth distribution.",
+    "rationale": "Uses actual transaction value distribution without IQR trimming."
+  },
+  {
+    "column": "requested_at",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Sample Ethereum block_timestamp distribution with small deterministic offset.",
+    "rationale": "Uses actual temporal pattern."
+  },
+  {
+    "column": "transaction_identifier",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Sample actual Ethereum transaction hash.",
+    "rationale": "Uses real transaction identifier field."
+  },
+  {
+    "column": "execution_status",
+    "source_type": "DERIVED",
+    "generation_rule": "Map receipt_status=1 to SUCCESS and 0 to FAILED; otherwise mark UNKNOWN_STATUS_NOT_EXTRACTED.",
+    "rationale": "Uses actual receipt status only where available."
+  },
+  {
+    "column": "originator_identity",
+    "source_type": "SYNTHETIC_POLICY_FIELD",
+    "generation_rule": "Deterministic pseudonymous customer ids.",
+    "rationale": "Legal identity is not public-chain data."
+  },
+  {
+    "column": "kyc_status",
+    "source_type": "SYNTHETIC_POLICY_FIELD",
+    "generation_rule": "Deterministic VERIFIED/PENDING/FAILED scenarios.",
+    "rationale": "KYC result is external/internal control data."
+  },
+  {
+    "column": "counterparty_vasp_status",
+    "source_type": "SYNTHETIC_POLICY_FIELD",
+    "generation_rule": "Deterministic VERIFIED/UNKNOWN scenarios.",
+    "rationale": "Counterparty VASP verification is not public-chain data."
+  }
+]

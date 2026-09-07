@@ -1,0 +1,46 @@
+{
+  "dataset_name": "Ethereum mainnet JSON-RPC transaction sample",
+  "provider": "ethereum.publicnode.com JSON-RPC",
+  "source_url": "https://ethereum.publicnode.com",
+  "extraction_method": "eth_getBlockByNumber(full transactions); receipt extraction not requested in this run",
+  "extraction_query": "03_digital_asset/data/raw/transactions/ethereum_transactions_query.sql",
+  "extraction_date": "2026-09-07T00:02:05.235493+00:00",
+  "chain": "Ethereum mainnet",
+  "sampling_period": {
+    "start_block_descending_from": 25921763,
+    "end_block_reached": 25921539,
+    "min_block_timestamp": "2026-09-06T23:17:11+00:00",
+    "max_block_timestamp": "2026-09-07T00:01:59+00:00",
+    "blocks_checked": 225,
+    "row_limit": 50000
+  },
+  "receipt_access_status": "NOT_REQUESTED - set FPG_ETHEREUM_FETCH_RECEIPTS=1 to attempt receipt_status extraction",
+  "row_count": 50000,
+  "columns": [
+    "hash",
+    "from_address",
+    "to_address",
+    "value_wei",
+    "value_eth",
+    "block_timestamp",
+    "block_number",
+    "transaction_index",
+    "nonce",
+    "gas",
+    "gas_price",
+    "max_fee_per_gas",
+    "max_priority_fee_per_gas",
+    "input_size",
+    "has_input",
+    "transaction_type",
+    "receipt_status",
+    "receipt_gas_used"
+  ],
+  "license_or_terms": "Public Ethereum mainnet data accessed through a public JSON-RPC endpoint; endpoint terms depend on provider.",
+  "limitations": [
+    "Recent-block sample only, not a full-chain distribution.",
+    "No VASP customer identity, KYC status, approved policy, or counterparty VASP verification.",
+    "Public endpoint availability and rate limits affect exact reproducibility."
+  ],
+  "reproducibility_note": "Set ETHEREUM_RPC_URL, FPG_ETHEREUM_SAMPLE_ROWS, FPG_ETHEREUM_MAX_BLOCKS, and rerun 03_digital_asset/src/build_ethereum_schema_gap_v3.py."
+}

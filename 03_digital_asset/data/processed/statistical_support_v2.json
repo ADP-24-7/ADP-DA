@@ -1,0 +1,12 @@
+{
+  "categorical_effect_sizes": {
+    "kyc_status_vs_decision_cramers_v": 0.5999,
+    "counterparty_vasp_status_vs_decision_cramers_v": 0.4885,
+    "requested_asset_vs_decision_cramers_v": 0.2785
+  },
+  "unsupported_tests_not_run": [
+    "Mann-Whitney U for actual amount: actual downloaded file has no amount.",
+    "Kruskal-Wallis for execution status: actual downloaded file has no execution status.",
+    "Proportion test for blockchain status: actual downloaded file has no blockchain receipt status."
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "required_field": "originator_identity",
+    "legal_control": "DA-OBL-004|DA-OBL-008",
+    "actual_dataset_field": "source_user_id",
+    "availability_class": "VASP_INTERNAL",
+    "derivation_method": "Platform user id is not legal identity.",
+    "confidence": "low",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "beneficiary_identity",
+    "legal_control": "DA-OBL-005|DA-OBL-009",
+    "actual_dataset_field": "target_user_id",
+    "availability_class": "VASP_INTERNAL",
+    "derivation_method": "Platform user id is not legal identity.",
+    "confidence": "low",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "originator_address",
+    "legal_control": "ANALYSIS_REQUIRED",
+    "actual_dataset_field": "",
+    "availability_class": "MISSING",
+    "derivation_method": "Actual file has no blockchain address.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "beneficiary_address",
+    "legal_control": "ANALYSIS_REQUIRED",
+    "actual_dataset_field": "",
+    "availability_class": "MISSING",
+    "derivation_method": "Actual file has no blockchain address.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "amount",
+    "legal_control": "ANALYSIS_REQUIRED",
+    "actual_dataset_field": "",
+    "availability_class": "MISSING",
+    "derivation_method": "Actual file has no amount/value column.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "asset",
+    "legal_control": "DA-OBL-013",
+    "actual_dataset_field": "",
+    "availability_class": "NOT_APPLICABLE",
+    "derivation_method": "Dataset is Bitcoin ecosystem trust graph, not asset transfer ledger.",
+    "confidence": "medium",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "counterparty_vasp",
+    "legal_control": "DA-OBL-001",
+    "actual_dataset_field": "",
+    "availability_class": "VASP_INTERNAL",
+    "derivation_method": "VASP status is not present in public graph data.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "kyc_status",
+    "legal_control": "DA-OBL-002|DA-OBL-003",
+    "actual_dataset_field": "",
+    "availability_class": "EXTERNAL_CONTROL_RESULT",
+    "derivation_method": "KYC result is never observable on public chain or trust graph.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "transaction_id",
+    "legal_control": "DA-OBL-006|DA-OBL-010",
+    "actual_dataset_field": "event_id",
+    "availability_class": "DERIVABLE_FROM_ONCHAIN",
+    "derivation_method": "A local event id can be derived, but it is not blockchain tx hash.",
+    "confidence": "medium",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "tx_hash",
+    "legal_control": "ANALYSIS_REQUIRED",
+    "actual_dataset_field": "",
+    "availability_class": "MISSING",
+    "derivation_method": "Actual file has no transaction hash.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "execution_status",
+    "legal_control": "DA-OBL-007|DA-OBL-011|DA-OBL-012",
+    "actual_dataset_field": "",
+    "availability_class": "EXTERNAL_CONTROL_RESULT",
+    "derivation_method": "Execution status must come from execution/receipt system.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  },
+  {
+    "required_field": "timestamp",
+    "legal_control": "ANALYSIS_REQUIRED",
+    "actual_dataset_field": "timestamp|event_time",
+    "availability_class": "ONCHAIN_AVAILABLE",
+    "derivation_method": "Actual file has Unix timestamp for graph event.",
+    "confidence": "high",
+    "note": "Actual dataset evidence prioritized over v1 assumption.",
+    "v2_status": "actual_dataset_profiled"
+  }
+]

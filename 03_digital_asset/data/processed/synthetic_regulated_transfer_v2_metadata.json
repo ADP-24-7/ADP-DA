@@ -1,0 +1,44 @@
+[
+  {
+    "column": "originator_id",
+    "source_type": "DERIVED",
+    "generation_rule": "Map actual source_user_id to pseudonymous originator id.",
+    "rationale": "Actual graph sender concentration can seed requester concentration."
+  },
+  {
+    "column": "beneficiary_id",
+    "source_type": "DERIVED",
+    "generation_rule": "Map actual target_user_id to pseudonymous beneficiary id.",
+    "rationale": "Actual graph receiver concentration can seed beneficiary concentration."
+  },
+  {
+    "column": "requested_at",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Reuse observed timestamp ordinal/minute pattern from actual file.",
+    "rationale": "Temporal concentration comes from real dataset."
+  },
+  {
+    "column": "actual_rating_proxy",
+    "source_type": "REAL_DISTRIBUTION",
+    "generation_rule": "Sample actual signed rating distribution.",
+    "rationale": "Used only as counterparty risk proxy, not legal status."
+  },
+  {
+    "column": "requested_amount",
+    "source_type": "SYNTHETIC_POLICY_FIELD",
+    "generation_rule": "Heavy-tail scenario buckets scaled by observed rating magnitude.",
+    "rationale": "Actual file has no amount; generation is explicitly synthetic."
+  },
+  {
+    "column": "kyc_status",
+    "source_type": "SYNTHETIC_POLICY_FIELD",
+    "generation_rule": "Scenario rule from rating sign plus periodic pending cases.",
+    "rationale": "KYC is external and missing from public data."
+  },
+  {
+    "column": "counterparty_vasp_status",
+    "source_type": "SYNTHETIC_POLICY_FIELD",
+    "generation_rule": "Verified unless requested destination is UNKNOWN_VASP.",
+    "rationale": "VASP verification result is internal/external control data."
+  }
+]

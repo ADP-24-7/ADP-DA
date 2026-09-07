@@ -1,0 +1,112 @@
+{
+  "dataset_name": "Ethereum mainnet JSON-RPC transaction sample",
+  "dataset_role": "MAIN_TRANSACTION_DATA",
+  "row_count": 50000,
+  "columns": [
+    "hash",
+    "from_address",
+    "to_address",
+    "value_wei",
+    "value_eth",
+    "block_timestamp",
+    "block_number",
+    "transaction_index",
+    "nonce",
+    "gas",
+    "gas_price",
+    "max_fee_per_gas",
+    "max_priority_fee_per_gas",
+    "input_size",
+    "has_input",
+    "transaction_type",
+    "receipt_status",
+    "receipt_gas_used"
+  ],
+  "dtypes": {
+    "hash": "hex_string",
+    "from_address": "address",
+    "to_address": "address_nullable_for_contract_creation",
+    "value_wei": "integer",
+    "value_eth": "decimal_eth",
+    "block_timestamp": "datetime_utc",
+    "block_number": "integer",
+    "transaction_index": "integer",
+    "nonce": "integer",
+    "gas": "integer",
+    "gas_price": "integer_nullable",
+    "receipt_status": "integer_nullable"
+  },
+  "missing_rate": {
+    "hash": 0.0,
+    "from_address": 0.0,
+    "to_address": 0.0004,
+    "value_wei": 0.0,
+    "value_eth": 0.0,
+    "block_timestamp": 0.0,
+    "block_number": 0.0,
+    "transaction_index": 0.0,
+    "nonce": 0.0,
+    "gas": 0.0,
+    "gas_price": 0.0,
+    "max_fee_per_gas": 0.1914,
+    "max_priority_fee_per_gas": 0.1914,
+    "input_size": 0.0,
+    "has_input": 0.0,
+    "transaction_type": 0.0,
+    "receipt_status": 1.0,
+    "receipt_gas_used": 1.0
+  },
+  "unique_transaction_hash": 50000,
+  "duplicate_transaction_count": 0,
+  "hash_uniqueness_ratio": 1.0,
+  "from_to_availability": {
+    "from_address_available_ratio": 1.0,
+    "to_address_available_ratio": 0.9996
+  },
+  "value_availability_ratio": 1.0,
+  "timestamp_availability_ratio": 1.0,
+  "status_availability_ratio": 0.0,
+  "value_distribution_eth": {
+    "count": 50000,
+    "mean": 0.468220361426,
+    "std": 19.021526593066,
+    "min": 0.0,
+    "p25": 0.0,
+    "median": 0.0,
+    "p75": 0.0004245282342,
+    "p90": 0.04,
+    "p95": 0.12021125436277431,
+    "p99": 1.588920318179112,
+    "max": 2365.999932383466,
+    "zero_value_ratio": 0.6341,
+    "top_1pct_value_share": 0.9531
+  },
+  "transaction_frequency": {
+    "daily_transaction_count": {
+      "2026-09-06": 47026,
+      "2026-09-07": 2974
+    },
+    "mean_transactions_per_day": 25000.0,
+    "max_transactions_per_day": 47026
+  },
+  "sender_concentration": {
+    "unique_senders": 22153,
+    "top_10_share": 0.0574,
+    "top_1pct_share": 0.2757,
+    "gini": 0.5139
+  },
+  "receiver_concentration": {
+    "unique_receivers": 11122,
+    "top_10_share": 0.3406,
+    "top_1pct_share": 0.5724,
+    "gini": 0.7514
+  },
+  "identity_and_replay_fields": {
+    "hash": "unique transaction identifier in sample",
+    "nonce": "available sequencing value within sender account",
+    "block_number": "available chain ordering context",
+    "transaction_index": "available ordering within block",
+    "receipt_status": "available only when receipt extraction succeeds; otherwise unresolved in local sample",
+    "claim_boundary": "These fields support structural uniqueness/sequencing analysis only; this sample does not prove FPG replay prevention effectiveness."
+  }
+}

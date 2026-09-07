@@ -1,0 +1,128 @@
+[
+  {
+    "scenario": "baseline_all_fields",
+    "removed_fields": [],
+    "pass_count": 164,
+    "block_count": 102,
+    "review_count": 94,
+    "false_allow": 0,
+    "false_block": 0,
+    "undetermined_review_increase": 0,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 0,
+    "delta_false_block": 0,
+    "delta_review": 0
+  },
+  {
+    "scenario": "remove_KYC_STATUS_CHECK",
+    "removed_fields": [
+      "KYC_STATUS_CHECK"
+    ],
+    "pass_count": 200,
+    "block_count": 132,
+    "review_count": 28,
+    "false_allow": 36,
+    "false_block": 0,
+    "undetermined_review_increase": -66,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 36,
+    "delta_false_block": 0,
+    "delta_review": -66
+  },
+  {
+    "scenario": "remove_ADDRESS_VERIFY",
+    "removed_fields": [
+      "ADDRESS_VERIFY"
+    ],
+    "pass_count": 183,
+    "block_count": 83,
+    "review_count": 94,
+    "false_allow": 19,
+    "false_block": 0,
+    "undetermined_review_increase": 0,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 19,
+    "delta_false_block": 0,
+    "delta_review": 0
+  },
+  {
+    "scenario": "remove_COUNTERPARTY_VASP_VERIFY",
+    "removed_fields": [
+      "COUNTERPARTY_VASP_VERIFY"
+    ],
+    "pass_count": 164,
+    "block_count": 123,
+    "review_count": 73,
+    "false_allow": 0,
+    "false_block": 0,
+    "undetermined_review_increase": -21,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 0,
+    "delta_false_block": 0,
+    "delta_review": -21
+  },
+  {
+    "scenario": "remove_AMOUNT_constraint",
+    "removed_fields": [
+      "AMOUNT_CONSTRAINT"
+    ],
+    "pass_count": 241,
+    "block_count": 25,
+    "review_count": 94,
+    "false_allow": 77,
+    "false_block": 0,
+    "undetermined_review_increase": 0,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 77,
+    "delta_false_block": 0,
+    "delta_review": 0
+  },
+  {
+    "scenario": "remove_destination_constraint",
+    "removed_fields": [
+      "DESTINATION_CONSTRAINT"
+    ],
+    "pass_count": 164,
+    "block_count": 102,
+    "review_count": 94,
+    "false_allow": 0,
+    "false_block": 0,
+    "undetermined_review_increase": 0,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 0,
+    "delta_false_block": 0,
+    "delta_review": 0
+  },
+  {
+    "scenario": "remove_transaction_identifier",
+    "removed_fields": [
+      "TRANSACTION_IDENTIFIER"
+    ],
+    "pass_count": 164,
+    "block_count": 102,
+    "review_count": 94,
+    "false_allow": 0,
+    "false_block": 0,
+    "undetermined_review_increase": 0,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 0,
+    "delta_false_block": 0,
+    "delta_review": 0
+  },
+  {
+    "scenario": "remove_status_related_input",
+    "removed_fields": [
+      "STATUS_INPUT"
+    ],
+    "pass_count": 164,
+    "block_count": 102,
+    "review_count": 94,
+    "false_allow": 0,
+    "false_block": 0,
+    "undetermined_review_increase": 0,
+    "normal_transaction_preservation": 164,
+    "delta_false_allow": 0,
+    "delta_false_block": 0,
+    "delta_review": 0
+  }
+]
