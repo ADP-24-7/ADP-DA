@@ -145,7 +145,10 @@ def main() -> None:
 
     report = {
         "generated_at": GENERATED_AT,
-        "scope": "Digital Asset Evidence Ontology final freeze validation; 03_digital_asset/gateway_rules not modified",
+        "scope": (
+            "Digital Asset Evidence Ontology final freeze validation; "
+            "03_digital_asset/gateway_rules not modified"
+        ),
         "final_counts": {
             "TOTAL": len(evidence),
             "VERIFIED": status_counts.get("VERIFIED", 0),

@@ -20,7 +20,13 @@ TRACEABILITY = ROOT / "processed" / "traceability.json"
 REQUIREMENT_CLASSIFICATION = ROOT / "processed" / "requirement_classification.json"
 MIGRATION = ROOT / "migration" / "legacy_rule_mapping.json"
 LEGACY_RULES = ROOT / "rules" / "gateway_rules.json"
-REQUIREMENTS = PROJECT_ROOT / "02_ai" / "evidence_ontology" / "processed" / "requirement_candidates.json"
+REQUIREMENTS = (
+    PROJECT_ROOT
+    / "02_ai"
+    / "evidence_ontology"
+    / "processed"
+    / "requirement_candidates.json"
+)
 EVIDENCE = PROJECT_ROOT / "02_ai" / "evidence_ontology" / "processed" / "evidence_master.json"
 VALIDATION_REPORT = ROOT / "review" / "validation_report.json"
 ORPHAN_REPORT = ROOT / "review" / "orphan_report.json"
