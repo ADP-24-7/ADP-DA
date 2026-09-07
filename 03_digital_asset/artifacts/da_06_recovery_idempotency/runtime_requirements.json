@@ -1,0 +1,148 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T23:52:14.009603+00:00",
+  "source_analysis": "DA-06",
+  "domain": "DIGITAL_ASSET",
+  "topic": [
+    "IDEMPOTENCY",
+    "SENT_UNKNOWN",
+    "RECOVERY"
+  ],
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+  "sample_size": 73410,
+  "live_be_evaluation": false,
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+      "sha256": "630010c2452a5a8cfb2d85b6cd3fe102c57dce440262d3b17525bdcb2fd962a3",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md",
+      "sha256": "810313fcf269246bf1a5395727e518b4490b6a33c54a642443049c0f228f8049",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    }
+  ],
+  "artifact_id": "DA_06_RECOVERY_IDEMPOTENCY:runtime_requirements",
+  "evidence_kind": "IMPLEMENTATION_REQUIREMENTS",
+  "implemented_by_this_artifact": false,
+  "state_namespace": "DA_CONCEPTUAL_NOT_BE_ENUM",
+  "invariants": [
+    {
+      "id": "INV-1",
+      "requirement": "Identify duplicate business requests within the existing idempotency scope."
+    },
+    {
+      "id": "INV-2",
+      "requirement": "With an external_transaction_id, query the existing execution before new outbound."
+    },
+    {
+      "id": "INV-3",
+      "requirement": "SENT_UNKNOWN is not FAILED."
+    },
+    {
+      "id": "INV-4",
+      "requirement": "Never immediately resend from SENT_UNKNOWN."
+    },
+    {
+      "id": "INV-5",
+      "requirement": "Reconcile using the existing external transaction and its bound request."
+    },
+    {
+      "id": "INV-6",
+      "requirement": "Never resend the same finalized business request."
+    },
+    {
+      "id": "INV-7",
+      "requirement": "Evaluate retry eligibility only after confirmed terminal failure and retry policy."
+    },
+    {
+      "id": "INV-8",
+      "requirement": "Preserve original-to-retry request lineage for every authorized retry."
+    },
+    {
+      "id": "INV-9",
+      "requirement": "Record every state transition in the audit trace."
+    }
+  ],
+  "transitions": [
+    {
+      "from": "SUBMITTED",
+      "to": "SENT_UNKNOWN",
+      "requires": [
+        "submission_recorded",
+        "response_uncertain",
+        "audit_trace"
+      ]
+    },
+    {
+      "from": "SENT_UNKNOWN",
+      "to": "RECONCILING",
+      "requires": [
+        "query_existing_execution",
+        "audit_trace"
+      ]
+    },
+    {
+      "from": "RECONCILING",
+      "to": "FINALIZED",
+      "requires": [
+        "bound_reference",
+        "field_match",
+        "finality_confirmed",
+        "audit_trace"
+      ]
+    },
+    {
+      "from": "RECONCILING",
+      "to": "FAILED",
+      "requires": [
+        "bound_reference",
+        "terminal_failure_confirmed",
+        "audit_trace"
+      ]
+    },
+    {
+      "from": "RECONCILING",
+      "to": "RECONCILIATION_REQUIRED",
+      "requires": [
+        "unresolved_or_mismatch",
+        "audit_trace"
+      ]
+    },
+    {
+      "from": "FAILED",
+      "to": "RETRY_ELIGIBLE",
+      "requires": [
+        "terminal_failure_confirmed",
+        "retry_policy_allows",
+        "audit_trace"
+      ]
+    }
+  ],
+  "prohibited": [
+    "SENT_UNKNOWN -> RETRY",
+    "FINALIZED -> RESUBMIT_SAME_REQUEST",
+    "UNKNOWN_AS_FAILED",
+    "RETRY_BEFORE_RECONCILIATION"
+  ],
+  "identifier_binding": [
+    "idempotency_key",
+    "external_transaction_id",
+    "execution_status"
+  ],
+  "idempotency_scope": [
+    "idempotency_institution_id",
+    "workload_id",
+    "idempotency_key"
+  ],
+  "duplicate_handling": "Reuse the existing execution for matching request_hash; conflicting hash is a conflict, in-progress is not a new submission.",
+  "missing_reference": "Use existing provider correlation lookup if supported; otherwise remain unresolved with manual reconciliation. No blind resend.",
+  "retry_boundary": "RETRY_ELIGIBLE is not authorization to send. BE must define retry policy, atomic claim, limits and parent lineage before any retry.",
+  "completion_boundary": "Amount/Asset/Destination mismatch prohibits automatic completion. Receipt status alone is insufficient for BE settlement finality."
+}

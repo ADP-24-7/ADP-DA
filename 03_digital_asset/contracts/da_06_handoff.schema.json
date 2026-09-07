@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DA-06 frozen evidence and implementation requirements; not BE wire schema",
+  "type": "object",
+  "required": ["artifact_id", "artifact_version", "generated_at", "source_analysis", "domain", "topic", "source_notebook", "sample_size", "live_be_evaluation", "evidence_refs", "evidence_kind"],
+  "properties": {
+    "artifact_id": {"type": "string", "pattern": "^DA_06_RECOVERY_IDEMPOTENCY:(analysis_summary|validation_metrics|runtime_requirements|runtime_architecture|contract_gaps)$"},
+    "artifact_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source_analysis": {"const": "DA-06"},
+    "domain": {"const": "DIGITAL_ASSET"},
+    "topic": {"const": ["IDEMPOTENCY", "SENT_UNKNOWN", "RECOVERY"]},
+    "source_notebook": {"const": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb"},
+    "sample_size": {"const": 73410},
+    "live_be_evaluation": {"const": false},
+    "evidence_kind": {"enum": ["OBSERVED_EVIDENCE", "COUNTERFACTUAL_EXPERIMENT", "IMPLEMENTATION_REQUIREMENTS"]},
+    "evidence_refs": {
+      "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true,
+      "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256", "sha256_scope"], "properties": {
+        "path": {"type": "string", "pattern": "^03_digital_asset/"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "sha256_scope": {"const": "RAW_BYTES"}
+      }}
+    },
+    "invariants": {"type": "array", "minItems": 9, "maxItems": 9, "uniqueItems": true,
+      "items": {"type": "object", "required": ["id", "requirement"], "properties": {
+        "id": {"type": "string", "pattern": "^INV-[1-9]$"}, "requirement": {"type": "string", "minLength": 1}
+      }}
+    },
+    "transitions": {"type": "array", "minItems": 6, "maxItems": 6, "uniqueItems": true,
+      "items": {"type": "object", "additionalProperties": false, "required": ["from", "to", "requires"], "properties": {
+        "from": {"enum": ["SUBMITTED", "SENT_UNKNOWN", "RECONCILING", "FAILED"]},
+        "to": {"enum": ["SENT_UNKNOWN", "RECONCILING", "FINALIZED", "FAILED", "RECONCILIATION_REQUIRED", "RETRY_ELIGIBLE"]},
+        "requires": {"type": "array", "minItems": 2, "uniqueItems": true, "contains": {"const": "audit_trace"}, "items": {"type": "string"}}
+      }}
+    },
+    "fields": {"type": "array", "minItems": 10, "maxItems": 10, "items": {
+      "type": "object", "required": ["semantic", "existing", "note"], "properties": {
+        "semantic": {"enum": ["request_id", "idempotency_key", "external_transaction_id", "submission_status", "execution_status", "reconciliation_status", "retry_count", "parent_request_id", "created_at", "last_checked_at"]},
+        "existing": {"type": ["string", "null"]}, "note": {"type": "string", "minLength": 1}
+      }
+    }}
+  },
+  "allOf": [
+    {"if": {"properties": {"artifact_id": {"const": "DA_06_RECOVERY_IDEMPOTENCY:analysis_summary"}}}, "then": {
+      "required": ["metrics", "notebook_state_labels", "boundary", "source_cells"],
+      "properties": {"evidence_kind": {"const": "OBSERVED_EVIDENCE"}, "metrics": {"type": "object", "required": ["hash_missing", "unique_hashes", "duplicate_hash_rows", "duplicate_hash_keys", "hash_receipt_linked", "hash_receipt_linked_percent", "receipt_success", "receipt_success_percent", "receipt_failed", "receipt_failed_percent"], "additionalProperties": {"type": "number", "minimum": 0}}}
+    }},
+    {"if": {"properties": {"artifact_id": {"const": "DA_06_RECOVERY_IDEMPOTENCY:validation_metrics"}}}, "then": {
+      "required": ["scenario", "assumption", "naive_resend", "reconciliation_first", "paired_comparison", "interpretation", "source_cells"],
+      "properties": {"evidence_kind": {"const": "COUNTERFACTUAL_EXPERIMENT"}, "scenario": {"const": "SENT_UNKNOWN_WITH_REFERENCE"}}
+    }},
+    {"if": {"properties": {"artifact_id": {"const": "DA_06_RECOVERY_IDEMPOTENCY:runtime_requirements"}}}, "then": {
+      "required": ["implemented_by_this_artifact", "state_namespace", "invariants", "transitions", "prohibited", "identifier_binding", "idempotency_scope", "duplicate_handling", "missing_reference", "retry_boundary", "completion_boundary"],
+      "properties": {"evidence_kind": {"const": "IMPLEMENTATION_REQUIREMENTS"}, "implemented_by_this_artifact": {"const": false}, "state_namespace": {"const": "DA_CONCEPTUAL_NOT_BE_ENUM"}}
+    }},
+    {"if": {"properties": {"artifact_id": {"const": "DA_06_RECOVERY_IDEMPOTENCY:runtime_architecture"}}}, "then": {
+      "required": ["pipeline", "be_repository", "be_reviewed_commit", "fields", "state_mapping", "be_source_paths"],
+      "properties": {"evidence_kind": {"const": "IMPLEMENTATION_REQUIREMENTS"}, "be_reviewed_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}}
+    }},
+    {"if": {"properties": {"artifact_id": {"const": "DA_06_RECOVERY_IDEMPOTENCY:contract_gaps"}}}, "then": {
+      "required": ["gaps"], "properties": {"evidence_kind": {"const": "IMPLEMENTATION_REQUIREMENTS"}, "gaps": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "detail"], "properties": {"id": {"type": "string"}, "detail": {"type": "string"}}}}}
+    }}
+  ]
+}
