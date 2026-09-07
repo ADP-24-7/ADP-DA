@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any
 
 import jsonschema
-import nbformat as nbf
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -872,6 +871,8 @@ def developer_doc(matrix: dict[str, Any], pipeline: dict[str, Any], validation: 
 
 
 def build_notebook() -> None:
+    import nbformat as nbf
+
     nb = nbf.v4.new_notebook()
     nb["metadata"] = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}, "language_info": {"name": "python", "version": "3.12"}}
     cells = [
