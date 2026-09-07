@@ -1,19 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Digital Asset Control Boundary Validation",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/ai_runtime_validation_vnext.schema.json",
+  "title": "AI Runtime Validation vNext",
   "type": "object",
   "required": [
     "schema_version",
     "artifact_id",
     "artifact_version",
     "status",
-    "failures",
+    "validation_errors",
     "assertions"
   ],
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "v1"
+      "const": "vNext"
     },
     "artifact_id": {
       "type": "string"
@@ -24,7 +25,7 @@
     "status": {
       "type": "string"
     },
-    "failures": {
+    "validation_errors": {
       "type": "array",
       "items": {
         "type": "object"

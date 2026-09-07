@@ -1,0 +1,681 @@
+{
+  "schema_version": "vNext",
+  "artifact_id": "VAL-AI-CUSTOMER-SUPPORT-VNEXT",
+  "artifact_version": "vNext",
+  "status": "PASS",
+  "validation_errors": [],
+  "assertions": [
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=CALLER_CONTEXT"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "caller",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=ROLE_BINDING"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "role",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=WORKLOAD_BINDING"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "workload",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=PURPOSE_BINDING"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "purpose",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001', 'EVAL-AI-004']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=REQUESTED_FIELD_SCOPE"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "requested_field_scope",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-002', 'EVAL-AI-004']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=['MODEL_PROVIDER']"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=MODEL_REQUEST"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "model_identifier",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=['TOOL_PROVIDER']"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=TOOL_OR_ACTION_REQUEST"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "tool_action_identifier",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=CONTRACT_GAP"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=['MODEL_PROVIDER', 'TOOL_PROVIDER']"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=CONTRACT_GAP requirement=MINIMIZATION_ALLOWED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=CONTRACT_GAP"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=PRE_EXECUTION source_type=REQUESTED_FIELD"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "model_or_tool_request_payload",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-002', 'EVAL-AI-003', 'EVAL-AI-004']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=FIELD_DROP"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=FIELD_DROP requirement=INTERNAL_ONLY"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=FIELD_DROP"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=TRACE source_type=POLICY_EVALUATION_REFERENCE"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "internal_policy_evidence",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-004']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=PASS_THROUGH requirement=EXACT_REQUIRED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=PASS_THROUGH"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=TRACE source_type=RUNTIME_TRACE_IDENTIFIER"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "request_id",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-001']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=FORMAT_NORMALIZE"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=FORMAT_NORMALIZE requirement=FORMAT_TRANSFORM_ALLOWED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=FORMAT_NORMALIZE"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=POST_EXECUTION source_type=AI_RESPONSE"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "model_output",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-002', 'EVAL-AI-004']"
+    },
+    {
+      "assertion": "exact_required_transform_whitelist",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "EXACT_REQUIRED_NO_LOSSY_TRANSFORM",
+      "detail": "method=SCHEMA_MAPPING"
+    },
+    {
+      "assertion": "internal_only_external_destination_blocked",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "INTERNAL_ONLY_NO_EXTERNAL_DESTINATION",
+      "detail": "external_destinations=[]"
+    },
+    {
+      "assertion": "transform_method_allowed_for_requirement",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "TRANSFORM_METHOD_REQUIREMENT_COMPATIBILITY",
+      "detail": "method=SCHEMA_MAPPING requirement=FORMAT_TRANSFORM_ALLOWED"
+    },
+    {
+      "assertion": "minimization_has_explicit_method_or_gap",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "MINIMIZATION_REQUIRES_EXPLICIT_METHOD_OR_CONTRACT_GAP",
+      "detail": "method=SCHEMA_MAPPING"
+    },
+    {
+      "assertion": "external_response_not_pre_execution_request",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "SOURCE_PHASE_RESPONSE_SEPARATION",
+      "detail": "source_phase=POST_EXECUTION source_type=AI_RESPONSE_METADATA"
+    },
+    {
+      "assertion": "trace_reference_present",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "TRACE_REFERENCE_REQUIRED",
+      "detail": ""
+    },
+    {
+      "assertion": "classification_basis_present",
+      "status": "PASS",
+      "field": "response_metadata",
+      "destination": null,
+      "rule": "VALIDATION_ARTIFACT_REFERENCE_REQUIRED",
+      "detail": "basis=['EVAL-AI-004']"
+    }
+  ]
+}

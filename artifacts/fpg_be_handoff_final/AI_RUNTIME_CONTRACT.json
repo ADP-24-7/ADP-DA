@@ -1,0 +1,286 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "AI-RUNTIME-CONTRACT-FINAL",
+  "artifact_version": "final",
+  "source_artifact_ref": "02_ai/artifacts/ai_handoff_vNext/runtime_contract/RTC-AI-CUSTOMER-SUPPORT-VNEXT.json",
+  "common_contract_fields": [
+    "source_phase",
+    "source_type",
+    "comparison_sources",
+    "field_requirement",
+    "transform_intent",
+    "transform_method",
+    "destination",
+    "decision",
+    "trace_binding",
+    "validation_errors"
+  ],
+  "domain_specific_contract": {
+    "role": "role",
+    "workload": "workload",
+    "purpose": "purpose",
+    "data_field": "requested_field_scope",
+    "model": "model_identifier",
+    "tool_action": "tool_action_identifier",
+    "external_ai_destination": [
+      "MODEL_PROVIDER",
+      "TOOL_PROVIDER"
+    ],
+    "transform": [
+      "MASK",
+      "HMAC",
+      "TOKEN",
+      "OMIT",
+      "REDACT"
+    ]
+  },
+  "fields": [
+    {
+      "field": "caller",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "CALLER_CONTEXT",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_MISSING_OR_MISMATCH",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001"
+      ]
+    },
+    {
+      "field": "role",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "ROLE_BINDING",
+      "comparison_sources": [
+        "APPROVED_POLICY_SCOPE",
+        "REQUEST_CONTEXT"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_SCOPE_MISMATCH",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001"
+      ]
+    },
+    {
+      "field": "workload",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "WORKLOAD_BINDING",
+      "comparison_sources": [
+        "APPROVED_POLICY_SCOPE",
+        "REQUEST_CONTEXT"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_SCOPE_MISMATCH",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001"
+      ]
+    },
+    {
+      "field": "purpose",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "PURPOSE_BINDING",
+      "comparison_sources": [
+        "APPROVED_POLICY_SCOPE",
+        "REQUEST_CONTEXT"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_SCOPE_MISMATCH",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001",
+        "EVAL-AI-004"
+      ]
+    },
+    {
+      "field": "requested_field_scope",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "REQUESTED_FIELD_SCOPE",
+      "comparison_sources": [
+        "APPROVED_DATA_SCOPE",
+        "REQUESTED_FIELD_SCOPE"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "FPG_POLICY_ENGINE",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_SCOPE_MISMATCH",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-002",
+        "EVAL-AI-004"
+      ]
+    },
+    {
+      "field": "model_identifier",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "MODEL_REQUEST",
+      "comparison_sources": [
+        "APPROVED_POLICY_SCOPE",
+        "REQUEST_CONTEXT"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "MODEL_PROVIDER",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_UNAUTHORIZED_MODEL",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001"
+      ]
+    },
+    {
+      "field": "tool_action_identifier",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "TOOL_OR_ACTION_REQUEST",
+      "comparison_sources": [
+        "APPROVED_POLICY_SCOPE",
+        "REQUEST_CONTEXT"
+      ],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "TOOL_PROVIDER",
+        "FPG_TRACE"
+      ],
+      "decision": "BLOCK_ON_UNAUTHORIZED_TOOL_OR_ACTION",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001"
+      ]
+    },
+    {
+      "field": "model_or_tool_request_payload",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "REQUESTED_FIELD",
+      "comparison_sources": [
+        "APPROVED_DATA_SCOPE",
+        "REQUESTED_FIELD_SCOPE"
+      ],
+      "field_requirement": "MINIMIZATION_ALLOWED",
+      "transform_intent": "MINIMIZE",
+      "transform_method": "CONTRACT_GAP",
+      "destination": [
+        "MODEL_PROVIDER",
+        "TOOL_PROVIDER"
+      ],
+      "decision": "REVIEW_UNTIL_METHOD_SELECTED",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-002",
+        "EVAL-AI-003",
+        "EVAL-AI-004"
+      ]
+    },
+    {
+      "field": "internal_policy_evidence",
+      "source_phase": "TRACE",
+      "source_type": "POLICY_EVALUATION_REFERENCE",
+      "comparison_sources": [],
+      "field_requirement": "INTERNAL_ONLY",
+      "transform_intent": "OMIT",
+      "transform_method": "FIELD_DROP",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "BLOCK_ON_MISSING_REFERENCE",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-004"
+      ]
+    },
+    {
+      "field": "request_id",
+      "source_phase": "TRACE",
+      "source_type": "RUNTIME_TRACE_IDENTIFIER",
+      "comparison_sources": [],
+      "field_requirement": "EXACT_REQUIRED",
+      "transform_intent": "PASS_THROUGH",
+      "transform_method": "PASS_THROUGH",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "BLOCK_ON_MISSING_REFERENCE",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-001"
+      ]
+    },
+    {
+      "field": "model_output",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "AI_RESPONSE",
+      "comparison_sources": [],
+      "field_requirement": "FORMAT_TRANSFORM_ALLOWED",
+      "transform_intent": "CANONICALIZE",
+      "transform_method": "FORMAT_NORMALIZE",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "REVIEW_IF_RESPONSE_SCHEMA_UNRESOLVED",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-002",
+        "EVAL-AI-004"
+      ]
+    },
+    {
+      "field": "response_metadata",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "AI_RESPONSE_METADATA",
+      "comparison_sources": [],
+      "field_requirement": "FORMAT_TRANSFORM_ALLOWED",
+      "transform_intent": "MAP_SCHEMA",
+      "transform_method": "SCHEMA_MAPPING",
+      "destination": [
+        "FPG_TRACE",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "decision": "REVIEW_IF_RESPONSE_SCHEMA_UNRESOLVED",
+      "trace_binding": "TRACE_REQUIRED",
+      "classification_basis": [
+        "EVAL-AI-004"
+      ]
+    }
+  ],
+  "decision_semantics": {
+    "PASS": "Approved/requested binding, field scope, transform, destination, and trace requirements are satisfied.",
+    "BLOCK": "A clear policy mismatch or forbidden externalization exists.",
+    "REVIEW": "A required method, threshold, schema, or mapping remains unresolved."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "artifact_id": "EVAL-AI-003",
+  "artifact_version": "v1",
+  "status": "candidate",
+  "workload_id": "UNMAPPED",
+  "experiment_id": "EVAL-AI-003",
+  "dataset_version": "financial_synthetic_processed_v1",
+  "source_ids": [
+    "02_ai/notebooks/03_evaluation_ai_transform_tradeoff_v1.ipynb",
+    "02_ai/data/processed/financial_synthetic/manifest.json",
+    "02_ai/docs/AI_POLICY_VALIDATION.md"
+  ],
+  "metrics": [
+    {
+      "name": "mask_2_account_collision_rate",
+      "value": 100,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mask_2_relationship_preservation",
+      "value": 0,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mask_2_max_join_inflation",
+      "value": 1557.41,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mask_3_account_collision_rate",
+      "value": 78.86,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mask_3_relationship_preservation",
+      "value": 36.29,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mask_4_account_collision_rate",
+      "value": 0,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mask_4_relationship_preservation",
+      "value": 100,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "hmac_relationship_utility",
+      "value": 100,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "token_relationship_utility",
+      "value": 100,
+      "unit": "percent",
+      "baseline": null,
+      "threshold": null
+    }
+  ],
+  "threshold_basis": "UNRESOLVED: transform comparison metrics exist, but acceptable privacy, utility, latency, and failure thresholds are not defined.",
+  "claim_scope": "Transform analysis supports that MASK strength changes collision and relationship utility, and that HMAC/TOKEN preserve relationship utility in the tested synthetic relational data.",
+  "limitations": [
+    "Field-level final Transform remains UNRESOLVED.",
+    "MASK/HMAC/TOKEN are transform candidates, not final policy decisions.",
+    "Latency Threshold remains UNRESOLVED.",
+    "Failure tolerance remains UNRESOLVED."
+  ],
+  "failure_cases": [
+    "MASK-2 collision and join inflation were observed in the transform notebook.",
+    "UNRESOLVED: AI runtime failure cases after transform were not measured."
+  ],
+  "digest": "TBD"
+}

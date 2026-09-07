@@ -1,0 +1,124 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "PE-AI-CUSTOMER-SUPPORT-VNEXT",
+  "artifact_version": "vNext",
+  "analysis_status": "candidate",
+  "policy_action": "candidate_handoff",
+  "matched_policy_refs": [
+    {
+      "ref_id": "PC-009",
+      "ref_type": "policy_candidate",
+      "version": null
+    },
+    {
+      "ref_id": "PC-010",
+      "ref_type": "policy_candidate",
+      "version": null
+    }
+  ],
+  "matched_rule_refs": [
+    {
+      "ref_id": "GR-0009",
+      "ref_type": "legacy_rule",
+      "version": null
+    },
+    {
+      "ref_id": "GR-0010",
+      "ref_type": "legacy_rule",
+      "version": null
+    }
+  ],
+  "requirement_refs": [
+    {
+      "ref_id": "RC-00040",
+      "ref_type": "requirement_candidate",
+      "version": null
+    },
+    {
+      "ref_id": "RC-00042",
+      "ref_type": "requirement_candidate",
+      "version": null
+    }
+  ],
+  "evidence_refs": [
+    {
+      "ref_id": "EV-00040",
+      "ref_type": "evidence",
+      "version": null
+    },
+    {
+      "ref_id": "EV-00042",
+      "ref_type": "evidence",
+      "version": null
+    }
+  ],
+  "required_controls": [
+    {
+      "ref_id": "CTRL-RUNTIME-008",
+      "ref_type": "control",
+      "version": null
+    },
+    {
+      "ref_id": "CTRL-RUNTIME-009",
+      "ref_type": "control",
+      "version": null
+    },
+    {
+      "ref_id": "CTRL-EVAL-001",
+      "ref_type": "control",
+      "version": null
+    }
+  ],
+  "validation_artifact_refs": [
+    {
+      "ref_id": "EVAL-AI-001",
+      "ref_type": "evaluation_artifact",
+      "version": "v1"
+    },
+    {
+      "ref_id": "EVAL-AI-002",
+      "ref_type": "evaluation_artifact",
+      "version": "v1"
+    },
+    {
+      "ref_id": "EVAL-AI-003",
+      "ref_type": "evaluation_artifact",
+      "version": "v1"
+    },
+    {
+      "ref_id": "EVAL-AI-004",
+      "ref_type": "evaluation_artifact",
+      "version": "v1"
+    }
+  ],
+  "applicability": {
+    "status": "candidate",
+    "scope": "AI customer support vNext runtime contract handoff. Does not promote a Runtime Policy.",
+    "limitations": [
+      "BE-owned workload_id remains UNMAPPED.",
+      "BE-owned purpose remains UNMAPPED.",
+      "BE-owned runtime_data_class remains UNMAPPED.",
+      "Final field-level Transform remains ANALYST_DECISION_REQUIRED.",
+      "Final utility, latency, model quality, and failure tolerance thresholds remain ANALYST_DECISION_REQUIRED."
+    ]
+  },
+  "processing_contexts": [
+    "AI_USE"
+  ],
+  "regulatory_data_categories": [
+    "PERSONAL_INFORMATION",
+    "PERSONAL_CREDIT_INFORMATION",
+    "PSEUDONYMIZED_INFORMATION"
+  ],
+  "runtime_binding": {
+    "mapping_status": "unmapped",
+    "runtime_data_class": "UNMAPPED",
+    "workload_id": "UNMAPPED",
+    "purpose": "UNMAPPED",
+    "binding_ref": "WPB-AI-CUSTOMER-SUPPORT-VNEXT"
+  },
+  "digest": {
+    "algorithm": "sha256",
+    "value": "e2f90665195f859c68180b75eb262b547b8ffd4e3de3f18b0051f0f9ac7da0ef"
+  }
+}

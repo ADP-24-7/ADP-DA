@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/ai_runtime_contract_vnext.schema.json",
+  "title": "AI Runtime Contract vNext",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_version",
+    "domain",
+    "common_contract_fields",
+    "decision_semantics",
+    "transform_semantics",
+    "fields",
+    "contract_gap",
+    "analyst_decision_required"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "vNext"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string",
+      "const": "AI"
+    },
+    "common_contract_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_semantics": {
+      "type": "object"
+    },
+    "transform_semantics": {
+      "type": "object"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "contract_gap": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "analyst_decision_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

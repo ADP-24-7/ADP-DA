@@ -1,0 +1,28 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "FPG-DEFERRED-RUNTIME-VALIDATION-FINAL",
+  "artifact_version": "final",
+  "items": [
+    {
+      "domain": "AI",
+      "item": "utility threshold",
+      "status": "DEFERRED_RUNTIME_VALIDATION"
+    },
+    {
+      "domain": "AI",
+      "item": "model quality threshold",
+      "status": "DEFERRED_RUNTIME_VALIDATION"
+    },
+    {
+      "domain": "AI",
+      "item": "latency threshold",
+      "status": "DEFERRED_RUNTIME_VALIDATION"
+    },
+    {
+      "domain": "AI",
+      "item": "failure tolerance",
+      "status": "DEFERRED_RUNTIME_VALIDATION"
+    }
+  ],
+  "blocker_assessment": "These items do not block Common Runtime Engine implementation; unresolved values must produce REVIEW rather than inferred PASS/BLOCK."
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "FPG-CONTRACT-GAP-FINAL",
+  "artifact_version": "final",
+  "items": [
+    {
+      "domain": "AI",
+      "owner": "BE",
+      "gap": "runtime enum"
+    },
+    {
+      "domain": "AI",
+      "owner": "BE",
+      "gap": "model provider schema"
+    },
+    {
+      "domain": "AI",
+      "owner": "BE",
+      "gap": "tool execution schema"
+    },
+    {
+      "domain": "AI",
+      "owner": "BE",
+      "gap": "AI response schema"
+    },
+    {
+      "domain": "AI",
+      "owner": "BE",
+      "gap": "audit event schema"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "BE-owned runtime enum"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "approved transaction schema"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "approved policy snapshot schema"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "provider-specific payload schema"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "execution receipt/status schema"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "retry/reconciliation event schema"
+    },
+    {
+      "domain": "Digital Asset",
+      "owner": "BE",
+      "gap": "audit event schema"
+    }
+  ]
+}

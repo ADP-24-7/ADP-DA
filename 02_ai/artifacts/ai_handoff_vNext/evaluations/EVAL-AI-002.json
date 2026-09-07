@@ -1,0 +1,89 @@
+{
+  "artifact_id": "EVAL-AI-002",
+  "artifact_version": "v1",
+  "status": "candidate",
+  "workload_id": "UNMAPPED",
+  "experiment_id": "EVAL-AI-002",
+  "dataset_version": "TBD",
+  "source_ids": [
+    "02_ai/notebooks/01_evaluation_ai_field_utility_v1.ipynb",
+    "02_ai/docs/AI_POLICY_VALIDATION.md"
+  ],
+  "metrics": [
+    {
+      "name": "identifier_exact_count",
+      "value": 19,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "identifier_total_count",
+      "value": 22274,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "numeric_exact_count",
+      "value": 1524,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "numeric_total_count",
+      "value": 19559,
+      "unit": "count",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "identifier_vs_numeric_exact_z_statistic",
+      "value": -41.7261,
+      "unit": "z_statistic",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "identifier_vs_numeric_exact_p_value",
+      "value": 0,
+      "unit": "p_value_displayed",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "field_exact_chi_square",
+      "value": 1006.2052,
+      "unit": "chi_square",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "field_exact_cramers_v",
+      "value": 0.2268,
+      "unit": "ratio",
+      "baseline": null,
+      "threshold": null
+    },
+    {
+      "name": "mcnemar_statistic",
+      "value": 18,
+      "unit": "statistic",
+      "baseline": null,
+      "threshold": null
+    }
+  ],
+  "threshold_basis": "UNRESOLVED: statistical significance is reported, but no AI utility threshold or model quality threshold is established.",
+  "claim_scope": "Field Utility analysis supports that data utility differs by data type and field; Exact, Relationship, and Reversibility requirements must be considered before transform selection.",
+  "limitations": [
+    "Field-level final Transform remains UNRESOLVED.",
+    "AI Utility Threshold remains UNRESOLVED.",
+    "Model-specific quality criteria remain UNRESOLVED.",
+    "This artifact does not define final ALLOW/BLOCK/TRANSFORM/REVIEW behavior."
+  ],
+  "failure_cases": [
+    "UNRESOLVED: model/runtime failure cases were not measured in this notebook."
+  ],
+  "digest": "TBD"
+}

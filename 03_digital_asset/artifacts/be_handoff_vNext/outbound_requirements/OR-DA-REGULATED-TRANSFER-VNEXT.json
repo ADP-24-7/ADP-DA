@@ -1,0 +1,798 @@
+{
+  "schema_version": "v2",
+  "artifact_id": "OR-DA-REGULATED-TRANSFER-VNEXT",
+  "artifact_version": "vNext",
+  "matrix_ref": "ORM-DA-REGULATED-TRANSFER-VNEXT",
+  "pipeline_ref": "RTP-DA-REGULATED-TRANSFER-VNEXT",
+  "requirements": [
+    {
+      "requirement_id": "OR-DA-001",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 2::1-ha",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "counterparty_vasp"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "DESTINATION_ATTRIBUTE"
+      ],
+      "transform": [
+        "MAP_TO_EXTERNAL_SCHEMA",
+        "FORMAT_NORMALIZE"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MAP_TO_EXTERNAL_SCHEMA",
+        "INTERNAL_AUDIT_ONLY": "FORMAT_NORMALIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "FORMAT_TRANSFORM_ALLOWED",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "Counterparty VASP status or reference must be produced by upstream VASP directory, Travel Rule, or compliance systems. FPG does not determine eligibility."
+    },
+    {
+      "requirement_id": "OR-DA-002",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-2::1",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "kyc_status"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "TRANSFORM_INPUT"
+      ],
+      "transform": [
+        "OMIT"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED_INTERNAL_ONLY",
+      "outbound_transform_by_destination": {
+        "NOT_EXTERNALIZED": "OMIT",
+        "INTERNAL_AUDIT_ONLY": "OMIT"
+      },
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "INTERNAL_ONLY",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "KYC/AML status must be produced by upstream approval, KYC/AML, or compliance systems. FPG consumes the result as input only."
+    },
+    {
+      "requirement_id": "OR-DA-003",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "LAW_GO_KR::Act on Reporting and Using Specified Financial Transaction Information::Article 5-3::1",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "kyc_status"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "TRANSFORM_INPUT"
+      ],
+      "transform": [
+        "OMIT"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED_INTERNAL_ONLY",
+      "outbound_transform_by_destination": {
+        "NOT_EXTERNALIZED": "OMIT",
+        "INTERNAL_AUDIT_ONLY": "OMIT"
+      },
+      "destination": [
+        "NOT_EXTERNALIZED",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "INTERNAL_ONLY",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "KYC/AML status must be produced by upstream approval, KYC/AML, or compliance systems. FPG consumes the result as input only."
+    },
+    {
+      "requirement_id": "OR-DA-004",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "originator_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "Customer identity is upstream/customer-master data. FPG checks presence and maps it to outbound requirement only."
+    },
+    {
+      "requirement_id": "OR-DA-005",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "LAW_GO_KR::Enforcement Decree of Act on Reporting and Using Specified Financial Transaction Information::Article 10-10::1",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "beneficiary_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "Beneficiary identity is upstream/customer-master or Travel Rule data. FPG checks presence and maps it to outbound requirement only."
+    },
+    {
+      "requirement_id": "OR-DA-006",
+      "requirement_type": "LEGAL_REQUIREMENT",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "KOFIU::KoFIU AML/CDD virtual asset guidance::Travel Rule guidance::originator-beneficiary information",
+      "approved_source": "APPROVED_TRANSACTION",
+      "requested_source": "OUTBOUND_REQUEST",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "comparison_sources": [],
+      "pipeline_stage": "Approved Transaction Load",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "transaction_id"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "FPG validates outbound handoff readiness only."
+    },
+    {
+      "requirement_id": "OR-DA-007",
+      "requirement_type": "LEGAL_REQUIREMENT",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "LAW_GO_KR::Virtual Asset User Protection Act::Article 9::1",
+      "approved_source": "NOT_APPLICABLE",
+      "requested_source": "NOT_PRE_EXECUTION_INPUT",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "pipeline_stage": "Execution Result Binding",
+      "pre_execution_required": false,
+      "post_execution_binding": true,
+      "required_fields": [
+        "execution_status"
+      ],
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "External execution result fields are bound only after external handoff; they are not pre-execution outbound inputs."
+    },
+    {
+      "requirement_id": "OR-DA-008",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "originator_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "Customer identity is upstream/customer-master data. FPG checks presence and maps it to outbound requirement only."
+    },
+    {
+      "requirement_id": "OR-DA-009",
+      "requirement_type": "REQUIRED_FIELD_PRESENCE",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "UPSTREAM_PRODUCED_DATA",
+      "runtime_control": "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "legal_basis": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "approved_source": "UPSTREAM_SYSTEM_OR_PROVIDER",
+      "requested_source": "NOT_OUTBOUND_REQUEST_SOURCE",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "UPSTREAM_PRODUCED_DATA",
+      "comparison_sources": [],
+      "pipeline_stage": "Required Field Resolution",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "beneficiary_identity"
+      ],
+      "field_roles": [
+        "REGULATORY_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "MINIMIZE",
+        "MAP_TO_EXTERNAL_SCHEMA"
+      ],
+      "comparison_canonicalization": "CONTRACT_GAP_PROVIDER_SCHEMA_CANONICALIZATION",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "MINIMIZE",
+        "EXTERNAL_VASP": "MINIMIZE"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "EXTERNAL_VASP"
+      ],
+      "required_exact": "MINIMIZATION_ALLOWED",
+      "validation_type": "REQUIRED_FIELD_PRESENT",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "Beneficiary identity is upstream/customer-master or Travel Rule data. FPG checks presence and maps it to outbound requirement only."
+    },
+    {
+      "requirement_id": "OR-DA-010",
+      "requirement_type": "LEGAL_REQUIREMENT",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "FATF::FATF Recommendations::Recommendation 16::payment transparency",
+      "approved_source": "APPROVED_TRANSACTION",
+      "requested_source": "OUTBOUND_REQUEST",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_TRANSACTION_TRACE_INPUT",
+      "comparison_sources": [],
+      "pipeline_stage": "Approved Transaction Load",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "transaction_id"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "TRAVEL_RULE_PROVIDER": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "TRAVEL_RULE_PROVIDER",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "FPG validates outbound handoff readiness only."
+    },
+    {
+      "requirement_id": "OR-DA-011",
+      "requirement_type": "LEGAL_REQUIREMENT",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "FATF::FATF Virtual Assets guidance::Virtual assets topic page::VASP preventive measures",
+      "approved_source": "NOT_APPLICABLE",
+      "requested_source": "NOT_PRE_EXECUTION_INPUT",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "pipeline_stage": "Execution Result Binding",
+      "pre_execution_required": false,
+      "post_execution_binding": true,
+      "required_fields": [
+        "execution_status"
+      ],
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "REVIEW",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "External execution result fields are bound only after external handoff; they are not pre-execution outbound inputs."
+    },
+    {
+      "requirement_id": "OR-DA-012",
+      "requirement_type": "LEGAL_REQUIREMENT",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "FATF::FATF Recommendation 15 Interpretive Note::INR.15::7(b)",
+      "approved_source": "NOT_APPLICABLE",
+      "requested_source": "NOT_PRE_EXECUTION_INPUT",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "pipeline_stage": "Execution Result Binding",
+      "pre_execution_required": false,
+      "post_execution_binding": true,
+      "required_fields": [
+        "execution_status"
+      ],
+      "field_roles": [
+        "EXECUTION_RESULT_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "External execution result fields are bound only after external handoff; they are not pre-execution outbound inputs."
+    },
+    {
+      "requirement_id": "OR-DA-013",
+      "requirement_type": "LEGAL_REQUIREMENT",
+      "evidence_type": "LEGAL_REQUIREMENT",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "legal_basis": "LAW_GO_KR::Virtual Asset User Protection Act::Article 6::1",
+      "approved_source": "APPROVED_TRANSACTION|APPROVED_POLICY_SNAPSHOT",
+      "requested_source": "OUTBOUND_REQUEST",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "pipeline_stage": "Approved Value vs Requested Value Match",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "asset"
+      ],
+      "field_roles": [
+        "PRE_APPROVED_VALUE",
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "TRAVEL_RULE_PROVIDER": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "TRAVEL_RULE_PROVIDER"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "MATCH_APPROVED_VALUE",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "CURRENT",
+      "fpg_boundary_note": "FPG validates outbound handoff readiness only."
+    },
+    {
+      "requirement_id": "OR-DA-014",
+      "requirement_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "approved_source": "APPROVED_TRANSACTION|APPROVED_POLICY_SNAPSHOT",
+      "requested_source": "OUTBOUND_REQUEST",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "pipeline_stage": "Approved Value vs Requested Value Match",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "originator_address"
+      ],
+      "field_roles": [
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "MATCH_APPROVED_VALUE",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "fpg_boundary_note": "FPG validates outbound handoff readiness only."
+    },
+    {
+      "requirement_id": "OR-DA-015",
+      "requirement_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "approved_source": "APPROVED_TRANSACTION|APPROVED_POLICY_SNAPSHOT",
+      "requested_source": "OUTBOUND_REQUEST",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "pipeline_stage": "Approved Value vs Requested Value Match",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "beneficiary_address"
+      ],
+      "field_roles": [
+        "REQUEST_VALUE",
+        "DESTINATION_ATTRIBUTE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "MATCH_APPROVED_VALUE",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "fpg_boundary_note": "FPG validates outbound handoff readiness only."
+    },
+    {
+      "requirement_id": "OR-DA-016",
+      "requirement_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "evidence_type": "INTERNAL_APPROVAL_REQUIREMENT",
+      "responsibility_layer": "FPG_ENFORCEMENT_INPUT",
+      "runtime_control": "APPROVED_VS_REQUESTED_MATCH",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "approved_source": "APPROVED_TRANSACTION|APPROVED_POLICY_SNAPSHOT",
+      "requested_source": "OUTBOUND_REQUEST",
+      "source_phase": "PRE_EXECUTION",
+      "source_type": "APPROVED_AND_REQUESTED_VALUE_PAIR",
+      "comparison_sources": [
+        "APPROVED_TRANSACTION_OR_POLICY_SNAPSHOT",
+        "OUTBOUND_REQUEST"
+      ],
+      "pipeline_stage": "Approved Value vs Requested Value Match",
+      "pre_execution_required": true,
+      "post_execution_binding": false,
+      "required_fields": [
+        "amount"
+      ],
+      "field_roles": [
+        "PRE_APPROVED_VALUE",
+        "REQUEST_VALUE",
+        "OUTBOUND_PAYLOAD_FIELD",
+        "TRACE_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "BLOCKCHAIN_EXECUTION_SYSTEM": "PASS_THROUGH",
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "BLOCKCHAIN_EXECUTION_SYSTEM",
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "MATCH_APPROVED_VALUE",
+      "on_missing": "BLOCK",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "fpg_boundary_note": "FPG validates outbound handoff readiness only."
+    },
+    {
+      "requirement_id": "OR-DA-017",
+      "requirement_type": "EXECUTION_REQUIREMENT",
+      "evidence_type": "EXECUTION_REQUIREMENT",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "approved_source": "NOT_APPLICABLE",
+      "requested_source": "NOT_PRE_EXECUTION_INPUT",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "pipeline_stage": "Execution Result Binding",
+      "pre_execution_required": false,
+      "post_execution_binding": true,
+      "required_fields": [
+        "tx_hash"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "EXECUTION_RESULT_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "REVIEW_AFTER_HANDOFF",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "fpg_boundary_note": "External execution result fields are bound only after external handoff; they are not pre-execution outbound inputs."
+    },
+    {
+      "requirement_id": "OR-DA-018",
+      "requirement_type": "EXECUTION_REQUIREMENT",
+      "evidence_type": "EXECUTION_REQUIREMENT",
+      "responsibility_layer": "EXTERNAL_EXECUTION_RESPONSE",
+      "runtime_control": "TRACE_BINDING",
+      "legal_basis": "INTERNAL_APPROVAL_OR_EXECUTION_REQUIREMENT",
+      "approved_source": "NOT_APPLICABLE",
+      "requested_source": "NOT_PRE_EXECUTION_INPUT",
+      "source_phase": "POST_EXECUTION",
+      "source_type": "EXTERNAL_EXECUTION_RESPONSE",
+      "comparison_sources": [],
+      "pipeline_stage": "Execution Result Binding",
+      "pre_execution_required": false,
+      "post_execution_binding": true,
+      "required_fields": [
+        "timestamp"
+      ],
+      "field_roles": [
+        "TRACE_FIELD",
+        "EXECUTION_RESULT_FIELD"
+      ],
+      "transform": [
+        "PASS_THROUGH"
+      ],
+      "comparison_canonicalization": "NONE_CONTRACTED",
+      "outbound_transform_by_destination": {
+        "INTERNAL_RECONCILIATION_ONLY": "PASS_THROUGH",
+        "INTERNAL_AUDIT_ONLY": "PASS_THROUGH"
+      },
+      "destination": [
+        "INTERNAL_RECONCILIATION_ONLY",
+        "INTERNAL_AUDIT_ONLY"
+      ],
+      "required_exact": "EXACT_REQUIRED",
+      "validation_type": "TRACE_BINDING_VALID",
+      "on_missing": "REVIEW_AFTER_HANDOFF",
+      "on_mismatch": "BLOCK only for approved/requested value mismatch or payload schema mismatch; not approval cancellation.",
+      "audit_requirement": "AUDIT_REQUIRED",
+      "effective_status": "DESIGN_REQUIRED",
+      "fpg_boundary_note": "External execution result fields are bound only after external handoff; they are not pre-execution outbound inputs."
+    }
+  ],
+  "contract_gap": [
+    "BE-owned runtime enum",
+    "Approved transaction runtime input schema",
+    "Approved policy snapshot schema",
+    "Travel Rule provider payload schema",
+    "VASP directory/provider response schema",
+    "Destination profile enum",
+    "Execution handoff id lifecycle",
+    "Execution receipt/status ingestion",
+    "Retry/reconciliation event schema",
+    "Audit event schema"
+  ]
+}

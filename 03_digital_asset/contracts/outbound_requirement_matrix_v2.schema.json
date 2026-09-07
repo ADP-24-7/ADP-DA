@@ -8,6 +8,7 @@
     "artifact_version",
     "fpg_boundary",
     "decision_semantics",
+    "transform_semantics",
     "requirements"
   ],
   "properties": {
@@ -30,6 +31,9 @@
     "decision_semantics": {
       "type": "object"
     },
+    "transform_semantics": {
+      "type": "object"
+    },
     "requirements": {
       "type": "array",
       "items": {
@@ -43,9 +47,17 @@
           "legal_basis",
           "approved_source",
           "requested_source",
+          "source_phase",
+          "source_type",
+          "comparison_sources",
+          "pipeline_stage",
+          "pre_execution_required",
+          "post_execution_binding",
           "required_fields",
           "field_roles",
           "transform",
+          "comparison_canonicalization",
+          "outbound_transform_by_destination",
           "destination",
           "required_exact",
           "validation_type",
@@ -80,6 +92,27 @@
           "requested_source": {
             "type": "string"
           },
+          "source_phase": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "comparison_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pipeline_stage": {
+            "type": "string"
+          },
+          "pre_execution_required": {
+            "type": "boolean"
+          },
+          "post_execution_binding": {
+            "type": "boolean"
+          },
           "required_fields": {
             "type": "array",
             "items": {
@@ -95,6 +128,15 @@
           "transform": {
             "type": "array",
             "items": {
+              "type": "string"
+            }
+          },
+          "comparison_canonicalization": {
+            "type": "string"
+          },
+          "outbound_transform_by_destination": {
+            "type": "object",
+            "additionalProperties": {
               "type": "string"
             }
           },
