@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digital Asset Outbound Requirement Matrix v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_version",
+    "fpg_boundary",
+    "decision_semantics",
+    "requirements"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "v2"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "fpg_boundary": {
+      "type": "object"
+    },
+    "decision_semantics": {
+      "type": "object"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "requirement_id",
+          "requirement_type",
+          "evidence_type",
+          "responsibility_layer",
+          "runtime_control",
+          "legal_basis",
+          "approved_source",
+          "requested_source",
+          "required_fields",
+          "field_roles",
+          "transform",
+          "destination",
+          "required_exact",
+          "validation_type",
+          "on_missing",
+          "on_mismatch",
+          "audit_requirement",
+          "effective_status",
+          "fpg_boundary_note"
+        ],
+        "properties": {
+          "requirement_id": {
+            "type": "string"
+          },
+          "requirement_type": {
+            "type": "string"
+          },
+          "evidence_type": {
+            "type": "string"
+          },
+          "responsibility_layer": {
+            "type": "string"
+          },
+          "runtime_control": {
+            "type": "string"
+          },
+          "legal_basis": {
+            "type": "string"
+          },
+          "approved_source": {
+            "type": "string"
+          },
+          "requested_source": {
+            "type": "string"
+          },
+          "required_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "field_roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transform": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "destination": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_exact": {
+            "type": "string"
+          },
+          "validation_type": {
+            "type": "string"
+          },
+          "on_missing": {
+            "type": "string"
+          },
+          "on_mismatch": {
+            "type": "string"
+          },
+          "audit_requirement": {
+            "type": "string"
+          },
+          "effective_status": {
+            "type": "string"
+          },
+          "fpg_boundary_note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

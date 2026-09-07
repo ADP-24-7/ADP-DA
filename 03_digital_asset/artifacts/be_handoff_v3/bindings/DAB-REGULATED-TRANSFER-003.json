@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "binding_version": "v3",
+  "bindings": [
+    {
+      "digital_asset_runtime": "REGULATED_VIRTUAL_ASSET_TRANSFER_OUTBOUND_HANDOFF",
+      "evaluation_kind": "OUTBOUND_HANDOFF_EVALUATION",
+      "approved_transaction_identifier": "CONTRACT_GAP",
+      "approved_policy_snapshot_identifier": "CONTRACT_GAP",
+      "workload_id": "UNMAPPED",
+      "purpose": "UNMAPPED",
+      "runtime_data_class": "UNMAPPED",
+      "destination_profile": "CONTRACT_GAP",
+      "binding_status": "candidate_contract_gap",
+      "boundary_note": "Binding does not grant FPG responsibility for KYC/AML/VASP eligibility decisions."
+    }
+  ]
+}
