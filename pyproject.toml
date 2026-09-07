@@ -54,6 +54,7 @@ extend-exclude = [
     "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
     "03_digital_asset/notebooks/runtime_validation/DA_02_exact_preservation.ipynb",
     "03_digital_asset/notebooks/runtime_validation/DA_03_trace_binding.ipynb",
+    "03_digital_asset/notebooks/runtime_validation/DA_05_approved_requested_match.ipynb",
 ]
 
 [tool.ruff.lint]

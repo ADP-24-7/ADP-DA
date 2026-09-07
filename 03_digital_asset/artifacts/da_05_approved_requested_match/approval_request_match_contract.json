@@ -1,0 +1,79 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T23:33:30.622407+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_05_approved_requested_match.ipynb",
+  "source_notebook_sha256": "b13343090013296ba69821dd1f9e386f502e269c95fe10bf898fbf346c1cf62b",
+  "source_markdown": "03_digital_asset/docs/handoff/DA_05_approved_requested_match.md",
+  "source_markdown_sha256": "85466243b89143c84362011051e353b9be0b9d17ecf4510f25c8ab950ebeb2e7",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "evidence_type": "APPROVAL_FIXTURE_WITH_OBSERVED_ETHEREUM_REQUEST_CONTEXT",
+  "source_phase": "PRE_EXECUTION",
+  "be_runtime_implemented": false,
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_05_approved_requested_match.ipynb"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA_05_approved_requested_match.md"
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv"
+    },
+    {
+      "path": "03_digital_asset/artifacts/outbound_design_vNext/outbound_requirement_matrix.json"
+    },
+    {
+      "path": "03_digital_asset/docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_03_trace_binding/evidence_binding_contract.json"
+    },
+    {
+      "path": "03_digital_asset/artifacts/da_04_outbound_destination/runtime_requirements.json"
+    }
+  ],
+  "artifact_id": "DA_05_APPROVED_REQUESTED_MATCH:approval_request_match_contract",
+  "contract_level": "CONCEPTUAL_DA_FIELD_CONTRACT_NOT_BE_WIRE_SCHEMA",
+  "approval_fields": [
+    "approval_id",
+    "approved_asset",
+    "approved_max_amount",
+    "approved_destination",
+    "valid_from",
+    "valid_until"
+  ],
+  "request_fields": [
+    "request_id",
+    "requested_asset",
+    "requested_amount",
+    "requested_destination",
+    "requested_at",
+    "transaction_type"
+  ],
+  "binding": {
+    "keys": [
+      "approval_id",
+      "request_id"
+    ],
+    "source": "trusted explicit association",
+    "forbidden": [
+      "array index",
+      "row position",
+      "implicit ordering"
+    ]
+  },
+  "rules": {
+    "asset": "requested_asset == approved_asset",
+    "amount": "requested_amount <= approved_max_amount (exact atomic integer)",
+    "destination": "lower(valid requested Ethereum address) == lower(valid approved address)",
+    "period": "valid_from <= requested_at <= valid_until (inclusive, timezone-aware UTC)"
+  },
+  "amount_representation": "nonnegative atomic integer or digit string; no float/rounding",
+  "structure_context": "request_type separate from numeric transaction_type; trusted resolver required",
+  "decision": {
+    "all_applicable_match": "PASS",
+    "any_applicable_violation": "BLOCK",
+    "invalid_or_unbound_input": "FAIL_CLOSED_NO_PASS; reference raises MatchContractError"
+  }
+}

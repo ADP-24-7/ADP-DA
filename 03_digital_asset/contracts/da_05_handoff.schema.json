@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DA-05 analytical handoff, not a BE wire schema",
+  "type": "object",
+  "required": ["artifact_id", "artifact_version", "generated_at", "source_notebook", "source_notebook_sha256", "source_markdown", "source_markdown_sha256", "evidence_type", "source_phase", "be_runtime_implemented", "evidence_refs"],
+  "properties": {
+    "artifact_id": {"type": "string", "pattern": "^DA_05_APPROVED_REQUESTED_MATCH:(analysis_summary|validation_metrics|approval_request_match_contract|rule_applicability|runtime_architecture|runtime_requirements|contract_gaps)$"},
+    "artifact_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source_notebook": {"type": "string"},
+    "source_notebook_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_markdown": {"type": "string"},
+    "source_markdown_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evidence_type": {"const": "APPROVAL_FIXTURE_WITH_OBSERVED_ETHEREUM_REQUEST_CONTEXT"},
+    "source_phase": {"const": "PRE_EXECUTION"},
+    "be_runtime_implemented": {"const": false},
+    "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}}
+  },
+  "allOf": [
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:analysis_summary"}}}, "then": {"required": ["metrics", "not_runtime_thresholds"]}},
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:validation_metrics"}}}, "then": {"required": ["metrics", "accuracy_pct", "scope"]}},
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:approval_request_match_contract"}}}, "then": {"required": ["approval_fields", "request_fields", "binding", "rules", "decision"]}},
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:rule_applicability"}}}, "then": {"required": ["rules", "not_applicable_result", "not_applicable_is_pass", "forbidden_source"], "properties": {"not_applicable_result": {"type": "null"}, "not_applicable_is_pass": {"const": false}}}},
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:runtime_architecture"}}}, "then": {"required": ["components", "existing_pipeline_stage", "ordering"]}},
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:runtime_requirements"}}}, "then": {"required": ["rules", "applicability", "trace_fields", "invariants"]}},
+    {"if": {"properties": {"artifact_id": {"const": "DA_05_APPROVED_REQUESTED_MATCH:contract_gaps"}}}, "then": {"required": ["status", "gaps"], "properties": {"status": {"const": "CONTRACT_GAP"}}}}
+  ]
+}
