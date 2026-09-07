@@ -33,10 +33,10 @@ jobs:
         run: python -m ruff check .
 
       - name: Typecheck
-        run: python -m mypy src
+        run: python -m mypy 02_ai/src
 
       - name: Contract check
         run: python scripts/validate_contracts.py
 
       - name: Test
-        run: python -m pytest
+        run: python -m pytest 02_ai/tests
