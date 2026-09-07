@@ -1,0 +1,85 @@
+{
+  "artifact_id": "DA_01_EXTERNAL_EXECUTION:runtime_requirements",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T19:08:09.576553+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+  "source_notebook_sha256": "e610a992f51cf73c9cdc15bf6c94ff13025bbe34a8f9601d8fe8f11b0ffdd2b4",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "analysis_scope": "Pectra 이후 Ethereum 거래의 분석·BE Handoff 근거; 운영 데이터 아님",
+  "evidence_type": "PROCESSED_ANALYSIS_ARTIFACT",
+  "hypothesis": null,
+  "method": "저장된 Notebook 결과를 추출하고 CSV로 동일 계산 검산",
+  "metrics": {},
+  "result": {
+    "requirement": "SUBMITTED / SENT != EXECUTION_CONFIRMED",
+    "not_sufficient_for_final_success": [
+      "외부 요청 성공",
+      "transaction 제출 성공",
+      "tx_hash 확보",
+      "blockchain 포함"
+    ],
+    "required_evidence": "Receipt 또는 동등한 실제 Execution Evidence 확인",
+    "unknown_handling": "임의 Success 승격 금지; 기존 BE External Status Query/Recovery 검토",
+    "trace_audit_meanings": [
+      "outbound request status",
+      "transaction submission status",
+      "transaction hash",
+      "execution result",
+      "execution result confirmed_at",
+      "final runtime decision",
+      "approval / policy trace reference"
+    ],
+    "field_name_authority": "BE Contract; 위 목록은 의미 요구이며 새 DB/API 필드가 아님",
+    "new_runtime_enums": [],
+    "new_runtime_fields": [],
+    "new_active_runtime_controls": [],
+    "out_of_scope": [
+      "KYC",
+      "AML",
+      "Sanctions",
+      "Wallet Risk",
+      "VASP Risk",
+      "Customer Risk Score",
+      "신규 거래 승인 판단"
+    ],
+    "be_review_areas": [
+      "Common Runtime",
+      "External Status Query",
+      "SENT_UNKNOWN",
+      "Recovery",
+      "Observability",
+      "Audit / Trace"
+    ],
+    "crosswalk_document": "03_digital_asset/docs/handoff/DA-00-DA-01-EVIDENCE-GAPS.md"
+  },
+  "interpretation": "이미 승인된 Transaction의 외부 실행 결과를 검증·증명. upstream 판단 추가 없음",
+  "runtime_implication": "BE Contract 설계 근거. 운영 transaction source나 active policy 아님",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 3
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 5
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 8
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 11
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA-01_EXTERNAL-EXECUTION-CONTRACT.md"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA-00-DA-01-EVIDENCE-GAPS.md"
+    }
+  ]
+}

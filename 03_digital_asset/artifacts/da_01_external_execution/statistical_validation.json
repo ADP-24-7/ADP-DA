@@ -1,0 +1,154 @@
+{
+  "artifact_id": "DA_01_EXTERNAL_EXECUTION:statistical_validation",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T19:08:09.576553+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+  "source_notebook_sha256": "e610a992f51cf73c9cdc15bf6c94ff13025bbe34a8f9601d8fe8f11b0ffdd2b4",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "analysis_scope": "Pectra 이후 Ethereum 거래의 분석·BE Handoff 근거; 운영 데이터 아님",
+  "evidence_type": "PROCESSED_ANALYSIS_ARTIFACT",
+  "hypothesis": {
+    "H0": "Transaction Type과 Execution Result는 서로 독립이다",
+    "H1": "Transaction Type과 Execution Result는 서로 독립이 아니다"
+  },
+  "method": {
+    "omnibus": "Chi-square independence test",
+    "effect_size": "Cramer's V",
+    "posthoc": "Two-sided pooled two-proportion Z test",
+    "correction": "Bonferroni"
+  },
+  "metrics": {
+    "sample_size": 73410,
+    "chi_square_reported": 672.6848,
+    "degrees_of_freedom": 4,
+    "p_value_reported": 2.8604e-144,
+    "cramers_v_reported": 0.0957,
+    "minimum_expected_frequency_reported": 127.39,
+    "expected_under_5_pct": 0.0,
+    "posthoc_comparisons": [
+      {
+        "comparison": "Type 0 vs Type 1",
+        "failure_rate_difference_pp_reported": 0.475,
+        "z_reported": 2.6907,
+        "p_value_display": "0.007130",
+        "bonferroni_p_value_display": "0.071300",
+        "significant": false
+      },
+      {
+        "comparison": "Type 0 vs Type 2",
+        "failure_rate_difference_pp_reported": 0.0945,
+        "z_reported": 0.6541,
+        "p_value_display": "0.513029",
+        "bonferroni_p_value_display": "1.000000",
+        "significant": false
+      },
+      {
+        "comparison": "Type 0 vs Type 3",
+        "failure_rate_difference_pp_reported": 1.475,
+        "z_reported": 10.7242,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      },
+      {
+        "comparison": "Type 0 vs Type 4",
+        "failure_rate_difference_pp_reported": -3.2875,
+        "z_reported": -11.9154,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      },
+      {
+        "comparison": "Type 1 vs Type 2",
+        "failure_rate_difference_pp_reported": -0.3805,
+        "z_reported": -2.7056,
+        "p_value_display": "0.006819",
+        "bonferroni_p_value_display": "0.068189",
+        "significant": false
+      },
+      {
+        "comparison": "Type 1 vs Type 3",
+        "failure_rate_difference_pp_reported": 1.0,
+        "z_reported": 8.7517,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      },
+      {
+        "comparison": "Type 1 vs Type 4",
+        "failure_rate_difference_pp_reported": -3.7625,
+        "z_reported": -14.1659,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      },
+      {
+        "comparison": "Type 2 vs Type 3",
+        "failure_rate_difference_pp_reported": 1.3805,
+        "z_reported": 10.4591,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      },
+      {
+        "comparison": "Type 2 vs Type 4",
+        "failure_rate_difference_pp_reported": -3.382,
+        "z_reported": -20.0123,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      },
+      {
+        "comparison": "Type 3 vs Type 4",
+        "failure_rate_difference_pp_reported": -4.7625,
+        "z_reported": -19.6555,
+        "p_value_display": "0.000000",
+        "bonferroni_p_value_display": "0.000000",
+        "significant": true
+      }
+    ]
+  },
+  "result": {
+    "reject_H0": true,
+    "significant_posthoc_pairs": 7,
+    "bonferroni_alpha": 0.005
+  },
+  "interpretation": "Notebook 결과를 반올림 정밀도 그대로 보존. p_value_display 0.000000은 반올림 표기이며 정확한 0이 아님. CSV로 기존 통계만 검산; 새로운 검정/인과 추정 없음",
+  "runtime_implication": "BE Contract 설계 근거. 운영 transaction source나 active policy 아님",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 6
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 7
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 8
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 9
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 10
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+      "cell_index": 11
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA-01_EXTERNAL-EXECUTION-CONTRACT.md"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA-00-DA-01-EVIDENCE-GAPS.md"
+    }
+  ]
+}

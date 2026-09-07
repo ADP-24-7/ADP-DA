@@ -1,0 +1,94 @@
+{
+  "artifact_id": "DA_00_MASTER_SAMPLE:sampling_contract",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T19:08:09.576553+00:00",
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+  "source_notebook_sha256": "667868fb00d70b13432a762413130bc5da6f4dde1360207f6a9b50b3b3c8e8b6",
+  "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+  "source_data_sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+  "analysis_scope": "Pectra 이후 Ethereum 거래의 분석·BE Handoff 근거; 운영 데이터 아님",
+  "evidence_type": "PROCESSED_ANALYSIS_ARTIFACT",
+  "hypothesis": null,
+  "method": "불비례 층화표본: 비례할당 후 각 Type 최소 표본 보강",
+  "metrics": {
+    "base_sample_size": 49290,
+    "minimum_stratum_sample": 8000,
+    "confidence_level": 0.95,
+    "strata": [
+      {
+        "transaction_type": 0,
+        "sample_count": 8000,
+        "transaction_count": 128256215,
+        "population_share_pct_reported": 14.345667,
+        "population_weight_used_in_da01": 0.14345667
+      },
+      {
+        "transaction_type": 1,
+        "sample_count": 8000,
+        "transaction_count": 2619302,
+        "population_share_pct_reported": 0.292973,
+        "population_weight_used_in_da01": 0.00292973
+      },
+      {
+        "transaction_type": 2,
+        "sample_count": 41410,
+        "transaction_count": 751117036,
+        "population_share_pct_reported": 84.013664,
+        "population_weight_used_in_da01": 0.84013664
+      },
+      {
+        "transaction_type": 3,
+        "sample_count": 8000,
+        "transaction_count": 5263226,
+        "population_share_pct_reported": 0.5887,
+        "population_weight_used_in_da01": 0.005887
+      },
+      {
+        "transaction_type": 4,
+        "sample_count": 8000,
+        "transaction_count": 6785739,
+        "population_share_pct_reported": 0.758996,
+        "population_weight_used_in_da01": 0.00758996
+      }
+    ]
+  },
+  "result": {
+    "sample_size": 73410,
+    "population_weighting_required": true,
+    "weight_formula": "전체 비율 = sum(층 내 관측비율 * 모집단 비중)",
+    "individual_row_weight_exported": false
+  },
+  "interpretation": "층별 비교는 추출 표본, 전체 추정은 Notebook에 고정된 모집단 비중 사용",
+  "runtime_implication": "BE Contract 설계 근거. 운영 transaction source나 active policy 아님",
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+      "cell_index": 19
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+      "cell_index": 23
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+      "cell_index": 25
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+      "cell_index": 26
+    },
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+      "cell_index": 29
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA-00-MASTER-SAMPLE-CONTRACT.md"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA-00-DA-01-EVIDENCE-GAPS.md"
+    }
+  ]
+}

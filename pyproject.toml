@@ -48,6 +48,11 @@ pythonpath = ["02_ai/src"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+# Analyst-owned evidence snapshots: preserve cells/outputs, validate via handoff builder.
+extend-exclude = [
+    "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
+    "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
