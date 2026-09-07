@@ -1,5 +1,14 @@
-# ADP-DA
+﻿# ADP-DA
+## Current Domain Layout
 
+```text
+ADP-DA/
+├── 01_industry_analysis/        # shared industry analysis only
+├── 02_ai/                       # AI analysis, contracts, artifacts, code, tests
+└── 03_digital_asset/            # Digital Asset analysis workspace
+```
+
+AI notebooks, AI handoff artifacts, AI contracts, and the FastAPI analysis package now live under `02_ai/`. Digital Asset analysis starts under `03_digital_asset/data/raw/crypto_card/` and `03_digital_asset/notebooks/`.
 Financial Privacy Gateway 프로젝트의 데이터 분석·평가 레포지토리입니다.
 
 이 레포는 Python 기반 Offline 분석, Detector 평가, Threshold 검증, Versioned Artifact 생성을 담당합니다. Runtime 정책 집행과 Source of Truth는 별도 Gateway Core 레포에서 관리합니다.
@@ -16,16 +25,10 @@ Financial Privacy Gateway 프로젝트의 데이터 분석·평가 레포지토�
 
 ```text
 ADP-DA/
-├── artifacts/          # 버전 고정된 실험·정책 후보 산출물
-├── contracts/          # 개발팀 인수용 JSON Schema와 계약 문서
-├── data/
-│   ├── processed/      # 정제·파생 데이터. 원문 복제 금지
-│   └── raw/            # 로컬 원천 데이터. 기본적으로 git 제외
-├── docs/               # 분석 방향, 실행 흐름, 인수인계 기준
-├── notebooks/          # 탐색 분석 노트북
-├── scripts/            # 반복 실행 스크립트
-├── src/adp_da/         # 재사용 가능한 Python 코드와 FastAPI 헬스체크
-└── tests/              # 최소 테스트와 분석 유틸 검증
+├── 01_industry_analysis/   # 공통 산업분석
+├── 02_ai/                  # AI evidence, gateway, data, notebooks, artifacts, contracts, docs, src, tests
+├── 03_digital_asset/       # Digital Asset evidence, gateway, data, notebooks, artifacts, contracts, docs, src, tests
+└── scripts/                # repository-level validation/build scripts only
 ```
 
 ## 빠른 시작
@@ -93,24 +96,24 @@ make check
 - Python은 Runtime 정책을 직접 변경하지 않습니다.
 - 승인 전 분석 결과는 `candidate` 상태로만 취급합니다.
 - 원문 개인정보, 계좌, Wallet, Secret, Prompt 전문은 git과 로그에 남기지 않습니다.
-- 개발팀에 넘기는 산출물은 `contracts/evaluation_artifact.schema.json` 구조를 기준으로 작성합니다.
+- 개발팀에 넘기는 산출물은 `02_ai/contracts/evaluation_artifact.schema.json` 구조를 기준으로 작성합니다.
 
 ## 참고 문서
 
-- [프로젝트 방향성](docs/PROJECT_DIRECTION.md)
-- [분석 실행 흐름](docs/ANALYSIS_WORKFLOW.md)
-- [개발 인수 기준](docs/HANDOFF.md)
-- [환경 설정](docs/SETUP.md)
+- [프로젝트 방향성](02_ai/docs/PROJECT_DIRECTION.md)
+- [분석 실행 흐름](02_ai/docs/ANALYSIS_WORKFLOW.md)
+- [개발 인수 기준](02_ai/docs/HANDOFF.md)
+- [환경 설정](SETUP.md)
 
 ## DA to BE Handoff Boundary
 
 ADP-DA separates validation evidence from runtime handoff:
 
-- `contracts/evaluation_artifact.schema.json`: actual analysis and experiment
+- `02_ai/contracts/evaluation_artifact.schema.json`: actual analysis and experiment
   validation evidence.
-- `contracts/policy_evaluation_artifact.schema.json`: BE handoff contract for
+- `02_ai/contracts/policy_evaluation_artifact.schema.json`: BE handoff contract for
   policy judgment based on validated Evaluation Artifacts.
 
 Regulatory categories, processing contexts, runtime DataClass crosswalks, and
-workload/purpose bindings are defined under `contracts/`. BE-owned runtime
+workload/purpose bindings are defined under `02_ai/contracts/`. BE-owned runtime
 values remain `TBD`, `UNMAPPED`, or `UNRESOLVED` until BE publishes them.

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTRACTS = ROOT / "contracts"
+CONTRACTS = ROOT / "02_ai" / "contracts"
 
 SCHEMA_FILES = [
     CONTRACTS / "evaluation_artifact.schema.json",

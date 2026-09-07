@@ -1,0 +1,279 @@
+[
+  {
+    "requirement_id": "RC-00050",
+    "requirement_meaning": "이용자의 예치금을 관리하는 경우",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "이용자의 예치금"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "obligation": [
+      "이용자의 예치금을 고유재산과 분리하여 공신력 있는 기관에 예치 또는 신탁하여 관리하여야 한다"
+    ],
+    "prohibition": [],
+    "condition": "이용자의 예치금을 관리하는 경우",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0020"
+    ],
+    "evidence_id": "EV-00050",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00051",
+    "requirement_meaning": "관리기관에 예치 또는 신탁한 예치금",
+    "domain": "DIGITAL_ASSET",
+    "actor": "누구든지; 가상자산사업자",
+    "data_scope": [
+      "예치금"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "obligation": [],
+    "prohibition": [
+      "관리기관에 예치 또는 신탁한 예치금을 상계ㆍ압류하지 못한다",
+      "대통령령으로 정하는 경우 외에는 예치금을 양도하거나 담보로 제공하여서는 아니 된다"
+    ],
+    "condition": "관리기관에 예치 또는 신탁한 예치금",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0020"
+    ],
+    "evidence_id": "EV-00051",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00052",
+    "requirement_meaning": "이용자의 예치금을 고유재산과 분리하여 관리기관에 예치 또는 신탁하여 관리할 때",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "이용자의 예치금"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "obligation": [
+      "해당 관리기관과 다음 각 호의 사항이 포함된 계약을 체결해야 한다"
+    ],
+    "prohibition": [],
+    "condition": "이용자의 예치금을 고유재산과 분리하여 관리기관에 예치 또는 신탁하여 관리할 때",
+    "requirement_class": "GOVERNANCE_CONTROL",
+    "runtime_enforceable": false,
+    "governance_only": true,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0020"
+    ],
+    "evidence_id": "EV-00052",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00053",
+    "requirement_meaning": "?????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "가상자산사업자"
+    ],
+    "processing_phase": [
+      "digital_asset_activity"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "?????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0021"
+    ],
+    "evidence_id": "EV-00053",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00054",
+    "requirement_meaning": "?????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "가상자산거래"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "?????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0021"
+    ],
+    "evidence_id": "EV-00054",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00055",
+    "requirement_meaning": "????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "",
+    "data_scope": [
+      "가상자산"
+    ],
+    "processing_phase": [
+      "digital_asset_activity"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0021"
+    ],
+    "evidence_id": "EV-00055",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00056",
+    "requirement_meaning": "????? ????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산을 이전하는 가상자산사업자",
+    "data_scope": [
+      "?? ? ?? ??"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "third_party_or_outsourcing"
+    ],
+    "obligation": [
+      "????? ???? ????????? ?? ? ?? ??? ??? ?"
+    ],
+    "prohibition": [],
+    "condition": "????? ????",
+    "requirement_class": "NON_RUNTIME_REFERENCE",
+    "runtime_enforceable": false,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00056",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00057",
+    "requirement_meaning": "?????? ? ????",
+    "domain": "DIGITAL_ASSET",
+    "actor": "",
+    "data_scope": [
+      "가상자산주소"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address"
+    ],
+    "obligation": [],
+    "prohibition": [],
+    "condition": "?????? ? ????",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00057",
+    "evidence_maturity": "REVIEW_REQUIRED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00058",
+    "requirement_meaning": "해외 가상자산사업자 및 개인지갑과의 거래",
+    "domain": "DIGITAL_ASSET",
+    "actor": "가상자산사업자",
+    "data_scope": [
+      "가상자산 이전거래",
+      "개인지갑"
+    ],
+    "processing_phase": [
+      "digital_asset_activity",
+      "wallet_address",
+      "transaction_data"
+    ],
+    "obligation": [
+      "자금세탁방지 의무 부과"
+    ],
+    "prohibition": [],
+    "condition": "해외 가상자산사업자 및 개인지갑과의 거래",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00058",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  },
+  {
+    "requirement_id": "RC-00059",
+    "requirement_meaning": "고객과 거래 시",
+    "domain": "DIGITAL_ASSET",
+    "actor": "금융기관",
+    "data_scope": [
+      "고객 신원",
+      "실제소유자 여부",
+      "거래 목적"
+    ],
+    "processing_phase": [
+      "customer_due_diligence",
+      "digital_asset_activity"
+    ],
+    "obligation": [
+      "고객의 신원, 실제소유자 여부, 거래 목적 등을 파악하는 등 합당한 주의를 기울인다"
+    ],
+    "prohibition": [],
+    "condition": "고객과 거래 시",
+    "requirement_class": "RUNTIME_ENFORCEABLE",
+    "runtime_enforceable": true,
+    "governance_only": false,
+    "evaluation_required": false,
+    "related_legacy_gr": [
+      "GR-0022"
+    ],
+    "evidence_id": "EV-00059",
+    "evidence_maturity": "VERIFIED",
+    "classification_basis": "Classified from domain, interpretation_tags, processing_context, candidate_status, and source-derived condition; legacy GR grouping was not used as the grouping source."
+  }
+]

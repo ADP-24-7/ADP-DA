@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-08-27T00:00:00+09:00",
+  "scope": "AI Evidence Ontology final freeze validation; 02_ai/gateway_rules not modified",
+  "final_counts": {
+    "TOTAL": 49,
+    "VERIFIED": 44,
+    "REVIEW_REQUIRED": 5
+  },
+  "domain_counts": {
+    "AI": 8,
+    "PRIVACY": 32,
+    "SAAS_CLOUD": 9
+  },
+  "source_type_counts": {
+    "decree": 3,
+    "guideline": 15,
+    "law": 21,
+    "regulation": 10
+  },
+  "requirement_candidate_counts": {
+    "TOTAL": 49,
+    "CANDIDATE": 44,
+    "REVIEW_REQUIRED": 5
+  },
+  "validation": {
+    "evidence_schema_errors": [],
+    "requirement_candidate_schema_errors": [],
+    "duplicate_evidence_ids": [],
+    "duplicate_requirement_ids": [],
+    "missing_requirement_evidence_refs": [],
+    "evidence_without_requirement_candidate": [],
+    "runtime_tags_remaining_in_evidence": []
+  },
+  "reference_integrity": {
+    "official_source_to_evidence": "PASS",
+    "evidence_to_requirement_candidate": "PASS"
+  },
+  "ids": {
+    "review_required": [
+      "EV-00025",
+      "EV-00027",
+      "EV-00029",
+      "EV-00046",
+      "EV-00047"
+    ]
+  },
+  "freeze": {
+    "02_EVIDENCE_ONTOLOGY_FREEZE": "FROZEN",
+    "reason": "Official Source -> Evidence -> Requirement Candidate is traceable, runtime policy tags are separated from Evidence, and final artifacts pass schema/reference validation."
+  },
+  "downstream_todo": [
+    {
+      "scope": "02_ai/gateway_rules",
+      "item": "GR-0008 references AI Evidence EV-00038 and EV-00039 from a PRIVACY-domain rule.",
+      "action": "Review in Gateway Rule layer; 02 Evidence Ontology not modified for this issue."
+    }
+  ]
+}

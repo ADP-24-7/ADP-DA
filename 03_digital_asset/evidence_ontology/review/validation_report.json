@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-08-27T00:00:00+09:00",
+  "scope": "Digital Asset Evidence Ontology final freeze validation; 03_digital_asset/gateway_rules not modified",
+  "final_counts": {
+    "TOTAL": 10,
+    "VERIFIED": 5,
+    "REVIEW_REQUIRED": 5
+  },
+  "domain_counts": {
+    "DIGITAL_ASSET": 10
+  },
+  "source_type_counts": {
+    "decree": 3,
+    "law": 5,
+    "official_policy": 2
+  },
+  "requirement_candidate_counts": {
+    "TOTAL": 10,
+    "CANDIDATE": 5,
+    "REVIEW_REQUIRED": 5
+  },
+  "validation": {
+    "evidence_schema_errors": [],
+    "requirement_candidate_schema_errors": [],
+    "duplicate_evidence_ids": [],
+    "duplicate_requirement_ids": [],
+    "missing_requirement_evidence_refs": [],
+    "evidence_without_requirement_candidate": [],
+    "runtime_tags_remaining_in_evidence": []
+  },
+  "reference_integrity": {
+    "official_source_to_evidence": "PASS",
+    "evidence_to_requirement_candidate": "PASS"
+  },
+  "ids": {
+    "review_required": [
+      "EV-00053",
+      "EV-00054",
+      "EV-00055",
+      "EV-00056",
+      "EV-00057"
+    ]
+  },
+  "freeze": {
+    "02_EVIDENCE_ONTOLOGY_FREEZE": "FROZEN",
+    "reason": "Official Source -> Evidence -> Requirement Candidate is traceable, runtime policy tags are separated from Evidence, and final artifacts pass schema/reference validation."
+  },
+  "downstream_todo": []
+}

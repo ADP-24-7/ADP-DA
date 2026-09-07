@@ -1,0 +1,50 @@
+[
+  {
+    "test_id": "TEST-026",
+    "control_ids": [
+      "CTRL-GOV-007"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Digital asset safeguarding review is retained",
+    "expected_behavior": "Digital asset safeguarding requirements must produce review evidence, not runtime policy by default.",
+    "failure_condition": "Runtime policy is generated without safeguarding review basis.",
+    "required_artifact": "safeguarding review packet; traceability report",
+    "status": "DEFINED"
+  },
+  {
+    "test_id": "TEST-027",
+    "control_ids": [
+      "CTRL-REF-004"
+    ],
+    "test_type": "GOVERNANCE",
+    "test_name": "Digital asset REVIEW_REQUIRED references remain backlog",
+    "expected_behavior": "Unverified digital asset references must remain non-runtime until verified.",
+    "failure_condition": "Dependent policy is promoted before source verification.",
+    "required_artifact": "source verification result; evidence backlog item",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-028",
+    "control_ids": [
+      "CTRL-RUNTIME-010"
+    ],
+    "test_type": "UNIT",
+    "test_name": "Wallet and CDD field classifier separates field classes",
+    "expected_behavior": "Wallet, transaction, and CDD fields must be classified into separate field groups.",
+    "failure_condition": "Wallet or CDD field is not classified or is mixed with unrelated fields.",
+    "required_artifact": "wallet/CDD fixture; field classification report",
+    "status": "VALIDATION_REQUIRED"
+  },
+  {
+    "test_id": "TEST-029",
+    "control_ids": [
+      "CTRL-RUNTIME-010"
+    ],
+    "test_type": "CONTRACT",
+    "test_name": "Digital asset field routing is auditable",
+    "expected_behavior": "Digital asset field routing must produce an audit trace and decision packet.",
+    "failure_condition": "Field routing occurs without audit trace.",
+    "required_artifact": "audit trace; decision evidence packet",
+    "status": "VALIDATION_REQUIRED"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1",
+  "binding_version": "v1",
+  "bindings": [
+    {
+      "workload_id": "UNMAPPED",
+      "purpose": "UNMAPPED",
+      "processing_context": "AI_USE",
+      "runtime_data_class": "UNMAPPED",
+      "binding_status": "unresolved",
+      "notes": "EVAL-AI-001 supports Role + Purpose + Action as the access-scope basis, but BE-owned workload_id, purpose, and runtime_data_class values are not defined in the current repository."
+    }
+  ]
+}

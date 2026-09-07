@@ -1,0 +1,141 @@
+[
+  {
+    "official_source_id": "law_virtual_asset_user_protection",
+    "evidence_id": "EV-00050",
+    "requirement_id": "RC-00050",
+    "control_id": "CTRL-GOV-007",
+    "test_ids": [
+      "TEST-026"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0020"
+    ]
+  },
+  {
+    "official_source_id": "law_virtual_asset_user_protection",
+    "evidence_id": "EV-00051",
+    "requirement_id": "RC-00051",
+    "control_id": "CTRL-GOV-007",
+    "test_ids": [
+      "TEST-026"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0020"
+    ]
+  },
+  {
+    "official_source_id": "law_virtual_asset_user_protection_decree",
+    "evidence_id": "EV-00052",
+    "requirement_id": "RC-00052",
+    "control_id": "CTRL-GOV-007",
+    "test_ids": [
+      "TEST-026"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0020"
+    ]
+  },
+  {
+    "official_source_id": "law_special_financial_info",
+    "evidence_id": "EV-00053",
+    "requirement_id": "RC-00053",
+    "control_id": "CTRL-REF-004",
+    "test_ids": [
+      "TEST-027"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0021"
+    ]
+  },
+  {
+    "official_source_id": "law_special_financial_info",
+    "evidence_id": "EV-00054",
+    "requirement_id": "RC-00054",
+    "control_id": "CTRL-REF-004",
+    "test_ids": [
+      "TEST-027"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0021"
+    ]
+  },
+  {
+    "official_source_id": "law_special_financial_info",
+    "evidence_id": "EV-00055",
+    "requirement_id": "RC-00055",
+    "control_id": "CTRL-REF-004",
+    "test_ids": [
+      "TEST-027"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0021"
+    ]
+  },
+  {
+    "official_source_id": "law_special_financial_info_decree",
+    "evidence_id": "EV-00056",
+    "requirement_id": "RC-00056",
+    "control_id": "CTRL-REF-004",
+    "test_ids": [
+      "TEST-027"
+    ],
+    "policy_candidate_ids": [],
+    "legacy_rule_ids": [
+      "GR-0022"
+    ]
+  },
+  {
+    "official_source_id": "law_special_financial_info_decree",
+    "evidence_id": "EV-00057",
+    "requirement_id": "RC-00057",
+    "control_id": "CTRL-RUNTIME-010",
+    "test_ids": [
+      "TEST-028",
+      "TEST-029"
+    ],
+    "policy_candidate_ids": [
+      "PC-011"
+    ],
+    "legacy_rule_ids": [
+      "GR-0022"
+    ]
+  },
+  {
+    "official_source_id": "fsc_virtual_asset_policy_20260811",
+    "evidence_id": "EV-00058",
+    "requirement_id": "RC-00058",
+    "control_id": "CTRL-RUNTIME-010",
+    "test_ids": [
+      "TEST-028",
+      "TEST-029"
+    ],
+    "policy_candidate_ids": [
+      "PC-011"
+    ],
+    "legacy_rule_ids": [
+      "GR-0022"
+    ]
+  },
+  {
+    "official_source_id": "fiu_aml_cdd_guide",
+    "evidence_id": "EV-00059",
+    "requirement_id": "RC-00059",
+    "control_id": "CTRL-RUNTIME-010",
+    "test_ids": [
+      "TEST-028",
+      "TEST-029"
+    ],
+    "policy_candidate_ids": [
+      "PC-011"
+    ],
+    "legacy_rule_ids": [
+      "GR-0022"
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+﻿{
+    "evidence":  {
+                     "records":  10,
+                     "requirement_candidates":  10,
+                     "sources":  [
+                                     "fiu_aml_cdd_guide",
+                                     "fsc_virtual_asset_policy_20260811",
+                                     "law_special_financial_info",
+                                     "law_special_financial_info_decree",
+                                     "law_virtual_asset_user_protection",
+                                     "law_virtual_asset_user_protection_decree"
+                                 ]
+                 },
+    "gateway_rules":  {
+                          "rules":  [
+                                        "GR-0020",
+                                        "GR-0021",
+                                        "GR-0022"
+                                    ],
+                          "controls":  [
+                                           "CTRL-GOV-007",
+                                           "CTRL-REF-004",
+                                           "CTRL-RUNTIME-010"
+                                       ],
+                          "tests":  [
+                                        "TEST-026",
+                                        "TEST-027",
+                                        "TEST-028",
+                                        "TEST-029"
+                                    ],
+                          "policy_candidates":  [
+                                                    "PC-011"
+                                                ]
+                      },
+    "classification_unresolved":  [
+
+                                  ],
+    "shared_candidates":  [
+
+                          ]
+}

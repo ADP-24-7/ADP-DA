@@ -1,0 +1,164 @@
+[
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "1-하",
+    "original_text": "「가상자산 이용자 보호 등에 관한 법률」 제2조제2호에 따른 가상자산사업자(이하 “가상자산사업자”라 한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산사업자"
+    ],
+    "processing_context": [
+      "digital_asset_activity"
+    ],
+    "condition": "?????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00053",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 가능성이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "2-라",
+    "original_text": "가상자산사업자가 「가상자산 이용자 보호 등에 관한 법률」에 따라 수행하는 업무(이하 “가상자산거래”라 한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산거래"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "condition": "?????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00054",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 가능성이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "3",
+    "original_text": "“가상자산”이란 「가상자산 이용자 보호 등에 관한 법률」 제2조제1호에 따른 가상자산을 말한다.",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "",
+    "data_type": [
+      "가상자산"
+    ],
+    "processing_context": [
+      "digital_asset_activity"
+    ],
+    "condition": "????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00055",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 및 actor 공백이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info_decree",
+    "source_type": "decree",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+    "article": "제10조의10",
+    "paragraph": "2",
+    "original_text": "가상자산을 이전하는 가상자산사업자는 가상자산을 이전받는 가상자산사업자에게 다음 각 목의 정보를 제공할 것",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1029263261",
+    "applies_to": "가상자산을 이전하는 가상자산사업자",
+    "data_type": [
+      "?? ? ?? ??"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data",
+      "third_party_or_outsourcing"
+    ],
+    "condition": "????? ????",
+    "required_action": [
+      "????? ???? ????????? ?? ? ?? ??? ??? ?"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00056",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 source URL 직접 검증 실패가 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info_decree",
+    "source_type": "decree",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+    "article": "제10조의10",
+    "paragraph": "2-나",
+    "original_text": "가상자산을 보내는 고객과 가상자산을 받는 고객의 가상자산주소(가상자산의 전송 기록 및 보관 내역의 관리를 위해 전자적으로 생성시킨 고유식별번호를 말한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1029263261",
+    "applies_to": "",
+    "data_type": [
+      "가상자산주소"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address"
+    ],
+    "condition": "?????? ? ????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00057",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 source URL 직접 검증 실패와 actor 공백이 남아 REVIEW_REQUIRED 유지."
+  }
+]

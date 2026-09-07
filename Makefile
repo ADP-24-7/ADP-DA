@@ -66,7 +66,7 @@ format:
 	$(PY) -m ruff format .
 
 typecheck:
-	$(PY) -m mypy src
+	$(PY) -m mypy 02_ai/src
 
 contract-check:
 	$(PY) scripts/validate_contracts.py

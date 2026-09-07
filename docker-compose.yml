@@ -103,7 +103,7 @@ services:
       SERVICE_NAME: ${SERVICE_NAME:-adp-da}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
       GATEWAY_CORE_URL: ${GATEWAY_CORE_URL:-http://adp-be:8080}
-      ARTIFACT_OUTPUT_DIR: ${ARTIFACT_OUTPUT_DIR:-artifacts}
+      ARTIFACT_OUTPUT_DIR: ${ARTIFACT_OUTPUT_DIR:-02_ai/artifacts}
     command: ["uvicorn", "adp_da.api:app", "--host", "0.0.0.0", "--port", "8010", "--reload"]
     ports:
       - "${ADP_DA_PORT:-8010}:8010"

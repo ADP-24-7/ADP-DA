@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Privacy Gateway Policy Candidates",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "policy_candidate_id",
+      "requirement_ids",
+      "control_ids",
+      "test_ids",
+      "workload_scope",
+      "actor_scope",
+      "purpose_scope",
+      "processing_phase",
+      "data_class",
+      "applicability",
+      "conditions",
+      "candidate_action",
+      "candidate_transform",
+      "candidate_transform_options",
+      "reason_codes",
+      "evidence_maturity",
+      "policy_maturity",
+      "validation_dependencies",
+      "promotion_blocked",
+      "status",
+      "rationale"
+    ],
+    "properties": {
+      "policy_candidate_id": { "type": "string", "pattern": "^PC-[0-9]{3}$" },
+      "requirement_ids": {
+        "type": "array",
+        "items": { "type": "string", "pattern": "^RC-[0-9]{5}$" },
+        "minItems": 1
+      },
+      "control_ids": {
+        "type": "array",
+        "items": { "type": "string", "pattern": "^CTRL-[A-Z]+-[0-9]{3}$" },
+        "minItems": 1
+      },
+      "test_ids": {
+        "type": "array",
+        "items": { "type": "string", "pattern": "^TEST-[0-9]{3}$" },
+        "minItems": 1
+      },
+      "workload_scope": { "type": "array", "items": { "type": "string" } },
+      "actor_scope": { "type": "array", "items": { "type": "string" } },
+      "purpose_scope": { "type": "array", "items": { "type": "string" } },
+      "processing_phase": { "type": "array", "items": { "type": "string" } },
+      "data_class": { "type": "array", "items": { "type": "string" } },
+      "applicability": { "type": "string", "minLength": 1 },
+      "conditions": { "type": "array", "items": { "type": "string" } },
+      "candidate_action": {
+        "type": "string",
+        "enum": ["ALLOW", "BLOCK", "TRANSFORM", "REVIEW", "UNRESOLVED"]
+      },
+      "candidate_transform": {
+        "type": "string",
+        "enum": ["NONE", "UNRESOLVED"]
+      },
+      "candidate_transform_options": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["MASK", "HMAC-PSEUDO", "VAULT-TOKEN", "GENERALIZE", "FIELD-SEPARATION", "REMOVE", "KEEP"]
+        }
+      },
+      "reason_codes": { "type": "array", "items": { "type": "string" } },
+      "evidence_maturity": {
+        "type": "string",
+        "enum": ["VERIFIED", "REVIEW_REQUIRED"]
+      },
+      "policy_maturity": {
+        "type": "string",
+        "enum": ["PROJECT_PROVISIONAL", "VALIDATION_REQUIRED"]
+      },
+      "validation_dependencies": { "type": "array", "items": { "type": "string" } },
+      "promotion_blocked": { "type": "boolean" },
+      "status": {
+        "type": "string",
+        "enum": ["PROJECT_PROVISIONAL", "VALIDATION_REQUIRED"]
+      },
+      "rationale": { "type": "string", "minLength": 1 }
+    },
+    "additionalProperties": false
+  }
+}

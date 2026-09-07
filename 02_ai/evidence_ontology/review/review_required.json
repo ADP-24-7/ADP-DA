@@ -1,0 +1,168 @@
+[
+  {
+    "evidence_id": "EV-00025",
+    "domain": "PRIVACY",
+    "source_id": "electronic_financial_supervision_regulation",
+    "source_type": "regulation",
+    "source_name": "전자금융감독규정",
+    "article": "제14조",
+    "paragraph": "1",
+    "page": "",
+    "section": "",
+    "original_text": "다음 각 목을 작성ㆍ보관 할 것",
+    "effective_date": "2026-07-15",
+    "source_url": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&docCls=jo&joBrNo=00&joNo=0014&urlMode=admRulScJoRltInfoR",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "정보처리시스템"
+    ],
+    "processing_context": [],
+    "condition": "정보처리시스템의 안전한 운영",
+    "required_action": [
+      "?? ? ?? ????? ? ?"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-07-15",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "공식 원문 위치와 기록된 source URL 직접 재확인이 필요하여 REVIEW_REQUIRED 유지."
+  },
+  {
+    "evidence_id": "EV-00027",
+    "domain": "PRIVACY",
+    "source_id": "electronic_financial_supervision_regulation",
+    "source_type": "regulation",
+    "source_name": "전자금융감독규정",
+    "article": "제14조",
+    "paragraph": "6",
+    "page": "",
+    "section": "",
+    "original_text": "정보처리시스템의 운영체제(Operating System) 계정으로 로그인(Log in)할 경우 이중인증 절차를 시행하고, 계정에 대한 사용권한, 접근 기록, 작업 내역 등에 대한 상시 모니터링체계를 수립하며, 이상 징후 발생 시 필요한 통제 조치를 즉시 시행할 것",
+    "effective_date": "2026-07-15",
+    "source_url": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&docCls=jo&joBrNo=00&joNo=0014&urlMode=admRulScJoRltInfoR",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "???????? ????(Operating System) ??"
+    ],
+    "processing_context": [
+      "security_control"
+    ],
+    "condition": "정보처리시스템의 운영체제(Operating System) 계정으로 로그인(Log in)할 경우",
+    "required_action": [
+      "이중인증 절차를 시행하고, 계정에 대한 사용권한, 접근 기록, 작업 내역 등에 대한 상시 모니터링체계를 수립하며, 이상 징후 발생 시 필요한 통제 조치를 즉시 시행할 것"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-07-15",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 기존 감사 로그의 source 접근/위치 검증 실패가 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "evidence_id": "EV-00029",
+    "domain": "SAAS_CLOUD",
+    "source_id": "electronic_financial_supervision_regulation",
+    "source_type": "regulation",
+    "source_name": "전자금융감독규정",
+    "article": "제14조의2",
+    "paragraph": "①-1",
+    "page": "",
+    "section": "",
+    "original_text": "다음 각 목의 기준에 따른 이용업무의 중요도 평가",
+    "effective_date": "2026-07-15",
+    "source_url": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&docCls=jo&joBrNo=02&joNo=0014&urlMode=admRulScJoRltInfoR",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "클라우드컴퓨팅서비스"
+    ],
+    "processing_context": [
+      "saas_cloud_use"
+    ],
+    "condition": "????",
+    "required_action": [
+      "다음 각 목의 기준에 따른 이용업무의 중요도 평가"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-07-15",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 세부 위치와 해석 검증이 불충분하여 REVIEW_REQUIRED 유지."
+  },
+  {
+    "evidence_id": "EV-00046",
+    "domain": "SAAS_CLOUD",
+    "source_id": "fsc_saas_cloud_2026",
+    "source_type": "guideline",
+    "source_name": "4월 20일부터 금융회사는 내부 업무망에서 클라우드 기반 응용소프트웨어(SaaS)를 보다 원활하게 활용할 수 있습니다.",
+    "article": "",
+    "paragraph": "",
+    "page": "5",
+    "section": "전자금융감독규정 시행세칙 개정(안)",
+    "original_text": "이용자의 고유식별정보 또는개인신용정보를 처리하지 않는「클라우드컴퓨팅 발전 및 이용자 보호에 관한 법률 시행령」제3조제2호에 따른 “응용프로그램 등 소프트웨어를 제공하는 서비스”이용 목적의 경우",
+    "effective_date": "2026-04-20",
+    "source_url": "https://www.fsc.go.kr/no010101/86745?srchKey=sj",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "금융회사 또는 전자금융업자",
+    "data_type": [
+      "??????",
+      "??????",
+      "?????? ? ?????? ???? ???"
+    ],
+    "processing_context": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "condition": "이용자의 고유식별정보 또는 개인신용정보를 처리하지 않는 응용프로그램 등 소프트웨어를 제공하는 서비스 이용 목적의 경우",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-04-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "FSC 게시글은 확인되나 PDF 5쪽 원문 위치 직접 검증이 완료되지 않아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "evidence_id": "EV-00047",
+    "domain": "SAAS_CLOUD",
+    "source_id": "fsc_saas_cloud_2026",
+    "source_type": "guideline",
+    "source_name": "4월 20일부터 금융회사는 내부 업무망에서 클라우드 기반 응용소프트웨어(SaaS)를 보다 원활하게 활용할 수 있습니다.",
+    "article": "",
+    "paragraph": "",
+    "page": "6",
+    "section": "시행세칙 별표7 망분리 대체 정보보호통제",
+    "original_text": "ㅇ접속 단말기 및 사용자 등록·관리,안전한 인증 방식*적용,최소 권한 부여 등 접근 제어 및 권한 관리 *SaaS관리자 계정 등 중요계정에 대한 다중 인증 적용(예 :ID/PW+OTP)",
+    "effective_date": "2026-04-20",
+    "source_url": "https://www.fsc.go.kr/no010101/86745?srchKey=sj",
+    "retrieved_at": "2026-08-26T12:31:32+09:00",
+    "applies_to": "",
+    "data_type": [
+      "SaaS관리자 계정 등 중요계정"
+    ],
+    "processing_context": [
+      "saas_cloud_use",
+      "security_control"
+    ],
+    "condition": "내부업무망 SaaS",
+    "required_action": [
+      "?? ??? ? ??? ?????,??? ?? ??*??,?? ?? ?? ? ?? ?? ? ?? ??",
+      "SaaS??? ?? ? ????? ?? ?? ?? ??"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "review_status": "REVIEW_REQUIRED",
+    "reference_date": "2026-04-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "FSC 게시글은 확인되나 PDF 6쪽 원문 위치 직접 검증이 완료되지 않아 REVIEW_REQUIRED 유지."
+  }
+]

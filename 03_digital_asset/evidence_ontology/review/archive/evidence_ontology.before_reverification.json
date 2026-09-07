@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-08-27T00:00:00+09:00",
+  "scope": "Frozen 02 Evidence Ontology index",
+  "total_evidence": 10,
+  "status_counts": {
+    "REVIEW_REQUIRED": 5,
+    "VERIFIED": 5
+  },
+  "domains": {
+    "DIGITAL_ASSET": [
+      "EV-00050",
+      "EV-00051",
+      "EV-00052",
+      "EV-00053",
+      "EV-00054",
+      "EV-00055",
+      "EV-00056",
+      "EV-00057",
+      "EV-00058",
+      "EV-00059"
+    ]
+  },
+  "requirement_candidates": {
+    "path": "processed/requirement_candidates.json",
+    "total": 10
+  },
+  "freeze_status": "FROZEN"
+}

@@ -1,0 +1,341 @@
+[
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "VERIFIED",
+    "source_id": "law_virtual_asset_user_protection",
+    "source_type": "law",
+    "source_name": "가상자산 이용자 보호 등에 관한 법률",
+    "article": "제6조",
+    "paragraph": "①",
+    "original_text": "가상자산사업자는 이용자의 예치금(이용자로부터 가상자산의 매매, 그 밖의 거래와 관련하여 예치받은 금전을 말한다)을 고유재산과 분리하여 「은행법」에 따른 은행 등 대통령령으로 정하는 공신력 있는 기관에 예치 또는 신탁하여 관리하여야 한다.",
+    "effective_date": "2024-07-19",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027796579",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "이용자의 예치금"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "condition": "이용자의 예치금을 관리하는 경우",
+    "required_action": [
+      "이용자의 예치금을 고유재산과 분리하여 공신력 있는 기관에 예치 또는 신탁하여 관리하여야 한다"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00050",
+    "reference_date": "2024-07-19",
+    "verification_method": "DIRECT_OFFICIAL_SOURCE",
+    "verified_at": "2026-08-27T00:00:00+09:00",
+    "review_note": "공식 가상자산이용자보호법 제6조 제1항 원문 확인 후 예치금 분리관리 의무로 한정."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "VERIFIED",
+    "source_id": "law_virtual_asset_user_protection",
+    "source_type": "law",
+    "source_name": "가상자산 이용자 보호 등에 관한 법률",
+    "article": "제6조",
+    "paragraph": "③",
+    "original_text": "누구든지 관리기관에 예치 또는 신탁한 예치금을 상계ㆍ압류(가압류를 포함한다)하지 못하며, 가상자산사업자는 대통령령으로 정하는 경우 외에는 관리기관에 예치 또는 신탁한 예치금을 양도하거나 담보로 제공하여서는 아니 된다.",
+    "effective_date": "2024-07-19",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027796579",
+    "applies_to": "누구든지; 가상자산사업자",
+    "data_type": [
+      "예치금"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "condition": "관리기관에 예치 또는 신탁한 예치금",
+    "required_action": [],
+    "prohibition": [
+      "관리기관에 예치 또는 신탁한 예치금을 상계ㆍ압류하지 못한다",
+      "대통령령으로 정하는 경우 외에는 예치금을 양도하거나 담보로 제공하여서는 아니 된다"
+    ],
+    "exception": [
+      "대통령령으로 정하는 경우"
+    ],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00051",
+    "reference_date": "2024-07-19",
+    "verification_method": "DIRECT_OFFICIAL_SOURCE",
+    "verified_at": "2026-08-27T00:00:00+09:00",
+    "review_note": "공식 가상자산이용자보호법 제6조 제3항 원문 확인. 상계ㆍ압류 금지와 양도ㆍ담보 제한을 반영."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "VERIFIED",
+    "source_id": "law_virtual_asset_user_protection_decree",
+    "source_type": "decree",
+    "source_name": "가상자산 이용자 보호 등에 관한 법률 시행령",
+    "article": "제8조",
+    "paragraph": "②",
+    "original_text": "가상자산사업자는 법 제6조제1항에 따라 이용자의 예치금을 고유재산과 분리하여 관리기관에 예치 또는 신탁하여 관리할 때 해당 관리기관과 다음 각 호의 사항이 포함된 계약을 체결해야 한다.",
+    "effective_date": "2025-04-23",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027797047",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "이용자의 예치금"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "asset_segregation"
+    ],
+    "condition": "이용자의 예치금을 고유재산과 분리하여 관리기관에 예치 또는 신탁하여 관리할 때",
+    "required_action": [
+      "해당 관리기관과 다음 각 호의 사항이 포함된 계약을 체결해야 한다"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00052",
+    "reference_date": "2025-04-23",
+    "verification_method": "DIRECT_OFFICIAL_SOURCE",
+    "verified_at": "2026-08-27T00:00:00+09:00",
+    "review_note": "공식 가상자산이용자보호법 시행령 제8조 제2항 원문 확인. 관리기관 계약 체결 의무로 한정."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "1-하",
+    "original_text": "「가상자산 이용자 보호 등에 관한 법률」 제2조제2호에 따른 가상자산사업자(이하 “가상자산사업자”라 한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산사업자"
+    ],
+    "processing_context": [
+      "digital_asset_activity"
+    ],
+    "condition": "?????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00053",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 가능성이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "2-라",
+    "original_text": "가상자산사업자가 「가상자산 이용자 보호 등에 관한 법률」에 따라 수행하는 업무(이하 “가상자산거래”라 한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산거래"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data"
+    ],
+    "condition": "?????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00054",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 가능성이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info",
+    "source_type": "law",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+    "article": "제2조",
+    "paragraph": "3",
+    "original_text": "“가상자산”이란 「가상자산 이용자 보호 등에 관한 법률」 제2조제1호에 따른 가상자산을 말한다.",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027653489",
+    "applies_to": "",
+    "data_type": [
+      "가상자산"
+    ],
+    "processing_context": [
+      "digital_asset_activity"
+    ],
+    "condition": "????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00055",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "원문 버전과 effective date 기준시점 불일치 및 actor 공백이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info_decree",
+    "source_type": "decree",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+    "article": "제10조의10",
+    "paragraph": "2",
+    "original_text": "가상자산을 이전하는 가상자산사업자는 가상자산을 이전받는 가상자산사업자에게 다음 각 목의 정보를 제공할 것",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1029263261",
+    "applies_to": "가상자산을 이전하는 가상자산사업자",
+    "data_type": [
+      "?? ? ?? ??"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data",
+      "third_party_or_outsourcing"
+    ],
+    "condition": "????? ????",
+    "required_action": [
+      "????? ???? ????????? ?? ? ?? ??? ??? ?"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00056",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 source URL 직접 검증 실패가 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "REVIEW_REQUIRED",
+    "source_id": "law_special_financial_info_decree",
+    "source_type": "decree",
+    "source_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+    "article": "제10조의10",
+    "paragraph": "2-나",
+    "original_text": "가상자산을 보내는 고객과 가상자산을 받는 고객의 가상자산주소(가상자산의 전송 기록 및 보관 내역의 관리를 위해 전자적으로 생성시킨 고유식별번호를 말한다)",
+    "effective_date": "2026-08-20",
+    "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1029263261",
+    "applies_to": "",
+    "data_type": [
+      "가상자산주소"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "transaction_data",
+      "wallet_address"
+    ],
+    "condition": "?????? ? ????",
+    "required_action": [],
+    "prohibition": [],
+    "exception": [],
+    "page": "",
+    "section": "",
+    "evidence_id": "EV-00057",
+    "reference_date": "2026-08-20",
+    "verification_method": "NOT_VERIFIABLE",
+    "verified_at": null,
+    "review_note": "로컬 공식 원문 보관본에서 original_text prefix는 확인되나 source URL 직접 검증 실패와 actor 공백이 남아 REVIEW_REQUIRED 유지."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "VERIFIED",
+    "source_id": "fsc_virtual_asset_policy_20260811",
+    "source_type": "official_policy",
+    "source_name": "가상자산시장의 투명성 강화를 위한 「특정금융정보법 시행령」 개정안 국무회의 의결",
+    "article": "",
+    "paragraph": "",
+    "page": "",
+    "section": "가상자산 이전거래 관련 자금세탁방지 의무 부과",
+    "original_text": "트래블룰 기준금액(100만원) 삭제, 해외 가상자산사업자 및 개인지갑과의 거래 관련 자금세탁방지 의무(위험도에 따른 거래허용범위 차등 등) 부과",
+    "effective_date": "2026-08-11",
+    "source_url": "https://www.fsc.go.kr/po010103/87499",
+    "applies_to": "가상자산사업자",
+    "data_type": [
+      "가상자산 이전거래",
+      "개인지갑"
+    ],
+    "processing_context": [
+      "digital_asset_activity",
+      "wallet_address",
+      "transaction_data"
+    ],
+    "condition": "해외 가상자산사업자 및 개인지갑과의 거래",
+    "required_action": [
+      "자금세탁방지 의무 부과"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "evidence_id": "EV-00058",
+    "reference_date": "2026-08-11",
+    "verification_method": "DIRECT_OFFICIAL_SOURCE",
+    "verified_at": "2026-08-27T00:00:00+09:00",
+    "review_note": "공식 금융위원회 정책자료에서 트래블룰 기준금액 삭제 및 해외 사업자ㆍ개인지갑 거래 AML 의무 문구 확인."
+  },
+  {
+    "domain": "DIGITAL_ASSET",
+    "retrieved_at": "2026-08-26T15:34:42+09:00",
+    "review_status": "VERIFIED",
+    "source_id": "fiu_aml_cdd_guide",
+    "source_type": "official_policy",
+    "source_name": "금융정보분석원 자금세탁방지제도 안내",
+    "article": "",
+    "paragraph": "",
+    "page": "",
+    "section": "고객확인제도(CDD)",
+    "original_text": "금융기관이 고객과 거래 시 고객의 신원, 실제소유자 여부, 거래 목적 등을 파악하는 등 합당한 주의를 기울이는 제도입니다.",
+    "effective_date": "",
+    "source_url": "https://www.kofiu.go.kr/kor/policy/guide04.do",
+    "applies_to": "금융기관",
+    "data_type": [
+      "고객 신원",
+      "실제소유자 여부",
+      "거래 목적"
+    ],
+    "processing_context": [
+      "customer_due_diligence",
+      "digital_asset_activity"
+    ],
+    "condition": "고객과 거래 시",
+    "required_action": [
+      "고객의 신원, 실제소유자 여부, 거래 목적 등을 파악하는 등 합당한 주의를 기울인다"
+    ],
+    "prohibition": [],
+    "exception": [],
+    "evidence_id": "EV-00059",
+    "reference_date": "2026-08-26",
+    "verification_method": "DIRECT_OFFICIAL_SOURCE",
+    "verified_at": "2026-08-27T00:00:00+09:00",
+    "review_note": "FIU 공식 안내 페이지에서 CDD 설명 문구를 확인했으며, 별도 시행일이 없는 안내 자료이므로 retrieved_at 기준시점을 reference_date로 사용."
+  }
+]
