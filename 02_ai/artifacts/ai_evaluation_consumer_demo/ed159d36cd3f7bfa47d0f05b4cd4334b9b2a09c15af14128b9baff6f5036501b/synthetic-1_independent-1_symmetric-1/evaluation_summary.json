@@ -1,0 +1,388 @@
+{
+  "metric": "evaluated_execution_count",
+  "estimate": 16,
+  "statistical_test": null,
+  "p_value": null,
+  "effect_size": null,
+  "sample_size": 16,
+  "interpretation": "Observed snapshot only.",
+  "test_not_performed_reason": "Descriptive statistic; no population inference.",
+  "evidence": {
+    "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+    "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+    "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+    "execution_ids": [
+      "synthetic-0-0",
+      "synthetic-0-1",
+      "synthetic-1-0",
+      "synthetic-1-1",
+      "synthetic-2-0",
+      "synthetic-2-1",
+      "synthetic-3-0",
+      "synthetic-3-1",
+      "synthetic-4-0",
+      "synthetic-4-1",
+      "synthetic-5-0",
+      "synthetic-5-1",
+      "synthetic-6-0",
+      "synthetic-6-1",
+      "synthetic-7-0",
+      "synthetic-7-1"
+    ],
+    "data_origin": "SYNTHETIC_FIXTURE"
+  },
+  "data_origin": "SYNTHETIC_FIXTURE",
+  "unavailable": {
+    "workload_analysis": "workload_id is absent; do not infer it from run or case names.",
+    "model_quality": "No gold labels, response contents or scored utility/quality outcomes.",
+    "timeout_rate": "TRANSPORT is broader than timeout; no timeout reason is exported."
+  },
+  "assumptions": {
+    "independent_cases": true,
+    "symmetric_differences": true,
+    "synthetic": true
+  },
+  "candidate_policy": "Promote only with representative real data, quality outcomes and analyst-approved decision criteria; none are supplied.",
+  "decision_candidates": [
+    {
+      "metric": "MODEL_ALLOWLIST",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 16,
+      "interpretation": "No automatic BE policy promotion.",
+      "test_not_performed_reason": "Operational outcomes do not establish model quality.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-0-1",
+          "synthetic-1-0",
+          "synthetic-1-1",
+          "synthetic-2-0",
+          "synthetic-2-1",
+          "synthetic-3-0",
+          "synthetic-3-1",
+          "synthetic-4-0",
+          "synthetic-4-1",
+          "synthetic-5-0",
+          "synthetic-5-1",
+          "synthetic-6-0",
+          "synthetic-6-1",
+          "synthetic-7-0",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE"
+      },
+      "status": "UNRESOLVED",
+      "candidate_value": null
+    },
+    {
+      "metric": "UTILITY_THRESHOLD",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 16,
+      "interpretation": "No automatic BE policy promotion.",
+      "test_not_performed_reason": "No gold labels, response contents or scored utility/quality outcomes.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-0-1",
+          "synthetic-1-0",
+          "synthetic-1-1",
+          "synthetic-2-0",
+          "synthetic-2-1",
+          "synthetic-3-0",
+          "synthetic-3-1",
+          "synthetic-4-0",
+          "synthetic-4-1",
+          "synthetic-5-0",
+          "synthetic-5-1",
+          "synthetic-6-0",
+          "synthetic-6-1",
+          "synthetic-7-0",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE"
+      },
+      "status": "NOT_EVALUABLE",
+      "candidate_value": null
+    },
+    {
+      "metric": "LATENCY_THRESHOLD",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 16,
+      "interpretation": "No automatic BE policy promotion.",
+      "test_not_performed_reason": "Observed quantiles are not an approved SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-0-1",
+          "synthetic-1-0",
+          "synthetic-1-1",
+          "synthetic-2-0",
+          "synthetic-2-1",
+          "synthetic-3-0",
+          "synthetic-3-1",
+          "synthetic-4-0",
+          "synthetic-4-1",
+          "synthetic-5-0",
+          "synthetic-5-1",
+          "synthetic-6-0",
+          "synthetic-6-1",
+          "synthetic-7-0",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE"
+      },
+      "status": "UNRESOLVED",
+      "candidate_value": null
+    },
+    {
+      "metric": "FAILURE_THRESHOLD",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 16,
+      "interpretation": "No automatic BE policy promotion.",
+      "test_not_performed_reason": "Failure rates require risk budget and representative runs.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-0-1",
+          "synthetic-1-0",
+          "synthetic-1-1",
+          "synthetic-2-0",
+          "synthetic-2-1",
+          "synthetic-3-0",
+          "synthetic-3-1",
+          "synthetic-4-0",
+          "synthetic-4-1",
+          "synthetic-5-0",
+          "synthetic-5-1",
+          "synthetic-6-0",
+          "synthetic-6-1",
+          "synthetic-7-0",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE"
+      },
+      "status": "UNRESOLVED",
+      "candidate_value": null
+    },
+    {
+      "metric": "REVIEW",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 16,
+      "interpretation": "No automatic BE policy promotion.",
+      "test_not_performed_reason": "No ground-truth labels to evaluate REVIEW decisions.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-0-1",
+          "synthetic-1-0",
+          "synthetic-1-1",
+          "synthetic-2-0",
+          "synthetic-2-1",
+          "synthetic-3-0",
+          "synthetic-3-1",
+          "synthetic-4-0",
+          "synthetic-4-1",
+          "synthetic-5-0",
+          "synthetic-5-1",
+          "synthetic-6-0",
+          "synthetic-6-1",
+          "synthetic-7-0",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE"
+      },
+      "status": "UNRESOLVED",
+      "candidate_value": null
+    },
+    {
+      "metric": "TRANSFORM_POLICY",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 16,
+      "interpretation": "No automatic BE policy promotion.",
+      "test_not_performed_reason": "One policy_snapshot_digest per bundle; model profiles are not treatment arms. No privacy outcome, utility score, transform strength or randomized paired experiment.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-0-1",
+          "synthetic-1-0",
+          "synthetic-1-1",
+          "synthetic-2-0",
+          "synthetic-2-1",
+          "synthetic-3-0",
+          "synthetic-3-1",
+          "synthetic-4-0",
+          "synthetic-4-1",
+          "synthetic-5-0",
+          "synthetic-5-1",
+          "synthetic-6-0",
+          "synthetic-6-1",
+          "synthetic-7-0",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE"
+      },
+      "status": "NOT_EVALUABLE",
+      "candidate_value": null
+    }
+  ],
+  "handoff_gaps": [
+    {
+      "item": "ALLOW / BLOCK / REVIEW",
+      "previous_status": "UNRESOLVED",
+      "source": "02_ai/docs/AI_CONTRACT_GAP_ANALYSIS.md#explicit-non-decisions",
+      "resolvable_with_bundle": false,
+      "analysis_result": "No ground-truth labels to evaluate REVIEW decisions.",
+      "final_status": "UNRESOLVED",
+      "additional_data_required": true
+    },
+    {
+      "item": "AI Utility Threshold",
+      "previous_status": "UNRESOLVED",
+      "source": "02_ai/artifacts/ai_handoff_vNext/ANALYST_DECISION_REQUIRED.md",
+      "resolvable_with_bundle": false,
+      "analysis_result": "No gold labels, response contents or scored utility/quality outcomes.",
+      "final_status": "NOT_EVALUABLE",
+      "additional_data_required": true
+    },
+    {
+      "item": "Latency",
+      "previous_status": "UNRESOLVED",
+      "source": "02_ai/artifacts/ai_handoff_vNext/ANALYST_DECISION_REQUIRED.md",
+      "resolvable_with_bundle": false,
+      "analysis_result": "Observed quantiles are not an approved SLA.",
+      "final_status": "UNRESOLVED",
+      "additional_data_required": true
+    },
+    {
+      "item": "Failure tolerance",
+      "previous_status": "UNRESOLVED",
+      "source": "02_ai/artifacts/ai_handoff_vNext/ANALYST_DECISION_REQUIRED.md",
+      "resolvable_with_bundle": false,
+      "analysis_result": "Failure rates require risk budget and representative runs.",
+      "final_status": "UNRESOLVED",
+      "additional_data_required": true
+    },
+    {
+      "item": "Model Quality",
+      "previous_status": "UNRESOLVED",
+      "source": "02_ai/artifacts/ai_handoff_vNext/ANALYST_DECISION_REQUIRED.md",
+      "resolvable_with_bundle": false,
+      "analysis_result": "Operational outcomes do not establish model quality.",
+      "final_status": "UNRESOLVED",
+      "additional_data_required": true
+    },
+    {
+      "item": "Transform criteria",
+      "previous_status": "UNRESOLVED",
+      "source": "02_ai/artifacts/ai_handoff_vNext/ANALYST_DECISION_REQUIRED.md",
+      "resolvable_with_bundle": false,
+      "analysis_result": "One policy_snapshot_digest per bundle; model profiles are not treatment arms. No privacy outcome, utility score, transform strength or randomized paired experiment.",
+      "final_status": "NOT_EVALUABLE",
+      "additional_data_required": true
+    }
+  ],
+  "limitations": [
+    "Latest execution per case/model only; no rerun variance estimate.",
+    "Digest is integrity, not authenticity or external catalog validation.",
+    "Model profiles include sampling/destination confounders."
+  ],
+  "dataset": {
+    "path": "02_ai\\artifacts\\ai_evaluation_consumer_demo\\ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b\\synthetic-1_independent-1_symmetric-1\\executions.parquet",
+    "format": "parquet"
+  },
+  "loader_metadata": {
+    "schema_version": "adp-ai-evaluation-bundle/v1",
+    "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+    "bundle_version": "1.0.0",
+    "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+    "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+    "evaluation_run_version": "1",
+    "execution_count": 16,
+    "case_count": 8,
+    "model_count": 2,
+    "generated_at": "2026-09-01T00:01:00Z",
+    "execution_from": "2026-09-01T00:00:00Z",
+    "execution_cutoff_at": "2026-09-01T00:01:00Z",
+    "evaluated_execution_count": 16,
+    "source_type": "local",
+    "raw_path": "02_ai\\artifacts\\ai_evaluation_consumer_demo\\raw\\c89877b29819344d1778e298df6e5f0b846e39f10545a2a16310d76cd5bafb39.json",
+    "validation": {
+      "status": "PASS",
+      "checks": {
+        "schema": "PASS",
+        "content_digest": "PASS",
+        "case_results_cardinality": "PASS",
+        "runtime_metrics_cardinality": "PASS",
+        "trace_index_cardinality": "PASS",
+        "execution_identity": "PASS",
+        "model_count": "PASS",
+        "case_count": "PASS",
+        "case_model_uniqueness": "PASS",
+        "cartesian_completeness": "PASS",
+        "run_provenance": "PASS",
+        "bundle_identity": "PASS",
+        "case_model_execution_relationship": "PASS",
+        "input_digest": "PASS",
+        "cross_model_input_provenance": "PASS",
+        "complete_evidence": "PASS",
+        "token_usage": "PASS",
+        "failure_summary": "PASS",
+        "measurement_enum_and_latency": "PASS (schema conditional validation)",
+        "trace_time_order": "PASS",
+        "execution_from": "PASS",
+        "execution_cutoff_at": "PASS",
+        "generated_at": "PASS"
+      },
+      "calculated_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+      "execution_count": 16,
+      "recomputed_failure_summary": {
+        "evaluated_execution_count": 16,
+        "failed": 2,
+        "sent_unknown": 2,
+        "not_attempted": 2,
+        "by_error_category": {
+          "PROVIDER_SERVER_ERROR": 2,
+          "TRANSPORT": 2
+        }
+      },
+      "complete_token_total": 120,
+      "provenance_scope": "Internal consistency only; no independent catalog or signature. An entirely omitted case with adjusted manifest cannot be detected without a catalog."
+    }
+  }
+}

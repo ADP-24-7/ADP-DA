@@ -1,0 +1,1156 @@
+{
+  "findings": [
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": {
+        "mean": 500.0,
+        "median": 500.0,
+        "p95": 500.0,
+        "p99": 500.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE",
+        "provider_status": "SENT_UNKNOWN"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": {
+        "mean": 500.0,
+        "median": 500.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE",
+        "provider_status": "SENT_UNKNOWN"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": {
+        "mean": 122.0,
+        "median": 122.0,
+        "p95": 141.8,
+        "p99": 143.56
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 5,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 5,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": {
+        "mean": 125.66666666666667,
+        "median": 122.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 3,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-4-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-4-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": {
+        "mean": 116.5,
+        "median": 116.5
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 2,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-3-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE",
+        "provider_status": "FAILED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-3-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "HTTP_FULL_RESPONSE",
+        "provider_status": "FAILED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": {
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "MOCK zeros do not measure provider latency.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "MOCK"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "MOCK zeros do not measure provider latency.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "MOCK"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "MOCK zeros do not measure provider latency.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "MOCK"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": {
+        "mean": 0.0,
+        "median": 0.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "MOCK",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "MOCK",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "NOT_ATTEMPTED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "NOT_ATTEMPTED"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "NOT_ATTEMPTED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "NOT_ATTEMPTED",
+        "provider_status": "NOT_SENT"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0",
+        "measurement_type": "NOT_ATTEMPTED",
+        "provider_status": "NOT_SENT"
+      }
+    },
+    {
+      "metric": "token_usage",
+      "estimate": {
+        "status_counts": {
+          "NOT_PROVIDED": 5,
+          "COMPLETE": 3
+        },
+        "complete_execution_count": 3,
+        "totals": {
+          "input_tokens": 30,
+          "output_tokens": 15,
+          "total_tokens": 45
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Totals include COMPLETE records only; unknown usage is not zero.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-0",
+          "synthetic-1-0",
+          "synthetic-2-0",
+          "synthetic-3-0",
+          "synthetic-4-0",
+          "synthetic-5-0",
+          "synthetic-6-0",
+          "synthetic-7-0"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-0"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": {
+        "mean": 500.0,
+        "median": 500.0,
+        "p95": 500.0,
+        "p99": 500.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE",
+        "provider_status": "SENT_UNKNOWN"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": {
+        "mean": 500.0,
+        "median": 500.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-5-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_ATTEMPT_NO_RESPONSE",
+        "provider_status": "SENT_UNKNOWN"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": {
+        "mean": 142.0,
+        "median": 142.0,
+        "p95": 161.8,
+        "p99": 163.56
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 5,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_FULL_RESPONSE"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_FULL_RESPONSE"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 5,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_FULL_RESPONSE"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": {
+        "mean": 142.0,
+        "median": 142.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 5,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_FULL_RESPONSE",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "HTTP_FULL_RESPONSE",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": {
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "MOCK zeros do not measure provider latency.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "MOCK"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "MOCK zeros do not measure provider latency.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "MOCK"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "MOCK zeros do not measure provider latency.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "MOCK"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": {
+        "mean": 0.0,
+        "median": 0.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "MOCK",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "MOCK",
+        "provider_status": "COMPLETED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "NOT_ATTEMPTED"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "NOT_ATTEMPTED"
+      }
+    },
+    {
+      "metric": "initial_runtime_latency_millis",
+      "estimate": {
+        "mean": 10.0,
+        "median": 10.0,
+        "p95": 10.0,
+        "p99": 10.0
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 1,
+      "interpretation": "Latency in milliseconds within measurement type.",
+      "test_not_performed_reason": "Descriptive quantiles; small samples do not establish tail SLA.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "NOT_ATTEMPTED"
+      }
+    },
+    {
+      "metric": "full_response_latency_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "NOT_ATTEMPTED",
+        "provider_status": "NOT_SENT"
+      }
+    },
+    {
+      "metric": "attempt_elapsed_millis_by_provider_status",
+      "estimate": null,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 0,
+      "interpretation": "Observed snapshot only.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-6-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1",
+        "measurement_type": "NOT_ATTEMPTED",
+        "provider_status": "NOT_SENT"
+      }
+    },
+    {
+      "metric": "token_usage",
+      "estimate": {
+        "status_counts": {
+          "COMPLETE": 5,
+          "NOT_PROVIDED": 3
+        },
+        "complete_execution_count": 5,
+        "totals": {
+          "input_tokens": 50,
+          "output_tokens": 25,
+          "total_tokens": 75
+        }
+      },
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "sample_size": 8,
+      "interpretation": "Totals include COMPLETE records only; unknown usage is not zero.",
+      "test_not_performed_reason": "Descriptive statistic; no population inference.",
+      "evidence": {
+        "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+        "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+        "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+        "execution_ids": [
+          "synthetic-0-1",
+          "synthetic-1-1",
+          "synthetic-2-1",
+          "synthetic-3-1",
+          "synthetic-4-1",
+          "synthetic-5-1",
+          "synthetic-6-1",
+          "synthetic-7-1"
+        ],
+        "data_origin": "SYNTHETIC_FIXTURE",
+        "model_profile_id": "synthetic-profile-1"
+      }
+    }
+  ],
+  "paired_test": {
+    "metric": "full_response_latency_millis_paired_comparison",
+    "estimate": -20.0,
+    "statistical_test": "Wilcoxon signed-rank (two-sided, scipy auto)",
+    "p_value": 0.0625,
+    "effect_size": {
+      "name": "matched_rank_biserial",
+      "value": -1.0,
+      "direction": "first model minus second model"
+    },
+    "sample_size": 5,
+    "interpretation": "Synthetic fixture: method demonstration only; no evidence of real model performance.",
+    "test_not_performed_reason": null,
+    "evidence": {
+      "evaluation_run_id": "SYNTHETIC-DA-CONSUMER-TEST",
+      "bundle_id": "AI-EVAL-BUNDLE:SYNTHETIC-DA-CONSUMER-TEST:1",
+      "content_digest": "sha256:ed159d36cd3f7bfa47d0f05b4cd4334b9b2a09c15af14128b9baff6f5036501b",
+      "execution_ids": [
+        "synthetic-0-0",
+        "synthetic-0-1",
+        "synthetic-1-0",
+        "synthetic-1-1",
+        "synthetic-2-0",
+        "synthetic-2-1",
+        "synthetic-3-0",
+        "synthetic-3-1",
+        "synthetic-4-0",
+        "synthetic-4-1",
+        "synthetic-5-0",
+        "synthetic-5-1",
+        "synthetic-6-0",
+        "synthetic-6-1",
+        "synthetic-7-0",
+        "synthetic-7-1"
+      ],
+      "data_origin": "SYNTHETIC_FIXTURE"
+    },
+    "models": [
+      "synthetic-profile-0",
+      "synthetic-profile-1"
+    ],
+    "excluded_case_count": 3,
+    "hypothesis": "Equal operational outcome distributions across model profiles.",
+    "test_statistic": 0.0,
+    "p_value_holm": 0.125,
+    "multiplicity_family": "All performed model and runtime omnibus comparisons"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "report_type": "REAL_BE_EVALUATION_READINESS",
+  "checked_on": "2026-09-08",
+  "be_commit": "5d5f999",
+  "da_base_commit": "8b0a9ad",
+  "evidence_categories": {
+    "SYNTHETIC_VALIDATION": "Existing results excluded; not rerun for this task",
+    "REAL_BE_EVALUATION": "NOT_ACQUIRED"
+  },
+  "registered_run": {
+    "evaluation_run_id": "ai-eval-baseline-2026-09-07",
+    "version": "1.0.0",
+    "dataset_id": "financial_synthetic",
+    "dataset_version": "financial_synthetic_processed_v1",
+    "dataset_source_type": "synthetic",
+    "case_ids": [
+      "customer-summary-ko-001"
+    ],
+    "case_count": 1,
+    "model_count": 3,
+    "expected_execution_count": 3,
+    "workload_id": "customer_summary",
+    "purpose": "CUSTOMER_SUPPORT",
+    "model_profile_ids": [
+      "nvidia-nemotron-3.5-lightning-30b-a3b",
+      "meta-muse-glimmer-30b",
+      "google-gemma-4-31b-it"
+    ]
+  },
+  "actual_bundle": {
+    "bundle_id": null,
+    "content_digest": null,
+    "evaluation_run_id": null,
+    "case_count": null,
+    "model_count": null,
+    "execution_count": null,
+    "execution_from": null,
+    "execution_cutoff_at": null
+  },
+  "api_probes": [
+    {
+      "url": "http://127.0.0.1:8080/actuator/health/readiness",
+      "result": "CONNECTION_FAILED",
+      "http_status": null,
+      "scope": "Host outside sandbox; GET only"
+    },
+    {
+      "url": "http://127.0.0.1:8080/api/admin/ai/evaluation-runs/ai-eval-baseline-2026-09-07/bundle",
+      "result": "CONNECTION_FAILED",
+      "http_status": null,
+      "scope": "Host outside sandbox; GET only"
+    }
+  ],
+  "validation": {
+    "status": "NOT_RUN_NO_BUNDLE",
+    "passed_checks": []
+  },
+  "performance_analysis": "NOT_RUN_NO_BUNDLE",
+  "observed_sample_size": 0,
+  "observed_sample_size_note": "Zero acquired observations; not a claim about server DB execution count",
+  "handoff_gaps": [
+    {
+      "item": "MODEL_ALLOWLIST",
+      "status": "UNRESOLVED",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "Actual model outcomes and independent quality criteria unavailable",
+      "bundle_reference": null
+    },
+    {
+      "item": "MODEL_QUALITY",
+      "status": "NOT_EVALUABLE",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "Bundle v1 has no independent quality scores or labels",
+      "bundle_reference": null
+    },
+    {
+      "item": "LATENCY_THRESHOLD",
+      "status": "UNRESOLVED",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "No actual latency observations or approved SLA",
+      "bundle_reference": null
+    },
+    {
+      "item": "FAILURE_THRESHOLD",
+      "status": "UNRESOLVED",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "No actual failure observations or approved risk budget",
+      "bundle_reference": null
+    },
+    {
+      "item": "REVIEW_CONDITION",
+      "status": "UNRESOLVED",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "No actual REVIEW outcomes with ground truth",
+      "bundle_reference": null
+    },
+    {
+      "item": "UTILITY_THRESHOLD",
+      "status": "NOT_EVALUABLE",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "Bundle v1 has no utility score",
+      "bundle_reference": null
+    },
+    {
+      "item": "TRANSFORM_POLICY",
+      "status": "NOT_EVALUABLE",
+      "metric": null,
+      "estimate": null,
+      "sample_size": 0,
+      "statistical_test": null,
+      "p_value": null,
+      "effect_size": null,
+      "reason": "Bundle v1 has no controlled policy arms and privacy/utility outcomes",
+      "bundle_reference": null
+    }
+  ],
+  "missing_inputs": {
+    "reuse_existing_run": [
+      "Reachable BE URL and admin authentication, or original exported Bundle JSON"
+    ],
+    "new_runtime_execution": [
+      "Runnable BE/PostgreSQL environment",
+      "NVIDIA credential injected into BE and registered model access",
+      "Runtime executor authorization, approvals, destination and subject scope configuration"
+    ]
+  },
+  "experiment_design_status": "DESIGN_ONLY_NOT_EXECUTED",
+  "report": "02_ai/docs/REAL_BE_EVALUATION_REPORT.md",
+  "commit_push_performed": false
+}

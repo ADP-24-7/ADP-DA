@@ -29,6 +29,9 @@ data/raw/*
 data/processed/*
 artifacts/*
 outputs/
+02_ai/data/interim/ai_evaluation/
+02_ai/artifacts/ai_evaluation_consumer_demo/raw/
+02_ai/artifacts/ai_evaluation_consumer_demo/**/*.parquet
 reports/
 !data/raw/.gitkeep
 !data/processed/.gitkeep
