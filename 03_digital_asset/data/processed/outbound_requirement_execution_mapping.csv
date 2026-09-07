@@ -1,0 +1,19 @@
+requirement_id,required_field,ethereum_field,availability_layer,execution_availability,external_source_required,fpg_input_required,outbound_destination,note
+OR-DA-001,counterparty_vasp,,OFFCHAIN_EXTERNAL,VASP_INTERNAL,TRUE,TRUE,TRAVEL_RULE_PROVIDER|EXTERNAL_VASP|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-002,kyc_status,,OFFCHAIN_EXTERNAL,EXTERNAL_CONTROL_RESULT,TRUE,TRUE,NOT_EXTERNALIZED|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-003,kyc_status,,OFFCHAIN_EXTERNAL,EXTERNAL_CONTROL_RESULT,TRUE,TRUE,NOT_EXTERNALIZED|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-004,originator_identity,,OFFCHAIN_INTERNAL,VASP_INTERNAL,FALSE,TRUE,TRAVEL_RULE_PROVIDER|EXTERNAL_VASP,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-005,beneficiary_identity,,OFFCHAIN_EXTERNAL,VASP_INTERNAL,TRUE,TRUE,TRAVEL_RULE_PROVIDER|EXTERNAL_VASP,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-006,transaction_id,hash,ONCHAIN,ONCHAIN_AVAILABLE,FALSE,FALSE,TRAVEL_RULE_PROVIDER|INTERNAL_RECONCILIATION_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-007,execution_status,,NOT_AVAILABLE,MISSING,TRUE,TRUE,INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-008,originator_identity,,OFFCHAIN_INTERNAL,VASP_INTERNAL,FALSE,TRUE,TRAVEL_RULE_PROVIDER|EXTERNAL_VASP,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-009,beneficiary_identity,,OFFCHAIN_EXTERNAL,VASP_INTERNAL,TRUE,TRUE,TRAVEL_RULE_PROVIDER|EXTERNAL_VASP,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-010,transaction_id,hash,ONCHAIN,ONCHAIN_AVAILABLE,FALSE,FALSE,TRAVEL_RULE_PROVIDER|INTERNAL_RECONCILIATION_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-011,execution_status,,NOT_AVAILABLE,MISSING,TRUE,TRUE,INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-012,execution_status,,NOT_AVAILABLE,MISSING,TRUE,TRUE,INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-013,asset,,BOTH,DERIVABLE_FROM_ONCHAIN,TRUE,TRUE,BLOCKCHAIN_EXECUTION_SYSTEM|TRAVEL_RULE_PROVIDER,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-014,originator_address,from_address,ONCHAIN,ONCHAIN_AVAILABLE,FALSE,FALSE,BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-015,beneficiary_address,to_address,ONCHAIN,ONCHAIN_AVAILABLE,FALSE,FALSE,BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-016,amount,value_eth|value_wei,ONCHAIN,ONCHAIN_AVAILABLE,FALSE,FALSE,BLOCKCHAIN_EXECUTION_SYSTEM|INTERNAL_RECONCILIATION_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-017,tx_hash,hash,ONCHAIN,ONCHAIN_AVAILABLE,TRUE,FALSE,INTERNAL_RECONCILIATION_ONLY,Execution layer fields do not replace off-chain regulatory attributes.
+OR-DA-018,timestamp,block_timestamp,ONCHAIN,ONCHAIN_AVAILABLE,TRUE,FALSE,INTERNAL_RECONCILIATION_ONLY|INTERNAL_AUDIT_ONLY,Execution layer fields do not replace off-chain regulatory attributes.

@@ -1,0 +1,140 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "PE-DA-REGULATED-TRANSFER-002",
+  "artifact_version": "v2",
+  "analysis_status": "candidate",
+  "policy_action": "candidate_handoff",
+  "approved_policy_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-003",
+  "execution_request_ref": "APPROVED_TRANSACTION_RUNTIME_INPUT",
+  "policy_rule_refs": [
+    {
+      "ref_id": "OR-DA-001",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-002",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-003",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-004",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-005",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-006",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-007",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-008",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-009",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-010",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-011",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-012",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-013",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-014",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-015",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-016",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-017",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    },
+    {
+      "ref_id": "OR-DA-018",
+      "ref_type": "outbound_requirement",
+      "version": "v1"
+    }
+  ],
+  "required_input_fields": [
+    "amount",
+    "asset",
+    "beneficiary_address",
+    "beneficiary_identity",
+    "counterparty_vasp",
+    "execution_status",
+    "kyc_status",
+    "originator_address",
+    "originator_identity",
+    "timestamp",
+    "transaction_id",
+    "tx_hash"
+  ],
+  "decision_values": [
+    "PASS",
+    "BLOCK",
+    "REVIEW"
+  ],
+  "handoff_chain": [
+    "Approved Transaction",
+    "FPG Regulatory Outbound Processing",
+    "Outbound Requirement Validation",
+    "Transform / Field Mapping / Field Separation",
+    "External Handoff",
+    "Execution Result",
+    "Trace / Reconciliation"
+  ],
+  "limitations": [
+    "FPG is not a transaction approval system.",
+    "FPG does not perform KYC/AML itself; it consumes trusted status results.",
+    "FPG is not wallet, signing, custody, smart-contract, settlement, or finality infrastructure.",
+    "Runtime data class, destination profile enum, retry policy, reconciliation event schema, and production settlement state remain CONTRACT_GAP.",
+    "Synthetic v1/v2/v3 outputs are EXPERIMENTAL_POLICY_SIMULATION and not main design evidence."
+  ],
+  "digest": {
+    "algorithm": "sha256",
+    "value": "41597f56bcd4e3661a2ecae8f561aea0c2c09e60a84b91ad526be6c6733a1f40"
+  }
+}

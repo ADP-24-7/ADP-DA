@@ -1,0 +1,124 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "RTP-DA-REGULATED-TRANSFER-001",
+  "artifact_version": "v1",
+  "steps": [
+    {
+      "step_number": 1,
+      "name": "Approved Transaction Load",
+      "input": "approved transaction id, requested asset/address/amount",
+      "output": "normalized approved/request values",
+      "responsible_system": "APPROVED_TRANSACTION",
+      "failure_mode": "missing approved transaction",
+      "fpg_responsibility": "load and validate presence only"
+    },
+    {
+      "step_number": 2,
+      "name": "Policy Snapshot Load",
+      "input": "approved policy snapshot id",
+      "output": "policy constraints",
+      "responsible_system": "INTERNAL_POLICY_STORE",
+      "failure_mode": "missing policy snapshot",
+      "fpg_responsibility": "load current snapshot reference"
+    },
+    {
+      "step_number": 3,
+      "name": "Regulatory Context Load",
+      "input": "jurisdiction, transfer context",
+      "output": "applicable outbound requirements",
+      "responsible_system": "FPG_REGULATORY_CONTEXT",
+      "failure_mode": "unmapped jurisdiction",
+      "fpg_responsibility": "select candidate requirements"
+    },
+    {
+      "step_number": 4,
+      "name": "External Status Load",
+      "input": "KYC, VASP, Travel Rule statuses",
+      "output": "trusted status references",
+      "responsible_system": "KYC_AML_SYSTEM|VASP_DIRECTORY_OR_PROVIDER|TRAVEL_RULE_PROVIDER",
+      "failure_mode": "pending or unavailable provider result",
+      "fpg_responsibility": "consume status result only"
+    },
+    {
+      "step_number": 5,
+      "name": "Required Field Resolution",
+      "input": "source system fields",
+      "output": "resolved required field set",
+      "responsible_system": "FPG",
+      "failure_mode": "unresolved field",
+      "fpg_responsibility": "map fields without creating KYC/settlement facts"
+    },
+    {
+      "step_number": 6,
+      "name": "Approved vs Requested Match",
+      "input": "approved/request values",
+      "output": "match result",
+      "responsible_system": "FPG",
+      "failure_mode": "destination/amount/asset mismatch",
+      "fpg_responsibility": "compare required exact values"
+    },
+    {
+      "step_number": 7,
+      "name": "Required Exact Validation",
+      "input": "exact fields",
+      "output": "exact validation result",
+      "responsible_system": "FPG",
+      "failure_mode": "lossy transform requested for exact field",
+      "fpg_responsibility": "preserve exact values where legally/operationally required"
+    },
+    {
+      "step_number": 8,
+      "name": "Transform / Field Separation",
+      "input": "resolved fields",
+      "output": "internal/external field partitions",
+      "responsible_system": "FPG",
+      "failure_mode": "unsafe externalization",
+      "fpg_responsibility": "minimize, map, omit, or split fields by destination"
+    },
+    {
+      "step_number": 9,
+      "name": "Destination-specific Payload Build",
+      "input": "field partitions",
+      "output": "execution/travel-rule payloads",
+      "responsible_system": "FPG",
+      "failure_mode": "destination schema gap",
+      "fpg_responsibility": "build payload; do not send every field on-chain"
+    },
+    {
+      "step_number": 10,
+      "name": "Outbound Handoff Decision",
+      "input": "validation outcomes",
+      "output": "PASS/BLOCK/REVIEW",
+      "responsible_system": "FPG",
+      "failure_mode": "ambiguous status",
+      "fpg_responsibility": "decide handoff readiness only"
+    },
+    {
+      "step_number": 11,
+      "name": "External Execution Handoff",
+      "input": "execution payload",
+      "output": "handoff id",
+      "responsible_system": "BLOCKCHAIN_EXECUTION_SYSTEM|EXTERNAL_VASP",
+      "failure_mode": "handoff failure",
+      "fpg_responsibility": "forward payload; no custody or signing claim"
+    },
+    {
+      "step_number": 12,
+      "name": "Execution Result Binding",
+      "input": "handoff response",
+      "output": "tx hash/status reference",
+      "responsible_system": "EXTERNAL_EXECUTION_RESPONSE",
+      "failure_mode": "missing execution result",
+      "fpg_responsibility": "bind external result to trace"
+    },
+    {
+      "step_number": 13,
+      "name": "Audit / Reconciliation Trace",
+      "input": "all refs and decisions",
+      "output": "audit trace",
+      "responsible_system": "FPG",
+      "failure_mode": "trace mismatch",
+      "fpg_responsibility": "retain lineage for reconciliation"
+    }
+  ]
+}

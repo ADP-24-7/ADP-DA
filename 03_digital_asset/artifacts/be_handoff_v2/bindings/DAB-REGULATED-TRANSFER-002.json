@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "binding_version": "v2",
+  "bindings": [
+    {
+      "digital_asset_runtime": "REGULATED_VIRTUAL_ASSET_TRANSFER_OUTBOUND_HANDOFF",
+      "approved_transaction_identifier": "CONTRACT_GAP",
+      "approved_policy_snapshot_identifier": "CONTRACT_GAP",
+      "workload_id": "UNMAPPED",
+      "purpose": "UNMAPPED",
+      "runtime_data_class": "UNMAPPED",
+      "destination_profile": "CONTRACT_GAP",
+      "binding_status": "candidate_contract_gap",
+      "notes": "BE-owned identifiers/enums are not invented by DA analysis."
+    }
+  ]
+}
