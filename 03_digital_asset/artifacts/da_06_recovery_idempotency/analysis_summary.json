@@ -1,0 +1,56 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T23:52:14.009603+00:00",
+  "source_analysis": "DA-06",
+  "domain": "DIGITAL_ASSET",
+  "topic": [
+    "IDEMPOTENCY",
+    "SENT_UNKNOWN",
+    "RECOVERY"
+  ],
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+  "sample_size": 73410,
+  "live_be_evaluation": false,
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+      "sha256": "630010c2452a5a8cfb2d85b6cd3fe102c57dce440262d3b17525bdcb2fd962a3",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md",
+      "sha256": "810313fcf269246bf1a5395727e518b4490b6a33c54a642443049c0f228f8049",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    }
+  ],
+  "artifact_id": "DA_06_RECOVERY_IDEMPOTENCY:analysis_summary",
+  "evidence_kind": "OBSERVED_EVIDENCE",
+  "metrics": {
+    "hash_missing": 0,
+    "unique_hashes": 73410,
+    "duplicate_hash_rows": 0,
+    "duplicate_hash_keys": 0,
+    "hash_receipt_linked": 73410,
+    "hash_receipt_linked_percent": 100,
+    "receipt_success": 72241,
+    "receipt_success_percent": 98.4076,
+    "receipt_failed": 1169,
+    "receipt_failed_percent": 1.5924
+  },
+  "notebook_state_labels": {
+    "FINALIZED": "receipt_status = 1 (experiment label only)",
+    "FAILED": "receipt_status = 0"
+  },
+  "boundary": "Receipt success and unique hashes do not prove settlement finality, business idempotency or exactly-once external effects.",
+  "source_cells": [
+    1,
+    2,
+    3,
+    14
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T23:52:14.009603+00:00",
+  "source_analysis": "DA-06",
+  "domain": "DIGITAL_ASSET",
+  "topic": [
+    "IDEMPOTENCY",
+    "SENT_UNKNOWN",
+    "RECOVERY"
+  ],
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+  "sample_size": 73410,
+  "live_be_evaluation": false,
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+      "sha256": "630010c2452a5a8cfb2d85b6cd3fe102c57dce440262d3b17525bdcb2fd962a3",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md",
+      "sha256": "810313fcf269246bf1a5395727e518b4490b6a33c54a642443049c0f228f8049",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    }
+  ],
+  "artifact_id": "DA_06_RECOVERY_IDEMPOTENCY:contract_gaps",
+  "evidence_kind": "IMPLEMENTATION_REQUIREMENTS",
+  "gaps": [
+    {
+      "id": "LIVE_RECOVERY",
+      "detail": "No gateway timeout, response-loss, retry logs, provider recovery latency or actual business duplicate rate in sample."
+    },
+    {
+      "id": "NONCE",
+      "detail": "No nonce; sender+nonce uniqueness was not validated."
+    },
+    {
+      "id": "BUSINESS_IDEMPOTENCY",
+      "detail": "No pre-submit business idempotency binding in sample; concurrent claims, crash recovery and exactly-once effects untested."
+    },
+    {
+      "id": "FINALITY",
+      "detail": "Receipt status is not chain settlement finality. BE must decide confirmations/reorg/provider terminal evidence criteria."
+    },
+    {
+      "id": "RETRY_POLICY",
+      "detail": "Confirm terminal failure, retry limits, atomic authorization and original/attempt key binding before implementing retry."
+    },
+    {
+      "id": "RETRY_LINEAGE",
+      "detail": "parent_request_id and true outbound retry_count have no verified equivalent; recovery attempt_count counts claims, not sends."
+    },
+    {
+      "id": "NO_REFERENCE",
+      "detail": "Hash-absent recovery is outside this experiment; define provider correlation lookup/manual workflow, never assume safe resend."
+    },
+    {
+      "id": "LEGAL_MAPPING",
+      "detail": "No new legal mapping performed or claimed."
+    }
+  ]
+}

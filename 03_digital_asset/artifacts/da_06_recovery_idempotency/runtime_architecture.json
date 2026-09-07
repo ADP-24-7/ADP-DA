@@ -1,0 +1,111 @@
+{
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-09-07T23:52:14.009603+00:00",
+  "source_analysis": "DA-06",
+  "domain": "DIGITAL_ASSET",
+  "topic": [
+    "IDEMPOTENCY",
+    "SENT_UNKNOWN",
+    "RECOVERY"
+  ],
+  "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+  "sample_size": 73410,
+  "live_be_evaluation": false,
+  "evidence_refs": [
+    {
+      "path": "03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb",
+      "sha256": "630010c2452a5a8cfb2d85b6cd3fe102c57dce440262d3b17525bdcb2fd962a3",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md",
+      "sha256": "810313fcf269246bf1a5395727e518b4490b6a33c54a642443049c0f228f8049",
+      "sha256_scope": "RAW_BYTES"
+    },
+    {
+      "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
+      "sha256": "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
+      "sha256_scope": "RAW_BYTES"
+    }
+  ],
+  "artifact_id": "DA_06_RECOVERY_IDEMPOTENCY:runtime_architecture",
+  "evidence_kind": "IMPLEMENTATION_REQUIREMENTS",
+  "pipeline": [
+    "Scoped business request identity",
+    "Existing execution lookup",
+    "External reference binding",
+    "Reconciliation",
+    "Terminal evidence",
+    "Retry eligibility assessment",
+    "Lineage and audit"
+  ],
+  "be_repository": "ADP-24-7/ADP-BE",
+  "be_reviewed_commit": "5d5f999310db3854e96bf96661f76438d7def6ff",
+  "fields": [
+    {
+      "semantic": "request_id",
+      "existing": "runtime.runtime_execution.request_id",
+      "note": "Join via execution_id; do not confuse provider external_request_id."
+    },
+    {
+      "semantic": "idempotency_key",
+      "existing": "runtime.runtime_execution.idempotency_key",
+      "note": "Before outbound; retain institution/workload scope and request_hash."
+    },
+    {
+      "semantic": "external_transaction_id",
+      "existing": "digital_asset_transaction.external_transaction_id",
+      "note": "Post-submission reference; Ethereum transaction_hash proxy, nullable before receipt."
+    },
+    {
+      "semantic": "submission_status",
+      "existing": "external_interaction_recovery.observed_status",
+      "note": "Connector observation; not settlement finality."
+    },
+    {
+      "semantic": "execution_status",
+      "existing": "digital_asset_transaction.settlement_status",
+      "note": "External outcome dimension; runtime_execution.status remains a separate dimension."
+    },
+    {
+      "semantic": "reconciliation_status",
+      "existing": "digital_asset_transaction.reconciliation_result",
+      "note": "Business outcome dimension; external_interaction_recovery.recovery_status is workflow."
+    },
+    {
+      "semantic": "retry_count",
+      "existing": null,
+      "note": "Gap: recovery attempt_count increments on claim, not actual outbound retry."
+    },
+    {
+      "semantic": "parent_request_id",
+      "existing": null,
+      "note": "Gap: define original/child lineage without changing business idempotency semantics."
+    },
+    {
+      "semantic": "created_at",
+      "existing": "runtime.runtime_execution.created_at",
+      "note": "Request creation time; distinguish transaction/recovery row creation."
+    },
+    {
+      "semantic": "last_checked_at",
+      "existing": "external_interaction_recovery.last_status_queried_at",
+      "note": "Use status_query_evidence_digest; updated_at is not a status-check timestamp."
+    }
+  ],
+  "state_mapping": {
+    "SENT_UNKNOWN": "ConnectorStatus.SENT_UNKNOWN; asset settlement_status=SENT_UNKNOWN, reconciliation_result=WAIT; runtime EGRESSING.",
+    "RECONCILING": "DA activity, not a new BE enum; recovery PENDING/CLAIMED workflow.",
+    "FINALIZED": "DA conceptual terminal success. Existing BE completion requires settlementStatus=SETTLED and reconciliation MATCH/RECOVERED. Provider/chain finality policy remains BE-owned.",
+    "FAILED": "Distinguish transport failure from confirmed terminal external failure.",
+    "RECONCILIATION_REQUIRED": "Existing asset settlement status/review path; not automatically equivalent to a recovery enum.",
+    "RETRY_ELIGIBLE": "DA eligibility concept, not automatic RETRY_ALLOWED mapping."
+  },
+  "be_source_paths": [
+    "src/main/resources/db/migration/V12__add_runtime_idempotency_core.sql",
+    "src/main/resources/db/migration/V13__add_external_interaction_recovery.sql",
+    "src/main/java/com/adp/gateway/runtime/application/RuntimeExecutionService.java",
+    "src/main/java/com/adp/gateway/digitalasset/application/DigitalAssetSettlementOutcomeHandler.java",
+    "src/main/java/com/adp/gateway/digitalasset/infrastructure/JdbcDigitalAssetTransactionPersistence.java"
+  ]
+}
