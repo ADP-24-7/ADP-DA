@@ -52,6 +52,7 @@ target-version = "py312"
 extend-exclude = [
     "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
     "03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb",
+    "03_digital_asset/notebooks/runtime_validation/DA_02_exact_preservation.ipynb",
 ]
 
 [tool.ruff.lint]
