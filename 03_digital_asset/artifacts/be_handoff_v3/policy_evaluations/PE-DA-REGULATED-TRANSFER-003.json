@@ -1,0 +1,139 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "PE-DA-REGULATED-TRANSFER-003",
+  "artifact_version": "v3",
+  "analysis_status": "candidate",
+  "policy_action": "candidate_handoff",
+  "approved_policy_ref": "DA-CANDIDATE-POLICY-REGULATED-TRANSFER-003",
+  "execution_request_ref": "APPROVED_TRANSACTION_RUNTIME_INPUT",
+  "policy_rule_refs": [
+    {
+      "ref_id": "OR-DA-001",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-002",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-003",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-004",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-005",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-006",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-007",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-008",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-009",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-010",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-011",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-012",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-013",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-014",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-015",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-016",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-017",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    },
+    {
+      "ref_id": "OR-DA-018",
+      "ref_type": "outbound_requirement",
+      "version": "v2"
+    }
+  ],
+  "required_input_fields": [
+    "amount",
+    "asset",
+    "beneficiary_address",
+    "beneficiary_identity",
+    "counterparty_vasp",
+    "execution_status",
+    "kyc_status",
+    "originator_address",
+    "originator_identity",
+    "timestamp",
+    "transaction_id",
+    "tx_hash"
+  ],
+  "decision_values": [
+    "PASS",
+    "BLOCK",
+    "REVIEW"
+  ],
+  "handoff_chain": [
+    "Approved Transaction",
+    "FPG",
+    "Regulatory Outbound Requirement Enforcement",
+    "Destination-specific Payload",
+    "External Execution System",
+    "Execution Result Binding",
+    "Audit / Reconciliation Trace"
+  ],
+  "limitations": [
+    "This Policy Evaluation artifact is an Outbound Handoff Evaluation, not transaction approval evaluation.",
+    "KYC/AML/VASP eligibility/risk/sanctions decisions are upstream or external responsibilities.",
+    "Synthetic policy simulations are not used as BE runtime control evidence.",
+    "BE-owned runtime enums and provider payload schemas remain CONTRACT_GAP."
+  ],
+  "digest": {
+    "algorithm": "sha256",
+    "value": "7128ce736e31004dafa16cfcac1295dd02a0a6d031920d537fe622e9b2f8da12"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "validations": [
+    {
+      "schema": "03_digital_asset/contracts/outbound_requirement_matrix_v2.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset/contracts/control_boundary_validation.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset/contracts/runtime_pipeline.schema.json",
+      "status": "PASS"
+    },
+    {
+      "schema": "03_digital_asset/contracts/digital_asset_policy_evaluation.schema.json",
+      "artifact": "PE-DA-REGULATED-TRANSFER-003",
+      "status": "PASS"
+    }
+  ],
+  "assertions": [
+    {
+      "assertion": "no_KYC_STATUS_CHECK_runtime_control",
+      "status": "PASS"
+    },
+    {
+      "assertion": "no_AML_CHECK_runtime_control",
+      "status": "PASS"
+    },
+    {
+      "assertion": "no_VASP_ELIGIBILITY_CHECK_runtime_control",
+      "status": "PASS"
+    },
+    {
+      "assertion": "pass_not_transaction_approval",
+      "status": "PASS"
+    },
+    {
+      "assertion": "block_not_approval_cancellation",
+      "status": "PASS"
+    },
+    {
+      "assertion": "approved_transaction_input_exists",
+      "status": "PASS"
+    },
+    {
+      "assertion": "approved_requested_match_exists",
+      "status": "PASS"
+    },
+    {
+      "assertion": "required_field_presence_exists",
+      "status": "PASS"
+    },
+    {
+      "assertion": "transform_instruction_exists",
+      "status": "PASS"
+    },
+    {
+      "assertion": "destination_mapping_exists",
+      "status": "PASS"
+    },
+    {
+      "assertion": "trace_binding_exists",
+      "status": "PASS"
+    },
+    {
+      "assertion": "required_exact_transform_no_conflict",
+      "status": "PASS"
+    }
+  ]
+}

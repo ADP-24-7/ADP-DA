@@ -1,0 +1,124 @@
+{
+  "schema_version": "v1",
+  "artifact_id": "RTP-DA-REGULATED-TRANSFER-002",
+  "artifact_version": "v2",
+  "steps": [
+    {
+      "step_number": 1,
+      "name": "Approved Transaction Load",
+      "input": "approved transaction record",
+      "output": "approved transaction context",
+      "responsible_system": "BE_APPROVAL_SYSTEM",
+      "failure_mode": "missing approved transaction",
+      "fpg_responsibility": "load existing approval; do not approve transactions"
+    },
+    {
+      "step_number": 2,
+      "name": "Approved Policy Snapshot Load",
+      "input": "approved policy snapshot id",
+      "output": "approved constraints",
+      "responsible_system": "BE_POLICY_STORE",
+      "failure_mode": "missing approved policy snapshot",
+      "fpg_responsibility": "load snapshot; do not invent policy"
+    },
+    {
+      "step_number": 3,
+      "name": "Regulatory Outbound Requirement Load",
+      "input": "outbound matrix",
+      "output": "applicable requirement list",
+      "responsible_system": "FPG",
+      "failure_mode": "missing outbound matrix",
+      "fpg_responsibility": "load handoff requirements"
+    },
+    {
+      "step_number": 4,
+      "name": "Required Field Resolution",
+      "input": "approved transaction plus upstream-produced fields",
+      "output": "resolved field set",
+      "responsible_system": "FPG",
+      "failure_mode": "required source unresolved",
+      "fpg_responsibility": "consume upstream data; do not determine KYC/AML/VASP eligibility"
+    },
+    {
+      "step_number": 5,
+      "name": "Approved Value vs Requested Value Match",
+      "input": "approved/requested asset amount destination beneficiary period",
+      "output": "match result",
+      "responsible_system": "FPG",
+      "failure_mode": "approved/requested mismatch",
+      "fpg_responsibility": "compare values"
+    },
+    {
+      "step_number": 6,
+      "name": "Required Field Presence Check",
+      "input": "resolved field set",
+      "output": "presence result",
+      "responsible_system": "FPG",
+      "failure_mode": "required outbound field missing",
+      "fpg_responsibility": "check required outbound information exists"
+    },
+    {
+      "step_number": 7,
+      "name": "Required Exact Validation",
+      "input": "exact-class fields",
+      "output": "exactness result",
+      "responsible_system": "FPG",
+      "failure_mode": "lossy transform or altered exact value",
+      "fpg_responsibility": "verify exact fields are not lossy-transformed"
+    },
+    {
+      "step_number": 8,
+      "name": "Transform / Field Separation",
+      "input": "resolved field set",
+      "output": "destination partitions",
+      "responsible_system": "FPG",
+      "failure_mode": "unsafe field externalization",
+      "fpg_responsibility": "normalize, minimize, omit, split, and map fields"
+    },
+    {
+      "step_number": 9,
+      "name": "Destination-specific Payload Build",
+      "input": "field partitions",
+      "output": "payloads per destination",
+      "responsible_system": "FPG",
+      "failure_mode": "destination schema unmapped",
+      "fpg_responsibility": "build execution, Travel Rule, VASP, audit, reconciliation payloads"
+    },
+    {
+      "step_number": 10,
+      "name": "Outbound Handoff Decision",
+      "input": "validation results",
+      "output": "PASS/BLOCK/REVIEW",
+      "responsible_system": "FPG",
+      "failure_mode": "unresolved handoff readiness",
+      "fpg_responsibility": "decide handoff readiness only"
+    },
+    {
+      "step_number": 11,
+      "name": "External Execution Handoff",
+      "input": "destination payload",
+      "output": "outbound handoff id",
+      "responsible_system": "EXTERNAL_EXECUTION_SYSTEM",
+      "failure_mode": "handoff rejected or unavailable",
+      "fpg_responsibility": "forward payload; no wallet/signing/custody responsibility"
+    },
+    {
+      "step_number": 12,
+      "name": "Execution Result Binding",
+      "input": "external response",
+      "output": "tx hash/status binding",
+      "responsible_system": "EXTERNAL_EXECUTION_SYSTEM",
+      "failure_mode": "execution response missing",
+      "fpg_responsibility": "bind returned execution references only"
+    },
+    {
+      "step_number": 13,
+      "name": "Audit / Reconciliation Trace",
+      "input": "handoff ids and decision refs",
+      "output": "audit trace",
+      "responsible_system": "FPG",
+      "failure_mode": "trace binding incomplete",
+      "fpg_responsibility": "retain lineage for audit and reconciliation"
+    }
+  ]
+}
