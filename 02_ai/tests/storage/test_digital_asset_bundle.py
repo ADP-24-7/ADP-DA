@@ -133,6 +133,8 @@ def test_local_and_ncp_port_semantics_support_idempotent_bundle_publish(tmp_path
     assert verified["run_type"] == "NCP_DIGITAL_ASSET_BUNDLE_VERIFY"
     assert verified["bucket"] == "adp-qa-data-artifacts"
     assert verified["credentialValuesRecorded"] is False
+    assert verified["semanticValidation"] == "PASS"
+    assert verified["contentAddressedManifest"] is True
     assert set(verified["verifiedRoles"]) == set(
         entry["role"] for entry in bundle.manifest["files"]
     )

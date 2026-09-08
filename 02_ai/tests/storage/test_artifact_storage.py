@@ -314,6 +314,7 @@ def test_ncp_e2e_uploads_verifies_and_cleans_up(monkeypatch: pytest.MonkeyPatch)
     assert result["adapter_git_sha"] == "abcdef1"
     assert result["upload_digest"] == result["download_digest"]
     assert result["match"] is True
+    assert result["content_addressed_key"] is True
     assert result["download_matches_upload"] is True
     assert result["cleanup_completed"] is True
     assert client.objects == {}

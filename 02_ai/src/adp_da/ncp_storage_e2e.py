@@ -83,6 +83,7 @@ def execute(environment: dict[str, str]) -> dict[str, Any]:
             "download_digest": manifest.digest,
             "match": downloaded == data,
             "download_matches_upload": downloaded == data,
+            "content_addressed_key": manifest.digest.removeprefix("sha256:") in manifest.object_key,
         }
     finally:
         delete_published_artifact(store, published)

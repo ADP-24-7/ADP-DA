@@ -346,5 +346,8 @@ def verify_published_digital_asset_bundle(
         "storageManifestDigest": storage_manifest_digest,
         "verifiedRoles": verified_roles,
         "downloadDigestMatch": True,
+        "semanticValidation": "PASS",
+        "contentAddressedManifest": storage_manifest_digest.removeprefix("sha256:")
+        in manifest_reference,
         "credentialValuesRecorded": False,
     }
