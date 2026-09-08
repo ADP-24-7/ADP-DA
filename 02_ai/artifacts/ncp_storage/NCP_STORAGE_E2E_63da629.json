@@ -1,0 +1,23 @@
+{
+  "access_key_present": true,
+  "adapter_git_sha": "63da629c31497c79e8034221057ceec6db94d081",
+  "artifact_id": "ncp-storage-e2e",
+  "artifact_version": "20260908T080256934767Z",
+  "bucket": "adp-qa-data-artifacts",
+  "cleanup_completed": true,
+  "code_git_sha_present": true,
+  "credential_values_recorded": false,
+  "digest": "sha256:8f9a9f35237be1ac7b981276187367ed946bc6fbb7d43caf43179bb5b43544f8",
+  "download_digest": "sha256:8f9a9f35237be1ac7b981276187367ed946bc6fbb7d43caf43179bb5b43544f8",
+  "download_matches_upload": true,
+  "endpoint": "https://kr.object.ncloudstorage.com",
+  "external_write_confirmed": true,
+  "manifest_object_key": "manifests/artifacts/ncp-storage-e2e/20260908T080256934767Z/manifest.json",
+  "match": true,
+  "object_key": "replay/ncp-storage-e2e/20260908T080256934767Z/probe.json",
+  "region": "KR",
+  "run_type": "NCP_STORAGE_E2E",
+  "secret_key_present": true,
+  "status": "PASS",
+  "upload_digest": "sha256:8f9a9f35237be1ac7b981276187367ed946bc6fbb7d43caf43179bb5b43544f8"
+}

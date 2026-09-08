@@ -1,0 +1,8 @@
+{
+  "adapterGitSha": "63da629c31497c79e8034221057ceec6db94d081",
+  "credentialValuesRecorded": false,
+  "expectedContentDigest": "sha256:d706156b5e103144a368705e44daeaf54ecc1f2a6c6c2bd30f8e41ed975eb646",
+  "manifestReference": "handoff/validated/DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001/1.0.0/manifest.json",
+  "schema_version": "adp-digital-asset-artifact-ingest-request/v1",
+  "storageManifestDigest": "sha256:e664e3edfb6e818b7db0d7a81d76f101030fef87feaff3e4852da45994b3e5d6"
+}
