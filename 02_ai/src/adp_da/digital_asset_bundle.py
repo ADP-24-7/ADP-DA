@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -12,7 +13,7 @@ from jsonschema import Draft202012Validator
 from adp_da.storage import (
     ArtifactIntegrityError,
     ArtifactStore,
-    build_object_key,
+    build_content_addressed_object_key,
     sha256_digest,
 )
 from adp_da.storage.core import ArtifactStorageError
@@ -36,6 +37,31 @@ ROLE_FILES = {
     ),
     "RUNTIME_PIPELINE": ("runtime-pipeline.json", "runtime-pipeline-v1.schema.json"),
 }
+EXPECTED_CONTROLS = {
+    "APPROVED_VS_REQUESTED_MATCH",
+    "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+    "REQUIRED_EXACT_PRESERVATION",
+    "TRANSFORM_FIELD_SEPARATION",
+    "DESTINATION_SPECIFIC_PAYLOAD",
+    "TRACE_BINDING",
+}
+EXPECTED_DECISIONS = {"PASS", "BLOCK", "REVIEW"}
+EXPECTED_PIPELINE = [
+    "APPROVED_TRANSACTION_LOAD",
+    "ARTIFACT_BINDING",
+    "OUTBOUND_GUARD",
+    "EXTERNAL_HANDOFF",
+    "POST_EXECUTION_REBINDING",
+]
+ALLOWED_RUNTIME_DATA_CLASSES = {
+    "CUSTOMER_IDENTIFIER",
+    "ACCOUNT_IDENTIFIER",
+    "TRANSACTION_IDENTIFIER",
+    "FINANCIAL_AMOUNT",
+    "FINANCIAL_METADATA",
+    "BUSINESS_METADATA",
+}
+BLOCKING_GAP = re.compile(r"(^|[^A-Z])(UNMAPPED|TBD|CONTRACT_GAP)([^A-Z]|$)")
 
 
 @dataclass(frozen=True)
@@ -87,6 +113,77 @@ def _validate(schema: dict[str, Any], value: dict[str, Any], label: str) -> None
         raise ArtifactIntegrityError(f"{label} does not match BE P0-5 schema: {errors[0].message}")
 
 
+def _payload(documents: dict[str, dict[str, Any]], role: str) -> dict[str, Any]:
+    document = documents.get(role)
+    payload = document.get("payload") if document else None
+    if not isinstance(payload, dict):
+        raise ArtifactIntegrityError(f"Digital Asset role payload is missing: {role}")
+    return payload
+
+
+def _reject_blocking_gap(value: Any) -> None:
+    if isinstance(value, str) and BLOCKING_GAP.search(value.upper()):
+        raise ArtifactIntegrityError("Digital Asset Bundle contains a blocking contract gap")
+    if isinstance(value, dict):
+        for item in value.values():
+            _reject_blocking_gap(item)
+    elif isinstance(value, list):
+        for item in value:
+            _reject_blocking_gap(item)
+
+
+def _exact_string_set(value: Any, expected: set[str], label: str) -> None:
+    if (
+        not isinstance(value, list)
+        or any(not isinstance(item, str) for item in value)
+        or len(value) != len(expected)
+        or set(value) != expected
+    ):
+        raise ArtifactIntegrityError(f"Digital Asset semantic mismatch: {label}")
+
+
+def validate_bundle_semantics(
+    manifest: dict[str, Any], documents: dict[str, dict[str, Any]]
+) -> None:
+    """Mirror the cross-document checks enforced by the BE P0-5 semantic validator."""
+    for document in documents.values():
+        _reject_blocking_gap(document)
+
+    manifest_binding = manifest.get("binding")
+    if not isinstance(manifest_binding, dict):
+        raise ArtifactIntegrityError("Digital Asset manifest binding is missing")
+    artifact_binding = _payload(documents, "BINDING")
+    binding_fields = (
+        "execution_pack",
+        "workload_id",
+        "purpose_code",
+        "destination_profile_id",
+    )
+    if any(manifest_binding.get(field) != artifact_binding.get(field) for field in binding_fields):
+        raise ArtifactIntegrityError("Digital Asset manifest and BINDING artifact do not match")
+
+    crosswalk = _payload(documents, "RUNTIME_DATA_CROSSWALK").get("runtime_data_classes")
+    if (
+        not isinstance(crosswalk, list)
+        or not crosswalk
+        or any(not isinstance(item, str) for item in crosswalk)
+        or not ALLOWED_RUNTIME_DATA_CLASSES.issuperset(crosswalk)
+    ):
+        raise ArtifactIntegrityError("Digital Asset runtime data crosswalk contains a gap")
+
+    policy = _payload(documents, "POLICY_EVALUATION")
+    _exact_string_set(policy.get("decision_semantics"), EXPECTED_DECISIONS, "decision set")
+    if policy.get("external_action_on_unresolved") != "DENY":
+        raise ArtifactIntegrityError("Digital Asset unresolved external action must be DENY")
+
+    controls = _payload(documents, "OUTBOUND_REQUIREMENT_MATRIX").get("controls")
+    _exact_string_set(controls, EXPECTED_CONTROLS, "outbound control set")
+
+    pipeline = _payload(documents, "RUNTIME_PIPELINE").get("stages")
+    if pipeline != EXPECTED_PIPELINE:
+        raise ArtifactIntegrityError("Digital Asset runtime pipeline order does not match BE")
+
+
 def build_digital_asset_bundle(
     *,
     source_dir: Path,
@@ -97,21 +194,24 @@ def build_digital_asset_bundle(
     destination_profile_id: str,
 ) -> BuiltDigitalAssetBundle:
     files: dict[str, bytes] = {}
+    documents: dict[str, dict[str, Any]] = {}
     entries: list[dict[str, str]] = []
     for role, (filename, schema_filename) in ROLE_FILES.items():
         document = _read_json(source_dir / filename)
         schema = _read_json(schema_dir / schema_filename)
         _validate(schema, document, role)
-        reference = build_object_key(
-            "handoff/validated", artifact_id, artifact_version, f"{role.lower()}.json"
-        )
         content = canonical_json_bytes(document)
+        digest = sha256_digest(content)
+        reference = build_content_addressed_object_key(
+            "handoff/validated", artifact_id, artifact_version, f"{role.lower()}.json", digest
+        )
         files[reference] = content
+        documents[role] = document
         entries.append(
             {
                 "role": role,
                 "reference": reference,
-                "digest": sha256_digest(content),
+                "digest": digest,
                 "schema_reference": f"contracts/digital-asset-artifacts/{schema_filename}",
                 "schema_digest": canonical_digest(schema),
             }
@@ -134,6 +234,7 @@ def build_digital_asset_bundle(
     manifest = {**without_digest, "content_digest": canonical_digest(without_digest)}
     manifest_schema = _read_json(schema_dir / "digital-asset-artifact-bundle-v1.schema.json")
     _validate(manifest_schema, manifest, "Digital Asset Bundle Manifest")
+    validate_bundle_semantics(manifest, documents)
     return BuiltDigitalAssetBundle(manifest, canonical_json_bytes(manifest), files)
 
 
@@ -143,8 +244,13 @@ def publish_digital_asset_bundle(
     created: list[str] = []
     artifact_id = str(bundle.manifest["artifact_id"])
     artifact_version = str(bundle.manifest["artifact_version"])
-    manifest_key = build_object_key(
-        "handoff/validated", artifact_id, artifact_version, "manifest.json"
+    manifest_storage_digest = sha256_digest(bundle.manifest_bytes)
+    manifest_key = build_content_addressed_object_key(
+        "handoff/validated",
+        artifact_id,
+        artifact_version,
+        "manifest.json",
+        manifest_storage_digest,
     )
     try:
         for reference, content in bundle.files.items():
@@ -152,7 +258,6 @@ def publish_digital_asset_bundle(
             if store.put(reference, content, digest=digest, content_type="application/json"):
                 created.append(reference)
             store.get(reference, expected_digest=digest)
-        manifest_storage_digest = sha256_digest(bundle.manifest_bytes)
         if store.put(
             manifest_key,
             bundle.manifest_bytes,
@@ -207,15 +312,19 @@ def verify_published_digital_asset_bundle(
         raise ArtifactIntegrityError("Digital Asset Bundle content digest mismatch")
 
     verified_roles: list[str] = []
+    documents: dict[str, dict[str, Any]] = {}
+    references: set[str] = set()
     for entry in manifest["files"]:
         role = str(entry["role"])
-        if role not in ROLE_FILES:
+        reference = str(entry["reference"])
+        if role not in ROLE_FILES or role in documents or reference in references:
             raise ArtifactIntegrityError(f"unsupported Digital Asset role: {role}")
+        references.add(reference)
         _, schema_filename = ROLE_FILES[role]
         schema = _read_json(schema_dir / schema_filename)
         if canonical_digest(schema) != entry["schema_digest"]:
             raise ArtifactIntegrityError(f"Digital Asset schema digest mismatch: {role}")
-        content = store.get(str(entry["reference"]), expected_digest=str(entry["digest"]))
+        content = store.get(reference, expected_digest=str(entry["digest"]))
         try:
             document = json.loads(content)
         except (UnicodeDecodeError, json.JSONDecodeError) as error:
@@ -223,9 +332,11 @@ def verify_published_digital_asset_bundle(
         if not isinstance(document, dict):
             raise ArtifactIntegrityError(f"Digital Asset file must be an object: {role}")
         _validate(schema, document, role)
+        documents[role] = document
         verified_roles.append(role)
     if set(verified_roles) != set(ROLE_FILES):
         raise ArtifactIntegrityError("Digital Asset Bundle roles are incomplete")
+    validate_bundle_semantics(manifest, documents)
     return {
         "run_type": "NCP_DIGITAL_ASSET_BUNDLE_VERIFY",
         "status": "PASS",

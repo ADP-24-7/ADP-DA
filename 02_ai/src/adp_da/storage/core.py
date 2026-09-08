@@ -121,6 +121,21 @@ def build_object_key(prefix: str, artifact_id: str, artifact_version: str, filen
     return validate_object_key(f"{prefix}/{artifact_id}/{artifact_version}/{filename}")
 
 
+def build_content_addressed_object_key(
+    prefix: str,
+    artifact_id: str,
+    artifact_version: str,
+    filename: str,
+    digest: str,
+) -> str:
+    """Build a physical key whose identity changes whenever its bytes change."""
+    validate_digest(digest)
+    _validate_identifier("filename", filename)
+    suffix = PurePosixPath(filename).suffix.lower()
+    addressed_filename = digest.removeprefix("sha256:") + suffix
+    return build_object_key(prefix, artifact_id, artifact_version, addressed_filename)
+
+
 def validate_manifest(payload: dict[str, Any]) -> None:
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
     errors = sorted(

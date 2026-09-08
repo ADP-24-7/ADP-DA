@@ -11,7 +11,7 @@ from adp_da.storage.core import (
     ArtifactManifest,
     ArtifactStorageError,
     ArtifactStore,
-    build_object_key,
+    build_content_addressed_object_key,
     sha256_digest,
     validate_manifest,
 )
@@ -49,8 +49,10 @@ def publish_artifact(
     source_ids: tuple[str, ...] = (),
     content_type: str = "application/octet-stream",
 ) -> PublishedArtifact:
-    object_key = build_object_key(prefix, artifact_id, artifact_version, filename)
     digest = sha256_digest(data)
+    object_key = build_content_addressed_object_key(
+        prefix, artifact_id, artifact_version, filename, digest
+    )
     manifest = ArtifactManifest(
         schema_version="1.0.0",
         artifact_id=artifact_id,
@@ -65,10 +67,14 @@ def publish_artifact(
         content_type=content_type,
     )
     manifest_bytes = manifest.canonical_bytes()
-    manifest_key = build_object_key(
-        "manifests/artifacts", artifact_id, artifact_version, "manifest.json"
-    )
     manifest_digest = sha256_digest(manifest_bytes)
+    manifest_key = build_content_addressed_object_key(
+        "manifests/artifacts",
+        artifact_id,
+        artifact_version,
+        "manifest.json",
+        manifest_digest,
+    )
     artifact_created = store.put(object_key, data, digest=digest, content_type=content_type)
     manifest_created = False
     try:

@@ -48,7 +48,7 @@ class FakeS3:
         return {"ContentLength": len(self.objects[identity])}
 
     def put_object(self, **kwargs: Any) -> None:
-        if self.fail_manifest_put and kwargs["Key"].endswith("/manifest.json"):
+        if self.fail_manifest_put and kwargs["Key"].startswith("manifests/"):
             raise ClientError(
                 {"Error": {"Code": "RequestTimeout", "Message": "timeout"}}, "PutObject"
             )
@@ -95,6 +95,40 @@ def test_local_publish_load_and_canonical_manifest(tmp_path: Path) -> None:
     assert published.reference()["bucket"] == "adp-qa-data-artifacts"
     stored_manifest = json.loads((tmp_path / published.manifest_object_key).read_text())
     assert stored_manifest == manifest.as_dict()
+
+
+def test_publish_uses_distinct_physical_keys_for_different_content(tmp_path: Path) -> None:
+    store = LocalArtifactStore(tmp_path, bucket="adp-qa-data-artifacts")
+    common = {
+        "prefix": "artifacts/validation",
+        "artifact_id": "validation-immutable",
+        "artifact_version": "v1",
+        "filename": "result.json",
+        "code_git_sha": "abcdef1234567",
+        "classification": "SYNTHETIC",
+    }
+
+    first = publish_artifact(store, b"first", **common)
+    second = publish_artifact(store, b"second", **common)
+
+    assert first.manifest.object_key != second.manifest.object_key
+    assert first.manifest_object_key != second.manifest_object_key
+    assert (
+        load_published_artifact(
+            store,
+            manifest_object_key=first.manifest_object_key,
+            manifest_digest=first.manifest_digest,
+        )[1]
+        == b"first"
+    )
+    assert (
+        load_published_artifact(
+            store,
+            manifest_object_key=second.manifest_object_key,
+            manifest_digest=second.manifest_digest,
+        )[1]
+        == b"second"
+    )
 
 
 @pytest.mark.parametrize(
@@ -305,7 +339,11 @@ def test_publish_failure_cleans_only_new_orphan_objects() -> None:
 
     assert client.objects == {}
     assert client.deleted == [
-        ("adp-qa-data-artifacts", "artifacts/validation/VAL-ORPHAN-TEST/v1/result.json")
+        (
+            "adp-qa-data-artifacts",
+            "artifacts/validation/VAL-ORPHAN-TEST/v1/"
+            f"{sha256_digest(b'artifact').removeprefix('sha256:')}.json",
+        )
     ]
 
 

@@ -105,7 +105,8 @@ make ncp-storage-preflight
 BE로 전달하는 최종 값은 Bundle 게시 결과의 `manifestReference`와
 `expectedContentDigest`이며, 실제 명령과 현재 BE 연동 경계는 위 통합 문서에 정리되어
 있습니다. Artifact bucket은 명시적 allowlist를 통과해야 하고 `*tfstate*` bucket은 항상
-거부됩니다.
+거부됩니다. 게시 객체는 SHA-256 기반 content-addressed key를 사용하며, Bundle 게시 전과
+재다운로드 후에 BE와 동일한 cross-artifact semantic validation을 수행합니다.
 
 ## Docker 파일 기준
 

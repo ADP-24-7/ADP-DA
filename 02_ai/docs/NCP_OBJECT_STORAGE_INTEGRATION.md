@@ -44,7 +44,7 @@ The configured artifact bucket must also be present in the explicit allowlist. B
 containing `tfstate` are always rejected, so a DA artifact cannot be written to the Terraform
 State bucket even when the environment is configured incorrectly.
 
-Object keys are immutable in both implementations:
+Sequential object writes are fail-closed in both implementations:
 
 - missing key + valid bytes: create
 - existing key + identical bytes: idempotent success
@@ -53,6 +53,11 @@ Object keys are immutable in both implementations:
 NCP writes are downloaded immediately and SHA-256 verified. If a later manifest operation
 fails, objects newly created by that publish attempt are deleted best-effort; replayed objects
 are never deleted by rollback.
+
+Publishers additionally derive every physical object key from the SHA-256 of the bytes. A
+different payload for the same logical `artifact_id + artifact_version` therefore uses a
+different physical key instead of competing in a `HEAD → PUT` window. The BE Loader remains
+authoritative for deciding whether two different digests under one logical identity conflict.
 
 Every published artifact has a canonical JSON manifest containing:
 
@@ -82,7 +87,7 @@ request fields:
 
 ```json
 {
-  "manifestReference": "handoff/validated/<artifact>/<version>/manifest.json",
+  "manifestReference": "handoff/validated/<artifact>/<version>/<manifest-sha256>.json",
   "expectedContentDigest": "sha256:<canonical-manifest-content-digest>"
 }
 ```
@@ -190,9 +195,19 @@ reviewed lifecycle operation.
 
 ## Publish the BE P0-5 Digital Asset Bundle
 
-The copied `be_loader_v1` schemas are byte-frozen against the BE feature branch. The publisher
-validates all five domain documents, canonicalizes JSON exactly as BE does, publishes the five
-files and the domain manifest, then reads every object back and verifies its SHA-256 digest.
+The copied `be_loader_v1` schemas are byte-frozen against the BE feature branch. Before any
+publish, DA validates all five domain documents and mirrors the BE semantic checks:
+
+- Manifest binding equals the `BINDING.payload` execution/workload/purpose/destination fields
+- policy decision set is exact and unresolved external action is `DENY`
+- outbound control set is exact
+- runtime data classes are known and exclude `UNKNOWN`
+- runtime pipeline stages match the exact BE order
+- documents contain no `UNMAPPED`, `TBD` or `CONTRACT_GAP` marker
+
+The publisher then canonicalizes JSON exactly as BE does, uses content-addressed keys, publishes
+the five files and domain manifest, and reads every object back to verify its SHA-256 digest.
+The independent verifier repeats schema, digest and semantic validation after download.
 
 ```bash
 set -a; source .env.ncp.local; set +a

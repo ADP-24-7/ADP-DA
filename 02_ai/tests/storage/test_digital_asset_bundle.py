@@ -2,14 +2,20 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from pathlib import Path
 
 import pytest
 from adp_da.digital_asset_bundle import (
+    ALLOWED_RUNTIME_DATA_CLASSES,
+    EXPECTED_CONTROLS,
+    EXPECTED_DECISIONS,
+    EXPECTED_PIPELINE,
     BuiltDigitalAssetBundle,
     build_digital_asset_bundle,
     canonical_digest,
     publish_digital_asset_bundle,
+    validate_bundle_semantics,
     verify_published_digital_asset_bundle,
 )
 from adp_da.storage import ArtifactIntegrityError, LocalArtifactStore
@@ -53,6 +59,28 @@ def test_be_p0_5_schemas_are_exactly_frozen() -> None:
         assert hashlib.sha256((SCHEMAS / filename).read_bytes()).hexdigest() == expected
 
 
+def test_semantic_constants_match_frozen_be_schemas() -> None:
+    def schema(filename: str) -> dict[str, object]:
+        return json.loads((SCHEMAS / filename).read_text())
+
+    control_items = schema("outbound-requirement-matrix-v1.schema.json")["properties"]["payload"][
+        "properties"
+    ]["controls"]["items"]["enum"]
+    policy = schema("policy-evaluation-v1.schema.json")["properties"]["payload"]["properties"]
+    crosswalk_items = schema("runtime-data-crosswalk-v1.schema.json")["properties"]["payload"][
+        "properties"
+    ]["runtime_data_classes"]["items"]["enum"]
+    pipeline_items = schema("runtime-pipeline-v1.schema.json")["properties"]["payload"][
+        "properties"
+    ]["stages"]["prefixItems"]
+
+    assert set(control_items) == EXPECTED_CONTROLS
+    assert set(policy["decision_semantics"]["items"]["enum"]) == EXPECTED_DECISIONS
+    assert policy["external_action_on_unresolved"]["const"] == "DENY"
+    assert set(crosswalk_items) - {"UNKNOWN"} == ALLOWED_RUNTIME_DATA_CLASSES
+    assert [item["const"] for item in pipeline_items] == EXPECTED_PIPELINE
+
+
 def test_builds_exact_be_p0_5_manifest_contract() -> None:
     bundle = build_bundle()
     manifest = bundle.manifest
@@ -68,6 +96,9 @@ def test_builds_exact_be_p0_5_manifest_contract() -> None:
         "RUNTIME_PIPELINE",
     }
     assert all(entry["reference"].startswith("handoff/validated/") for entry in manifest["files"])
+    assert all(
+        entry["digest"].removeprefix("sha256:") in entry["reference"] for entry in manifest["files"]
+    )
     expected_schema_digests = {
         entry["role"]: entry["schema_digest"]
         for entry in json.loads((SOURCE / "manifest.json").read_text())["files"]
@@ -87,11 +118,10 @@ def test_local_and_ncp_port_semantics_support_idempotent_bundle_publish(tmp_path
     assert len(first.created_object_keys) == 6
     assert replay.created_object_keys == ()
     assert first.ingest_request() == {
-        "manifestReference": (
-            "handoff/validated/DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001/1.0.0/manifest.json"
-        ),
+        "manifestReference": first.manifest_reference,
         "expectedContentDigest": bundle.manifest["content_digest"],
     }
+    assert first.storage_manifest_digest.removeprefix("sha256:") in first.manifest_reference
     verified = verify_published_digital_asset_bundle(
         store,
         manifest_reference=first.manifest_reference,
@@ -108,13 +138,71 @@ def test_local_and_ncp_port_semantics_support_idempotent_bundle_publish(tmp_path
     )
 
 
-def test_bundle_publish_rejects_same_identity_with_different_bytes(tmp_path: Path) -> None:
+def test_bundle_publish_content_addresses_same_identity_with_different_bytes(
+    tmp_path: Path,
+) -> None:
     first = build_bundle()
     store = LocalArtifactStore(tmp_path, bucket="adp-qa-data-artifacts")
-    publish_digital_asset_bundle(store, first)
-    changed = build_bundle()
-    first_reference = next(iter(changed.files))
-    changed.files[first_reference] = b'{"changed":true}'
+    first_published = publish_digital_asset_bundle(store, first)
+    changed_source = tmp_path / "changed-source"
+    shutil.copytree(SOURCE, changed_source)
+    changed_policy = json.loads((changed_source / "policy-evaluation.json").read_text())
+    changed_policy["artifact_id"] = "DA-P0-5-POLICY-EVAL-002"
+    (changed_source / "policy-evaluation.json").write_text(json.dumps(changed_policy))
+    changed = build_digital_asset_bundle(
+        source_dir=changed_source,
+        schema_dir=SCHEMAS,
+        artifact_id="DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001",
+        artifact_version="1.0.0",
+        institution_id="institution_local",
+        destination_profile_id="dest_mock_asset_platform_v1",
+    )
+    changed_published = publish_digital_asset_bundle(store, changed)
 
-    with pytest.raises(ArtifactIntegrityError, match="immutable"):
-        publish_digital_asset_bundle(store, changed)
+    assert first_published.manifest_reference != changed_published.manifest_reference
+    assert first_published.expected_content_digest != changed_published.expected_content_digest
+    assert len(changed_published.created_object_keys) == 2
+    assert (
+        verify_published_digital_asset_bundle(
+            store,
+            manifest_reference=first_published.manifest_reference,
+            expected_content_digest=first_published.expected_content_digest,
+            storage_manifest_digest=first_published.storage_manifest_digest,
+            schema_dir=SCHEMAS,
+        )["status"]
+        == "PASS"
+    )
+
+
+def test_rejects_manifest_binding_mismatch_before_publish(tmp_path: Path) -> None:
+    changed_source = tmp_path / "binding-mismatch"
+    shutil.copytree(SOURCE, changed_source)
+
+    with pytest.raises(ArtifactIntegrityError, match="BINDING artifact"):
+        build_digital_asset_bundle(
+            source_dir=changed_source,
+            schema_dir=SCHEMAS,
+            artifact_id="DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001",
+            artifact_version="1.0.0",
+            institution_id="institution_local",
+            destination_profile_id="dest-other",
+        )
+
+
+def test_semantics_reject_unknown_crosswalk_and_pipeline_order() -> None:
+    bundle = build_bundle()
+    documents_by_role = {
+        entry["role"]: json.loads(bundle.files[entry["reference"]])
+        for entry in bundle.manifest["files"]
+    }
+    documents_by_role["RUNTIME_DATA_CROSSWALK"]["payload"]["runtime_data_classes"].append("UNKNOWN")
+    with pytest.raises(ArtifactIntegrityError, match="crosswalk"):
+        validate_bundle_semantics(bundle.manifest, documents_by_role)
+
+    documents_by_role = {
+        entry["role"]: json.loads(bundle.files[entry["reference"]])
+        for entry in bundle.manifest["files"]
+    }
+    documents_by_role["RUNTIME_PIPELINE"]["payload"]["stages"].reverse()
+    with pytest.raises(ArtifactIntegrityError, match="pipeline order"):
+        validate_bundle_semantics(bundle.manifest, documents_by_role)
