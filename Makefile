@@ -1,6 +1,7 @@
 SHELL := bash
 
 VENV := .venv
+NCP_ENV ?= .env.ncp.local
 COMPOSE ?= docker compose --project-directory ../ADP-BE -f ../ADP-BE/docker-compose.yml -f $(CURDIR)/docker-compose.yml
 
 ifeq ($(OS),Windows_NT)
@@ -19,7 +20,7 @@ PIP := $(PY) -m pip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install install-dev env be-env test lint format typecheck contract-check check ai-eval-preflight ai-eval-consume ai-eval-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
+.PHONY: help setup install install-dev env be-env ncp-storage-env test lint format typecheck contract-check check ai-eval-preflight ai-eval-consume ai-eval-e2e ncp-storage-preflight ncp-storage-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
 
 help:
 	@echo "ADP-DA commands"
@@ -36,6 +37,8 @@ help:
 	@echo "  make ai-eval-preflight Check fixed BE-to-DA baseline inputs without network calls"
 	@echo "  make ai-eval-consume   Validate readiness and analyze an existing BE Bundle"
 	@echo "  make ai-eval-e2e     Run guarded real 3-model BE-to-DA evaluation"
+	@echo "  make ncp-storage-preflight Check NCP storage settings without network calls"
+	@echo "  make ncp-storage-e2e Run opt-in NCP upload/download/digest/cleanup drill"
 	@echo "  make docker-up      Start BE, FE, DA, Docs and PostgreSQL dev stack"
 	@echo "  make docker-rebuild Rebuild and start the full dev stack"
 	@echo "  make docker-down    Stop full dev stack"
@@ -62,6 +65,9 @@ env:
 be-env:
 	@if [ ! -f ../ADP-BE/.env ]; then cp ../ADP-BE/.env.example ../ADP-BE/.env; fi
 
+ncp-storage-env:
+	@if [ ! -f $(NCP_ENV) ]; then cp .env.ncp.local.example $(NCP_ENV); chmod 600 $(NCP_ENV); fi
+
 test:
 	$(PY) -m pytest
 
@@ -87,6 +93,15 @@ ai-eval-consume:
 
 ai-eval-e2e:
 	$(PY) -m adp_da.evaluation_e2e --execute
+
+ncp-storage-preflight:
+	@set -a; if [ -f $(NCP_ENV) ]; then . $(NCP_ENV); fi; set +a; \
+	ADP_CODE_GIT_SHA="$$(git rev-parse HEAD)" $(PY) -m adp_da.ncp_storage_e2e
+
+ncp-storage-e2e:
+	@test -f $(NCP_ENV) || (echo "Missing $(NCP_ENV); run make ncp-storage-env"; exit 1)
+	@set -a; . $(NCP_ENV); set +a; \
+	ADP_CODE_GIT_SHA="$$(git rev-parse HEAD)" $(PY) -m adp_da.ncp_storage_e2e --execute
 
 docker-network:
 	@docker network inspect adp-local >/dev/null 2>&1 || docker network create adp-local

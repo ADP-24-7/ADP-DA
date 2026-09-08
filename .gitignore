@@ -23,6 +23,7 @@ build/
 .env
 .env.*
 !.env.example
+!.env.ncp.local.example
 
 # Local data and generated files
 data/raw/*
