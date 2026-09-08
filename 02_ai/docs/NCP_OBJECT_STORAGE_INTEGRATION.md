@@ -197,6 +197,7 @@ files and the domain manifest, then reads every object back and verifies its SHA
 ```bash
 set -a; source .env.ncp.local; set +a
 export ADP_NCP_DIGITAL_ASSET_BUNDLE_PUBLISH_CONFIRM=YES
+export ADP_CODE_GIT_SHA="$(git rev-parse HEAD)"
 
 python -m adp_da.digital_asset_bundle_cli \
   --source-dir 03_digital_asset/artifacts/be_loader_v1 \
@@ -213,7 +214,8 @@ Independently download and validate the persisted manifest and all five files:
 ```bash
 python -m adp_da.digital_asset_bundle_verify_cli \
   --reference 03_digital_asset/artifacts/be_loader_v1/ncp-ingest-reference.json \
-  --schema-dir 03_digital_asset/contracts/be_loader_v1
+  --schema-dir 03_digital_asset/contracts/be_loader_v1 \
+  --evidence-output 03_digital_asset/artifacts/be_loader_v1/ncp-verify-evidence.json
 ```
 
 The reference's `manifestReference` and `expectedContentDigest` are the BE API request values.

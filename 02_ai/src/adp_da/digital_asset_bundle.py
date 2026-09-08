@@ -227,10 +227,13 @@ def verify_published_digital_asset_bundle(
     if set(verified_roles) != set(ROLE_FILES):
         raise ArtifactIntegrityError("Digital Asset Bundle roles are incomplete")
     return {
+        "run_type": "NCP_DIGITAL_ASSET_BUNDLE_VERIFY",
         "status": "PASS",
+        "bucket": store.bucket,
         "manifestReference": manifest_reference,
         "expectedContentDigest": expected_content_digest,
         "storageManifestDigest": storage_manifest_digest,
         "verifiedRoles": verified_roles,
         "downloadDigestMatch": True,
+        "credentialValuesRecorded": False,
     }

@@ -23,6 +23,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--reference", type=Path, required=True)
     parser.add_argument("--schema-dir", type=Path, required=True)
+    parser.add_argument("--evidence-output", type=Path)
     args = parser.parse_args()
     reference = _read_reference(args.reference)
     result = verify_published_digital_asset_bundle(
@@ -32,6 +33,13 @@ def main() -> None:
         storage_manifest_digest=str(reference["storageManifestDigest"]),
         schema_dir=args.schema_dir,
     )
+    result["adapterGitSha"] = str(reference["adapterGitSha"])
+    if args.evidence_output:
+        args.evidence_output.parent.mkdir(parents=True, exist_ok=True)
+        args.evidence_output.write_text(
+            json.dumps(result, sort_keys=True, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
