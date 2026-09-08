@@ -63,7 +63,18 @@ ADP_NVIDIA_BASE_URL=https://integrate.api.nvidia.com
   Compose가 함께 기동하는 `mock-ai` 서비스가 이 주소를 제공합니다. NVIDIA 모델은
   `ADP_NVIDIA_BASE_URL`을 사용하므로 실호출 시 이 값과 구분합니다.
 - 타임아웃은 필요할 때 `ADP_AI_CONNECTOR_CONNECT_TIMEOUT` 및
-  `ADP_AI_CONNECTOR_READ_TIMEOUT`으로 조정합니다.
+  `ADP_AI_CONNECTOR_READ_TIMEOUT`으로 조정합니다. 실제 세 모델 평가의 로컬 기본값은
+  BE 평가 계약과 동일하게 `60s`입니다.
+
+DA 컨테이너에서 BE→DA 평가 명령을 실행할 수 있도록 Compose는
+`ADP_BE_BASE_URL=http://adp-be:8080`, Runtime API Key 및 로컬 관리자 Header 값을
+전달합니다. `ADP_AI_E2E_CONFIRM_REAL_PROVIDER`는 안전을 위해 기본 `NO`이며 실제 Provider
+3회 호출 직전에만 `YES`로 설정합니다. 이미 BE에서 실행을 마쳤다면
+`make ai-eval-consume`으로 Readiness→Bundle→분석만 수행합니다.
+
+현재 BE는 원격 Bearer/JWT 인증을 제공하지 않습니다. `ADP_BE_TOKEN`과
+`ADP_BE_REMOTE_BEARER_AUTH_ENABLED`는 운영 인증 Adapter가 실제 배포·검증되기 전에는 각각
+빈 값과 `NO`로 유지합니다.
 
 비밀 값을 출력하지 않고 전달 여부만 확인하려면 다음처럼 변수 이름과 설정 유무만
 검사할 수 있습니다.

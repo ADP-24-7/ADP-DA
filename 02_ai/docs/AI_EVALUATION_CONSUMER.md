@@ -31,7 +31,8 @@ python -m adp_da.evaluation_bundle https://be.example --evaluation-run-id RUN_ID
 
 The API client supports one authentication mode at a time:
 
-- Bearer: `ADP_BE_TOKEN` (or the environment variable named by `--token-env`).
+- Bearer: `ADP_BE_TOKEN` (or the environment variable named by `--token-env`). This is a
+  generic client capability; the current BE does not yet provide a JWT/OAuth2 bearer Adapter.
 - BE local development administrator: `ADP_BE_LOCAL_ADMIN_USER_ID` and
   `ADP_BE_LOCAL_ADMIN_ROLES` (or variables selected with
   `--local-admin-user-id-env` and `--local-admin-roles-env`). Both local values are
@@ -50,7 +51,9 @@ python -m adp_da.evaluation_bundle http://127.0.0.1:8080 `
 These environment variables map to `X-ADP-User-Id` and `X-ADP-User-Roles`; the
 values are not accepted as command-line arguments and are not written to archived
 metadata. This authentication mode is only for BE local development.
-For a deployed server, confirm its admin authentication integration first.
+For a deployed server, implement and confirm its admin authentication integration first. The E2E
+runner blocks remote Bearer by default and additionally requires
+`ADP_BE_REMOTE_BEARER_AUTH_ENABLED=YES` after that Adapter is deployed.
 Privileged operator role and permitted institution/workload scope are required.
 Tokens are never CLI arguments or archived metadata. Redirects are rejected. Localhost HTTP
 is accepted for development; remote endpoints require HTTPS. BE 404/authorization

@@ -118,6 +118,7 @@ def run_pipeline(
     *,
     evaluation_run_id: str | None = None,
     token: str | None = None,
+    remote_bearer_enabled: bool = False,
     local_admin_user_id: str | None = None,
     local_admin_roles: str | None = None,
     synthetic: bool = False,
@@ -129,6 +130,7 @@ def run_pipeline(
         output / "raw",
         evaluation_run_id=evaluation_run_id,
         token=token,
+        remote_bearer_enabled=remote_bearer_enabled,
         local_admin_user_id=local_admin_user_id,
         local_admin_roles=local_admin_roles,
     )
@@ -165,6 +167,11 @@ def main() -> None:
         "--token-env", default="ADP_BE_TOKEN", help="Read bearer token from env only"
     )
     parser.add_argument(
+        "--remote-bearer-enabled-env",
+        default="ADP_BE_REMOTE_BEARER_AUTH_ENABLED",
+        help="Require YES in this env var after the BE remote bearer adapter is deployed",
+    )
+    parser.add_argument(
         "--local-admin-user-id-env",
         default="ADP_BE_LOCAL_ADMIN_USER_ID",
         help="Read the BE development-only X-ADP-User-Id value from this env var",
@@ -190,6 +197,7 @@ def main() -> None:
             args.output,
             evaluation_run_id=args.evaluation_run_id,
             token=os.environ.get(args.token_env),
+            remote_bearer_enabled=os.environ.get(args.remote_bearer_enabled_env) == "YES",
             local_admin_user_id=os.environ.get(args.local_admin_user_id_env),
             local_admin_roles=os.environ.get(args.local_admin_roles_env),
             synthetic=args.synthetic,

@@ -19,7 +19,7 @@ PIP := $(PY) -m pip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install install-dev env test lint format typecheck contract-check check ai-eval-preflight ai-eval-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
+.PHONY: help setup install install-dev env test lint format typecheck contract-check check ai-eval-preflight ai-eval-consume ai-eval-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
 
 help:
 	@echo "ADP-DA commands"
@@ -34,6 +34,7 @@ help:
 	@echo "  make contract-check Validate JSON handoff contracts"
 	@echo "  make check          Run lint, typecheck, test"
 	@echo "  make ai-eval-preflight Check fixed BE-to-DA baseline inputs without network calls"
+	@echo "  make ai-eval-consume   Validate readiness and analyze an existing BE Bundle"
 	@echo "  make ai-eval-e2e     Run guarded real 3-model BE-to-DA evaluation"
 	@echo "  make docker-up      Start BE, FE, DA, Docs and PostgreSQL dev stack"
 	@echo "  make docker-rebuild Rebuild and start the full dev stack"
@@ -77,6 +78,9 @@ check: lint typecheck contract-check test
 
 ai-eval-preflight:
 	$(PY) -m adp_da.evaluation_e2e
+
+ai-eval-consume:
+	$(PY) -m adp_da.evaluation_e2e --consume-existing
 
 ai-eval-e2e:
 	$(PY) -m adp_da.evaluation_e2e --execute

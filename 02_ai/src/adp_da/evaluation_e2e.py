@@ -25,9 +25,11 @@ CASE_ID = "customer-summary-ko-001"
 CONFIRMATION_ENV = "ADP_AI_E2E_CONFIRM_REAL_PROVIDER"
 API_KEY_ENV = "ADP_RUNTIME_API_KEY"
 BUNDLE_TOKEN_ENV = "ADP_BE_TOKEN"
+REMOTE_BEARER_ENABLED_ENV = "ADP_BE_REMOTE_BEARER_AUTH_ENABLED"
 LOCAL_USER_ENV = "ADP_BE_LOCAL_ADMIN_USER_ID"
 LOCAL_ROLES_ENV = "ADP_BE_LOCAL_ADMIN_ROLES"
 BASE_URL_ENV = "ADP_BE_BASE_URL"
+LOCAL_DEV_HOSTS = frozenset({"127.0.0.1", "localhost", "::1", "adp-be"})
 
 
 @dataclass(frozen=True)
@@ -90,8 +92,8 @@ def normalized_base_url(value: str) -> str:
         raise E2EError("ADP_BE_BASE_URL must be an absolute HTTP(S) URL")
     if parsed.username or parsed.password or parsed.query or parsed.fragment:
         raise E2EError("BE base URL must not contain credentials, query, or fragment")
-    if parsed.scheme == "http" and parsed.hostname not in {"127.0.0.1", "localhost", "::1"}:
-        raise E2EError("Plain HTTP is allowed only for loopback local development")
+    if parsed.scheme == "http" and parsed.hostname not in LOCAL_DEV_HOSTS:
+        raise E2EError("Plain HTTP is allowed only for loopback or the local Compose BE service")
     return base_url
 
 
@@ -131,9 +133,10 @@ def runtime_payload(binding: ModelBinding, session_id: str) -> dict[str, Any]:
 def preflight(environment: Mapping[str, str], base_url: str, session_id: str) -> dict[str, Any]:
     base_url = normalized_base_url(base_url)
     safe_session_id(session_id)
-    local = urlsplit(base_url).hostname in {"127.0.0.1", "localhost", "::1"}
+    local = urlsplit(base_url).hostname in LOCAL_DEV_HOSTS
     runtime_key_present = bool(environment.get(API_KEY_ENV))
     token_present = bool(environment.get(BUNDLE_TOKEN_ENV))
+    remote_bearer_enabled = environment.get(REMOTE_BEARER_ENABLED_ENV) == "YES"
     local_user = environment.get(LOCAL_USER_ENV, "da-evaluation-reader")
     local_roles = environment.get(LOCAL_ROLES_ENV, "PRIVILEGED_OPERATOR")
     local_headers_safe = True
@@ -153,7 +156,8 @@ def preflight(environment: Mapping[str, str], base_url: str, session_id: str) ->
         "baseline_has_three_unique_profiles": unique_profiles,
         "baseline_has_three_unique_destinations": unique_destinations,
         "runtime_api_key_present": runtime_key_present,
-        "bundle_auth_present": token_present or local_admin_present,
+        "bundle_auth_present": local_admin_present or (token_present and remote_bearer_enabled),
+        "remote_bearer_adapter_confirmed": local or remote_bearer_enabled,
         "real_provider_execution_confirmed": environment.get(CONFIRMATION_ENV) == "YES",
     }
     return {
@@ -209,7 +213,13 @@ def _decode_json(raw: bytes, stage: str) -> dict[str, Any]:
 
 def bundle_headers(environment: Mapping[str, str], local: bool) -> dict[str, str]:
     token = environment.get(BUNDLE_TOKEN_ENV)
+    if not local and environment.get(REMOTE_BEARER_ENABLED_ENV) != "YES":
+        raise E2EError(
+            "remote Bundle export is blocked until the BE bearer authentication adapter "
+            f"is deployed and {REMOTE_BEARER_ENABLED_ENV}=YES is explicitly set"
+        )
     if token:
+        safe_header(token, BUNDLE_TOKEN_ENV)
         return {"Authorization": f"Bearer {token}"}
     if not local:
         raise E2EError("remote Bundle export requires ADP_BE_TOKEN")
@@ -221,6 +231,137 @@ def bundle_headers(environment: Mapping[str, str], local: bool) -> dict[str, str
             environment.get(LOCAL_ROLES_ENV, "PRIVILEGED_OPERATOR"), LOCAL_ROLES_ENV
         ),
     }
+
+
+def _readiness_diagnostics(readiness: Mapping[str, Any]) -> str:
+    diagnostics: list[str] = []
+    case_models = readiness.get("case_models")
+    if isinstance(case_models, list):
+        for item in case_models:
+            if not isinstance(item, dict):
+                continue
+            diagnostics.append(
+                "/".join(
+                    str(item.get(key) or "MISSING")
+                    for key in (
+                        "eval_case_id",
+                        "profile_id",
+                        "runtime_status",
+                        "provider_status",
+                        "evidence_status",
+                    )
+                )
+            )
+    return ", ".join(diagnostics[:10]) or "no incomplete pair detail returned"
+
+
+def _validate_readiness(readiness: Mapping[str, Any]) -> None:
+    if readiness.get("evaluation_run_id") != RUN_ID:
+        raise E2EError("readiness evaluation run mismatch")
+    ready = readiness.get("status") == "READY"
+    available = readiness.get("bundle_available") is True
+    counts_match = all(
+        readiness.get(name) == expected
+        for name, expected in (
+            ("expected_execution_count", 3),
+            ("observed_execution_count", 3),
+            ("complete_evidence_count", 3),
+            ("missing_execution_count", 0),
+            ("unexpected_execution_count", 0),
+        )
+    )
+    if not (ready and available and counts_match):
+        diagnostics = _readiness_diagnostics(readiness)
+        raise E2EError(
+            "evaluation run is not ready for Bundle export: "
+            f"status={readiness.get('status')}, "
+            f"bundle_available={readiness.get('bundle_available')}, "
+            f"observed={readiness.get('observed_execution_count')}, "
+            f"complete={readiness.get('complete_evidence_count')}, "
+            f"missing={readiness.get('missing_execution_count')}, "
+            f"unexpected={readiness.get('unexpected_execution_count')}, "
+            f"pairs={diagnostics}"
+        )
+
+
+def _export_ready_bundle(
+    *,
+    environment: Mapping[str, str],
+    report: dict[str, Any],
+    output: Path,
+    timeout: float,
+    client: Opener,
+    execution_ids: list[str],
+    operation: str,
+) -> dict[str, Any]:
+    local = urlsplit(str(report["base_url"])).hostname in LOCAL_DEV_HOSTS
+    headers = bundle_headers(environment, local)
+    output.mkdir(parents=True)
+    raw_readiness = _request_bytes(
+        client,
+        f"{report['base_url']}/api/admin/ai/evaluation-runs/{quote(RUN_ID, safe='')}/readiness",
+        method="GET",
+        headers=headers,
+        timeout=timeout,
+    )
+    readiness_path = output / "readiness.json"
+    readiness_path.write_bytes(raw_readiness)
+    readiness = _decode_json(raw_readiness, "evaluation readiness")
+    _validate_readiness(readiness)
+
+    raw_bundle = _request_bytes(
+        client,
+        f"{report['base_url']}/api/admin/ai/evaluation-runs/{quote(RUN_ID, safe='')}/bundle",
+        method="GET",
+        headers=headers,
+        timeout=timeout,
+    )
+    digest = hashlib.sha256(raw_bundle).hexdigest()
+    incoming = output / "bundle_export"
+    incoming.mkdir()
+    bundle_path = incoming / f"sha256-{digest}.json"
+    bundle_path.write_bytes(raw_bundle)
+    analysis_path = run_pipeline(bundle_path, output / "analysis", evaluation_run_id=RUN_ID)
+    result = {
+        **report,
+        "operation": operation,
+        "ready_for_bundle_consumption": True,
+        "execution_ids": execution_ids,
+        "readiness_status": readiness["status"],
+        "readiness_path": str(readiness_path),
+        "bundle_raw_sha256": f"sha256:{digest}",
+        "bundle_path": str(bundle_path),
+        "analysis_path": str(analysis_path),
+    }
+    (output / "e2e-result.json").write_text(
+        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return result
+
+
+def consume_existing(
+    *,
+    environment: Mapping[str, str],
+    base_url: str,
+    output: Path,
+    session_id: str,
+    timeout: float,
+    opener: Opener | None = None,
+) -> dict[str, Any]:
+    report = preflight(environment, base_url, session_id)
+    if not report["checks"]["bundle_auth_present"]:
+        raise E2EError("existing Bundle consumption blocked by missing supported authentication")
+    if output.exists():
+        raise E2EError(f"output already exists: {output}")
+    return _export_ready_bundle(
+        environment=environment,
+        report=report,
+        output=output,
+        timeout=timeout,
+        client=opener or NoRedirect.opener(),
+        execution_ids=[],
+        operation="consume_existing",
+    )
 
 
 def execute_live(
@@ -261,36 +402,26 @@ def execute_live(
             raise E2EError(f"runtime execution {index} omitted executionId")
         execution_ids.append(execution_id)
 
-    local = urlsplit(str(report["base_url"])).hostname in {"127.0.0.1", "localhost", "::1"}
-    raw_bundle = _request_bytes(
-        client,
-        f"{report['base_url']}/api/admin/ai/evaluation-runs/{quote(RUN_ID, safe='')}/bundle",
-        method="GET",
-        headers=bundle_headers(environment, local),
+    return _export_ready_bundle(
+        environment=environment,
+        report=report,
+        output=output,
         timeout=timeout,
+        client=client,
+        execution_ids=execution_ids,
+        operation="execute_live",
     )
-    digest = hashlib.sha256(raw_bundle).hexdigest()
-    incoming = output / "bundle_export"
-    incoming.mkdir(parents=True)
-    bundle_path = incoming / f"sha256-{digest}.json"
-    bundle_path.write_bytes(raw_bundle)
-    analysis_path = run_pipeline(bundle_path, output / "analysis", evaluation_run_id=RUN_ID)
-    result = {
-        **report,
-        "execution_ids": execution_ids,
-        "bundle_raw_sha256": f"sha256:{digest}",
-        "bundle_path": str(bundle_path),
-        "analysis_path": str(analysis_path),
-    }
-    (output / "e2e-result.json").write_text(
-        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-    return result
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--execute", action="store_true", help="perform three real provider calls")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--execute", action="store_true", help="perform three real provider calls")
+    mode.add_argument(
+        "--consume-existing",
+        action="store_true",
+        help="validate readiness and consume an existing Bundle without provider calls",
+    )
     parser.add_argument("--base-url", default=os.environ.get(BASE_URL_ENV, "http://127.0.0.1:8080"))
     parser.add_argument("--session-id", default=default_session_id())
     parser.add_argument("--output", type=Path, default=Path("outputs/real_be_evaluation"))
@@ -301,6 +432,14 @@ def main() -> None:
             raise E2EError("timeout must be positive")
         if args.execute:
             result = execute_live(
+                environment=os.environ,
+                base_url=args.base_url,
+                output=args.output,
+                session_id=args.session_id,
+                timeout=args.timeout,
+            )
+        elif args.consume_existing:
+            result = consume_existing(
                 environment=os.environ,
                 base_url=args.base_url,
                 output=args.output,

@@ -35,6 +35,10 @@ CLI 인자나 archive metadata에 기록하지 않습니다. 두 값은 함께 �
 token과 동시에 사용할 수 없습니다. 예시는 BE가 기동된 로컬 개발 환경 전용이며 원격
 운영 인증을 대체하지 않습니다.
 
+현재 BE에는 JWT/OAuth2 Resource Server Adapter가 없으므로 원격 `ADP_BE_TOKEN`만으로는 이
+관리자 API에 접근할 수 없습니다. 운영/NCP 직접 연동 전에는 BE 운영 인증 Adapter를 먼저
+구현·검증해야 하며, DA E2E runner는 그때까지 원격 Bearer 실행을 기본 차단합니다.
+
 ## 3. 등록 Run 실행 상태
 
 `ai-eval-baseline-2026-09-07`의 실제 실행 완료 여부 및 DB 저장 상태를 확인해 주세요.

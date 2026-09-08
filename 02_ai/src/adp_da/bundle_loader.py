@@ -11,6 +11,8 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from adp_da.bundle_validator import BundleValidationError, validate_bundle
 
+LOCAL_DEV_HOSTS = frozenset({"localhost", "127.0.0.1", "::1", "adp-be"})
+
 
 class _NoRedirect(HTTPRedirectHandler):
     def redirect_request(
@@ -45,6 +47,7 @@ def load_bundle(
     *,
     evaluation_run_id: str | None = None,
     token: str | None = None,
+    remote_bearer_enabled: bool = False,
     local_admin_user_id: str | None = None,
     local_admin_roles: str | None = None,
     timeout: float = 30,
@@ -62,7 +65,8 @@ def load_bundle(
         url = urlsplit(source_text)
         if url.username or url.password or url.query or url.fragment:
             raise ValueError("Use a base URL without credentials, query or fragment")
-        if url.scheme != "https" and url.hostname not in {"localhost", "127.0.0.1", "::1"}:
+        local_api = url.hostname in LOCAL_DEV_HOSTS
+        if url.scheme != "https" and not local_api:
             raise ValueError("Remote API requires HTTPS")
         if not evaluation_run_id:
             raise ValueError("API source requires evaluation_run_id")
@@ -80,6 +84,11 @@ def load_bundle(
             raise ValueError("Bearer and local administrator authentication are mutually exclusive")
         if token:
             _validate_header_value("Bearer token", token)
+            if not local_api and not remote_bearer_enabled:
+                raise ValueError(
+                    "Remote Bearer authentication is disabled until the BE authentication "
+                    "adapter is deployed and explicitly enabled"
+                )
             headers["Authorization"] = "Bearer " + token
         elif has_local_admin:
             assert local_admin_user_id is not None

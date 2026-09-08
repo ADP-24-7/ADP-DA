@@ -82,6 +82,7 @@ def test_api_success_preserves_bytes_without_credential_metadata(
         tmp_path,
         evaluation_run_id="SYNTHETIC-DA-CONSUMER-TEST",
         token="never-archive-this",
+        remote_bearer_enabled=True,
     )
     assert Path(metadata["raw_path"]).read_bytes() == raw
     assert "never-archive-this" not in json.dumps(metadata)
@@ -149,6 +150,16 @@ def test_api_rejects_ambiguous_or_unsafe_authentication(
             tmp_path,
             evaluation_run_id="run",
             **credentials,
+        )
+
+
+def test_remote_bearer_is_blocked_until_adapter_is_explicitly_enabled(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="authentication adapter"):
+        load_bundle(
+            "https://example.invalid",
+            tmp_path,
+            evaluation_run_id="run",
+            token="not-sent",
         )
 
 
@@ -425,7 +436,11 @@ def test_api_run_binding_and_no_credential_redirect(tmp_path: Path, monkeypatch:
     monkeypatch.setattr(bundle_loader, "build_opener", lambda _: FakeOpener())
     with pytest.raises(BundleValidationError, match="requested evaluation run"):
         load_bundle(
-            "https://example.invalid", tmp_path, evaluation_run_id="wrong/run", token="ephemeral"
+            "https://example.invalid",
+            tmp_path,
+            evaluation_run_id="wrong/run",
+            token="ephemeral",
+            remote_bearer_enabled=True,
         )
     with pytest.raises(ValueError, match="HTTPS"):
         load_bundle("http://example.invalid", tmp_path, evaluation_run_id="run")

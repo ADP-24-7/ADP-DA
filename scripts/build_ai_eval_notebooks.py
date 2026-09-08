@@ -25,6 +25,7 @@ bundle, metadata = load_bundle(
     source, ROOT / "02_ai/data/interim/ai_evaluation/raw",
     evaluation_run_id=os.environ.get("ADP_AI_EVALUATION_RUN_ID"),
     token=os.environ.get("ADP_BE_TOKEN"),
+    remote_bearer_enabled=os.environ.get("ADP_BE_REMOTE_BEARER_AUTH_ENABLED") == "YES",
     local_admin_user_id=os.environ.get("ADP_BE_LOCAL_ADMIN_USER_ID"),
     local_admin_roles=os.environ.get("ADP_BE_LOCAL_ADMIN_ROLES"),
 )

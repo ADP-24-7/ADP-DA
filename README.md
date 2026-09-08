@@ -76,6 +76,8 @@ make docker-up
 NVIDIA Provider를 통한 BE 실호출 전에는 추적 제외 `.env`에 `NVIDIA_API_KEY`를
 설정해야 합니다. BE Connector 변수와 DA Python 클라이언트 변수의 차이 및 안전한
 확인 방법은 [환경 설정](SETUP.md#be-ai-connector--nvidia-설정)을 참고합니다.
+BE가 이미 모델 실행을 완료했다면 `make ai-eval-consume`으로 Provider 재호출 없이
+Readiness, Bundle 검증 및 DA 분석만 수행할 수 있습니다.
 
 ## Docker 파일 기준
 
