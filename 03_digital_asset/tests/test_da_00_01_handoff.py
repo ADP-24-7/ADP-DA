@@ -83,7 +83,6 @@ def copied_evidence(builder: Any, tmp_path: Path) -> Path:
         builder.DATA,
         builder.DOC0,
         builder.DOC1,
-        builder.GAPS,
     ):
         target = tmp_path / relative
         target.parent.mkdir(parents=True, exist_ok=True)

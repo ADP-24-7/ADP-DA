@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DA = ROOT / "03_digital_asset"
 NOTEBOOK = DA / "notebooks" / "runtime_validation" / "DA_03_trace_binding.ipynb"
 EVIDENCE_DOC = DA / "docs" / "handoff" / "DA_03_trace_binding.md"
-HANDOFF_DOC = DA / "docs" / "DA_03_TRACE_BINDING_BE_HANDOFF.md"
+HANDOFF_DOC = DA / "docs" / "handoff" / "DA_03_trace_binding.md"
 ARTIFACT_DIR = DA / "artifacts" / "da_03_trace_binding"
 
 

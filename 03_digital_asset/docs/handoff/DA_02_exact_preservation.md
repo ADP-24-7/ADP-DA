@@ -1,37 +1,53 @@
-# DA-02 Exact Preservation Evidence Summary
+# DA-02 Exact Preservation Contract
 
-## 목적
+DA-02 defines exact preservation requirements for Digital Asset fields that must not be altered by outbound transforms.
 
-DA-02는 Ethereum 거래의 Amount가 데이터 처리 과정에서 원값 그대로 보존되는지 검증한 분석이다. 기준 표본은 Ethereum Master Sample 73,410건이며, `transaction_hash`를 기준으로 BigQuery 원본 `value`를 다시 조회하여 wei 단위의 exact ground truth를 확보했다.
+## Core Rule
 
-본 문서는 분석 결과를 요약하는 evidence source이며, BE 구현 지시는 별도 문서인 [DA-02 Exact Preservation BE Handoff](../DA_02_EXACT_PRESERVATION_BE_HANDOFF.md)에 정리한다.
+`EXACT_REQUIRED` means the runtime value must preserve the approved/requested value exactly for the applicable comparison contract.
 
-## 분석 Evidence
+`PASS_THROUGH` means the value itself is not changed. It does not mean the value must be externalized.
 
-- Ethereum Master Sample: 73,410건
-- BigQuery 원본 Amount 매칭 및 분석 대상: 73,266건
-- Decimal Exact Preservation: 100.0000%
-- FLOAT64 Precision Loss: 3,280건
-- 전체 FLOAT64 Precision Loss Rate: 4.4768%
-- Positive Amount: 28,953건
-- Positive Amount 기준 Precision Loss Rate: 11.3287%
-- FLOAT64 연속 정수 정확 표현 경계: `2^53 = 9,007,199,254,740,992 wei`
-- `2^53` 이하: 16,784건 / Precision Loss 0건
-- `2^53` 초과: 12,169건 / Precision Loss 3,280건 / 손실률 26.9537%
-- 최대 절대오차: 351,232 wei
-- Fisher's Exact Test p-value: 0
-- 원자료 Odds Ratio: infinity
-- Haldane-Anscombe corrected OR: 12,387.9976
-- Risk Difference: 26.9537%p
+External payload inclusion is decided by destination policy and the payload builder, not by `PASS_THROUGH` alone.
 
-## 설계 결론
+DA-02 is not a threshold blocking policy for transactions at or above `2^53`. The analysis validates exact preservation risk and runtime comparison requirements.
 
-DA-02는 `2^53` 이상 Amount를 차단하기 위한 분석이 아니다.
+FLOAT64 / double must not be used as the canonical amount storage, comparison, or transfer type.
 
-분석 결론은 Digital Asset Amount 전체를 FLOAT64로 처리하지 않고, Runtime 전 구간에서 exact-safe canonical representation으로 처리해야 한다는 것이다.
+Required runtime comparisons:
 
-즉 FPG Runtime은 승인값, outbound 값, 실행 결과 값을 비교할 때 표시용 decimal 값이 아니라 자산 최소단위의 canonical amount를 기준으로 해야 한다.
+- `approved_amount_atomic == outbound_amount_atomic`
+- `approved_amount_atomic == executed_amount_atomic`
 
-## Evidence Artifact
+New enum names remain a BE-owned runtime enum gap.
 
-- [DA-02 Exact Preservation Notebook](../../notebooks/runtime_validation/DA_02_exact_preservation.ipynb)
+## Transform Semantics
+
+For `EXACT_REQUIRED` fields, outbound transforms are limited to non-mutating behavior unless a contract explicitly allows otherwise.
+
+Lossy or value-changing transforms are not allowed for exact-preservation fields:
+
+- `MASK`
+- `HMAC`
+- `TOKENIZE`
+- `REDACT`
+- lossy `FORMAT_NORMALIZE`
+
+Comparison-time canonicalization must be modeled separately from outbound payload mutation. Chain-specific or legal/financial normalization rules that are not explicitly defined remain `CONTRACT_GAP` or `ANALYST_DECISION_REQUIRED`.
+
+## Protected Field Examples
+
+- amount
+- asset
+- originator address
+- beneficiary address
+- transaction identifier
+- tx hash
+- timestamp
+- execution status
+
+## Runtime Outcome
+
+- exact match: `PASS`
+- value mismatch: `BLOCK`
+- unresolved mapping or missing approved/requested evidence: `REVIEW`

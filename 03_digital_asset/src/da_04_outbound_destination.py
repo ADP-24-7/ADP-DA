@@ -42,7 +42,7 @@ SOURCES = [
     DA / "notebooks/foundation/05_fpg_control_boundary_validation.ipynb",
     DA / "artifacts/da_00_master_sample/sampling_contract.json",
     DA / "artifacts/da_01_external_execution/runtime_requirements.json",
-    DA / "docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
+    DA / "docs/handoff/DA_02_exact_preservation.md",
     DA / "artifacts/da_03_trace_binding/evidence_binding_contract.json",
     DA / "src/build_control_boundary_v2.py",
     DA / "src/da_04_outbound_destination.py",

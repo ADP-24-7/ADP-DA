@@ -19,7 +19,7 @@ ART = DA / "artifacts/da_06_recovery_idempotency"
 SCHEMA = DA / "contracts/da_06_handoff.schema.json"
 ORIGINAL_HASHES = {
     NB: "630010c2452a5a8cfb2d85b6cd3fe102c57dce440262d3b17525bdcb2fd962a3",
-    DOC: "810313fcf269246bf1a5395727e518b4490b6a33c54a642443049c0f228f8049",
+    DOC: "610752fcf549aad157f02010f6105ddaf9c3e266c684962ff3ed89688d7ca4b4",
     DATA: "506160f02d5c042062b1bffa56aa61932fd517deb8ffa7aeed51c8ad66c4c701",
 }
 

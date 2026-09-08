@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DA = ROOT / "03_digital_asset"
 NOTEBOOK = DA / "notebooks" / "runtime_validation" / "DA_02_exact_preservation.ipynb"
 EVIDENCE_DOC = DA / "docs" / "handoff" / "DA_02_exact_preservation.md"
-HANDOFF_DOC = DA / "docs" / "DA_02_EXACT_PRESERVATION_BE_HANDOFF.md"
+HANDOFF_DOC = DA / "docs" / "handoff" / "DA_02_exact_preservation.md"
 MATRIX = DA / "artifacts" / "outbound_design_vNext" / "outbound_requirement_matrix.json"
 SCHEMA = DA / "contracts" / "outbound_requirement_matrix_v2.schema.json"
 
@@ -49,12 +49,11 @@ def test_da_02_notebook_evidence_is_present() -> None:
 def test_da_02_handoff_states_no_threshold_block_policy() -> None:
     text = HANDOFF_DOC.read_text(encoding="utf-8")
 
-    assert "DA-02는 `2^53` 이상 거래를 차단하기 위한 분석이 아니다" in text
-    assert "FLOAT64 / double은 canonical amount 저장, 비교, 전송 타입으로 사용하지 않는다" in text
+    assert "DA-02 is not a threshold blocking policy" in text
+    assert "FLOAT64 / double must not be used" in text
     assert "`approved_amount_atomic == outbound_amount_atomic`" in text
     assert "`approved_amount_atomic == executed_amount_atomic`" in text
-    assert "새로운 enum 이름은 BE-owned runtime enum gap" in text
-
+    assert "BE-owned runtime enum gap" in text
 
 def test_existing_amount_contract_supports_da_02_exact_semantics() -> None:
     row = amount_requirement()

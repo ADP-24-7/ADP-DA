@@ -21,8 +21,8 @@ OUTBOUND_V2 = DA / "artifacts" / "outbound_design_v2"
 OUTBOUND_VNEXT = DA / "artifacts" / "outbound_design_vNext"
 BE_V3 = DA / "artifacts" / "be_handoff_v3"
 BE_VNEXT = DA / "artifacts" / "be_handoff_vNext"
-DOC = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_V3.md"
-DOC_VNEXT = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_VNEXT.md"
+DOC = DA / "docs" / "handoff" / "BE_HANDOFF_DIGITAL_ASSET.md"
+DOC_VNEXT = DA / "docs" / "handoff" / "BE_HANDOFF_DIGITAL_ASSET.md"
 NOTEBOOK = DA / "notebooks" / "foundation" / "05_fpg_control_boundary_validation.ipynb"
 
 FORBIDDEN_RUNTIME_CONTROLS = {
