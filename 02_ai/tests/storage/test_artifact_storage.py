@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import json
+from argparse import Namespace
 from pathlib import Path
 from typing import Any
 
 import pytest
-from adp_da import ncp_storage_e2e
+from adp_da import artifact_storage_cli, ncp_storage_e2e
 from adp_da.storage import (
     ArtifactIntegrityError,
     ArtifactNotFoundError,
@@ -240,3 +241,51 @@ def test_ncp_e2e_uploads_verifies_and_cleans_up(monkeypatch: pytest.MonkeyPatch)
     assert result["cleanup_completed"] is True
     assert client.objects == {}
     assert len(client.deleted) == 2
+
+
+def test_artifact_cli_publishes_and_downloads_persistent_reference(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    client = FakeS3()
+    store = NcpObjectStorageStore(client, bucket="adp-qa-data-artifacts")
+    monkeypatch.setattr(
+        artifact_storage_cli.NcpObjectStorageStore,
+        "from_env",
+        lambda environment: store,
+    )
+    source = tmp_path / "validated.json"
+    source.write_bytes(b'{"status":"PASS"}')
+    reference = tmp_path / "reference.json"
+    environment = {"ADP_NCP_ARTIFACT_PUBLISH_CONFIRM": "YES"}
+
+    published = artifact_storage_cli.publish(
+        Namespace(
+            source=source,
+            prefix="handoff/validated",
+            artifact_id="VAL-TEST",
+            artifact_version="v1",
+            filename=None,
+            code_git_sha="abcdef1",
+            classification="SYNTHETIC",
+            source_id=["source-1"],
+            content_type="application/json",
+            reference_output=reference,
+        ),
+        environment,
+    )
+    output = tmp_path / "downloaded.json"
+    downloaded = artifact_storage_cli.download(
+        Namespace(reference=reference, output=output), environment
+    )
+
+    assert published["artifact_id"] == "VAL-TEST"
+    assert downloaded["status"] == "PASS"
+    assert output.read_bytes() == source.read_bytes()
+
+
+def test_artifact_cli_requires_explicit_publish_confirmation(tmp_path: Path) -> None:
+    with pytest.raises(RuntimeError, match="PUBLISH_CONFIRM"):
+        artifact_storage_cli.publish(
+            Namespace(source=tmp_path / "unused"),
+            {},
+        )

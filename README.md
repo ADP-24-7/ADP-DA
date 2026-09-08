@@ -88,6 +88,19 @@ SHA-256을 검증합니다. 기본 테스트는 외부 호출을 하지 않고, 
 명시적 opt-in으로만 실행합니다. 설정과 보안 경계는
 [NCP Object Storage Integration](02_ai/docs/NCP_OBJECT_STORAGE_INTEGRATION.md)을 참고합니다.
 
+저장소를 pull해도 NCP Key는 전달되지 않습니다. 실제 Bucket을 사용할 팀원은 QA용
+Credential을 별도로 발급받아 아래처럼 Git에서 제외된 파일을 준비해야 합니다.
+
+```bash
+make ncp-storage-env
+chmod 600 .env.ncp.local
+# .env.ncp.local에 NCLOUD_ACCESS_KEY / NCLOUD_SECRET_KEY 입력
+make ncp-storage-preflight
+```
+
+`access_key_present`, `secret_key_present`가 모두 `true`인지 확인한 뒤에만 실제 NCP 명령을
+실행합니다. Credential은 Git, PR, Notion, 메신저 및 로그에 첨부하지 않습니다.
+
 ## Docker 파일 기준
 
 - `Dockerfile`: CI/NCP 배포용 image build

@@ -1,0 +1,9 @@
+{
+  "artifact_digest": "sha256:56c677558d94dbc5d13afd6ed53f35035c51e06a4506544c21912998e4be2284",
+  "artifact_id": "VAL-AI-CUSTOMER-SUPPORT-VNEXT",
+  "artifact_version": "vNext",
+  "bucket": "adp-qa-data-artifacts",
+  "manifest_digest": "sha256:a5c577e7c8e6dc5a0b7e9f514952dcdaf51a0492f074dbcb64edc73780f64859",
+  "manifest_object_key": "manifests/artifacts/VAL-AI-CUSTOMER-SUPPORT-VNEXT/vNext/manifest.json",
+  "schema_version": "1.0.0"
+}
