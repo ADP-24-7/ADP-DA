@@ -1,0 +1,8 @@
+{
+  "adapterGitSha": "13a4206b579029ca87bb40cf11a7a41339745ac1",
+  "credentialValuesRecorded": false,
+  "expectedContentDigest": "sha256:2144d5b7689190f6fae2092be83e29766ebf80996cbec640ab1fdea0ae6a8b18",
+  "manifestReference": "handoff/validated/DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001/1.0.0/48eef63c91271299b70cfe29cbbe9436d5ca6588a2e90094b226694396d177ab.json",
+  "schema_version": "adp-digital-asset-artifact-ingest-request/v1",
+  "storageManifestDigest": "sha256:48eef63c91271299b70cfe29cbbe9436d5ca6588a2e90094b226694396d177ab"
+}

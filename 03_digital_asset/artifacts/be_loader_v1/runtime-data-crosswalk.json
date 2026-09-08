@@ -1,0 +1,16 @@
+{
+  "schema_version": "adp-digital-asset-handoff-document/v1",
+  "artifact_id": "DA-P0-5-CROSSWALK-001",
+  "artifact_version": "1.0.0",
+  "status": "VALIDATED",
+  "payload": {
+    "runtime_data_classes": [
+      "CUSTOMER_IDENTIFIER",
+      "ACCOUNT_IDENTIFIER",
+      "TRANSACTION_IDENTIFIER",
+      "FINANCIAL_AMOUNT",
+      "FINANCIAL_METADATA",
+      "BUSINESS_METADATA"
+    ]
+  }
+}

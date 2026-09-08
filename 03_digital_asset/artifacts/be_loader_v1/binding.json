@@ -1,0 +1,12 @@
+{
+  "schema_version": "adp-digital-asset-handoff-document/v1",
+  "artifact_id": "DA-P0-5-BINDING-001",
+  "artifact_version": "1.0.0",
+  "status": "VALIDATED",
+  "payload": {
+    "execution_pack": "DIGITAL_ASSET",
+    "workload_id": "tokenized_asset_purchase",
+    "purpose_code": "DIGITAL_ASSET_PURCHASE",
+    "destination_profile_id": "dest_mock_asset_platform_v1"
+  }
+}

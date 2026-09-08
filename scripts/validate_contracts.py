@@ -3,10 +3,14 @@
 import json
 from pathlib import Path
 
+from jsonschema import Draft202012Validator
+
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACTS = ROOT / "02_ai" / "contracts"
+DIGITAL_ASSET_LOADER_CONTRACTS = ROOT / "03_digital_asset" / "contracts" / "be_loader_v1"
 
 SCHEMA_FILES = [
+    CONTRACTS / "artifact_storage_manifest.schema.json",
     CONTRACTS / "ai-evaluation-bundle.schema.json",
     CONTRACTS / "ai_runtime_contract_vnext.schema.json",
     CONTRACTS / "ai_runtime_validation_vnext.schema.json",
@@ -14,6 +18,15 @@ SCHEMA_FILES = [
     CONTRACTS / "policy_evaluation_artifact.schema.json",
     CONTRACTS / "runtime_data_class_crosswalk.schema.json",
     CONTRACTS / "workload_purpose_binding.schema.json",
+]
+
+BE_LOADER_SCHEMA_FILES = [
+    DIGITAL_ASSET_LOADER_CONTRACTS / "digital-asset-artifact-bundle-v1.schema.json",
+    DIGITAL_ASSET_LOADER_CONTRACTS / "outbound-requirement-matrix-v1.schema.json",
+    DIGITAL_ASSET_LOADER_CONTRACTS / "policy-evaluation-v1.schema.json",
+    DIGITAL_ASSET_LOADER_CONTRACTS / "binding-v1.schema.json",
+    DIGITAL_ASSET_LOADER_CONTRACTS / "runtime-data-crosswalk-v1.schema.json",
+    DIGITAL_ASSET_LOADER_CONTRACTS / "runtime-pipeline-v1.schema.json",
 ]
 
 TAXONOMY_FILES = [
@@ -40,6 +53,14 @@ def require_keys(path: Path, payload: dict[str, object], keys: set[str]) -> None
 def validate_schema_file(path: Path) -> None:
     payload = load_json(path)
     require_keys(path, payload, {"$schema", "$id", "title", "type", "properties"})
+    Draft202012Validator.check_schema(payload)
+
+
+def validate_be_loader_schema_file(path: Path) -> None:
+    """Validate frozen BE schemas without imposing DA-only metadata conventions."""
+    payload = load_json(path)
+    require_keys(path, payload, {"$schema", "type", "properties"})
+    Draft202012Validator.check_schema(payload)
 
 
 def validate_taxonomy_file(path: Path) -> None:
@@ -52,6 +73,8 @@ def validate_taxonomy_file(path: Path) -> None:
 def main() -> None:
     for path in SCHEMA_FILES:
         validate_schema_file(path)
+    for path in BE_LOADER_SCHEMA_FILES:
+        validate_be_loader_schema_file(path)
     for path in TAXONOMY_FILES:
         validate_taxonomy_file(path)
 

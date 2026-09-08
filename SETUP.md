@@ -81,3 +81,32 @@ DA override는 컨테이너에서 BE→DA 평가 명령을 실행할 수 있도�
 
 `docker-compose.yml`은 단독 Stack 파일이 아니므로 직접 `docker compose up`하지 않고
 `make docker-up`, `make docker-ps`, `make docker-down`을 사용합니다.
+
+## NCP Object Storage
+
+NCP Object Storage credential은 일반 `.env`와 분리된 `.env.ncp.local`에서 관리합니다.
+이 파일은 Git에서 제외되며 생성 직후 권한을 `600`으로 제한합니다.
+
+```bash
+make ncp-storage-env
+chmod 600 .env.ncp.local
+make ncp-storage-preflight
+```
+
+ADP-Infra의 기존 로컬 Credential을 복사하지 않고 그대로 참조할 수도 있습니다.
+
+```bash
+make ncp-storage-preflight NCP_ENV=../ADP-Infra/.env.terraform.local
+```
+
+실제 QA Bucket 쓰기·읽기·삭제 검증은 `.env.ncp.local`의
+`ADP_NCP_STORAGE_E2E_CONFIRM=YES`를 명시한 경우에만 실행합니다.
+
+```bash
+make ncp-storage-e2e
+```
+
+이 명령은 고유한 합성 `replay/` 객체와 Manifest만 만들고 SHA-256 검증 후 두 객체를
+정리합니다. 상세 계약과 장애 처리 기준은
+[`02_ai/docs/NCP_OBJECT_STORAGE_INTEGRATION.md`](02_ai/docs/NCP_OBJECT_STORAGE_INTEGRATION.md)를
+참고합니다.
