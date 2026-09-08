@@ -19,7 +19,7 @@ PIP := $(PY) -m pip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install install-dev env test lint format typecheck contract-check check docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
+.PHONY: help setup install install-dev env test lint format typecheck contract-check check ai-eval-preflight ai-eval-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
 
 help:
 	@echo "ADP-DA commands"
@@ -33,6 +33,8 @@ help:
 	@echo "  make typecheck      Run mypy"
 	@echo "  make contract-check Validate JSON handoff contracts"
 	@echo "  make check          Run lint, typecheck, test"
+	@echo "  make ai-eval-preflight Check fixed BE-to-DA baseline inputs without network calls"
+	@echo "  make ai-eval-e2e     Run guarded real 3-model BE-to-DA evaluation"
 	@echo "  make docker-up      Start BE, FE, DA, Docs and PostgreSQL dev stack"
 	@echo "  make docker-rebuild Rebuild and start the full dev stack"
 	@echo "  make docker-down    Stop full dev stack"
@@ -72,6 +74,12 @@ contract-check:
 	$(PY) scripts/validate_contracts.py
 
 check: lint typecheck contract-check test
+
+ai-eval-preflight:
+	$(PY) -m adp_da.evaluation_e2e
+
+ai-eval-e2e:
+	$(PY) -m adp_da.evaluation_e2e --execute
 
 docker-network:
 	@docker network inspect adp-local >/dev/null 2>&1 || docker network create adp-local

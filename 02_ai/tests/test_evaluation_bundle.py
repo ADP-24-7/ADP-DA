@@ -88,6 +88,111 @@ def test_api_success_preserves_bytes_without_credential_metadata(
     assert metadata["source_type"] == "api"
 
 
+def test_api_supports_local_admin_headers_without_archiving_values(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    from io import BytesIO
+
+    from adp_da import bundle_loader
+
+    raw = json.dumps(make_bundle()).encode()
+
+    class FakeOpener:
+        def open(self, request: Any, timeout: float) -> BytesIO:
+            assert request.get_header("Authorization") is None
+            assert request.get_header("X-adp-user-id") == "da-evaluation-reader"
+            assert request.get_header("X-adp-user-roles") == "PRIVILEGED_OPERATOR"
+            return BytesIO(raw)
+
+    monkeypatch.setattr(bundle_loader, "build_opener", lambda _: FakeOpener())
+    _, metadata = load_bundle(
+        "https://example.invalid",
+        tmp_path,
+        evaluation_run_id="SYNTHETIC-DA-CONSUMER-TEST",
+        local_admin_user_id="da-evaluation-reader",
+        local_admin_roles="PRIVILEGED_OPERATOR",
+    )
+    serialized_metadata = json.dumps(metadata)
+    assert "da-evaluation-reader" not in serialized_metadata
+    assert "PRIVILEGED_OPERATOR" not in serialized_metadata
+
+
+@pytest.mark.parametrize(
+    ("credentials", "message"),
+    [
+        ({"local_admin_user_id": "reader"}, "provided together"),
+        ({"local_admin_roles": "PRIVILEGED_OPERATOR"}, "provided together"),
+        (
+            {
+                "token": "bearer",
+                "local_admin_user_id": "reader",
+                "local_admin_roles": "PRIVILEGED_OPERATOR",
+            },
+            "mutually exclusive",
+        ),
+        ({"token": "unsafe\nvalue"}, "line breaks"),
+        (
+            {
+                "local_admin_user_id": "reader\r\nInjected: value",
+                "local_admin_roles": "PRIVILEGED_OPERATOR",
+            },
+            "line breaks",
+        ),
+    ],
+)
+def test_api_rejects_ambiguous_or_unsafe_authentication(
+    tmp_path: Path, credentials: dict[str, str], message: str
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        load_bundle(
+            "https://example.invalid",
+            tmp_path,
+            evaluation_run_id="run",
+            **credentials,
+        )
+
+
+def test_cli_reads_local_admin_authentication_from_named_environment_variables(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    import sys
+
+    from adp_da import evaluation_bundle
+
+    captured: dict[str, Any] = {}
+
+    def fake_run_pipeline(source: str, output: Path, **options: Any) -> Path:
+        captured.update({"source": source, "output": output, **options})
+        return tmp_path / "analysis"
+
+    monkeypatch.delenv("ADP_BE_TOKEN", raising=False)
+    monkeypatch.setenv("TEST_ADMIN_USER", "da-evaluation-reader")
+    monkeypatch.setenv("TEST_ADMIN_ROLES", "PRIVILEGED_OPERATOR")
+    monkeypatch.setattr(evaluation_bundle, "run_pipeline", fake_run_pipeline)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "evaluation_bundle",
+            "http://localhost:8080",
+            "--output",
+            str(tmp_path / "output"),
+            "--evaluation-run-id",
+            "run-1",
+            "--local-admin-user-id-env",
+            "TEST_ADMIN_USER",
+            "--local-admin-roles-env",
+            "TEST_ADMIN_ROLES",
+        ],
+    )
+
+    evaluation_bundle.main()
+
+    assert captured["token"] is None
+    assert captured["local_admin_user_id"] == "da-evaluation-reader"
+    assert captured["local_admin_roles"] == "PRIVILEGED_OPERATOR"
+
+
 def test_invalid_bundle_never_creates_analysis_artifacts(tmp_path: Path) -> None:
     source = tmp_path / "invalid.json"
     source.write_text('{"value": NaN}')

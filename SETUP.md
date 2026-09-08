@@ -40,3 +40,39 @@ make typecheck
 make docker-up
 make docker-down
 ```
+
+### BE AI Connector / NVIDIA 설정
+
+DA Compose로 로컬 통합 스택을 실행할 때도 `adp-be`는 BE Compose와 같은 AI
+Connector 환경변수를 받습니다. `.env.example`을 복사해 생성한 추적 제외 `.env`에
+실제 키를 입력합니다. 키는 `.env.example`, 문서, 로그에 기록하지 않습니다.
+
+```dotenv
+ADP_AI_CONNECTOR_ENABLED=true
+NVIDIA_API_KEY=<local-secret>
+ADP_NVIDIA_BASE_URL=https://integrate.api.nvidia.com
+```
+
+- `NVIDIA_API_KEY`가 비어 있어도 컨테이너 자체는 기동되지만 NVIDIA Provider 호출은
+  실패합니다. 실제 3개 모델 실행 전에는 키가 비어 있지 않은지 로컬에서 확인합니다.
+- `ADP_NVIDIA_BASE_URL`은 BE Connector용이며 `/v1`을 붙이지 않습니다. BE가 요청
+  경로를 조립합니다.
+- `NVIDIA_BASE_URL`(`/v1` 포함)과 `NVIDIA_MODEL`은 DA Python NIM 클라이언트용이며
+  BE에는 전달되지 않습니다.
+- `ADP_AI_CONNECTOR_BASE_URL`의 기본값은 BE Compose와 동일한 내부 mock 주소입니다.
+  Compose가 함께 기동하는 `mock-ai` 서비스가 이 주소를 제공합니다. NVIDIA 모델은
+  `ADP_NVIDIA_BASE_URL`을 사용하므로 실호출 시 이 값과 구분합니다.
+- 타임아웃은 필요할 때 `ADP_AI_CONNECTOR_CONNECT_TIMEOUT` 및
+  `ADP_AI_CONNECTOR_READ_TIMEOUT`으로 조정합니다.
+
+비밀 값을 출력하지 않고 전달 여부만 확인하려면 다음처럼 변수 이름과 설정 유무만
+검사할 수 있습니다.
+
+```bash
+docker compose config --format json | python -c '
+import json, sys
+env = json.load(sys.stdin)["services"]["adp-be"]["environment"]
+names = ("ADP_AI_CONNECTOR_ENABLED", "ADP_NVIDIA_BASE_URL", "NVIDIA_API_KEY")
+print({name: ("set" if env.get(name) else "empty") for name in names})
+'
+```

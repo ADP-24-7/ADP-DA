@@ -25,6 +25,8 @@ bundle, metadata = load_bundle(
     source, ROOT / "02_ai/data/interim/ai_evaluation/raw",
     evaluation_run_id=os.environ.get("ADP_AI_EVALUATION_RUN_ID"),
     token=os.environ.get("ADP_BE_TOKEN"),
+    local_admin_user_id=os.environ.get("ADP_BE_LOCAL_ADMIN_USER_ID"),
+    local_admin_roles=os.environ.get("ADP_BE_LOCAL_ADMIN_ROLES"),
 )
 frame = execution_dataframe(bundle)
 artifacts = analyze_bundle(

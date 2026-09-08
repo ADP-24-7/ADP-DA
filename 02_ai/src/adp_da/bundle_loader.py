@@ -32,15 +32,30 @@ def _reject_constant(value: str) -> None:
     raise BundleValidationError("non-finite JSON number")
 
 
+def _validate_header_value(name: str, value: str) -> None:
+    if not value.strip():
+        raise ValueError(f"{name} must not be empty")
+    if "\r" in value or "\n" in value:
+        raise ValueError(f"{name} must not contain line breaks")
+
+
 def load_bundle(
     source: str | Path,
     archive_dir: Path,
     *,
     evaluation_run_id: str | None = None,
     token: str | None = None,
+    local_admin_user_id: str | None = None,
+    local_admin_roles: str | None = None,
     timeout: float = 30,
     max_bytes: int = 50_000_000,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load and validate a local bundle or an exact export from the BE API.
+
+    API callers may use either a bearer ``token`` or BE's development-only local
+    administrator headers. Local administrator values must be supplied together and
+    are deliberately never included in returned/archive metadata.
+    """
     source_text = str(source)
     is_api = source_text.startswith(("https://", "http://"))
     if is_api:
@@ -58,8 +73,21 @@ def load_bundle(
             + "/bundle"
         )
         headers = {"Accept": "application/json"}
+        has_local_admin = local_admin_user_id is not None or local_admin_roles is not None
+        if has_local_admin and not (local_admin_user_id and local_admin_roles):
+            raise ValueError("Local administrator user ID and roles must be provided together")
+        if token and has_local_admin:
+            raise ValueError("Bearer and local administrator authentication are mutually exclusive")
         if token:
+            _validate_header_value("Bearer token", token)
             headers["Authorization"] = "Bearer " + token
+        elif has_local_admin:
+            assert local_admin_user_id is not None
+            assert local_admin_roles is not None
+            _validate_header_value("Local administrator user ID", local_admin_user_id)
+            _validate_header_value("Local administrator roles", local_admin_roles)
+            headers["X-ADP-User-Id"] = local_admin_user_id
+            headers["X-ADP-User-Roles"] = local_admin_roles
         with build_opener(_NoRedirect()).open(
             Request(endpoint, headers=headers), timeout=timeout
         ) as response:

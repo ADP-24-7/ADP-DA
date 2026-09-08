@@ -27,6 +27,8 @@ def main() -> None:
         "ADP_AI_BUNDLE_SOURCE",
         "ADP_AI_EVALUATION_RUN_ID",
         "ADP_BE_TOKEN",
+        "ADP_BE_LOCAL_ADMIN_USER_ID",
+        "ADP_BE_LOCAL_ADMIN_ROLES",
         "ADP_AI_INDEPENDENT_CASES",
         "ADP_AI_SYMMETRIC_DIFFERENCES",
     ):

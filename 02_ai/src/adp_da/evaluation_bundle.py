@@ -118,12 +118,19 @@ def run_pipeline(
     *,
     evaluation_run_id: str | None = None,
     token: str | None = None,
+    local_admin_user_id: str | None = None,
+    local_admin_roles: str | None = None,
     synthetic: bool = False,
     independent_cases: bool = False,
     symmetric_differences: bool = False,
 ) -> Path:
     bundle, metadata = load_bundle(
-        source, output / "raw", evaluation_run_id=evaluation_run_id, token=token
+        source,
+        output / "raw",
+        evaluation_run_id=evaluation_run_id,
+        token=token,
+        local_admin_user_id=local_admin_user_id,
+        local_admin_roles=local_admin_roles,
     )
     # Output is immutable and identified by snapshot plus explicit analysis assumptions.
     digest = str(bundle["manifest"]["content_digest"]).split(":", 1)[1]
@@ -157,6 +164,16 @@ def main() -> None:
     parser.add_argument(
         "--token-env", default="ADP_BE_TOKEN", help="Read bearer token from env only"
     )
+    parser.add_argument(
+        "--local-admin-user-id-env",
+        default="ADP_BE_LOCAL_ADMIN_USER_ID",
+        help="Read the BE development-only X-ADP-User-Id value from this env var",
+    )
+    parser.add_argument(
+        "--local-admin-roles-env",
+        default="ADP_BE_LOCAL_ADMIN_ROLES",
+        help="Read the BE development-only X-ADP-User-Roles value from this env var",
+    )
     parser.add_argument("--synthetic", action="store_true", help="Label fixture-only evidence")
     parser.add_argument(
         "--independent-cases", action="store_true", help="Analyst confirms case independence"
@@ -173,6 +190,8 @@ def main() -> None:
             args.output,
             evaluation_run_id=args.evaluation_run_id,
             token=os.environ.get(args.token_env),
+            local_admin_user_id=os.environ.get(args.local_admin_user_id_env),
+            local_admin_roles=os.environ.get(args.local_admin_roles_env),
             synthetic=args.synthetic,
             independent_cases=args.independent_cases,
             symmetric_differences=args.symmetric_differences,

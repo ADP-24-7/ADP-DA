@@ -35,6 +35,19 @@ services:
     networks:
       - adp-local
 
+  mock-ai:
+    image: python:3.12-alpine
+    command: ["python", "/opt/mock-ai/server.py"]
+    volumes:
+      - ../ADP-BE/docker/mock-ai/server.py:/opt/mock-ai/server.py:ro
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8090/health', timeout=2).read()\""]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - adp-local
+
   adp-be:
     build:
       context: ../ADP-BE
@@ -47,6 +60,12 @@ services:
       ADP_LOCAL_USER_AUTH_ENABLED: "${ADP_LOCAL_USER_AUTH_ENABLED:-true}"
       ADP_LOCAL_FIXTURES_ENABLED: "${ADP_LOCAL_FIXTURES_ENABLED:-true}"
       ADP_MOCK_RUNTIME_ENABLED: "${ADP_MOCK_RUNTIME_ENABLED:-true}"
+      ADP_AI_CONNECTOR_ENABLED: "${ADP_AI_CONNECTOR_ENABLED:-true}"
+      ADP_AI_CONNECTOR_BASE_URL: "${ADP_AI_CONNECTOR_BASE_URL:-http://mock-ai:8090}"
+      NVIDIA_API_KEY: "${NVIDIA_API_KEY:-}"
+      ADP_NVIDIA_BASE_URL: "${ADP_NVIDIA_BASE_URL:-https://integrate.api.nvidia.com}"
+      ADP_AI_CONNECTOR_CONNECT_TIMEOUT: "${ADP_AI_CONNECTOR_CONNECT_TIMEOUT:-2s}"
+      ADP_AI_CONNECTOR_READ_TIMEOUT: "${ADP_AI_CONNECTOR_READ_TIMEOUT:-5s}"
       ADP_DATA_ACCESS_PREVIEW_ENABLED: "${ADP_DATA_ACCESS_PREVIEW_ENABLED:-true}"
       ADP_CONTEXT_PREVIEW_ENABLED: "${ADP_CONTEXT_PREVIEW_ENABLED:-true}"
     ports:
@@ -56,6 +75,8 @@ services:
       - adp-be-gradle-cache:/home/gradle/.gradle
     depends_on:
       postgres:
+        condition: service_healthy
+      mock-ai:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS http://localhost:8080/actuator/health/readiness >/dev/null"]
