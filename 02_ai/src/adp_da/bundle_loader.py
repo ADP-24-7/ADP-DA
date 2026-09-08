@@ -82,6 +82,15 @@ def load_bundle(
             raise ValueError("Local administrator user ID and roles must be provided together")
         if token and has_local_admin:
             raise ValueError("Bearer and local administrator authentication are mutually exclusive")
+        if has_local_admin:
+            assert local_admin_user_id is not None
+            assert local_admin_roles is not None
+            _validate_header_value("Local administrator user ID", local_admin_user_id)
+            _validate_header_value("Local administrator roles", local_admin_roles)
+            if not local_api:
+                raise ValueError(
+                    "Local administrator headers are restricted to local development hosts"
+                )
         if token:
             _validate_header_value("Bearer token", token)
             if not local_api and not remote_bearer_enabled:
@@ -93,8 +102,6 @@ def load_bundle(
         elif has_local_admin:
             assert local_admin_user_id is not None
             assert local_admin_roles is not None
-            _validate_header_value("Local administrator user ID", local_admin_user_id)
-            _validate_header_value("Local administrator roles", local_admin_roles)
             headers["X-ADP-User-Id"] = local_admin_user_id
             headers["X-ADP-User-Roles"] = local_admin_roles
         with build_opener(_NoRedirect()).open(

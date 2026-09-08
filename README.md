@@ -66,14 +66,16 @@ make setup PYTHON="py -3.12"
 
 ## Docker 실행
 
-ADP-DA의 `docker-compose.yml`은 로컬 통합 개발 스택의 진입점입니다. DA 레포에서 실행하면 같은 상위 폴더에 있는 `ADP-BE`, `ADP-FE`, `ADP-DA`, `ADP-Docs` 네 레포와 PostgreSQL이 함께 실행됩니다.
+ADP-BE의 `docker-compose.yml`이 로컬 통합 개발 스택의 Source of Truth입니다.
+ADP-DA의 `docker-compose.yml`은 DA 환경만 추가하는 override이며, Makefile이 두 파일을
+결합해 동일한 BE PostgreSQL Evidence volume을 사용합니다.
 
 ```bash
 make setup
 make docker-up
 ```
 
-NVIDIA Provider를 통한 BE 실호출 전에는 추적 제외 `.env`에 `NVIDIA_API_KEY`를
+NVIDIA Provider를 통한 BE 실호출 전에는 `../ADP-BE/.env`에 `NVIDIA_API_KEY`를
 설정해야 합니다. BE Connector 변수와 DA Python 클라이언트 변수의 차이 및 안전한
 확인 방법은 [환경 설정](SETUP.md#be-ai-connector--nvidia-설정)을 참고합니다.
 BE가 이미 모델 실행을 완료했다면 `make ai-eval-consume`으로 Provider 재호출 없이
@@ -83,8 +85,8 @@ Readiness, Bundle 검증 및 DA 분석만 수행할 수 있습니다.
 
 - `Dockerfile`: CI/NCP 배포용 image build
 - `Dockerfile.dev`: 로컬 개발용 FastAPI reload image
-- `docker-compose.yml`: BE/FE/DA/Docs/PostgreSQL 통합 개발 스택
-- `.env.example`: 팀 공통 로컬 환경변수 샘플
+- `docker-compose.yml`: BE 통합 Stack에 적용하는 DA 전용 override
+- `.env.example`: DA Consumer/E2E 로컬 환경변수 샘플
 
 ## Make 명령
 

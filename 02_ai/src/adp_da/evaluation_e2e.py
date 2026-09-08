@@ -30,6 +30,9 @@ LOCAL_USER_ENV = "ADP_BE_LOCAL_ADMIN_USER_ID"
 LOCAL_ROLES_ENV = "ADP_BE_LOCAL_ADMIN_ROLES"
 BASE_URL_ENV = "ADP_BE_BASE_URL"
 LOCAL_DEV_HOSTS = frozenset({"127.0.0.1", "localhost", "::1", "adp-be"})
+RUNTIME_RESPONSE_MAX_BYTES = 1_000_000
+READINESS_RESPONSE_MAX_BYTES = 2_000_000
+BUNDLE_RESPONSE_MAX_BYTES = 50_000_000
 
 
 @dataclass(frozen=True)
@@ -183,6 +186,7 @@ def _request_bytes(
     headers: Mapping[str, str],
     payload: Mapping[str, Any] | None = None,
     timeout: float,
+    max_bytes: int,
 ) -> bytes:
     body = None
     request_headers = {"Accept": "application/json", **headers}
@@ -192,7 +196,10 @@ def _request_bytes(
     request = Request(url, data=body, headers=request_headers, method=method)
     try:
         with opener.open(request, timeout=timeout) as response:
-            return cast(bytes, response.read())
+            raw = cast(bytes, response.read(max_bytes + 1))
+            if len(raw) > max_bytes:
+                raise E2EError(f"{method} {urlsplit(url).path} response exceeds byte limit")
+            return raw
     except HTTPError as error:
         error.read(2048)
         message = f"{method} {urlsplit(url).path} failed with HTTP {error.code}"
@@ -255,7 +262,44 @@ def _readiness_diagnostics(readiness: Mapping[str, Any]) -> str:
     return ", ".join(diagnostics[:10]) or "no incomplete pair detail returned"
 
 
-def _validate_readiness(readiness: Mapping[str, Any]) -> None:
+def _execution_map(
+    rows: Any, *, profile_key: str, stage: str
+) -> dict[str, str]:
+    if not isinstance(rows, list):
+        raise E2EError(f"{stage} must be a JSON array")
+    result: dict[str, str] = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            raise E2EError(f"{stage} contains a non-object row")
+        profile_id = row.get(profile_key)
+        execution_id = row.get("execution_id")
+        if not isinstance(profile_id, str) or not isinstance(execution_id, str):
+            raise E2EError(f"{stage} omitted profile or execution identity")
+        if profile_id in result:
+            raise E2EError(f"{stage} contains a duplicate profile identity")
+        result[profile_id] = execution_id
+    return result
+
+
+def _execution_ids(rows: Any, *, stage: str) -> set[str]:
+    if not isinstance(rows, list):
+        raise E2EError(f"{stage} must be a JSON array")
+    result: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            raise E2EError(f"{stage} contains a non-object row")
+        execution_id = row.get("execution_id")
+        if not isinstance(execution_id, str):
+            raise E2EError(f"{stage} omitted execution identity")
+        if execution_id in result:
+            raise E2EError(f"{stage} contains a duplicate execution identity")
+        result.add(execution_id)
+    return result
+
+
+def _validate_readiness(
+    readiness: Mapping[str, Any], submitted: Mapping[str, str] | None
+) -> dict[str, str]:
     if readiness.get("evaluation_run_id") != RUN_ID:
         raise E2EError("readiness evaluation run mismatch")
     ready = readiness.get("status") == "READY"
@@ -282,6 +326,26 @@ def _validate_readiness(readiness: Mapping[str, Any]) -> None:
             f"unexpected={readiness.get('unexpected_execution_count')}, "
             f"pairs={diagnostics}"
         )
+    readiness_executions = _execution_map(
+        readiness.get("case_models"), profile_key="profile_id", stage="readiness case_models"
+    )
+    if submitted is not None and readiness_executions != dict(submitted):
+        raise E2EError("readiness execution IDs do not match the executions submitted by this run")
+    return readiness_executions
+
+
+def _validate_bundle_execution_binding(
+    bundle: Mapping[str, Any], expected: Mapping[str, str]
+) -> None:
+    for section in ("case_results", "runtime_metrics"):
+        observed = _execution_map(
+            bundle.get(section), profile_key="model_profile_id", stage=f"Bundle {section}"
+        )
+        if observed != dict(expected):
+            raise E2EError(f"Bundle {section} execution IDs do not match readiness")
+    trace_ids = _execution_ids(bundle.get("trace_index"), stage="Bundle trace_index")
+    if trace_ids != set(expected.values()):
+        raise E2EError("Bundle trace_index execution IDs do not match readiness")
 
 
 def _export_ready_bundle(
@@ -292,6 +356,7 @@ def _export_ready_bundle(
     timeout: float,
     client: Opener,
     execution_ids: list[str],
+    submitted_by_profile: Mapping[str, str] | None,
     operation: str,
 ) -> dict[str, Any]:
     local = urlsplit(str(report["base_url"])).hostname in LOCAL_DEV_HOSTS
@@ -303,11 +368,12 @@ def _export_ready_bundle(
         method="GET",
         headers=headers,
         timeout=timeout,
+        max_bytes=READINESS_RESPONSE_MAX_BYTES,
     )
     readiness_path = output / "readiness.json"
     readiness_path.write_bytes(raw_readiness)
     readiness = _decode_json(raw_readiness, "evaluation readiness")
-    _validate_readiness(readiness)
+    readiness_executions = _validate_readiness(readiness, submitted_by_profile)
 
     raw_bundle = _request_bytes(
         client,
@@ -315,12 +381,15 @@ def _export_ready_bundle(
         method="GET",
         headers=headers,
         timeout=timeout,
+        max_bytes=BUNDLE_RESPONSE_MAX_BYTES,
     )
     digest = hashlib.sha256(raw_bundle).hexdigest()
     incoming = output / "bundle_export"
     incoming.mkdir()
     bundle_path = incoming / f"sha256-{digest}.json"
     bundle_path.write_bytes(raw_bundle)
+    bundle = _decode_json(raw_bundle, "evaluation Bundle")
+    _validate_bundle_execution_binding(bundle, readiness_executions)
     analysis_path = run_pipeline(bundle_path, output / "analysis", evaluation_run_id=RUN_ID)
     result = {
         **report,
@@ -360,6 +429,7 @@ def consume_existing(
         timeout=timeout,
         client=opener or NoRedirect.opener(),
         execution_ids=[],
+        submitted_by_profile=None,
         operation="consume_existing",
     )
 
@@ -382,6 +452,7 @@ def execute_live(
     client = opener or NoRedirect.opener()
     runtime_key = environment[API_KEY_ENV]
     execution_ids: list[str] = []
+    submitted_by_profile: dict[str, str] = {}
     for index, binding in enumerate(BASELINE_MODELS, start=1):
         suffix = f"{session_id}_{index}"
         raw = _request_bytes(
@@ -395,12 +466,14 @@ def execute_live(
             },
             payload=runtime_payload(binding, session_id),
             timeout=timeout,
+            max_bytes=RUNTIME_RESPONSE_MAX_BYTES,
         )
         response = _decode_json(raw, f"runtime execution {index}")
         execution_id = response.get("executionId")
         if not isinstance(execution_id, str) or not execution_id:
             raise E2EError(f"runtime execution {index} omitted executionId")
         execution_ids.append(execution_id)
+        submitted_by_profile[binding.profile_id] = execution_id
 
     return _export_ready_bundle(
         environment=environment,
@@ -409,6 +482,7 @@ def execute_live(
         timeout=timeout,
         client=client,
         execution_ids=execution_ids,
+        submitted_by_profile=submitted_by_profile,
         operation="execute_live",
     )
 

@@ -70,6 +70,15 @@ def live_environment() -> dict[str, str]:
     }
 
 
+def bind_bundle_to_baseline(bundle: dict[str, Any]) -> dict[str, Any]:
+    for index, binding in enumerate(evaluation_e2e.BASELINE_MODELS, start=1):
+        for section in ("case_results", "runtime_metrics"):
+            bundle[section][index - 1]["model_profile_id"] = binding.profile_id
+            bundle[section][index - 1]["execution_id"] = f"exec-{index}"
+        bundle["trace_index"][index - 1]["execution_id"] = f"exec-{index}"
+    return bundle
+
+
 def test_preflight_is_secret_safe_and_requires_confirmation() -> None:
     environment = {evaluation_e2e.API_KEY_ENV: "must-not-appear"}
     report = evaluation_e2e.preflight(environment, "http://127.0.0.1:8080/", "test-1")
@@ -95,10 +104,26 @@ def test_preflight_rejects_unsafe_base_urls(url: str) -> None:
         evaluation_e2e.preflight({}, url, "test")
 
 
+def test_http_response_size_is_bounded() -> None:
+    class OversizedOpener:
+        def open(self, request: Any, timeout: float) -> Response:
+            return Response(b"x" * 11)
+
+    with pytest.raises(evaluation_e2e.E2EError, match="byte limit"):
+        evaluation_e2e._request_bytes(
+            OversizedOpener(),
+            "http://localhost:8080/test",
+            method="GET",
+            headers={},
+            timeout=1,
+            max_bytes=10,
+        )
+
+
 def test_live_flow_posts_three_bindings_exports_and_analyzes(
     tmp_path: Path, monkeypatch: Any
 ) -> None:
-    bundle = make_bundle(case_count=1, model_count=3)
+    bundle = bind_bundle_to_baseline(make_bundle(case_count=1, model_count=3))
     bundle["manifest"]["evaluation_run_id"] = evaluation_e2e.RUN_ID
     bundle["execution_config"]["evaluation_run_id"] = evaluation_e2e.RUN_ID
     for section in ("case_results", "runtime_metrics"):
@@ -219,7 +244,7 @@ def test_incomplete_readiness_is_preserved_and_bundle_is_not_requested(
 
 
 def test_consume_existing_skips_runtime_posts(tmp_path: Path, monkeypatch: Any) -> None:
-    fake = FakeOpener(make_bundle())
+    fake = FakeOpener(bind_bundle_to_baseline(make_bundle(case_count=1, model_count=3)))
     analysis = tmp_path / "analysis-result"
     monkeypatch.setattr(evaluation_e2e, "run_pipeline", lambda *args, **kwargs: analysis)
 
@@ -237,6 +262,77 @@ def test_consume_existing_skips_runtime_posts(tmp_path: Path, monkeypatch: Any) 
     assert result["operation"] == "consume_existing"
     assert result["ready_for_bundle_consumption"]
     assert result["readiness_status"] == "READY"
+
+
+def test_fresh_execution_binding_rejects_stale_readiness(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    bundle = bind_bundle_to_baseline(make_bundle(case_count=1, model_count=3))
+    readiness = ready_readiness()
+    readiness["case_models"][1]["execution_id"] = "stale-execution"
+    fake = FakeOpener(bundle, readiness)
+    monkeypatch.setattr(
+        evaluation_e2e, "run_pipeline", lambda *args, **kwargs: tmp_path / "unexpected"
+    )
+
+    with pytest.raises(evaluation_e2e.E2EError, match="submitted by this run"):
+        evaluation_e2e.execute_live(
+            environment=live_environment(),
+            base_url="http://localhost:8080",
+            output=tmp_path / "stale-readiness",
+            session_id="pytest",
+            timeout=1,
+            opener=fake,
+        )
+
+    assert len(fake.requests) == 4
+    assert fake.requests[-1].full_url.endswith("/readiness")
+    assert (tmp_path / "stale-readiness" / "readiness.json").exists()
+
+
+def test_bundle_execution_binding_rejects_stale_bundle(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    bundle = bind_bundle_to_baseline(make_bundle(case_count=1, model_count=3))
+    bundle["runtime_metrics"][1]["execution_id"] = "stale-execution"
+    fake = FakeOpener(bundle)
+    monkeypatch.setattr(
+        evaluation_e2e, "run_pipeline", lambda *args, **kwargs: tmp_path / "unexpected"
+    )
+
+    with pytest.raises(evaluation_e2e.E2EError, match="runtime_metrics.*readiness"):
+        evaluation_e2e.consume_existing(
+            environment=live_environment(),
+            base_url="http://localhost:8080",
+            output=tmp_path / "stale-bundle",
+            session_id="pytest",
+            timeout=1,
+            opener=fake,
+        )
+
+    assert len(fake.requests) == 2
+    assert (tmp_path / "stale-bundle" / "bundle_export").exists()
+
+
+def test_bundle_execution_binding_rejects_stale_trace_index(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    bundle = bind_bundle_to_baseline(make_bundle(case_count=1, model_count=3))
+    bundle["trace_index"][1]["execution_id"] = "stale-execution"
+    fake = FakeOpener(bundle)
+    monkeypatch.setattr(
+        evaluation_e2e, "run_pipeline", lambda *args, **kwargs: tmp_path / "unexpected"
+    )
+
+    with pytest.raises(evaluation_e2e.E2EError, match="trace_index.*readiness"):
+        evaluation_e2e.consume_existing(
+            environment=live_environment(),
+            base_url="http://localhost:8080",
+            output=tmp_path / "stale-trace",
+            session_id="pytest",
+            timeout=1,
+            opener=fake,
+        )
 
 
 @pytest.mark.parametrize("value", ["", "operator\rX-Evil: yes", "operator\nX-Evil: yes"])

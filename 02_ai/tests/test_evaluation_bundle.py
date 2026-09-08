@@ -107,7 +107,7 @@ def test_api_supports_local_admin_headers_without_archiving_values(
 
     monkeypatch.setattr(bundle_loader, "build_opener", lambda _: FakeOpener())
     _, metadata = load_bundle(
-        "https://example.invalid",
+        "http://localhost:8080",
         tmp_path,
         evaluation_run_id="SYNTHETIC-DA-CONSUMER-TEST",
         local_admin_user_id="da-evaluation-reader",
@@ -116,6 +116,17 @@ def test_api_supports_local_admin_headers_without_archiving_values(
     serialized_metadata = json.dumps(metadata)
     assert "da-evaluation-reader" not in serialized_metadata
     assert "PRIVILEGED_OPERATOR" not in serialized_metadata
+
+
+def test_api_rejects_local_admin_headers_for_remote_https(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="restricted to local development hosts"):
+        load_bundle(
+            "https://example.invalid",
+            tmp_path,
+            evaluation_run_id="run",
+            local_admin_user_id="da-evaluation-reader",
+            local_admin_roles="PRIVILEGED_OPERATOR",
+        )
 
 
 @pytest.mark.parametrize(
