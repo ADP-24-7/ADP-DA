@@ -20,23 +20,24 @@ DA에서 접근 가능한 BE base URL 또는 PostgreSQL과 함께 기동하는 �
 배포 환경에서는 실제 관리자 인증 연동과 institution/workload 권한을 공유해 주세요.
 현재 소스의 관리자 경로는 Bearer token이나 Runtime API Key만으로 인증되지 않습니다.
 
-ADP-DA에서 실행하는 최소 로컬 예시:
+ADP-DA Consumer에서 직접 실행하는 최소 로컬 예시:
 
 ```powershell
-$bundleHeaders = @{
-  'X-ADP-User-Id' = 'da-evaluation-reader'
-  'X-ADP-User-Roles' = 'PRIVILEGED_OPERATOR'
-}
-New-Item -ItemType Directory -Force outputs/real_be_evaluation | Out-Null
-Invoke-WebRequest -UseBasicParsing `
-  -Uri 'http://127.0.0.1:8080/api/admin/ai/evaluation-runs/ai-eval-baseline-2026-09-07/bundle' `
-  -Headers $bundleHeaders -OutFile outputs/real_be_evaluation/bundle.json
-python -m adp_da.evaluation_bundle outputs/real_be_evaluation/bundle.json `
+$env:ADP_BE_LOCAL_ADMIN_USER_ID = 'da-evaluation-reader'
+$env:ADP_BE_LOCAL_ADMIN_ROLES = 'PRIVILEGED_OPERATOR'
+python -m adp_da.evaluation_bundle http://127.0.0.1:8080 `
   --evaluation-run-id ai-eval-baseline-2026-09-07 `
   --output outputs/real_be_evaluation/analysis
 ```
 
-예시는 BE가 기동된 로컬 개발 환경 전용입니다. 원격 운영 인증을 대체하지 않습니다.
+Consumer는 두 값을 각각 `X-ADP-User-Id`, `X-ADP-User-Roles`로 전송합니다. 값은
+CLI 인자나 archive metadata에 기록하지 않습니다. 두 값은 함께 설정해야 하며 Bearer
+token과 동시에 사용할 수 없습니다. 예시는 BE가 기동된 로컬 개발 환경 전용이며 원격
+운영 인증을 대체하지 않습니다.
+
+현재 BE에는 JWT/OAuth2 Resource Server Adapter가 없으므로 원격 `ADP_BE_TOKEN`만으로는 이
+관리자 API에 접근할 수 없습니다. 운영/NCP 직접 연동 전에는 BE 운영 인증 Adapter를 먼저
+구현·검증해야 하며, DA E2E runner는 그때까지 원격 Bearer 실행을 기본 차단합니다.
 
 ## 3. 등록 Run 실행 상태
 
