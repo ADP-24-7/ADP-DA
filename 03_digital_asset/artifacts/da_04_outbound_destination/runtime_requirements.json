@@ -59,17 +59,17 @@
     },
     {
       "path": "03_digital_asset/artifacts/da_00_master_sample/sampling_contract.json",
-      "sha256": "7126a6284055cd94a57fa3bc255cd6cf52c802a520756f4aa3ec0900817f48a0",
+      "sha256": "e67aa046b47e277bffd0f67e0f6cdaf9767c13418442e0bce6405ae7fb5ad578",
       "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
     },
     {
       "path": "03_digital_asset/artifacts/da_01_external_execution/runtime_requirements.json",
-      "sha256": "c7b90a6b0ef0dd852ebdb23a9e11c21020fd6623dba4b9dfc81369ed35ca3318",
+      "sha256": "a95c85192b1f62b9da74465e18f79eff099ce141fe393aa04f447ed3bd78c95d",
       "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
     },
     {
-      "path": "03_digital_asset/docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
-      "sha256": "bd24585910807ed866a87c7933560a3c7097f1c0f0e0a5a74866d3ed92c228e4",
+      "path": "03_digital_asset/docs/handoff/DA_02_exact_preservation.md",
+      "sha256": "de20a0eaa4be23bdc233b9415116ca9214aed2dfbf98c2b4d90adcb4cfce66a0",
       "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
     },
     {
@@ -79,12 +79,12 @@
     },
     {
       "path": "03_digital_asset/src/build_control_boundary_v2.py",
-      "sha256": "c297829e3205a402544da7744dae5c238e7cd3a6d6cb8ad7a10cc43c56421d87",
+      "sha256": "6b2619216666b3088c1ba5f55a192f59e61f123702ee99b3d775af722981308e",
       "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
     },
     {
       "path": "03_digital_asset/src/da_04_outbound_destination.py",
-      "sha256": "0e651883688bb9a024b5519534067f95a755542689d982a57ee2e8479a36c5be",
+      "sha256": "786504537462881e7ed9e4ed2bab6f7958083949fb84302fc0bed73d5c19008b",
       "sha256_scope": "UTF8_BYTES_CRLF_TO_LF"
     },
     {

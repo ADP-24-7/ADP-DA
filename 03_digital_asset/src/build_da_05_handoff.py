@@ -15,7 +15,7 @@ from build_da_00_01_handoff import notebook, output_text, require, sha256, table
 ROOT = Path(__file__).resolve().parents[2]
 DA = Path("03_digital_asset")
 NB = DA / "notebooks/runtime_validation/DA_05_approved_requested_match.ipynb"
-DOC = DA / "docs/handoff/DA_05_approved_requested_match.md"
+DOC = DA / "docs/handoff/DA_05_approval_request_match.md"
 MASTER = DA / "data/processed/da_master_transaction_sample_73410.csv"
 OUT = DA / "artifacts/da_05_approved_requested_match"
 SCHEMA = DA / "contracts/da_05_handoff.schema.json"
@@ -92,7 +92,7 @@ def build(root: Path = ROOT, generated_at: str = "") -> dict:
         DOC,
         MASTER,
         DA / "artifacts/outbound_design_vNext/outbound_requirement_matrix.json",
-        DA / "docs/DA_02_EXACT_PRESERVATION_BE_HANDOFF.md",
+        DA / "docs/handoff/DA_02_exact_preservation.md",
         DA / "artifacts/da_03_trace_binding/evidence_binding_contract.json",
         DA / "artifacts/da_04_outbound_destination/runtime_requirements.json",
     ]

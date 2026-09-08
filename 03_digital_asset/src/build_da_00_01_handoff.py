@@ -27,9 +27,8 @@ DA = Path("03_digital_asset")
 DATA = DA / "data/processed/da_master_transaction_sample_73410.csv"
 NB0 = DA / "notebooks/runtime_validation/DA_00_master_sample.ipynb"
 NB1 = DA / "notebooks/runtime_validation/DA_01_external_execution.ipynb"
-DOC0 = DA / "docs/handoff/DA-00-MASTER-SAMPLE-CONTRACT.md"
-DOC1 = DA / "docs/handoff/DA-01_EXTERNAL-EXECUTION-CONTRACT.md"
-GAPS = DA / "docs/handoff/DA-00-DA-01-EVIDENCE-GAPS.md"
+DOC0 = DA / "docs/handoff/DA_00_master_sample_contract.md"
+DOC1 = DA / "docs/handoff/DA_01_external_execution.md"
 
 
 def require(condition: bool, reason: str) -> None:
@@ -290,7 +289,6 @@ def build_artifacts(generated_at: str, root: Path = ROOT) -> dict[Path, dict[str
             + [
                 {"path": DATA.as_posix()},
                 {"path": (DOC0 if path == NB0 else DOC1).as_posix()},
-                {"path": GAPS.as_posix()},
             ],
         }
 
@@ -504,7 +502,7 @@ def build_artifacts(generated_at: str, root: Path = ROOT) -> dict[Path, dict[str
                 "Observability",
                 "Audit / Trace",
             ],
-            "crosswalk_document": GAPS.as_posix(),
+            "crosswalk_document": DOC1.as_posix(),
         },
         interpretation=(
             "이미 승인된 Transaction의 외부 실행 결과를 검증·증명. upstream 판단 추가 없음"
