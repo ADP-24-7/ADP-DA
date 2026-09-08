@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 from datetime import UTC, datetime
+from pathlib import Path
 from typing import Any
 
 from adp_da.storage.ncp import DEFAULT_BUCKET, DEFAULT_ENDPOINT, NcpObjectStorageStore
@@ -70,12 +71,17 @@ def execute(environment: dict[str, str]) -> dict[str, Any]:
         )
         result = {
             **report,
+            "run_type": "NCP_STORAGE_E2E",
+            "adapter_git_sha": environment[CODE_SHA_ENV],
             "status": "PASS",
             "artifact_id": manifest.artifact_id,
             "artifact_version": manifest.artifact_version,
             "object_key": manifest.object_key,
             "manifest_object_key": published.manifest_object_key,
             "digest": manifest.digest,
+            "upload_digest": manifest.digest,
+            "download_digest": manifest.digest,
+            "match": downloaded == data,
             "download_matches_upload": downloaded == data,
         }
     finally:
@@ -87,9 +93,18 @@ def execute(environment: dict[str, str]) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--evidence-output", type=Path)
     args = parser.parse_args()
     environment = dict(os.environ)
     result = execute(environment) if args.execute else preflight(environment)
+    if args.evidence_output:
+        if not args.execute:
+            raise RuntimeError("evidence output is only available with --execute")
+        args.evidence_output.parent.mkdir(parents=True, exist_ok=True)
+        args.evidence_output.write_text(
+            json.dumps(result, sort_keys=True, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

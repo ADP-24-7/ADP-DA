@@ -13,6 +13,7 @@ from botocore.exceptions import BotoCoreError, ClientError
 
 from adp_da.storage.core import (
     MAX_ARTIFACT_BYTES,
+    ArtifactIntegrityError,
     ArtifactNotFoundError,
     ArtifactStorageError,
     validate_object_key,
@@ -22,6 +23,8 @@ from adp_da.storage.core import (
 DEFAULT_ENDPOINT = "https://kr.object.ncloudstorage.com"
 DEFAULT_REGION = "KR"
 DEFAULT_BUCKET = "adp-qa-data-artifacts"
+DEFAULT_ALLOWED_BUCKETS = frozenset({DEFAULT_BUCKET})
+MISSING_CODES = frozenset({"404", "NoSuchKey", "NotFound"})
 
 
 def _required(environment: Mapping[str, str], name: str) -> str:
@@ -50,9 +53,19 @@ def _validate_endpoint(endpoint: str) -> str:
 
 
 class NcpObjectStorageStore:
-    def __init__(self, client: Any, *, bucket: str) -> None:
+    def __init__(
+        self,
+        client: Any,
+        *,
+        bucket: str,
+        allowed_buckets: frozenset[str] = DEFAULT_ALLOWED_BUCKETS,
+    ) -> None:
         if not bucket or "/" in bucket:
             raise ValueError("invalid NCP Object Storage bucket")
+        if "tfstate" in bucket.lower():
+            raise ValueError("Terraform State bucket cannot be used for DA artifacts")
+        if bucket not in allowed_buckets:
+            raise ValueError("NCP artifact bucket is not in the explicit allowlist")
         self.client = client
         self.bucket = bucket
 
@@ -66,6 +79,11 @@ class NcpObjectStorageStore:
         )
         region = values.get("NCLOUD_REGION", DEFAULT_REGION)
         bucket = values.get("ADP_NCP_ARTIFACT_BUCKET", DEFAULT_BUCKET)
+        allowed_buckets = frozenset(
+            item.strip()
+            for item in values.get("ADP_NCP_ALLOWED_ARTIFACT_BUCKETS", DEFAULT_BUCKET).split(",")
+            if item.strip()
+        )
         config = Config(
             signature_version="s3v4",
             connect_timeout=5,
@@ -83,11 +101,31 @@ class NcpObjectStorageStore:
             aws_secret_access_key=secret_key,
             config=config,
         )
-        return cls(client, bucket=bucket)
+        return cls(client, bucket=bucket, allowed_buckets=allowed_buckets)
 
-    def put(self, object_key: str, data: bytes, *, digest: str, content_type: str) -> None:
+    def put(self, object_key: str, data: bytes, *, digest: str, content_type: str) -> bool:
         key = validate_object_key(object_key)
         verify_bytes(data, digest, MAX_ARTIFACT_BYTES)
+        try:
+            self.client.head_object(Bucket=self.bucket, Key=key)
+        except ClientError as error:
+            code = str(error.response.get("Error", {}).get("Code", ""))
+            if code not in MISSING_CODES:
+                raise ArtifactStorageError("NCP artifact existence check failed") from error
+        except BotoCoreError as error:
+            raise ArtifactStorageError("NCP artifact existence check failed") from error
+        else:
+            try:
+                existing = self.get(key, expected_digest=digest)
+            except ArtifactIntegrityError as error:
+                raise ArtifactIntegrityError(
+                    "immutable NCP artifact key already contains other bytes"
+                ) from error
+            if existing != data:
+                raise ArtifactIntegrityError(
+                    "immutable NCP artifact key already contains other bytes"
+                )
+            return False
         try:
             self.client.put_object(
                 Bucket=self.bucket,
@@ -99,6 +137,13 @@ class NcpObjectStorageStore:
             )
         except (BotoCoreError, ClientError) as error:
             raise ArtifactStorageError("NCP artifact upload failed") from error
+        # NCP does not expose a portable atomic create-only write across every
+        # S3-compatible deployment. Read back immediately so the port at least
+        # fails closed if a concurrent writer changed the just-created key.
+        uploaded = self.get(key, expected_digest=digest)
+        if uploaded != data:
+            raise ArtifactIntegrityError("NCP artifact upload read-back mismatch")
+        return True
 
     def get(
         self, object_key: str, *, expected_digest: str, max_bytes: int = MAX_ARTIFACT_BYTES
@@ -113,7 +158,7 @@ class NcpObjectStorageStore:
                 body.close()
         except ClientError as error:
             code = str(error.response.get("Error", {}).get("Code", ""))
-            if code in {"404", "NoSuchKey", "NotFound"}:
+            if code in MISSING_CODES:
                 raise ArtifactNotFoundError(f"artifact not found: {key}") from error
             raise ArtifactStorageError("NCP artifact download failed") from error
         except BotoCoreError as error:

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adp.local/contracts/digital-asset-artifact-bundle-v1.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version", "artifact_id", "artifact_version", "content_digest",
+    "canonical_contract", "binding", "blocking_gaps", "files"
+  ],
+  "properties": {
+    "schema_version": { "const": "adp-digital-asset-artifact-bundle/v1" },
+    "artifact_id": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "artifact_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "content_digest": { "$ref": "#/$defs/digest" },
+    "canonical_contract": {
+      "type": "object",
+      "required": ["artifact_id", "artifact_version", "content_digest"],
+      "properties": {
+        "artifact_id": { "const": "ADP-DIGITAL-ASSET-RUNTIME-CONTRACT" },
+        "artifact_version": { "const": "1.0.0" },
+        "content_digest": {
+          "const": "sha256:886842702fad124a95e73f0f714ffacef56d5cbd5a4c0f222440279d106b3504"
+        }
+      },
+      "additionalProperties": false
+    },
+    "binding": {
+      "type": "object",
+      "required": [
+        "institution_id", "execution_pack", "workload_id", "purpose_code", "destination_profile_id"
+      ],
+      "properties": {
+        "institution_id": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "execution_pack": { "const": "DIGITAL_ASSET" },
+        "workload_id": { "const": "tokenized_asset_purchase" },
+        "purpose_code": { "const": "DIGITAL_ASSET_PURCHASE" },
+        "destination_profile_id": { "type": "string", "minLength": 1, "maxLength": 120 }
+      },
+      "additionalProperties": false
+    },
+    "blocking_gaps": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "files": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/file" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "reference": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*\\.json$"
+    },
+    "file": {
+      "type": "object",
+      "required": ["role", "reference", "digest", "schema_reference", "schema_digest"],
+      "properties": {
+        "role": {
+          "enum": [
+            "OUTBOUND_REQUIREMENT_MATRIX", "POLICY_EVALUATION", "BINDING",
+            "RUNTIME_DATA_CROSSWALK", "RUNTIME_PIPELINE"
+          ]
+        },
+        "reference": { "$ref": "#/$defs/reference" },
+        "digest": { "$ref": "#/$defs/digest" },
+        "schema_reference": { "$ref": "#/$defs/reference" },
+        "schema_digest": { "$ref": "#/$defs/digest" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

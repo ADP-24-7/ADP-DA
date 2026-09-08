@@ -48,7 +48,9 @@ class ArtifactStore(Protocol):
 
     bucket: str
 
-    def put(self, object_key: str, data: bytes, *, digest: str, content_type: str) -> None: ...
+    def put(self, object_key: str, data: bytes, *, digest: str, content_type: str) -> bool:
+        """Store immutable bytes and return True only when a new object was created."""
+        ...
 
     def get(
         self, object_key: str, *, expected_digest: str, max_bytes: int = MAX_ARTIFACT_BYTES

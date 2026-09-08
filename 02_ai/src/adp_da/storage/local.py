@@ -25,7 +25,7 @@ class LocalArtifactStore:
             raise ValueError("object key escapes local artifact root")
         return target
 
-    def put(self, object_key: str, data: bytes, *, digest: str, content_type: str) -> None:
+    def put(self, object_key: str, data: bytes, *, digest: str, content_type: str) -> bool:
         del content_type
         verify_bytes(data, digest, MAX_ARTIFACT_BYTES)
         target = self._path(object_key)
@@ -33,8 +33,9 @@ class LocalArtifactStore:
         if target.exists():
             if target.read_bytes() != data:
                 raise ArtifactIntegrityError("immutable artifact key already contains other bytes")
-            return
+            return False
         target.write_bytes(data)
+        return True
 
     def get(
         self, object_key: str, *, expected_digest: str, max_bytes: int = MAX_ARTIFACT_BYTES

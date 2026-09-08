@@ -1,0 +1,56 @@
+{
+  "schema_version": "adp-digital-asset-artifact-bundle/v1",
+  "artifact_id": "DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001",
+  "artifact_version": "1.0.0",
+  "content_digest": "sha256:2a0fad69b2db5f8e18081fadbdb71e5c0af2c12ea436e25276f5b8fa693d468f",
+  "canonical_contract": {
+    "artifact_id": "ADP-DIGITAL-ASSET-RUNTIME-CONTRACT",
+    "artifact_version": "1.0.0",
+    "content_digest": "sha256:886842702fad124a95e73f0f714ffacef56d5cbd5a4c0f222440279d106b3504"
+  },
+  "binding": {
+    "institution_id": "institution_local",
+    "execution_pack": "DIGITAL_ASSET",
+    "workload_id": "tokenized_asset_purchase",
+    "purpose_code": "DIGITAL_ASSET_PURCHASE",
+    "destination_profile_id": "dest_mock_asset_platform_v1"
+  },
+  "blocking_gaps": [],
+  "files": [
+    {
+      "role": "OUTBOUND_REQUIREMENT_MATRIX",
+      "reference": "docs/contracts/artifacts/p0-5-sample/outbound-requirement-matrix.json",
+      "digest": "sha256:94447f7910fa799caa4613dc80bc588104d5829e2042963affd98825bdd2c43c",
+      "schema_reference": "contracts/digital-asset-artifacts/outbound-requirement-matrix-v1.schema.json",
+      "schema_digest": "sha256:5b4dd77edaf4142a0d8ef293c7befc9d080a383d62ca2244bf45f83f1e4b6bd3"
+    },
+    {
+      "role": "POLICY_EVALUATION",
+      "reference": "docs/contracts/artifacts/p0-5-sample/policy-evaluation.json",
+      "digest": "sha256:476e0a7573677b4c35e0dd15950a4dc38c283ea5486765fe8ae468a81148d4f1",
+      "schema_reference": "contracts/digital-asset-artifacts/policy-evaluation-v1.schema.json",
+      "schema_digest": "sha256:6f7dc6c0e25d7c99da722c5b7ab27af8da7ce367bbd3793d6d52785dade5a5a3"
+    },
+    {
+      "role": "BINDING",
+      "reference": "docs/contracts/artifacts/p0-5-sample/binding.json",
+      "digest": "sha256:645b3130acc2abbeae42ddc48ce1cce8abc978f90ecc6606918583f860e76d38",
+      "schema_reference": "contracts/digital-asset-artifacts/binding-v1.schema.json",
+      "schema_digest": "sha256:f676517524daf17c908642930d3ef5045d27493cc6debe3fe0bfd4815e3c8d0f"
+    },
+    {
+      "role": "RUNTIME_DATA_CROSSWALK",
+      "reference": "docs/contracts/artifacts/p0-5-sample/runtime-data-crosswalk.json",
+      "digest": "sha256:eb40822cdd5c192e68eb0fe3a961428dbabbdabda00204c760d32cac6b669cf5",
+      "schema_reference": "contracts/digital-asset-artifacts/runtime-data-crosswalk-v1.schema.json",
+      "schema_digest": "sha256:3a6e4f7ff24245eb26351834632d37af8bd4a10193856be3edb27549545bcd8e"
+    },
+    {
+      "role": "RUNTIME_PIPELINE",
+      "reference": "docs/contracts/artifacts/p0-5-sample/runtime-pipeline.json",
+      "digest": "sha256:f1ace75989ccf02761f08de7bd084f375b8f0f2ffe15db75e8d2d046b015c5c1",
+      "schema_reference": "contracts/digital-asset-artifacts/runtime-pipeline-v1.schema.json",
+      "schema_digest": "sha256:a770aeefd9eade7c2635342b18819023c2b2961232a20ddab034ce151c084055"
+    }
+  ]
+}

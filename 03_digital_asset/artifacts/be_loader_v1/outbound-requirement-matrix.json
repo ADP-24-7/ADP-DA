@@ -1,0 +1,16 @@
+{
+  "schema_version": "adp-digital-asset-handoff-document/v1",
+  "artifact_id": "DA-P0-5-ORM-001",
+  "artifact_version": "1.0.0",
+  "status": "VALIDATED",
+  "payload": {
+    "controls": [
+      "APPROVED_VS_REQUESTED_MATCH",
+      "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+      "REQUIRED_EXACT_PRESERVATION",
+      "TRANSFORM_FIELD_SEPARATION",
+      "DESTINATION_SPECIFIC_PAYLOAD",
+      "TRACE_BINDING"
+    ]
+  }
+}

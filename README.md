@@ -101,6 +101,12 @@ make ncp-storage-preflight
 `access_key_present`, `secret_key_present`가 모두 `true`인지 확인한 뒤에만 실제 NCP 명령을
 실행합니다. Credential은 Git, PR, Notion, 메신저 및 로그에 첨부하지 않습니다.
 
+일반 Storage Manifest와 BE P0-5용 Digital Asset Bundle Manifest는 서로 다른 계층입니다.
+BE로 전달하는 최종 값은 Bundle 게시 결과의 `manifestReference`와
+`expectedContentDigest`이며, 실제 명령과 현재 BE 연동 경계는 위 통합 문서에 정리되어
+있습니다. Artifact bucket은 명시적 allowlist를 통과해야 하고 `*tfstate*` bucket은 항상
+거부됩니다.
+
 ## Docker 파일 기준
 
 - `Dockerfile`: CI/NCP 배포용 image build

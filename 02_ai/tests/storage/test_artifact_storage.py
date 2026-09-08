@@ -10,6 +10,7 @@ from adp_da import artifact_storage_cli, ncp_storage_e2e
 from adp_da.storage import (
     ArtifactIntegrityError,
     ArtifactNotFoundError,
+    ArtifactStorageError,
     LocalArtifactStore,
     NcpObjectStorageStore,
     build_object_key,
@@ -38,8 +39,19 @@ class FakeS3:
         self.put_calls: list[dict[str, Any]] = []
         self.deleted: list[tuple[str, str]] = []
         self.last_body: Body | None = None
+        self.fail_manifest_put = False
+
+    def head_object(self, **kwargs: Any) -> dict[str, Any]:
+        identity = (kwargs["Bucket"], kwargs["Key"])
+        if identity not in self.objects:
+            raise ClientError({"Error": {"Code": "NoSuchKey", "Message": "missing"}}, "HeadObject")
+        return {"ContentLength": len(self.objects[identity])}
 
     def put_object(self, **kwargs: Any) -> None:
+        if self.fail_manifest_put and kwargs["Key"].endswith("/manifest.json"):
+            raise ClientError(
+                {"Error": {"Code": "RequestTimeout", "Message": "timeout"}}, "PutObject"
+            )
         self.put_calls.append(kwargs)
         self.objects[(kwargs["Bucket"], kwargs["Key"])] = kwargs["Body"]
 
@@ -148,6 +160,27 @@ def test_ncp_store_upload_download_has_no_public_acl() -> None:
     assert client.last_body is not None and client.last_body.closed
 
 
+def test_ncp_store_same_key_is_idempotent_and_different_bytes_fail() -> None:
+    client = FakeS3()
+    store = NcpObjectStorageStore(client, bucket="adp-qa-data-artifacts")
+    key = "artifacts/evaluation/eval-1/v1/result.json"
+    original = b"original"
+
+    assert store.put(key, original, digest=sha256_digest(original), content_type="application/json")
+    assert not store.put(
+        key, original, digest=sha256_digest(original), content_type="application/json"
+    )
+    with pytest.raises(ArtifactIntegrityError, match="immutable NCP"):
+        store.put(
+            key,
+            b"different",
+            digest=sha256_digest(b"different"),
+            content_type="application/json",
+        )
+
+    assert len(client.put_calls) == 1
+
+
 def test_ncp_store_maps_missing_object() -> None:
     store = NcpObjectStorageStore(FakeS3(), bucket="adp-qa-data-artifacts")
     with pytest.raises(ArtifactNotFoundError):
@@ -190,6 +223,12 @@ def test_ncp_configuration_requires_credentials_and_ncp_https_endpoint(
     assert captured["service"] == "s3"
     assert captured["endpoint_url"] == "https://kr.object.ncloudstorage.com"
     assert captured["region_name"] == "KR"
+
+
+@pytest.mark.parametrize("bucket", ["adp-qa-tfstate", "unapproved-artifacts"])
+def test_ncp_store_rejects_state_and_non_allowlisted_bucket(bucket: str) -> None:
+    with pytest.raises(ValueError, match="bucket"):
+        NcpObjectStorageStore(FakeS3(), bucket=bucket)
 
 
 def test_ncp_e2e_preflight_never_records_credentials() -> None:
@@ -237,10 +276,37 @@ def test_ncp_e2e_uploads_verifies_and_cleans_up(monkeypatch: pytest.MonkeyPatch)
     )
 
     assert result["status"] == "PASS"
+    assert result["run_type"] == "NCP_STORAGE_E2E"
+    assert result["adapter_git_sha"] == "abcdef1"
+    assert result["upload_digest"] == result["download_digest"]
+    assert result["match"] is True
     assert result["download_matches_upload"] is True
     assert result["cleanup_completed"] is True
     assert client.objects == {}
     assert len(client.deleted) == 2
+
+
+def test_publish_failure_cleans_only_new_orphan_objects() -> None:
+    client = FakeS3()
+    client.fail_manifest_put = True
+    store = NcpObjectStorageStore(client, bucket="adp-qa-data-artifacts")
+
+    with pytest.raises(ArtifactStorageError, match="upload failed"):
+        publish_artifact(
+            store,
+            b"artifact",
+            prefix="artifacts/validation",
+            artifact_id="VAL-ORPHAN-TEST",
+            artifact_version="v1",
+            filename="result.json",
+            code_git_sha="abcdef1",
+            classification="SYNTHETIC",
+        )
+
+    assert client.objects == {}
+    assert client.deleted == [
+        ("adp-qa-data-artifacts", "artifacts/validation/VAL-ORPHAN-TEST/v1/result.json")
+    ]
 
 
 def test_artifact_cli_publishes_and_downloads_persistent_reference(

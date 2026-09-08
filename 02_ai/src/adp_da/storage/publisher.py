@@ -9,6 +9,7 @@ from typing import Any
 from adp_da.storage.core import (
     ArtifactIntegrityError,
     ArtifactManifest,
+    ArtifactStorageError,
     ArtifactStore,
     build_object_key,
     sha256_digest,
@@ -68,19 +69,32 @@ def publish_artifact(
         "manifests/artifacts", artifact_id, artifact_version, "manifest.json"
     )
     manifest_digest = sha256_digest(manifest_bytes)
-    store.put(object_key, data, digest=digest, content_type=content_type)
-    store.get(object_key, expected_digest=digest)
-    store.put(
-        manifest_key,
-        manifest_bytes,
-        digest=manifest_digest,
-        content_type="application/json",
-    )
-    store.get(
-        manifest_key,
-        expected_digest=manifest_digest,
-        max_bytes=MANIFEST_MAX_BYTES,
-    )
+    artifact_created = store.put(object_key, data, digest=digest, content_type=content_type)
+    manifest_created = False
+    try:
+        store.get(object_key, expected_digest=digest)
+        manifest_created = store.put(
+            manifest_key,
+            manifest_bytes,
+            digest=manifest_digest,
+            content_type="application/json",
+        )
+        store.get(
+            manifest_key,
+            expected_digest=manifest_digest,
+            max_bytes=MANIFEST_MAX_BYTES,
+        )
+    except Exception:
+        for created, key in (
+            (manifest_created, manifest_key),
+            (artifact_created, object_key),
+        ):
+            if created:
+                try:
+                    store.delete(key)
+                except ArtifactStorageError:
+                    pass
+        raise
     return PublishedArtifact(manifest, manifest_key, manifest_digest)
 
 
