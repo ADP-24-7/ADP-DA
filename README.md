@@ -66,19 +66,54 @@ make setup PYTHON="py -3.12"
 
 ## Docker 실행
 
-ADP-DA의 `docker-compose.yml`은 로컬 통합 개발 스택의 진입점입니다. DA 레포에서 실행하면 같은 상위 폴더에 있는 `ADP-BE`, `ADP-FE`, `ADP-DA`, `ADP-Docs` 네 레포와 PostgreSQL이 함께 실행됩니다.
+ADP-BE의 `docker-compose.yml`이 로컬 통합 개발 스택의 Source of Truth입니다.
+ADP-DA의 `docker-compose.yml`은 DA 환경만 추가하는 override이며, Makefile이 두 파일을
+결합해 동일한 BE PostgreSQL Evidence volume을 사용합니다.
 
 ```bash
 make setup
 make docker-up
 ```
 
+NVIDIA Provider를 통한 BE 실호출 전에는 `../ADP-BE/.env`에 `NVIDIA_API_KEY`를
+설정해야 합니다. BE Connector 변수와 DA Python 클라이언트 변수의 차이 및 안전한
+확인 방법은 [환경 설정](SETUP.md#be-ai-connector--nvidia-설정)을 참고합니다.
+BE가 이미 모델 실행을 완료했다면 `make ai-eval-consume`으로 Provider 재호출 없이
+Readiness, Bundle 검증 및 DA 분석만 수행할 수 있습니다.
+
+## NCP Object Storage
+
+DA artifact는 Local/NCP 공통 `ArtifactStore` 계약으로 게시하며 upload 전·download 후
+SHA-256을 검증합니다. 기본 테스트는 외부 호출을 하지 않고, 실제 QA Bucket 검증은
+명시적 opt-in으로만 실행합니다. 설정과 보안 경계는
+[NCP Object Storage Integration](02_ai/docs/NCP_OBJECT_STORAGE_INTEGRATION.md)을 참고합니다.
+
+저장소를 pull해도 NCP Key는 전달되지 않습니다. 실제 Bucket을 사용할 팀원은 QA용
+Credential을 별도로 발급받아 아래처럼 Git에서 제외된 파일을 준비해야 합니다.
+
+```bash
+make ncp-storage-env
+chmod 600 .env.ncp.local
+# .env.ncp.local에 NCLOUD_ACCESS_KEY / NCLOUD_SECRET_KEY 입력
+make ncp-storage-preflight
+```
+
+`access_key_present`, `secret_key_present`가 모두 `true`인지 확인한 뒤에만 실제 NCP 명령을
+실행합니다. Credential은 Git, PR, Notion, 메신저 및 로그에 첨부하지 않습니다.
+
+일반 Storage Manifest와 BE P0-5용 Digital Asset Bundle Manifest는 서로 다른 계층입니다.
+BE로 전달하는 최종 값은 Bundle 게시 결과의 `manifestReference`와
+`expectedContentDigest`이며, 실제 명령과 현재 BE 연동 경계는 위 통합 문서에 정리되어
+있습니다. Artifact bucket은 명시적 allowlist를 통과해야 하고 `*tfstate*` bucket은 항상
+거부됩니다. 게시 객체는 SHA-256 기반 content-addressed key를 사용하며, Bundle 게시 전과
+재다운로드 후에 BE와 동일한 cross-artifact semantic validation을 수행합니다.
+
 ## Docker 파일 기준
 
 - `Dockerfile`: CI/NCP 배포용 image build
 - `Dockerfile.dev`: 로컬 개발용 FastAPI reload image
-- `docker-compose.yml`: BE/FE/DA/Docs/PostgreSQL 통합 개발 스택
-- `.env.example`: 팀 공통 로컬 환경변수 샘플
+- `docker-compose.yml`: BE 통합 Stack에 적용하는 DA 전용 override
+- `.env.example`: DA Consumer/E2E 로컬 환경변수 샘플
 
 ## Make 명령
 

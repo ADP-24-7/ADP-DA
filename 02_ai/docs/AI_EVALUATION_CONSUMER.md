@@ -29,13 +29,31 @@ python -m adp_da.evaluation_bundle path/to/export.json --output outputs/ai_evalu
 python -m adp_da.evaluation_bundle https://be.example --evaluation-run-id RUN_ID --output outputs/ai_evaluation
 ```
 
-The generic API client can read `ADP_BE_TOKEN` as a Bearer token, but BE commit
-`5d5f999` does not implement Bearer authentication for this admin route. Its local
-development authentication uses `X-ADP-User-Id` and `X-ADP-User-Roles` with
-`ADP_LOCAL_USER_AUTH_ENABLED=true`. Export to a local JSON file with these headers,
-then load the file through the existing Consumer; see
-[the real BE readiness report](REAL_BE_EVALUATION_REPORT.md#4-da-독립-검증-결과).
-For a deployed server, confirm its admin authentication integration first.
+The API client supports one authentication mode at a time:
+
+- Bearer: `ADP_BE_TOKEN` (or the environment variable named by `--token-env`). This is a
+  generic client capability; the current BE does not yet provide a JWT/OAuth2 bearer Adapter.
+- BE local development administrator: `ADP_BE_LOCAL_ADMIN_USER_ID` and
+  `ADP_BE_LOCAL_ADMIN_ROLES` (or variables selected with
+  `--local-admin-user-id-env` and `--local-admin-roles-env`). Both local values are
+  required together. Do not also set the Bearer token.
+
+For the local BE route with `ADP_LOCAL_USER_AUTH_ENABLED=true`:
+
+```powershell
+$env:ADP_BE_LOCAL_ADMIN_USER_ID = 'da-evaluation-reader'
+$env:ADP_BE_LOCAL_ADMIN_ROLES = 'PRIVILEGED_OPERATOR'
+python -m adp_da.evaluation_bundle http://127.0.0.1:8080 `
+  --evaluation-run-id ai-eval-baseline-2026-09-07 `
+  --output outputs/real_be_evaluation/analysis
+```
+
+These environment variables map to `X-ADP-User-Id` and `X-ADP-User-Roles`; the
+values are not accepted as command-line arguments and are not written to archived
+metadata. This authentication mode is only for BE local development.
+For a deployed server, implement and confirm its admin authentication integration first. The E2E
+runner blocks remote Bearer by default and additionally requires
+`ADP_BE_REMOTE_BEARER_AUTH_ENABLED=YES` after that Adapter is deployed.
 Privileged operator role and permitted institution/workload scope are required.
 Tokens are never CLI arguments or archived metadata. Redirects are rejected. Localhost HTTP
 is accepted for development; remote endpoints require HTTPS. BE 404/authorization

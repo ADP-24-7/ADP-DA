@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "artifact_id", "artifact_version", "status", "payload"],
+  "properties": {
+    "schema_version": { "const": "adp-digital-asset-handoff-document/v1" },
+    "artifact_id": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "artifact_version": { "const": "1.0.0" },
+    "status": { "const": "VALIDATED" },
+    "payload": {
+      "type": "object",
+      "required": ["execution_pack", "workload_id", "purpose_code", "destination_profile_id"],
+      "properties": {
+        "execution_pack": { "const": "DIGITAL_ASSET" },
+        "workload_id": { "const": "tokenized_asset_purchase" },
+        "purpose_code": { "const": "DIGITAL_ASSET_PURCHASE" },
+        "destination_profile_id": { "type": "string", "minLength": 1, "maxLength": 120 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

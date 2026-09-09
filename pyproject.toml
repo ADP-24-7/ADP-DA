@@ -9,6 +9,7 @@ description = "Data analysis and evaluation workspace for ADP Financial Privacy 
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "boto3==1.43.89",
     "jsonschema==4.25.1",
     "fastapi==0.116.1",
     "numpy==2.2.6",
@@ -69,4 +70,8 @@ mypy_path = "02_ai/src"
 
 [[tool.mypy.overrides]]
 module = ["pandas", "pandas.*", "scipy", "scipy.*", "jsonschema", "jsonschema.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["boto3", "boto3.*", "botocore", "botocore.*"]
 ignore_missing_imports = true

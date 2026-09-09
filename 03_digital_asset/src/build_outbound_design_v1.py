@@ -22,7 +22,7 @@ OUTBOUND = DA / "artifacts" / "outbound_design_v1"
 BE = DA / "artifacts" / "be_handoff_v2"
 V3 = DA / "artifacts" / "candidate_policy_v3"
 NOTEBOOK = DA / "notebooks" / "foundation" / "04_regulatory_outbound_design_analysis.ipynb"
-DOC = DA / "docs" / "BE_HANDOFF_DIGITAL_ASSET_V2.md"
+DOC = DA / "docs" / "handoff" / "BE_HANDOFF_DIGITAL_ASSET.md"
 
 
 FIELD_META: dict[str, dict[str, str | bool]] = {

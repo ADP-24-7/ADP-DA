@@ -1,0 +1,15 @@
+{
+  "schema_version": "adp-digital-asset-handoff-document/v1",
+  "artifact_id": "DA-P0-5-PIPELINE-001",
+  "artifact_version": "1.0.0",
+  "status": "VALIDATED",
+  "payload": {
+    "stages": [
+      "APPROVED_TRANSACTION_LOAD",
+      "ARTIFACT_BINDING",
+      "OUTBOUND_GUARD",
+      "EXTERNAL_HANDOFF",
+      "POST_EXECUTION_REBINDING"
+    ]
+  }
+}

@@ -10,15 +10,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ADP-DA
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: ADP-DA
+
+      - name: Checkout BE Compose source of truth
+        uses: actions/checkout@v4
+        with:
+          repository: ADP-24-7/ADP-BE
+          path: ADP-BE
 
       - name: Validate Docker Compose
         run: |
-          mkdir -p ../ADP-BE ../ADP-FE ../ADP-Docs
-          touch ../ADP-BE/Dockerfile.dev
-          docker compose --profile test config
+          mkdir -p ../ADP-FE ../ADP-Docs
+          docker compose \
+            --project-directory ../ADP-BE \
+            -f ../ADP-BE/docker-compose.yml \
+            -f "$PWD/docker-compose.yml" \
+            --profile test \
+            config --quiet
 
       - uses: actions/setup-python@v5
         with:

@@ -1,7 +1,7 @@
 {
   "artifact_id": "DA_00_MASTER_SAMPLE:sampling_contract",
   "artifact_version": "1.0.0",
-  "generated_at": "2026-09-07T19:08:09.576553+00:00",
+  "generated_at": "2026-09-08T00:28:36.625138+00:00",
   "source_notebook": "03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb",
   "source_notebook_sha256": "667868fb00d70b13432a762413130bc5da6f4dde1360207f6a9b50b3b3c8e8b6",
   "source_data": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv",
@@ -85,10 +85,7 @@
       "path": "03_digital_asset/data/processed/da_master_transaction_sample_73410.csv"
     },
     {
-      "path": "03_digital_asset/docs/handoff/DA-00-MASTER-SAMPLE-CONTRACT.md"
-    },
-    {
-      "path": "03_digital_asset/docs/handoff/DA-00-DA-01-EVIDENCE-GAPS.md"
+      "path": "03_digital_asset/docs/handoff/DA_00_master_sample_contract.md"
     }
   ]
 }

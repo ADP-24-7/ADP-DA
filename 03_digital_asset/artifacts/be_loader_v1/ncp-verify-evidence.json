@@ -1,0 +1,20 @@
+{
+  "adapterGitSha": "13a4206b579029ca87bb40cf11a7a41339745ac1",
+  "bucket": "adp-qa-data-artifacts",
+  "contentAddressedManifest": true,
+  "credentialValuesRecorded": false,
+  "downloadDigestMatch": true,
+  "expectedContentDigest": "sha256:2144d5b7689190f6fae2092be83e29766ebf80996cbec640ab1fdea0ae6a8b18",
+  "manifestReference": "handoff/validated/DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001/1.0.0/48eef63c91271299b70cfe29cbbe9436d5ca6588a2e90094b226694396d177ab.json",
+  "run_type": "NCP_DIGITAL_ASSET_BUNDLE_VERIFY",
+  "semanticValidation": "PASS",
+  "status": "PASS",
+  "storageManifestDigest": "sha256:48eef63c91271299b70cfe29cbbe9436d5ca6588a2e90094b226694396d177ab",
+  "verifiedRoles": [
+    "OUTBOUND_REQUIREMENT_MATRIX",
+    "POLICY_EVALUATION",
+    "BINDING",
+    "RUNTIME_DATA_CROSSWALK",
+    "RUNTIME_PIPELINE"
+  ]
+}

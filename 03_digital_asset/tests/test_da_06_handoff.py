@@ -108,7 +108,7 @@ def test_provenance_and_local_document_links(artifacts):
             path = (ROOT / ref["path"]).resolve()
             assert path.is_relative_to(ROOT.resolve())
             assert da06.sha256(path) == ref["sha256"]
-    doc = ROOT / "03_digital_asset/docs/DA_06_RECOVERY_IDEMPOTENCY_BE_HANDOFF.md"
+    doc = ROOT / "03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md"
     for link in re.findall(r"\]\(([^)]+)\)", doc.read_text(encoding="utf-8")):
         assert (doc.parent / link).is_file(), link
 

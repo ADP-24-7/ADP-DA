@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ADP-24-7/ADP-DA/contracts/artifact_storage_manifest.schema.json",
+  "title": "ADP Artifact Storage Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_version",
+    "bucket",
+    "object_key",
+    "digest",
+    "size_bytes",
+    "code_git_sha",
+    "classification"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$" },
+    "artifact_version": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$" },
+    "bucket": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$" },
+    "object_key": {
+      "type": "string",
+      "pattern": "^(datasets/(raw|curated|published)|artifacts/(evaluation|validation|policy)|handoff/validated|replay|manifests/(datasets|artifacts))/.+$",
+      "maxLength": 1024
+    },
+    "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "size_bytes": { "type": "integer", "minimum": 0, "maximum": 50000000 },
+    "code_git_sha": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "classification": {
+      "type": "string",
+      "enum": ["SYNTHETIC", "PSEUDONYMIZED", "SYNTHETIC_OR_PSEUDONYMIZED"]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "content_type": { "type": "string", "minLength": 1, "maxLength": 255 }
+  },
+  "additionalProperties": false
+}
