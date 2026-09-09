@@ -18,6 +18,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlsplit
 from urllib.request import HTTPSHandler, Request, build_opener
 
+from adp_da.bundle_validator import validate_contract_snapshot
 from adp_da.evaluation_bundle import run_pipeline
 
 RUN_ID = "ai-eval-baseline-2026-09-07"
@@ -390,6 +391,11 @@ def _export_ready_bundle(
     bundle_path.write_bytes(raw_bundle)
     bundle = _decode_json(raw_bundle, "evaluation Bundle")
     _validate_bundle_execution_binding(bundle, readiness_executions)
+    if operation == "execute_live":
+        if (bundle.get("manifest", {}).get("schema_version") != "adp-ai-evaluation-bundle/v2"
+                or bundle.get("contract_evidence", {}).get("snapshot", {}).get(
+                    "fixed_conditions_digest") != report.get("fixed_conditions_digest")):
+            raise E2EError("exported Bundle does not match the pre-execution contract")
     analysis_path = run_pipeline(bundle_path, output / "analysis", evaluation_run_id=RUN_ID)
     result = {
         **report,
@@ -451,6 +457,25 @@ def execute_live(
         raise E2EError(f"output already exists: {output}")
     client = opener or NoRedirect.opener()
     runtime_key = environment[API_KEY_ENV]
+    contract = _decode_json(_request_bytes(
+        client,
+        f"{report['base_url']}/api/admin/ai/evaluation-runs/{RUN_ID}/contract",
+        method="GET",
+        headers=bundle_headers(environment, urlsplit(base_url).hostname in LOCAL_DEV_HOSTS),
+        timeout=timeout,
+        max_bytes=READINESS_RESPONSE_MAX_BYTES,
+    ), "evaluation contract")
+    validate_contract_snapshot(contract)
+    report["fixed_conditions_digest"] = contract["fixed_conditions_digest"]
+    fixed = contract["fixed_conditions"]
+    if {model["profile_id"] for model in contract["model_profiles"]} != {
+        model.profile_id for model in BASELINE_MODELS
+    }:
+        raise E2EError("frozen model profiles differ from requested baseline")
+    if (fixed["evaluation_run_id"] != RUN_ID or fixed["workload"] != "customer_summary"
+            or fixed["purpose_code"] != "CUSTOMER_SUPPORT"
+            or {case["caseId"] for case in fixed["cases"]} != {CASE_ID}):
+        raise E2EError("frozen evaluation contract differs from requested baseline")
     execution_ids: list[str] = []
     submitted_by_profile: dict[str, str] = {}
     for index, binding in enumerate(BASELINE_MODELS, start=1):
@@ -461,6 +486,7 @@ def execute_live(
             method="POST",
             headers={
                 "X-ADP-API-Key": runtime_key,
+                "X-ADP-Request-Timestamp": datetime.now(UTC).isoformat(),
                 "X-Request-Id": f"req_eval_bundle_{suffix}",
                 "X-Trace-Id": f"trace_eval_bundle_{suffix}",
             },

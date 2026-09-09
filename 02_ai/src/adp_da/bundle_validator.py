@@ -76,6 +76,95 @@ def failure_summary(metrics: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def validate_contract_snapshot(snapshot: dict[str, Any]) -> str:
+    """Verify the producer's fixed snapshot without inventing missing conditions."""
+    schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    contract_schema = {"$ref": "#/$defs/contract_snapshot", "$defs": schema["$defs"]}
+    if not Draft202012Validator(contract_schema, format_checker=FormatChecker()).is_valid(snapshot):
+        raise BundleValidationError("evaluation contract schema")
+    fixed = snapshot["fixed_conditions"]
+    digest = "sha256:" + hashlib.sha256(canonical_json(fixed).encode("utf-8")).hexdigest()
+    if digest != snapshot["fixed_conditions_digest"]:
+        raise BundleValidationError("fixed_conditions_digest")
+    if fixed["evaluation_contract_version"] != "ai-evaluation-contract/1.0.0":
+        raise BundleValidationError("evaluation_contract_version")
+    retrieval_digest = "sha256:" + hashlib.sha256(
+        canonical_json(fixed["retrieval_config"]).encode("utf-8")
+    ).hexdigest()
+    if retrieval_digest != fixed["rag_version"]:
+        raise BundleValidationError("rag_version")
+    for artifact, digest_field in (("prompt_snapshot", "prompt_snapshot_digest"),
+                                   ("transform_snapshot", "transform_version")):
+        actual = "sha256:" + hashlib.sha256(
+            canonical_json(fixed[artifact]).encode("utf-8")
+        ).hexdigest()
+        if actual != fixed[digest_field]:
+            raise BundleValidationError(digest_field)
+    if fixed["prompt_snapshot"]["version"] != fixed["prompt_version"]:
+        raise BundleValidationError("prompt snapshot version")
+    return digest
+
+
+def validate_contract_binding(bundle: dict[str, Any]) -> None:
+    evidence = bundle["contract_evidence"]
+    digest = validate_contract_snapshot(evidence["snapshot"])
+    fixed = evidence["snapshot"]["fixed_conditions"]
+    config = bundle["execution_config"]
+    for name in (
+        "evaluation_run_id", "dataset_version", "dataset_digest", "policy_snapshot_digest"
+    ):
+        if fixed[name] != config[name]:
+            raise BundleValidationError("contract binding: " + name)
+    models = {model["profile_id"]: model for model in config["models"]}
+    frozen_models = {model["profile_id"]: model for model in evidence["snapshot"]["model_profiles"]}
+    if len(frozen_models) != 3 or frozen_models != models:
+        raise BundleValidationError("frozen model profiles mismatch")
+    if len({model["profile_digest"] for model in models.values()}) != 3:
+        raise BundleValidationError("distinct model profile digests required")
+    for model in models.values():
+        profile = {"modelId": model["provider_model_id"],
+                   "modelVersion": model["provider_model_version"],
+                   "maxTokens": model["max_tokens"], "temperature": model["temperature"],
+                   "providerConnectionProfileId": model["connection_profile_id"]}
+        expected = "sha256:" + hashlib.sha256(canonical_json(profile).encode("utf-8")).hexdigest()
+        if expected != model["profile_digest"]:
+            raise BundleValidationError("model profile digest mismatch")
+    cases = {case["caseId"]: case for case in fixed["cases"]}
+    if len(cases) != len(fixed["cases"]):
+        raise BundleValidationError("contract case uniqueness")
+    bindings = {row["execution_id"]: row for row in evidence["bindings"]}
+    traces = {row["execution_id"]: row for row in bundle["trace_index"]}
+    if (len(bindings) != len(evidence["bindings"]) or bindings.keys() != traces.keys()
+            or cases.keys() != {row["eval_case_id"] for row in bundle["case_results"]}):
+        raise BundleValidationError("contract execution/case coverage")
+    for model in models.values():
+        if any(model[key] != fixed[key] for key in ("temperature", "max_tokens")):
+            raise BundleValidationError("contract sampling mismatch")
+    case_inputs: dict[str, str] = {}
+    for result in bundle["case_results"]:
+        binding = bindings[result["execution_id"]]
+        model = models[result["model_profile_id"]]
+        trace = traces[result["execution_id"]]
+        expected_provider_input = case_inputs.setdefault(
+            result["eval_case_id"], binding["provider_input_digest"])
+        if expected_provider_input != binding["provider_input_digest"]:
+            raise BundleValidationError("cross-model provider input mismatch")
+        if not (
+            binding["fixed_conditions_digest"] == digest
+            and binding["evaluation_run_id"] == config["evaluation_run_id"]
+            and binding["eval_case_id"] == result["eval_case_id"]
+            and binding["model_profile_digest"] == model["profile_digest"]
+            and binding["decision_id"] == trace["decision_id"]
+            and binding["provider_request_digest"] == trace["provider_request_digest"]
+            and binding["outbound_guard_status"] == "PASSED"
+            and all(binding[key] == trace.get(key) for key in (
+                "transform_execution_id", "outbound_payload_id", "outbound_guard_status"))
+            and cases[result["eval_case_id"]]["expectedInputDigest"]
+            == result["actual_input_digest"]
+        ):
+            raise BundleValidationError("contract runtime binding mismatch")
+
+
 def validate_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
     checks: dict[str, Any] = {}
 
@@ -97,6 +186,9 @@ def validate_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
     )
     calculated = content_digest(bundle)
     require(calculated == manifest["content_digest"], "content_digest")
+    if manifest["schema_version"] == "adp-ai-evaluation-bundle/v2":
+        validate_contract_binding(bundle)
+        checks["fixed_conditions_binding"] = "PASS"
     count = manifest["execution_count"]
     indexes = []
     for name, rows in zip(

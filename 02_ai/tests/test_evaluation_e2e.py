@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime
 from io import BytesIO
 from pathlib import Path
 from typing import Any
@@ -8,6 +9,7 @@ from typing import Any
 import pytest
 from adp_da import evaluation_e2e
 from bundle_fixture_factory import make_bundle
+from contract_fixture_factory import with_contract
 
 
 class Response(BytesIO):
@@ -23,10 +25,16 @@ class FakeOpener:
         self, bundle: dict[str, Any], readiness: dict[str, Any] | None = None
     ) -> None:
         self.bundle = bundle
+        self.contract = bundle.get("contract_evidence", bind_bundle_to_baseline(
+            make_bundle(case_count=1, model_count=3))["contract_evidence"])["snapshot"]
         self.readiness = readiness or ready_readiness()
         self.requests: list[Any] = []
+        self.contract_requests: list[Any] = []
 
     def open(self, request: Any, timeout: float) -> Response:
+        if request.full_url.endswith("/contract"):
+            self.contract_requests.append(request)
+            return Response(json.dumps(self.contract).encode())
         self.requests.append(request)
         if request.get_method() == "GET":
             if request.full_url.endswith("/readiness"):
@@ -71,12 +79,17 @@ def live_environment() -> dict[str, str]:
 
 
 def bind_bundle_to_baseline(bundle: dict[str, Any]) -> dict[str, Any]:
+    bundle["manifest"]["evaluation_run_id"] = evaluation_e2e.RUN_ID
+    bundle["execution_config"]["evaluation_run_id"] = evaluation_e2e.RUN_ID
+    bundle["manifest"]["bundle_id"] = "AI-EVAL-BUNDLE:" + evaluation_e2e.RUN_ID + ":1"
     for index, binding in enumerate(evaluation_e2e.BASELINE_MODELS, start=1):
+        bundle["execution_config"]["models"][index - 1]["profile_id"] = binding.profile_id
         for section in ("case_results", "runtime_metrics"):
             bundle[section][index - 1]["model_profile_id"] = binding.profile_id
             bundle[section][index - 1]["execution_id"] = f"exec-{index}"
+            bundle[section][index - 1]["eval_case_id"] = evaluation_e2e.CASE_ID
         bundle["trace_index"][index - 1]["execution_id"] = f"exec-{index}"
-    return bundle
+    return with_contract(bundle)
 
 
 def test_preflight_is_secret_safe_and_requires_confirmation() -> None:
@@ -137,6 +150,7 @@ def test_live_flow_posts_three_bindings_exports_and_analyzes(
     analysis = tmp_path / "analysis-result"
     monkeypatch.setattr(evaluation_e2e, "run_pipeline", lambda *args, **kwargs: analysis)
 
+    started_at = datetime.now(UTC)
     result = evaluation_e2e.execute_live(
         environment=live_environment(),
         base_url="http://localhost:8080",
@@ -147,8 +161,14 @@ def test_live_flow_posts_three_bindings_exports_and_analyzes(
     )
 
     assert len(fake.requests) == 5
+    assert len(fake.contract_requests) == 1
     posts = fake.requests[:3]
     assert all(request.get_method() == "POST" for request in posts)
+    finished_at = datetime.now(UTC)
+    for request in posts:
+        timestamp = datetime.fromisoformat(request.get_header("X-adp-request-timestamp"))
+        assert timestamp.utcoffset().total_seconds() == 0
+        assert started_at <= timestamp <= finished_at
     payloads = [json.loads(request.data) for request in posts]
     assert {item["destinationProfileId"] for item in payloads} == {
         binding.destination_profile_id for binding in evaluation_e2e.BASELINE_MODELS
