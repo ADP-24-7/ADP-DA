@@ -19,10 +19,12 @@ jobs:
         with:
           path: ADP-DA
 
-      - name: Checkout BE Compose source of truth
+      - name: Checkout BE Compose and P0 evaluation contract
         uses: actions/checkout@v4
         with:
-          repository: ADP-24-7/ADP-BE
+          repository: nahee8034-ux/ADP-BE
+          # Pin the matching producer contract while P0 is not on upstream main.
+          ref: 3692e572da1ff09b040a3e80a863030282060c58
           path: ADP-BE
 
       - name: Validate Docker Compose
