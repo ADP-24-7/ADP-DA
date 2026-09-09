@@ -12,7 +12,8 @@ Bundle에 포함하지 않고 공식 source reference, DA analysis reference, bo
 - Source: `02_ai/reference_evidence/reference_evidence_source_v1.json`
 - Handoff: `02_ai/artifacts/reference_evidence_v1/reference-evidence-bundle.json`
 - Schema version: `adp-reference-evidence-bundle/v1`
-- Bundle/Evidence version: `1.1.0` — Admin Trace 책임 축소와 Source/Analysis 분리
+- Contract state: Reference Evidence Bundle v1 final contract
+- Bundle/Evidence data version: `1.1.0` — Admin Trace 책임 축소와 Source/Analysis 분리
 - Identity: `bundle_id + bundle_version + content_digest`
 - Evidence identity: `evidence_id + evidence_version + content_digest`
 
