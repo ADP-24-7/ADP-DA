@@ -99,8 +99,6 @@ def validate_reference_evidence_bundle(
         content = {key: value for key, value in item.items() if key != "content_digest"}
         if received != canonical_digest(content):
             raise ReferenceEvidenceError("evidence content_digest mismatch")
-        if item["status"] == "REFERENCE_ONLY" and item["policy_artifact_refs"]:
-            raise ReferenceEvidenceError("REFERENCE_ONLY evidence cannot bind a Runtime policy")
         if item["effective_from"] and item["effective_to"]:
             if item["effective_from"] > item["effective_to"]:
                 raise ReferenceEvidenceError("invalid evidence effective period")

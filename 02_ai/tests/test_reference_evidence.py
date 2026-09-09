@@ -35,7 +35,7 @@ def test_builds_deterministic_reference_only_bundle() -> None:
     assert first["evidence_count"] == 4
     assert str(first["content_digest"]).startswith("sha256:")
     assert {item["status"] for item in first["evidence"]} == {"REFERENCE_ONLY"}
-    assert all(not item["policy_artifact_refs"] for item in first["evidence"])
+    assert all(item["source_ref"] != item["analysis_ref"] for item in first["evidence"])
 
 
 def test_rejects_tampered_evidence_with_stale_digest() -> None:
@@ -56,11 +56,19 @@ def test_rejects_tampered_bundle_manifest() -> None:
         validate_reference_evidence_bundle(tampered, schema)
 
 
-def test_rejects_reference_only_runtime_policy_binding() -> None:
+def test_rejects_policy_artifact_mapping_owned_by_be() -> None:
     source = load(SOURCE)
     source["evidence"][0]["policy_artifact_refs"] = ["runtime-policy-1"]
 
-    with pytest.raises(ReferenceEvidenceError, match="cannot bind a Runtime policy"):
+    with pytest.raises(ReferenceEvidenceError, match="schema mismatch"):
+        build_reference_evidence_bundle(source, load(SCHEMA))
+
+
+def test_rejects_governance_lifecycle_status() -> None:
+    source = load(SOURCE)
+    source["evidence"][0]["status"] = "VERIFIED"
+
+    with pytest.raises(ReferenceEvidenceError, match="schema mismatch"):
         build_reference_evidence_bundle(source, load(SCHEMA))
 
 

@@ -9,7 +9,13 @@ version/digest만 전달하고 기존 Ontology와 분석 파일은 변경하지 
 ## 분석 결과와 Runtime Policy 의미를 혼합하는 문제
 
 금융규제 샌드박스 군집, 은행 동향, Digital Asset Infrastructure 자료는 정책 판단을 자동화하는 근거가 아니다. 초기 Bundle의
-모든 항목을 `REFERENCE_ONLY`로 고정하고 `policy_artifact_refs`가 존재하면 builder가 실패하도록 했다.
+모든 항목을 `REFERENCE_ONLY`로 고정하고 Policy Artifact mapping 자체를 DA 계약에서 제거했다. DA는 Workload 관련성까지만
+제공하며 Runtime Policy와의 연결은 판단하지 않는다.
+
+## 공식 출처와 DA 분석 위치가 섞이는 문제
+
+Notebook 경로를 `source_ref`로 사용하면 관리자가 공식 원문 대신 분석 파일을 출처로 오해한다. 공식 원천은
+`source_ref/source_url/source_locator`로, DA 해석 위치는 `analysis_ref/analysis_locator/analysis_version`으로 분리했다.
 
 ## Bundle Digest만 검증하는 문제
 

@@ -54,10 +54,11 @@
         "claim_scope",
         "claim_summary",
         "source_locator",
+        "analysis_ref",
+        "analysis_locator",
         "analysis_version",
         "status",
         "workload_refs",
-        "policy_artifact_refs",
         "content_digest"
       ],
       "properties": {
@@ -82,10 +83,11 @@
         "claim_scope": {"type": "string", "minLength": 1, "maxLength": 500},
         "claim_summary": {"type": "string", "minLength": 1, "maxLength": 1000},
         "source_locator": {"type": "string", "minLength": 1, "maxLength": 500},
+        "analysis_ref": {"type": "string", "minLength": 1, "maxLength": 500},
+        "analysis_locator": {"type": "string", "minLength": 1, "maxLength": 500},
         "analysis_version": {"type": "string", "minLength": 1, "maxLength": 120},
-        "status": {"enum": ["VERIFIED", "REFERENCE_ONLY", "REVIEW_REQUIRED", "SUPERSEDED"]},
+        "status": {"const": "REFERENCE_ONLY"},
         "workload_refs": {"$ref": "#/$defs/boundedRefs"},
-        "policy_artifact_refs": {"$ref": "#/$defs/boundedRefs"},
         "content_digest": {"$ref": "#/$defs/digest"}
       },
       "additionalProperties": false
