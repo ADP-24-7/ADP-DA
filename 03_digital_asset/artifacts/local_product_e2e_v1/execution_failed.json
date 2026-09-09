@@ -1,0 +1,123 @@
+{
+  "schema_version": "adp-digital-asset-local-product-e2e-fixture/v1",
+  "fixture_id": "EXECUTION_FAILED",
+  "source": "SYNTHETIC",
+  "runtime_support": "REQUIRES_BE_LOCAL_FIXTURE_TRIGGER",
+  "be_runtime_contract": {
+    "endpoint": "/v1/runtime/executions",
+    "execution_pack": "DIGITAL_ASSET",
+    "local_connector": "FakeDigitalAssetConnector",
+    "persistence": "PostgreSQL",
+    "trace_endpoint_template": "/v1/runtime/executions/{executionId}/trace"
+  },
+  "approval": {
+    "approval_reference": "approved-tx-asset-execution-failed",
+    "policy_version": "0.3.0",
+    "purpose_code": "DIGITAL_ASSET_PURCHASE",
+    "asset": {
+      "chain_id": "eip155:1",
+      "asset_kind": "FUNGIBLE_TOKEN",
+      "asset_symbol": "asset-execution-failed",
+      "asset_contract_address": "0x0000000000000000000000000000000000000001",
+      "operation": "TRANSFER"
+    },
+    "maximum_amount_atomic": "10000000",
+    "counterparty_reference": "beneficiary-local-001",
+    "destination_profile_id": "dest_mock_asset_platform_v1",
+    "destination": "wallet-test-001",
+    "valid_from": "2026-01-01T00:00:00Z",
+    "valid_until": "2027-01-01T00:00:00Z"
+  },
+  "requested_transaction": {
+    "headers": {
+      "X-Request-Id": "req_da_p0_execution_failed",
+      "X-Trace-Id": "trace_da_p0_execution_failed",
+      "X-ADP-Request-Timestamp": "${CURRENT_UTC_ISO8601}"
+    },
+    "method": "POST",
+    "path": "/v1/runtime/executions",
+    "body": {
+      "institutionId": "institution_local",
+      "approvalReference": "approval_digital_asset_purchase_v1",
+      "workloadId": "tokenized_asset_purchase",
+      "purposeCode": "DIGITAL_ASSET_PURCHASE",
+      "subjectScope": "customer:customer-100",
+      "destinationProfileId": "dest_mock_asset_platform_v1",
+      "idempotencyKey": "idem_da_p0_execution_failed",
+      "processingContexts": [
+        "DIGITAL_ASSET"
+      ],
+      "input": {
+        "approvedTransactionReference": "approved-tx-asset-execution-failed",
+        "customerId": "customer-100",
+        "accountId": "acct-100-1",
+        "outboundRequest": {
+          "requestedAsset": {
+            "chainId": "eip155:1",
+            "assetKind": "FUNGIBLE_TOKEN",
+            "assetSymbol": "asset-execution-failed",
+            "assetContractAddress": "0x0000000000000000000000000000000000000001",
+            "operation": "TRANSFER",
+            "tokenId": null
+          },
+          "requestedAmount": "10000",
+          "requestedDestination": "wallet-test-001",
+          "requestedBeneficiaryReference": "beneficiary-local-001",
+          "regulatoryOutboundData": {}
+        }
+      }
+    }
+  },
+  "submission_count": 1,
+  "expected_pre_execution_decision": "PASS",
+  "simulated_external_result": {
+    "scenario": "RECEIPT_FAILED",
+    "connector_status": "ACKNOWLEDGED",
+    "execution_status": "FAILED",
+    "receipt_status": "FAILED",
+    "finality_status": "FINALIZED",
+    "external_effect_count": 1
+  },
+  "external_evidence": {
+    "transaction_hash_required": true,
+    "receipt_status": "FAILED",
+    "finality_status": "FINALIZED",
+    "transfer_or_trace_required": true,
+    "evidence_source": "INDEPENDENT_EXTERNAL"
+  },
+  "expected_trace_binding": {
+    "correlation_key": "execution_id",
+    "required_nodes": [
+      "APPROVAL",
+      "REQUEST",
+      "PRE_EXECUTION_GUARD",
+      "EXECUTION_ATTEMPT",
+      "TRANSACTION_HASH",
+      "RECEIPT",
+      "TRANSFER_OR_TRACE",
+      "FINAL_STATE"
+    ]
+  },
+  "expected_reconciliation": {
+    "required": false,
+    "status_query_required": false,
+    "blind_resend_allowed": false,
+    "expected_external_effect_count": 1,
+    "expected_status": "FAILED_CONFIRMED"
+  },
+  "expected_final_state": "FAILED",
+  "expected_reason_codes": [
+    "RECEIPT_EXECUTION_FAILED"
+  ],
+  "da_evidence_reference": [
+    {
+      "evidence_id": "DA-01",
+      "path": "03_digital_asset/docs/handoff/DA_01_external_execution.md"
+    },
+    {
+      "evidence_id": "DA-03",
+      "path": "03_digital_asset/docs/handoff/DA_03_trace_binding.md"
+    }
+  ],
+  "content_digest": "sha256:43ae2826bd64d589b73e0e849a9dd121f21036697299e1d711a01aaae9a6944f"
+}
