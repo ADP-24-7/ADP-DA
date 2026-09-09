@@ -8,6 +8,9 @@ from jsonschema import Draft202012Validator
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACTS = ROOT / "02_ai" / "contracts"
 DIGITAL_ASSET_LOADER_CONTRACTS = ROOT / "03_digital_asset" / "contracts" / "be_loader_v1"
+DIGITAL_ASSET_E2E_CONTRACT = (
+    ROOT / "03_digital_asset" / "contracts" / "da_p0_local_product_e2e_fixture.schema.json"
+)
 
 SCHEMA_FILES = [
     CONTRACTS / "artifact_storage_manifest.schema.json",
@@ -75,6 +78,7 @@ def main() -> None:
         validate_schema_file(path)
     for path in BE_LOADER_SCHEMA_FILES:
         validate_be_loader_schema_file(path)
+    validate_schema_file(DIGITAL_ASSET_E2E_CONTRACT)
     for path in TAXONOMY_FILES:
         validate_taxonomy_file(path)
 
