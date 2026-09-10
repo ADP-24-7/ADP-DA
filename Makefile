@@ -20,7 +20,7 @@ PIP := $(PY) -m pip
 
 .DEFAULT_GOAL := help
 
-.PHONY: help setup install install-dev env be-env ncp-storage-env test lint format typecheck contract-check check ai-eval-preflight ai-eval-consume ai-eval-e2e ncp-storage-preflight ncp-storage-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
+.PHONY: help setup install install-dev env be-env ncp-storage-env test lint format typecheck contract-check reference-evidence-build check ai-eval-preflight ai-eval-consume ai-eval-e2e ncp-storage-preflight ncp-storage-e2e docker-network docker-build docker-up docker-rebuild docker-down docker-logs docker-ps clean
 
 help:
 	@echo "ADP-DA commands"
@@ -33,6 +33,7 @@ help:
 	@echo "  make format         Run ruff formatter"
 	@echo "  make typecheck      Run mypy"
 	@echo "  make contract-check Validate JSON handoff contracts"
+	@echo "  make reference-evidence-build Build the versioned Reference Evidence handoff"
 	@echo "  make check          Run lint, typecheck, test"
 	@echo "  make ai-eval-preflight Check fixed BE-to-DA baseline inputs without network calls"
 	@echo "  make ai-eval-consume   Validate readiness and analyze an existing BE Bundle"
@@ -82,6 +83,12 @@ typecheck:
 
 contract-check:
 	$(PY) scripts/validate_contracts.py
+
+reference-evidence-build:
+	$(PY) -m adp_da.reference_evidence \
+		--source 02_ai/reference_evidence/reference_evidence_source_v1.json \
+		--schema 02_ai/contracts/reference-evidence-bundle-v1.schema.json \
+		--output 02_ai/artifacts/reference_evidence_v1/reference-evidence-bundle.json
 
 check: lint typecheck contract-check test
 

@@ -139,6 +139,8 @@ make check
 - [분석 실행 흐름](02_ai/docs/ANALYSIS_WORKFLOW.md)
 - [개발 인수 기준](02_ai/docs/HANDOFF.md)
 - [환경 설정](SETUP.md)
+- [Reference Evidence Handoff](02_ai/docs/REFERENCE_EVIDENCE_HANDOFF.md)
+- [Reference Evidence 트러블슈팅](02_ai/docs/TROUBLESHOOTING_REFERENCE_EVIDENCE.md)
 
 ## DA to BE Handoff Boundary
 

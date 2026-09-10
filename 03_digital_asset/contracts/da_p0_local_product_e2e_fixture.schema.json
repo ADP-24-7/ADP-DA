@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adp.local/contracts/da-p0-local-product-e2e-fixture-v1.schema.json",
+  "title": "Digital Asset P0 Local Product E2E Fixture",
+  "type": "object",
+  "required": [
+    "schema_version", "fixture_id", "source", "content_digest", "runtime_support",
+    "be_runtime_contract", "approval", "requested_transaction", "submission_count",
+    "expected_pre_execution_decision", "simulated_external_result", "external_evidence",
+    "expected_trace_binding", "expected_reconciliation", "expected_final_state", "expected_reason_codes",
+    "da_evidence_reference"
+  ],
+  "properties": {
+    "schema_version": { "const": "adp-digital-asset-local-product-e2e-fixture/v1" },
+    "fixture_id": {
+      "enum": [
+        "GOLDEN_PASS", "BLOCK_AMOUNT", "BLOCK_DESTINATION", "EXECUTION_FAILED",
+        "SENT_UNKNOWN_RECOVERED", "DUPLICATE_REQUEST"
+      ]
+    },
+    "source": { "const": "SYNTHETIC" },
+    "content_digest": { "$ref": "#/$defs/digest" },
+    "runtime_support": {
+      "enum": [
+        "SUPPORTED", "REQUIRES_BE_LOCAL_FIXTURE_TRIGGER",
+        "REQUIRES_BE_RECOVERED_EXECUTION_EVIDENCE_TRIGGER"
+      ]
+    },
+    "be_runtime_contract": {
+      "type": "object",
+      "required": [
+        "endpoint", "execution_pack", "local_connector", "persistence",
+        "trace_endpoint_template"
+      ],
+      "properties": {
+        "endpoint": { "const": "/v1/runtime/executions" },
+        "execution_pack": { "const": "DIGITAL_ASSET" },
+        "local_connector": { "const": "FakeDigitalAssetConnector" },
+        "persistence": { "const": "PostgreSQL" },
+        "trace_endpoint_template": { "const": "/v1/runtime/executions/{executionId}/trace" }
+      },
+      "additionalProperties": false
+    },
+    "approval": { "$ref": "#/$defs/approval" },
+    "requested_transaction": { "$ref": "#/$defs/request" },
+    "submission_count": { "type": "integer", "minimum": 1, "maximum": 2 },
+    "expected_pre_execution_decision": { "enum": ["PASS", "BLOCK", "REVIEW"] },
+    "simulated_external_result": { "$ref": "#/$defs/external_result" },
+    "external_evidence": {
+      "type": "object",
+      "required": [
+        "transaction_hash_required", "receipt_status", "finality_status",
+        "transfer_or_trace_required", "evidence_source"
+      ],
+      "properties": {
+        "transaction_hash_required": { "type": "boolean" },
+        "receipt_status": { "enum": ["SUCCESS", "FAILED", "NOT_AVAILABLE"] },
+        "finality_status": { "enum": ["FINALIZED", "UNCONFIRMED"] },
+        "transfer_or_trace_required": { "type": "boolean" },
+        "evidence_source": { "const": "INDEPENDENT_EXTERNAL" }
+      },
+      "additionalProperties": false
+    },
+    "expected_trace_binding": {
+      "type": "object",
+      "required": ["correlation_key", "required_nodes"],
+           "properties": {
+        "correlation_key": { "const": "execution_id" },
+        "required_nodes": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+                   "items": {
+            "enum": [
+              "APPROVAL", "REQUEST", "PRE_EXECUTION_GUARD", "EXECUTION_ATTEMPT",
+              "TRANSACTION_HASH", "RECEIPT", "TRANSFER_OR_TRACE", "FINAL_STATE"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "expected_reconciliation": { "$ref": "#/$defs/reconciliation" },
+    "expected_final_state": {
+      "enum": ["COMPLETED", "BLOCKED", "FAILED", "EXTERNALLY_RECONCILED"]
+    },
+    "expected_reason_codes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" }
+    },
+    "da_evidence_reference": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "path"],
+        "properties": {
+          "evidence_id": { "enum": ["DA-01", "DA-02", "DA-03", "DA-04", "DA-05", "DA-06"] },
+          "path": { "type": "string", "pattern": "^03_digital_asset/docs/handoff/DA_0[1-6].*\\.md$" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "asset": {
+      "type": "object",
+      "required": [
+        "chain_id", "asset_kind", "asset_symbol", "asset_contract_address", "operation"
+      ],
+      "properties": {
+        "chain_id": { "const": "eip155:1" },
+        "asset_kind": { "const": "FUNGIBLE_TOKEN" },
+        "asset_symbol": { "type": "string", "minLength": 1 },
+        "asset_contract_address": { "type": "string", "pattern": "^0x[0-9a-f]{40}$" },
+        "operation": { "const": "TRANSFER" }
+      },
+      "additionalProperties": false
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "approval_reference", "policy_version", "purpose_code", "asset",
+        "maximum_amount_atomic", "counterparty_reference", "destination_profile_id",
+        "destination", "valid_from", "valid_until"
+      ],
+      "properties": {
+        "approval_reference": { "type": "string", "minLength": 1 },
+        "policy_version": { "const": "0.3.0" },
+        "purpose_code": { "const": "DIGITAL_ASSET_PURCHASE" },
+        "asset": { "$ref": "#/$defs/asset" },
+        "maximum_amount_atomic": { "$ref": "#/$defs/amount" },
+        "counterparty_reference": { "type": "string", "minLength": 1 },
+        "destination_profile_id": { "const": "dest_mock_asset_platform_v1" },
+        "destination": { "type": "string", "minLength": 1 },
+        "valid_from": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "amount": { "type": "string", "pattern": "^(?!0+$)[0-9]{1,78}$" },
+    "request": {
+      "type": "object",
+      "required": ["headers", "method", "path", "body"],
+      "properties": {
+        "headers": {
+          "type": "object",
+          "required": ["X-Request-Id", "X-Trace-Id", "X-ADP-Request-Timestamp"],
+          "properties": {
+            "X-Request-Id": { "type": "string", "minLength": 1 },
+            "X-Trace-Id": { "type": "string", "minLength": 1 },
+            "X-ADP-Request-Timestamp": { "const": "${CURRENT_UTC_ISO8601}" }
+          },
+          "additionalProperties": false
+        },
+        "method": { "const": "POST" },
+        "path": { "const": "/v1/runtime/executions" },
+        "body": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "external_result": {
+      "type": "object",
+      "required": [
+        "scenario", "connector_status", "execution_status", "receipt_status",
+        "finality_status", "external_effect_count"
+      ],
+      "properties": {
+        "scenario": { "type": "string", "minLength": 1 },
+        "connector_status": { "enum": ["NOT_SENT", "ACKNOWLEDGED", "SENT_UNKNOWN"] },
+        "execution_status": { "enum": ["NOT_EXECUTED", "SUCCESS", "FAILED", "UNKNOWN"] },
+        "receipt_status": { "enum": ["SUCCESS", "FAILED", "NOT_AVAILABLE"] },
+        "finality_status": { "enum": ["FINALIZED", "UNCONFIRMED"] },
+        "external_effect_count": { "type": "integer", "minimum": 0, "maximum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "reconciliation": {
+      "type": "object",
+      "required": [
+        "required", "status_query_required", "blind_resend_allowed",
+        "expected_external_effect_count", "expected_status"
+      ],
+      "properties": {
+        "required": { "type": "boolean" },
+        "status_query_required": { "type": "boolean" },
+        "blind_resend_allowed": { "const": false },
+        "expected_external_effect_count": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "expected_status": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  }
+}
