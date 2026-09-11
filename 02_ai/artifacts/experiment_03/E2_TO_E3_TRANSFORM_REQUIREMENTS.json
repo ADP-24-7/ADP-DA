@@ -1,0 +1,3896 @@
+{
+  "schema_version": "adp-ai-e2-to-e3-transform-requirements/v1",
+  "contract_id": "e2-to-e3-customer-summary-transform-requirements/v1",
+  "contract_version": "1.1.1",
+  "status": "FROZEN",
+  "frozen_at": "2026-09-11T00:00:00+09:00",
+  "evaluation_run_id": "ai-experiment-02-financial-regulatory-v5",
+  "dataset_id": "financial_synthetic",
+  "dataset_version": "financial_synthetic_processed_v1",
+  "dataset_digest": "sha256:9afdc4bf89c0047a5e90f21e6f8eaffb4f6c148998f1740f30baf666bdae0a44",
+  "provider_call_authorized": false,
+  "revision_rule": "E3_MUST_NOT_CHANGE_REQUIREMENTS; return changes to an E2 revision",
+  "revision": {
+    "revision_id": "E2-FIELD-REQ-REV-001",
+    "revision_version": "1.1.1",
+    "supersedes_contract_digest": "sha256:b7195430f2fdc331266518ea41b9b1435eb7c964f8c19c7c984d34af9cd185f9",
+    "trigger": "E3_REQUIRED_EXACT_UTILITY_CONTRADICTION",
+    "changed_fields": [
+      "account.balance",
+      "transaction.amount"
+    ],
+    "decision": "GENERALIZE_REMOVED_FROM_CANDIDATES_AND_PROHIBITED; KEEP_RETAINED",
+    "scope": "customer_summary:CUSTOMER_SUPPORT:SYNTHETIC_NON_LINKABLE_ONLY",
+    "approval_status": "APPROVED",
+    "approval_authority": "EXPERIMENT_02_REQUIREMENT_OWNER",
+    "approved_at": "2026-09-11T00:00:00+09:00",
+    "approval_basis": "Evidence-based E2 requirement correction directed before E2/E3 closure",
+    "activation_effect": "NONE; CURRENT_RUNTIME_REMAINS_GENERALIZE_PENDING_SEPARATE_RUNTIME_ACTIVATION",
+    "field_revisions": [
+      {
+        "field_name": "account.balance",
+        "previous_requirement": {
+          "field_requirement": "REQUIRED_EXACT",
+          "candidate_transform_methods": [
+            "KEEP",
+            "GENERALIZE"
+          ],
+          "prohibited_transform_methods": [
+            "MASK",
+            "HMAC_PSEUDO",
+            "VAULT_TOKEN",
+            "REMOVE"
+          ]
+        },
+        "revision_reason": "GENERALIZE contradicted the already-frozen REQUIRED_EXACT utility gate.",
+        "e3_evidence": {
+          "evidence_digest": "sha256:d9df06d69813a62b76407f5583bd93bcd8ad08c627eba76ccb2a09cf27fba85c",
+          "max_absolute_error": "998.84",
+          "threshold_decision_preservation_rate": 0.9968091895341417
+        },
+        "business_need": "The authorized support summary requires the factual current balance.",
+        "exact_requirement": "EXACT_MATCH=1.0; MAX_ABSOLUTE_ERROR=0; THRESHOLD_DECISION_PRESERVATION=1.0",
+        "approved_requirement": "KEEP_ONLY",
+        "prohibited_transform": [
+          "GENERALIZE"
+        ],
+        "revision_version": "1.1.1",
+        "revision_digest": "sha256:a7303e9c6bdbba07157020ee17330f58fb474b13a4d23139164d9c462bfa0a81"
+      },
+      {
+        "field_name": "transaction.amount",
+        "previous_requirement": {
+          "field_requirement": "REQUIRED_EXACT",
+          "candidate_transform_methods": [
+            "KEEP",
+            "GENERALIZE"
+          ],
+          "prohibited_transform_methods": [
+            "MASK",
+            "HMAC_PSEUDO",
+            "VAULT_TOKEN",
+            "REMOVE"
+          ]
+        },
+        "revision_reason": "GENERALIZE contradicted the already-frozen REQUIRED_EXACT utility gate.",
+        "e3_evidence": {
+          "evidence_digest": "sha256:7cdb0192fe1c0a4b198c82448fb9237597928ed91f83932b1abb106512437d62",
+          "max_absolute_error": "999.95",
+          "threshold_decision_preservation_rate": 0.9401020743903465
+        },
+        "business_need": "The authorized support summary requires the exact transaction fact.",
+        "exact_requirement": "EXACT_MATCH=1.0; MAX_ABSOLUTE_ERROR=0; THRESHOLD_DECISION_PRESERVATION=1.0",
+        "approved_requirement": "KEEP_ONLY",
+        "prohibited_transform": [
+          "GENERALIZE"
+        ],
+        "revision_version": "1.1.1",
+        "revision_digest": "sha256:676b7127dc3f50448f51c437cfba003219e40b43b31a2039c1fcd2d48cf04dc3"
+      }
+    ]
+  },
+  "requirements": [
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "input.prompt",
+      "data_classification": "BUSINESS_INSTRUCTION",
+      "business_need": "Defines the frozen summary task",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-LAWFUL-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSI-INPUT-OUTPUT-FILTER"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "PURPOSE_BINDING_POLICY",
+      "runtime_stage": "Policy",
+      "decision_reason": "Changing the frozen instruction changes the evaluated workload and invalidates cross-model comparability.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:feb9140314d6d4e0c11a790dd641c5a0c8743a1519a36228a958bf3f0563f6a3"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.customer_id",
+      "data_classification": "SYNTHETIC_CUSTOMER_IDENTIFIER",
+      "business_need": "Correlates the authorized subject with retrieved accounts",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "The raw identifier is unnecessary externally, but customer-to-account linkage must remain unambiguous inside the frozen scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:3f77b65da1e95aeda0aec55ac7c3eb5710360c8de1c133d59313d460f36a5d69"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.segment",
+      "data_classification": "SYNTHETIC_BUSINESS_METADATA",
+      "business_need": "States the customer segment used in the factual support summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Segment is a required synthetic category; alteration can make the summary factually wrong.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:622449cf2a76e94b0060cc11e71d6d1085579b50c6b977ec8ba910780349b7b3"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_id",
+      "data_classification": "SYNTHETIC_ACCOUNT_IDENTIFIER",
+      "business_need": "Links each authorized account to its transactions",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "The raw account identifier is unnecessary externally, while account-to-transaction joins are workload-critical.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:2ec4fbaa0bde56468193e0b8fa6d049458864e789601a66f1f0eb768aaf43c2f"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_type",
+      "data_classification": "SYNTHETIC_FINANCIAL_METADATA",
+      "business_need": "Identifies the account category being summarized",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "The exact category is necessary to avoid describing the wrong financial product.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:743f5d3f8576562637259089e3a503df061c74a9054b31c5ceb5410fb7b9bbbd"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.balance",
+      "data_classification": "SYNTHETIC_FINANCIAL_AMOUNT",
+      "business_need": "Provides the factual current balance in the authorized summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": "Transform",
+      "decision_reason": "The CUSTOMER_SUPPORT workload requires the factual current balance. E3 measured exact-match 0.0 and up to 998.84 absolute error for GENERALIZE, so only KEEP preserves the required statement and thresholds within the synthetic-only release scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:7476ca7323961cb5cc2709bf296e1670eafa5fa0c8b1cf141b9a54161095f843"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.transaction_id",
+      "data_classification": "SYNTHETIC_TRANSACTION_IDENTIFIER",
+      "business_need": "Keeps repeated trace references to the same transaction stable",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "DETERMINISTIC_CONSISTENCY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "Raw transaction identity is not needed, but repeated evidence references must remain consistent and collision-free.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:d3aca581c12c18299832c4dc696e40c76ab1574bffb3274d32eb6390637f0d55"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.posted_at",
+      "data_classification": "SYNTHETIC_TEMPORAL_METADATA",
+      "business_need": "Establishes recency and ordering inside the frozen 90-day window",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSS-RMF-RISK-IDENTIFY"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ORDERING_PRESERVATION",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_DATA_DIGEST_INTEGRITY",
+      "runtime_stage": "Retrieval",
+      "decision_reason": "The exact normalized timestamp proves retrieval-window eligibility and transaction ordering.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:d3507790d1fcbf4f0b43286a23ed4c8385be82e7fed0e00252fa4b1e51c83eef"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.merchant_category",
+      "data_classification": "SYNTHETIC_BUSINESS_METADATA",
+      "business_need": "Provides transaction context without free-text description",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "DATA_MINIMIZATION",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "The controlled category is necessary; free-text transaction description is not.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:473d6f9d870cb6e0625b6857d4b0adcac6a3e660ce69be53b7e7f5e380f44f18"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.amount",
+      "data_classification": "SYNTHETIC_FINANCIAL_AMOUNT",
+      "business_need": "Provides the exact transaction fact used in the summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": "Transform",
+      "decision_reason": "The CUSTOMER_SUPPORT workload requires the exact transaction fact. E3 measured exact-match 0.0 and up to 999.95 absolute error for GENERALIZE, so only KEEP preserves factual and threshold utility within the synthetic-only release scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:835167e0d3ebedbc5aec284f6754612e46bbc8641dcef404b1038b7babfbbe45"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.customer_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Composite customer name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:a71a9ff1a10efa08a24122b96219fd656647900628c9b19ea99df99d9d36b9f7"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.first_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Customer first name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:42fddeb326fc51598c06ed02516f336a968f85075d29de6770151536b3c68472"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.last_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Customer last name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:25987ff76de1f86120164ace185e481e56cfac5e39a218a0f2885fea17bad78f"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.date_of_birth",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Date of birth is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:c80cd5d160cf3d0c2f6c744d4c22e0734c42dd5fc78a9cf9e366789d57048046"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.address",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Address is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:664889ba28358e6152bf6c5e2bba5fb468f6386af780ccb8065ddee21f4ba714"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.phone_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Phone number is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:b3dd754917ab2fa195ebf6537ffc8e7ac7b8b7ecf0e466a61b4d519331ab3e8d"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.email",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Email is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:d2c96027ef072773b3668bf05b5096b206f69b57df9b91a6838693338304e479"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.resident_registration_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "PROHIBITED_EXTERNAL",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Resident registration number is prohibited from this external payload.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:12d6279f4fa7cc64a61bbfbe9d67d5f75b4b49924ab4fb3bb45c85e7ee34c416"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Raw account number is unnecessary; a scoped pseudonym is sufficient.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:26c86d92973458063c92c8f3b63ad8f7d8f49d6ec0c113f0e6913caade7d720d"
+    },
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.description",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Free-text description is unnecessary and has uncontrolled leakage risk.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:dbf667138b127bd6989e94433e2670be11a72bf6e801c708b6a4f61e4fc98cee"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "input.prompt",
+      "data_classification": "BUSINESS_INSTRUCTION",
+      "business_need": "Defines the frozen summary task",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-LAWFUL-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSI-INPUT-OUTPUT-FILTER"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "PURPOSE_BINDING_POLICY",
+      "runtime_stage": "Policy",
+      "decision_reason": "Changing the frozen instruction changes the evaluated workload and invalidates cross-model comparability.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:5890c018426c0e11802069e79ff2bfbe542b0828eb98fe41070fe6f3c687924d"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.customer_id",
+      "data_classification": "SYNTHETIC_CUSTOMER_IDENTIFIER",
+      "business_need": "Correlates the authorized subject with retrieved accounts",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "The raw identifier is unnecessary externally, but customer-to-account linkage must remain unambiguous inside the frozen scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:11a6ff8a67c1dff53af450a16778de546a7d7ee6a556629cfb41bb12ad5806fb"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.segment",
+      "data_classification": "SYNTHETIC_BUSINESS_METADATA",
+      "business_need": "States the customer segment used in the factual support summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Segment is a required synthetic category; alteration can make the summary factually wrong.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:60932a379d9894fcd17d4b38268c72266c219992e3122990a15a8187e4a7dc0a"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_id",
+      "data_classification": "SYNTHETIC_ACCOUNT_IDENTIFIER",
+      "business_need": "Links each authorized account to its transactions",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "The raw account identifier is unnecessary externally, while account-to-transaction joins are workload-critical.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:883883731b8ac2c919696854a81d92e8666ce1098914bc51aa236c182cc4a711"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_type",
+      "data_classification": "SYNTHETIC_FINANCIAL_METADATA",
+      "business_need": "Identifies the account category being summarized",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "The exact category is necessary to avoid describing the wrong financial product.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:32b92f84db502ddb1e82121dc30c5c39dfeb9af8bba1d350717fd7a2bdf20e1b"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.balance",
+      "data_classification": "SYNTHETIC_FINANCIAL_AMOUNT",
+      "business_need": "Provides the factual current balance in the authorized summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": "Transform",
+      "decision_reason": "The CUSTOMER_SUPPORT workload requires the factual current balance. E3 measured exact-match 0.0 and up to 998.84 absolute error for GENERALIZE, so only KEEP preserves the required statement and thresholds within the synthetic-only release scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:b38f438c284e235d690060bd8ec05c7e5dd4e2a2336a653fc7bbc97fedac0d8a"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.transaction_id",
+      "data_classification": "SYNTHETIC_TRANSACTION_IDENTIFIER",
+      "business_need": "Keeps repeated trace references to the same transaction stable",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "DETERMINISTIC_CONSISTENCY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "Raw transaction identity is not needed, but repeated evidence references must remain consistent and collision-free.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:5a4dccefe99b0fb74a8dfaccba55b7256c4e9e1ee74cb0091e077c6420d0307d"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.posted_at",
+      "data_classification": "SYNTHETIC_TEMPORAL_METADATA",
+      "business_need": "Establishes recency and ordering inside the frozen 90-day window",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSS-RMF-RISK-IDENTIFY"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ORDERING_PRESERVATION",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_DATA_DIGEST_INTEGRITY",
+      "runtime_stage": "Retrieval",
+      "decision_reason": "The exact normalized timestamp proves retrieval-window eligibility and transaction ordering.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:f487362aba87aef1c281e5fa138733ac1b7736d0e21d65be8bddb0448dcd37ec"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.merchant_category",
+      "data_classification": "SYNTHETIC_BUSINESS_METADATA",
+      "business_need": "Provides transaction context without free-text description",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "DATA_MINIMIZATION",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "The controlled category is necessary; free-text transaction description is not.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:539b5909c099f917685162da255f85a2c9c8734d925b6aff179fe66a481088ea"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.amount",
+      "data_classification": "SYNTHETIC_FINANCIAL_AMOUNT",
+      "business_need": "Provides the exact transaction fact used in the summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": "Transform",
+      "decision_reason": "The CUSTOMER_SUPPORT workload requires the exact transaction fact. E3 measured exact-match 0.0 and up to 999.95 absolute error for GENERALIZE, so only KEEP preserves factual and threshold utility within the synthetic-only release scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:1b2ce6733ebba3a87f005abf0e41be4f83f17931a68aaf4da894e5001799b3b1"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.customer_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Composite customer name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:ecaa41bd99a548f2b18f623e07e8e3bf08a3f02310914ae85a07228c768bc806"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.first_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Customer first name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:aa00d5ed74b5d207529205045693b34a42128543e870ad526ab4944865d49790"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.last_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Customer last name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:1b2d40d4e70930fff81895dd0d95d7854b7f489c6558f2552658bbb4094e2c1e"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.date_of_birth",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Date of birth is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:da60b8146183a3bffffcc1179712d5558ead74840c85431ec1f18ef283ff15b5"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.address",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Address is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:401196ff0e79c979d0970347409e32f1b7af4c7cd98ee8369bd3edcd32d85cbf"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.phone_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Phone number is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:803b31a218cc69c657834d6deab400441a2e2685cbff40f5eaf7ca538b01319b"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.email",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Email is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:de56849dc9305e23e4686054694ac7c77543207169eabacf30b8e7e767aaefb5"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.resident_registration_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "PROHIBITED_EXTERNAL",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Resident registration number is prohibited from this external payload.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:8f65587bccf265782997e36d45dfd452a1e515b7233ad9ca8c112ad7a2d5d50c"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Raw account number is unnecessary; a scoped pseudonym is sufficient.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:62a9ff55f23318f9169f0dc288133d3490185b986c58d6580df5f97a0ae77087"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.description",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Free-text description is unnecessary and has uncontrolled leakage risk.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:70d0c2a39680d5c79a29e9b94bb14c0de8106f2b49319e48f9211be424a0f02c"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "input.prompt",
+      "data_classification": "BUSINESS_INSTRUCTION",
+      "business_need": "Defines the frozen summary task",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-LAWFUL-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSI-INPUT-OUTPUT-FILTER"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "PURPOSE_BINDING_POLICY",
+      "runtime_stage": "Policy",
+      "decision_reason": "Changing the frozen instruction changes the evaluated workload and invalidates cross-model comparability.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:c7499c88f0657587786a021ac02b4b1d5ad2c7735c9991acb7954e8b9178c9d2"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.customer_id",
+      "data_classification": "SYNTHETIC_CUSTOMER_IDENTIFIER",
+      "business_need": "Correlates the authorized subject with retrieved accounts",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "The raw identifier is unnecessary externally, but customer-to-account linkage must remain unambiguous inside the frozen scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:2d155fa98f989d920291eeb87077cba90c4236f666c3594cc788a8a105781b26"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.segment",
+      "data_classification": "SYNTHETIC_BUSINESS_METADATA",
+      "business_need": "States the customer segment used in the factual support summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Segment is a required synthetic category; alteration can make the summary factually wrong.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:499e3934a86cbf1090f0082f16d3535214f4d8110a6b8129225052edf34e8faf"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_id",
+      "data_classification": "SYNTHETIC_ACCOUNT_IDENTIFIER",
+      "business_need": "Links each authorized account to its transactions",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "The raw account identifier is unnecessary externally, while account-to-transaction joins are workload-critical.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:bd1d17957c7d4da548cfa1aab527b146112692c34990e9a4571c0e9f0782209c"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_type",
+      "data_classification": "SYNTHETIC_FINANCIAL_METADATA",
+      "business_need": "Identifies the account category being summarized",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "The exact category is necessary to avoid describing the wrong financial product.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:ab8bd3d1bf36fe138657cde6e006d8abb5f25c5a020241594a5fcea021dd90b8"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.balance",
+      "data_classification": "SYNTHETIC_FINANCIAL_AMOUNT",
+      "business_need": "Provides the factual current balance in the authorized summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": "Transform",
+      "decision_reason": "The CUSTOMER_SUPPORT workload requires the factual current balance. E3 measured exact-match 0.0 and up to 998.84 absolute error for GENERALIZE, so only KEEP preserves the required statement and thresholds within the synthetic-only release scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:070442aac509e5b8f73dce77ad46d37332d7c5fdb679cb6024516aaa931e0952"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.transaction_id",
+      "data_classification": "SYNTHETIC_TRANSACTION_IDENTIFIER",
+      "business_need": "Keeps repeated trace references to the same transaction stable",
+      "business_necessity": "MANDATORY_TRANSFORMED",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "PIPA-PSEUDONYMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-LEGALITY",
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-003",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "RELATION_PRESERVE",
+      "transform_intent": [
+        "IDENTITY_HIDE",
+        "RELATION_PRESERVE",
+        "REVERSIBILITY_CONTROL"
+      ],
+      "utility_requirement": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "DETERMINISTIC_CONSISTENCY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": true,
+      "reversibility_allowed": true,
+      "external_release_allowed": true,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "Transform",
+      "decision_reason": "Raw transaction identity is not needed, but repeated evidence references must remain consistent and collision-free.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:304bee15d209bf817e0090dc44005750ecd86e3490d1b6616c1f233afa189901"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.posted_at",
+      "data_classification": "SYNTHETIC_TEMPORAL_METADATA",
+      "business_need": "Establishes recency and ordering inside the frozen 90-day window",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSS-RMF-RISK-IDENTIFY"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ORDERING_PRESERVATION",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_DATA_DIGEST_INTEGRITY",
+      "runtime_stage": "Retrieval",
+      "decision_reason": "The exact normalized timestamp proves retrieval-window eligibility and transaction ordering.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:3fb0c4de8c1f7398ec4fe09325f77d46844cb3fa7009619f9331a6ebbcefa615"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.merchant_category",
+      "data_classification": "SYNTHETIC_BUSINESS_METADATA",
+      "business_need": "Provides transaction context without free-text description",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "DATA_MINIMIZATION",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "The controlled category is necessary; free-text transaction description is not.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:2d71f71dea96cbbaf0066bb04ef5d91527a6384f797e22462c50b46cb7a82d88"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.amount",
+      "data_classification": "SYNTHETIC_FINANCIAL_AMOUNT",
+      "business_need": "Provides the exact transaction fact used in the summary",
+      "business_necessity": "MANDATORY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-RELIABILITY",
+        "FSC-GOOD-FAITH",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-EVAL-001",
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REQUIRED_EXACT",
+      "transform_intent": [
+        "EXACT_VALUE_PRESERVE",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "KEEP"
+      ],
+      "prohibited_transform_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "required_exact": true,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": true,
+      "runtime_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": "Transform",
+      "decision_reason": "The CUSTOMER_SUPPORT workload requires the exact transaction fact. E3 measured exact-match 0.0 and up to 999.95 absolute error for GENERALIZE, so only KEEP preserves factual and threshold utility within the synthetic-only release scope.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:002481648e4c1f778b12116e44b368daf57c0794dee641a86f2e362ec07095cb"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.customer_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Composite customer name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:0133383111cc93893be63205efbf4146a2f14d1a3df33963eaa4208663425680"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.first_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Customer first name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:c5e5be96a933b46c0bb4a9039ddda06705e7b57131fb0a824c7554acdc3718b4"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.last_name",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Customer last name is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:294b5705e1f16c24a6f4ea6d6079d0a9a398a98eebb71a06671c5c4a0b2dee4d"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.date_of_birth",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Date of birth is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:1b39c21f25e6a2ebffd6735406bf000663fd4ba7c5a99ac814ae460fafdd6bea"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.address",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Address is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:4922e4c23072d28907da769b819ec127fe99dc8af8c190f63f841f8c829b367f"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.phone_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Phone number is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:186558d289f354a1f1e8460eb26b698c4ecbf1944ed54187ddc56d05244de818"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.email",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Email is unnecessary for the summary.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:8702ab586972ae69d6baea56666f53c5e77e5a9e4ec319db6771dca8743b691e"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "customer.resident_registration_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "PROHIBITED_EXTERNAL",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Resident registration number is prohibited from this external payload.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:085da5568b835ccb48945b3468237f93ce05d0b9f7acef3385c4f72b0f36ee3a"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "account.account_number",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Raw account number is unnecessary; a scoped pseudonym is sufficient.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:9633e6f60c12d9fb7afcde79aa7a682a37a77a9504872d8a6c81c50268bf349a"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "workload_id": "customer_summary",
+      "workload_name": "Synthetic customer account and recent-transaction summary",
+      "business_domain": "BANKING_CUSTOMER_SUPPORT",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "purpose_description": "Produce an internal, human-reviewed factual summary for an authorized customer-support context",
+      "subject_scope": "ONE_AUTHORIZED_SYNTHETIC_CUSTOMER",
+      "action_type": "GENERATE_INTERNAL_SUPPORT_SUMMARY",
+      "applicability": "CONDITIONAL_SYNTHETIC_ONLY",
+      "destination_constraint": "FULLY_SYNTHETIC_NON_LINKABLE_AND_DESTINATION_GOVERNANCE_APPROVED",
+      "field_name": "transaction.description",
+      "data_classification": "SENSITIVE_OR_UNNECESSARY",
+      "business_need": "NONE",
+      "business_necessity": "NOT_NECESSARY",
+      "regulatory_requirement_ids": [
+        "PIPA-MINIMIZATION",
+        "CREDIT-PROVISION-PURPOSE"
+      ],
+      "supervisory_guidance_ids": [
+        "FSC-SECURITY",
+        "FSI-DATA-LEAKAGE"
+      ],
+      "internal_policy_ids": [
+        "CTRL-RUNTIME-001",
+        "CTRL-RUNTIME-008"
+      ],
+      "field_requirement": "REMOVE",
+      "transform_intent": [
+        "DATA_MINIMIZATION",
+        "DESTINATION_LIMIT",
+        "PURPOSE_LIMIT"
+      ],
+      "utility_requirement": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "candidate_transform_methods": [
+        "REMOVE"
+      ],
+      "prohibited_transform_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "required_exact": false,
+      "relation_preservation_required": false,
+      "reversibility_allowed": false,
+      "external_release_allowed": false,
+      "runtime_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": "OutboundGuard",
+      "decision_reason": "Free-text description is unnecessary and has uncontrolled leakage risk.",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "evidence_digest": "sha256:708227a8f076407ec02ba518e418aa60c047a2350fa859a2d2e300760f99c6fa"
+    }
+  ],
+  "contract_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e"
+}

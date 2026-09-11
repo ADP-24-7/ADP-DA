@@ -1,0 +1,1812 @@
+{
+  "schema_version": "adp-ai-financial-regulatory-evidence/v2",
+  "corpus_id": "financial-regulatory-evidence/v2",
+  "frozen_at": "2026-09-11T00:00:00+09:00",
+  "workload": "customer_summary",
+  "purpose_code": "CUSTOMER_SUPPORT",
+  "data_profile": "SYNTHETIC_NON_PERSONAL",
+  "provider_profile": "NVIDIA_API_CATALOG_HOSTED_NIM",
+  "destination_profile": "NVIDIA_DGX_CLOUD_LOCATION_NOT_ASSERTED",
+  "sources": [
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "version": "2026.6",
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "document_digest": "sha256:c8879912a12d491356dbe482d0ff48eecee8fd47093cf0e7f284b14c2329c2f5"
+    },
+    {
+      "source_id": "FSS-AI-RMF-2026",
+      "source_title": "금융분야 AI 위험관리 프레임워크",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융감독원",
+      "effective_date": "2026-06-22",
+      "version": "2026.6 final",
+      "citation": "https://eiec.kdi.re.kr/policy/materialView.do?num=275955",
+      "provenance_note": "금융감독원 배포본의 정부 정책자료 아카이브와 금융위 가이드라인 제1장(거버넌스·위험평가·위험통제)을 교차 확인"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "version": "2026.6",
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "document_digest": "sha256:e463f4482f1d79ef5cbf9ebd01aec4e8027b41517753d4f30e0d83efacaabbe9"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "version": "법률 제20897호",
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351"
+    },
+    {
+      "source_id": "CREDIT-INFO-ACT-2026",
+      "source_title": "신용정보의 이용 및 보호에 관한 법률",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-13",
+      "version": "법률 제21646호",
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1025128241"
+    },
+    {
+      "source_id": "AI-BASIC-ACT-2026",
+      "source_title": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-07-21",
+      "version": "법률 제21311호",
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1031809547"
+    },
+    {
+      "source_id": "AI-BASIC-DECREE-2026",
+      "source_title": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법 시행령",
+      "source_type": "REGULATION",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-20",
+      "version": "대통령령 제36580호",
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=198009"
+    },
+    {
+      "source_id": "EFSR-2026",
+      "source_title": "전자금융감독규정",
+      "source_type": "REGULATION",
+      "authority": "금융위원회",
+      "effective_date": "2026-07-15",
+      "version": "금융위원회고시 제2026-29호",
+      "citation": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&joNo=0014"
+    },
+    {
+      "source_id": "FSI-FRONTIER-AI-2026",
+      "source_title": "프런티어 AI 보안 위협 금융분야 대응 요령",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-07-01",
+      "version": "2026",
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11989&menuNo=222"
+    },
+    {
+      "source_id": "FSI-SAAS-GUIDE-2026",
+      "source_title": "내부업무망 SaaS 망분리 예외 적용에 따른 보안 해설서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-05-01",
+      "version": "2026",
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11929&menuNo=222"
+    }
+  ],
+  "requirements": [
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.1 거버넌스 원칙",
+      "requirement_id": "FSC-GOVERNANCE",
+      "requirement_text": "AI 수명주기 전반의 역할·책임, 의사결정기구, 독립 위험관리 조직과 내규를 갖춘다.",
+      "applicability_condition": "금융회사가 AI를 직·간접 활용",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "ALL"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "ALL"
+      ],
+      "fpg_control_id": "EVALUATION_CONTRACT_GOVERNANCE",
+      "runtime_stage": [
+        "ContractEvaluationBundle",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "FROZEN_AND_TRACEABLE",
+      "evidence_field": [
+        "evaluationRunId",
+        "contractDigest",
+        "policyVersion",
+        "stageTimings"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:cf1790fae5a2562cf49233aafb1f6e66888ab34a19064732bc1bc0ac90719a51"
+    },
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.2 합법성 원칙",
+      "requirement_id": "FSC-LEGALITY",
+      "requirement_text": "적용 법규를 사전 식별하고 내부 절차·외부 계약에 반영하여 준수 여부를 점검한다.",
+      "applicability_condition": "AI 업무 전 과정",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "DECLARED_BY_CONTRACT"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "DESTINATION_PROFILE"
+      ],
+      "fpg_control_id": "REGULATORY_APPLICABILITY_BINDING",
+      "runtime_stage": [
+        "WorkloadPurposeSubjectActionBinding",
+        "Policy",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "APPLICABILITY_RESOLVED",
+      "evidence_field": [
+        "regulatoryRequirementRefs",
+        "regulatoryEvidenceRefs",
+        "policyAction"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:fd087aaedc86adb7e359906863c7370f196dc47eef267f6879e4ef8e8196d3cd"
+    },
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.3 보조수단성 원칙",
+      "requirement_id": "FSC-ASSISTIVE",
+      "requirement_text": "AI 산출물은 보조수단으로 사용하고 최종 의사결정과 책임은 임직원이 수행한다.",
+      "applicability_condition": "AI 산출물이 업무 판단을 보조",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "CONTROLLED_RESPONSE"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "CONTROLLED_DELIVERY_HUMAN_REVIEW",
+      "runtime_stage": [
+        "ResponseGuard",
+        "ControlledDelivery"
+      ],
+      "expected_decision": "DELIVERED_OR_REVIEW_OR_WITHHELD",
+      "evidence_field": [
+        "responseGuardStatus",
+        "controlledDeliveryStatus",
+        "responseFindingTypes"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:ee8760e473287e02b37e89f2a203b7521e2424252bcfef5446ed3d8a0e543d38"
+    },
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.4 신뢰성 원칙",
+      "requirement_id": "FSC-RELIABILITY",
+      "requirement_text": "신뢰 가능한 데이터·모델을 사용하고 품질·정확성·설명가능성을 검증한다.",
+      "applicability_condition": "외부 모델로 요약 생성",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "RETRIEVED_FIELDS"
+      ],
+      "provider_scope": [
+        "APPROVED_MODEL_CATALOG"
+      ],
+      "destination_scope": [
+        "APPROVED_ONLY"
+      ],
+      "fpg_control_id": "MODEL_AND_RESPONSE_VALIDATION",
+      "runtime_stage": [
+        "Retrieval",
+        "Provider",
+        "ResponseGuard"
+      ],
+      "expected_decision": "PASSED_OR_REJECTED",
+      "evidence_field": [
+        "retrievedContextDigest",
+        "modelProfileDigest",
+        "providerStatus",
+        "responseFindingTypes"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:bf895384ae61d78251978324ed3cd14c1d79b991bef960b4648a4548cd0ae9d0"
+    },
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.5 금융안정성 원칙",
+      "requirement_id": "FSC-FINANCIAL-STABILITY",
+      "requirement_text": "AI 전 과정에서 집중·제3자·운영 위험을 식별하고 중단·복구 수단을 관리한다.",
+      "applicability_condition": "외부 AI 서비스 의존",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "TRANSFORMED_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "PROVIDER_FAILURE_CONTAINMENT",
+      "runtime_stage": [
+        "OutboundGuard",
+        "Provider",
+        "ControlledDelivery",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "FAIL_CLOSED",
+      "evidence_field": [
+        "outboundGuardStatus",
+        "providerStatus",
+        "providerError",
+        "controlledDeliveryStatus"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:358645dd07cf63ab603ce7735230da47c95f1996e181b1616ec8c14d27052688"
+    },
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.6 신의성실 원칙",
+      "requirement_id": "FSC-GOOD-FAITH",
+      "requirement_text": "AI 활용 시 금융소비자 이익을 우선하고 부당하거나 근거 없는 출력을 통제한다.",
+      "applicability_condition": "고객 관련 요약 생성",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "CONTROLLED_RESPONSE"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "UNSUPPORTED_CLAIM_RESPONSE_GUARD",
+      "runtime_stage": [
+        "ResponseGuard",
+        "ControlledDelivery"
+      ],
+      "expected_decision": "DELIVERED_OR_REVIEW_OR_WITHHELD",
+      "evidence_field": [
+        "responseFindingTypes",
+        "responseGuardStatus",
+        "controlledDeliveryStatus"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:b0cf8eb9913e7ba5073bdc8c6334baeb7df600595963e0f4b9a3ebfd2dd5d160"
+    },
+    {
+      "source_id": "FSC-AI-GUIDELINE-2026-06",
+      "source_title": "금융분야 인공지능 가이드라인",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융위원회",
+      "effective_date": "2026-06-22",
+      "article_or_section": "Ⅱ.7 보안성 원칙",
+      "requirement_id": "FSC-SECURITY",
+      "requirement_text": "AI 특화 위협을 식별하고 기존 보안통제를 확장하여 개발·운영 전 과정의 보안성을 검증한다.",
+      "applicability_condition": "외부 생성형 AI API 사용",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "TRANSFORMED_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "END_TO_END_AI_SECURITY",
+      "runtime_stage": [
+        "Authentication",
+        "Authorization",
+        "Transform",
+        "OutboundGuard",
+        "ResponseGuard",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "ALL_CONTROLS_EVIDENCED",
+      "evidence_field": [
+        "authorizationResult",
+        "transformStatus",
+        "outboundGuardStatus",
+        "responseGuardStatus",
+        "stageTimings"
+      ],
+      "citation": "https://www.fsc.go.kr/po010102/87142",
+      "content_digest": "sha256:7b9f68683f67c3c6c9c6539ff9c394510c1c66fa9976faa6638feba67a7534dc"
+    },
+    {
+      "source_id": "FSS-AI-RMF-2026",
+      "source_title": "금융분야 AI 위험관리 프레임워크",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융감독원",
+      "effective_date": "2026-06-22",
+      "article_or_section": "거버넌스-의사결정기구·전담조직",
+      "requirement_id": "FSS-RMF-ACCOUNTABILITY",
+      "requirement_text": "중요 AI 사항을 심의하고 기획·개발 조직과 독립된 위험관리 기능이 전 주기 위험을 총괄한다.",
+      "applicability_condition": "금융회사 AI 활용",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "ALL"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "ALL"
+      ],
+      "fpg_control_id": "CONTRACT_OWNER_AND_APPROVAL",
+      "runtime_stage": [
+        "Authorization",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "AUTHORIZED_AND_FROZEN",
+      "evidence_field": [
+        "authorizationResult",
+        "contractDigest",
+        "snapshotDigest"
+      ],
+      "citation": "https://eiec.kdi.re.kr/policy/materialView.do?num=275955",
+      "content_digest": "sha256:0dc30bcf94520b9475e5a4ee470176150d9e336a4cb568831bfcb9feb73177cd"
+    },
+    {
+      "source_id": "FSS-AI-RMF-2026",
+      "source_title": "금융분야 AI 위험관리 프레임워크",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융감독원",
+      "effective_date": "2026-06-22",
+      "article_or_section": "위험평가-위험 인식·측정",
+      "requirement_id": "FSS-RMF-RISK-IDENTIFY",
+      "requirement_text": "서비스별 합법성·신뢰성·신의성실·보안 위험을 인식하고 측정한다.",
+      "applicability_condition": "E2 서비스 사전평가",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "DECLARED_BY_CONTRACT"
+      ],
+      "provider_scope": [
+        "APPROVED_MODEL_CATALOG"
+      ],
+      "destination_scope": [
+        "DESTINATION_PROFILE"
+      ],
+      "fpg_control_id": "PREFLIGHT_RISK_IDENTIFICATION",
+      "runtime_stage": [
+        "Policy",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "RISK_PROFILE_BOUND",
+      "evidence_field": [
+        "policyVersion",
+        "snapshotDigest",
+        "regulatoryEvidenceDigest"
+      ],
+      "citation": "https://eiec.kdi.re.kr/policy/materialView.do?num=275955",
+      "content_digest": "sha256:5c284b7ad4a1b575113782836c2d8e9f6b149482a0ac8fc0fbcc215bb792745c"
+    },
+    {
+      "source_id": "FSS-AI-RMF-2026",
+      "source_title": "금융분야 AI 위험관리 프레임워크",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융감독원",
+      "effective_date": "2026-06-22",
+      "article_or_section": "위험평가-경감·잔여위험·등급",
+      "requirement_id": "FSS-RMF-RESIDUAL-RISK",
+      "requirement_text": "경감조치 수행 후 잔여위험을 평가하고 서비스 위험등급을 확정한다.",
+      "applicability_condition": "E2 통제 적용 전후",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "TRANSFORMED_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "POLICY_GUARD_RESIDUAL_RISK",
+      "runtime_stage": [
+        "Policy",
+        "Transform",
+        "OutboundGuard",
+        "ResponseGuard"
+      ],
+      "expected_decision": "ALLOW_TRANSFORM_BLOCK_OR_REVIEW",
+      "evidence_field": [
+        "policyAction",
+        "transformStatus",
+        "outboundGuardStatus",
+        "responseGuardStatus"
+      ],
+      "citation": "https://eiec.kdi.re.kr/policy/materialView.do?num=275955",
+      "content_digest": "sha256:53137cbe7e9c71bc5ae8e5ca6624caa7fd27d4f9a0031c2a189315ad64f6d006"
+    },
+    {
+      "source_id": "FSS-AI-RMF-2026",
+      "source_title": "금융분야 AI 위험관리 프레임워크",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융감독원",
+      "effective_date": "2026-06-22",
+      "article_or_section": "위험통제-차등 통제·검증",
+      "requirement_id": "FSS-RMF-DIFFERENTIATED-CONTROL",
+      "requirement_text": "위험 수준에 따라 승인, 제3자 검증, 모니터링을 차등 적용하고 초고위험은 출시를 재검토한다.",
+      "applicability_condition": "내부 보조용 E2는 고영향·초고위험 아님",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "RISK_BASED_EXECUTION_APPROVAL",
+      "runtime_stage": [
+        "Authorization",
+        "Policy",
+        "ControlledDelivery"
+      ],
+      "expected_decision": "APPROVED_LOW_RISK_PATH",
+      "evidence_field": [
+        "authorizationResult",
+        "policyAction",
+        "controlledDeliveryStatus"
+      ],
+      "citation": "https://eiec.kdi.re.kr/policy/materialView.do?num=275955",
+      "content_digest": "sha256:7208096ba9211f2189d7adf7a69a8f72a22fc9b2079747768490d785942739fa"
+    },
+    {
+      "source_id": "FSS-AI-RMF-2026",
+      "source_title": "금융분야 AI 위험관리 프레임워크",
+      "source_type": "SUPERVISORY_GUIDELINE",
+      "authority": "금융감독원",
+      "effective_date": "2026-06-22",
+      "article_or_section": "위험통제-모니터링·문서화",
+      "requirement_id": "FSS-RMF-MONITORING",
+      "requirement_text": "운영 모니터링, 재평가, 문서화와 사고 대응·감독정보 공유 근거를 유지한다.",
+      "applicability_condition": "모든 E2 execution",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "DIGEST_ONLY"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "ALL"
+      ],
+      "fpg_control_id": "FULL_STAGE_TRACE",
+      "runtime_stage": [
+        "StageTimingTrace",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "TRACE_COMPLETE",
+      "evidence_field": [
+        "executionId",
+        "stageTimings",
+        "providerError",
+        "contentDigest"
+      ],
+      "citation": "https://eiec.kdi.re.kr/policy/materialView.do?num=275955",
+      "content_digest": "sha256:692e23998584f6ee79df5d0bbd6ed9b748b3d22c95f1108fcf57dcf9ceb901dc"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제2장 위협 모델링",
+      "requirement_id": "FSI-THREAT-MODEL",
+      "requirement_text": "데이터·모델·API·인프라 자산과 공격 벡터를 식별하고 통제를 설계·검증한다.",
+      "applicability_condition": "외부 AI API 사용",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "TRANSFORMED_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "AI_THREAT_MODEL_BINDING",
+      "runtime_stage": [
+        "ContractEvaluationBundle",
+        "OutboundGuard",
+        "ResponseGuard"
+      ],
+      "expected_decision": "THREAT_CONTROLS_BOUND",
+      "evidence_field": [
+        "destinationContractDigest",
+        "outboundGuardStatus",
+        "responseFindingTypes"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:dde2b75121ebf747cc86aefad0fbb7a7d99ce50b86b3ed12c5e7ae80779f2489"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제3장 입출력 필터링",
+      "requirement_id": "FSI-INPUT-OUTPUT-FILTER",
+      "requirement_text": "Prompt/Input 공격과 Output 유출·위험 응답을 필터링하고 탐지 시 차단한다.",
+      "applicability_condition": "생성형 AI 입출력",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "PROMPT_AND_RESPONSE"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "OUTBOUND_AND_RESPONSE_GUARD",
+      "runtime_stage": [
+        "OutboundGuard",
+        "ResponseGuard"
+      ],
+      "expected_decision": "PASSED_BLOCKED_OR_REJECTED",
+      "evidence_field": [
+        "outboundGuardStatus",
+        "responseGuardStatus",
+        "responseFindingTypes"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:5dbbb9c2ecf71c328253f8057e03322d8406d56b432193e2b7dc5d4a08cc8e42"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제4장 데이터·모델 추출 공격 대응",
+      "requirement_id": "FSI-DATA-LEAKAGE",
+      "requirement_text": "고유식별·개인신용정보와 시스템 프롬프트 노출을 점검하고 필요한 정보만 공개한다.",
+      "applicability_condition": "retrieved context의 외부 전송",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "RELEASED_FIELDS_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "DATA_MINIMIZATION_AND_LEAKAGE_GUARD",
+      "runtime_stage": [
+        "Retrieval",
+        "Transform",
+        "OutboundGuard",
+        "ResponseGuard"
+      ],
+      "expected_decision": "MINIMIZED_AND_GUARDED",
+      "evidence_field": [
+        "retrievedFieldsDigest",
+        "transformedDigest",
+        "releasedFieldsDigest",
+        "responseFindingTypes"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:c4a2f41d91b5a680ee482b02c800b117f14c09e8c583a9a7eed7c30a126444f1"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제4장 자산 목록·형상 관리",
+      "requirement_id": "FSI-ASSET-INTEGRITY",
+      "requirement_text": "데이터·모델·시스템 프롬프트 목록과 접근·변경·삭제 기록 및 해시를 관리한다.",
+      "applicability_condition": "E2 model/data snapshot",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "DIGEST_ONLY"
+      ],
+      "provider_scope": [
+        "APPROVED_MODEL_CATALOG"
+      ],
+      "destination_scope": [
+        "ALL"
+      ],
+      "fpg_control_id": "MODEL_DATA_DIGEST_INTEGRITY",
+      "runtime_stage": [
+        "ContractEvaluationBundle",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "DIGEST_MATCH",
+      "evidence_field": [
+        "datasetDigest",
+        "modelProfileDigest",
+        "snapshotDigest",
+        "requestDigest",
+        "responseDigest"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:a9bb4236e6c488efef877c1cc38e88f16b4cf54130e69cea11a0a6158671030e"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제5장 외부 모델·공급망",
+      "requirement_id": "FSI-SUPPLY-CHAIN",
+      "requirement_text": "외부 API 제공자의 안전성을 계약·SLA·보안인증·공시로 확인하고 외부 도구를 사전 승인·허용목록화한다.",
+      "applicability_condition": "NVIDIA hosted API",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_TRANSFORMED"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "NVIDIA_DGX_CLOUD"
+      ],
+      "fpg_control_id": "APPROVED_PROVIDER_DESTINATION",
+      "runtime_stage": [
+        "Authorization",
+        "Policy",
+        "OutboundGuard",
+        "Provider"
+      ],
+      "expected_decision": "APPROVED_DESTINATION_ONLY",
+      "evidence_field": [
+        "providerProfileId",
+        "destinationProfileId",
+        "destinationContractDigest",
+        "providerStatus"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:eb1bd0a2b99d8470c19b355b0c12426d3db4c919ce3acc096ff485d51b9de78b"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제6장 접근통제·네트워크·로그",
+      "requirement_id": "FSI-ACCESS-NETWORK-LOG",
+      "requirement_text": "업무·데이터·기능별 최소권한과 외부 API 허용목록, 접근로그 및 네트워크 보호를 적용한다.",
+      "applicability_condition": "인증된 runtime 요청",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "RELEASED_FIELDS_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "ALLOWLISTED"
+      ],
+      "fpg_control_id": "AUTHZ_AND_DESTINATION_ALLOWLIST",
+      "runtime_stage": [
+        "Authentication",
+        "Authorization",
+        "OutboundGuard",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "ALLOWED_OR_BLOCKED_WITH_TRACE",
+      "evidence_field": [
+        "authenticationResult",
+        "authorizationResult",
+        "outboundGuardStatus",
+        "observedAt"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:180606ed36257f452979987ceab1283a1d54cfc1e9d722212a71f92d7159f967"
+    },
+    {
+      "source_id": "FSI-AI-SECURITY-2026-06",
+      "source_title": "금융분야 인공지능 보안 안내서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-06-19",
+      "article_or_section": "제7장 보안성 검증·운영관리",
+      "requirement_id": "FSI-SECURITY-VALIDATION",
+      "requirement_text": "운영 전과 운영 중 정기 보안검증, 위협 모니터링, 패치와 사고 대응 절차를 수행한다.",
+      "applicability_condition": "E2 preflight와 execution",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "ALL_EVIDENCE"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "PREFLIGHT_AND_RUNTIME_INVARIANTS",
+      "runtime_stage": [
+        "OutboundGuard",
+        "Provider",
+        "ResponseGuard",
+        "ControlledDelivery",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "INVARIANTS_PASS",
+      "evidence_field": [
+        "preflightStatus",
+        "providerStatus",
+        "responseGuardStatus",
+        "controlledDeliveryStatus",
+        "stageTimings"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11977&menuNo=222",
+      "content_digest": "sha256:d356465731398662b48de846e0e5e80b539ca8c8ca5ada3cfa3d9ec20c1dc8b7"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제15조·제18조",
+      "requirement_id": "PIPA-LAWFUL-PURPOSE",
+      "requirement_text": "적법한 수집·이용 근거와 목적 범위 내 처리 여부를 확인하고 목적 외 이용·제공을 제한한다.",
+      "applicability_condition": "실제 개인정보 처리 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_PERSONAL"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "PURPOSE_BINDING_POLICY",
+      "runtime_stage": [
+        "WorkloadPurposeSubjectActionBinding",
+        "Policy"
+      ],
+      "expected_decision": "NOT_APPLICABLE_SYNTHETIC_DATA",
+      "evidence_field": [
+        "purposeCode",
+        "dataProfile",
+        "policyAction"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:e06e11e132b3b6b98952c1309050ea8b2ffac9fc341832f15c2908536278052c"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제16조",
+      "requirement_id": "PIPA-MINIMIZATION",
+      "requirement_text": "처리 목적에 필요한 최소한의 개인정보만 수집·처리한다.",
+      "applicability_condition": "실제 개인정보 처리 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_PERSONAL"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "MINIMUM_FIELD_CONTRACT",
+      "runtime_stage": [
+        "Retrieval",
+        "Transform",
+        "OutboundGuard"
+      ],
+      "expected_decision": "NOT_APPLICABLE_CONTROL_STILL_TESTED",
+      "evidence_field": [
+        "selectedFields",
+        "transformedDigest",
+        "releasedFieldsDigest"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:5ce443116c92bbdd1713eee1a4f8bb5b794390da62903b4064cf3f156cd265fe"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제17조·제26조",
+      "requirement_id": "PIPA-PROVISION-OUTSOURCING",
+      "requirement_text": "제3자 제공 또는 처리위탁의 근거·범위·수탁자 보호조치를 확인한다.",
+      "applicability_condition": "실제 개인정보를 외부 제공·위탁 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_PERSONAL"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "DESTINATION_PROFILE_AND_CONTRACT",
+      "runtime_stage": [
+        "Policy",
+        "OutboundGuard"
+      ],
+      "expected_decision": "NOT_APPLICABLE_SYNTHETIC_DATA",
+      "evidence_field": [
+        "destinationProfileId",
+        "destinationContractDigest",
+        "outboundGuardStatus"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:c93f81505982843446e72ca83f398750573fbd7f757db63f41a2d3793c1ac48d"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제28조의2·제28조의7",
+      "requirement_id": "PIPA-PSEUDONYMIZATION",
+      "requirement_text": "가명정보는 허용 목적과 결합·재식별 금지 및 특례 범위 안에서 처리한다.",
+      "applicability_condition": "가명정보 사용 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NOT_PSEUDONYMOUS"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "ALL"
+      ],
+      "fpg_control_id": "DATA_CLASS_BINDING",
+      "runtime_stage": [
+        "Retrieval",
+        "Policy"
+      ],
+      "expected_decision": "NOT_APPLICABLE_NOT_PSEUDONYMOUS",
+      "evidence_field": [
+        "dataProfile",
+        "runtimeDataClasses"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:2594d4617a1eee91a0fb1f532415fba79091e2fe49eed9f42c3d1194266803b6"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제28조의8·제28조의9",
+      "requirement_id": "PIPA-OVERSEAS-TRANSFER",
+      "requirement_text": "개인정보의 국외 제공·위탁·보관은 법정 근거와 보호조치를 충족하고 중지명령 가능성을 관리한다.",
+      "applicability_condition": "destination region이 국외이고 실제 개인정보가 이전될 때",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_PERSONAL"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "REGION_METADATA_REQUIRED_IF_PERSONAL"
+      ],
+      "fpg_control_id": "CONDITIONAL_OVERSEAS_TRANSFER_GUARD",
+      "runtime_stage": [
+        "Policy",
+        "OutboundGuard"
+      ],
+      "expected_decision": "NOT_APPLICABLE_SYNTHETIC_DATA",
+      "evidence_field": [
+        "dataProfile",
+        "destinationRegion",
+        "releasedFieldsDigest"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:5843eaf7aaa885060ec1ec3a1fb4e47d7ed46d54d7efc9e92854eecd3f20a9f6"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제21조·제29조",
+      "requirement_id": "PIPA-SECURITY-DISPOSAL",
+      "requirement_text": "안전성 확보조치를 적용하고 보유 필요가 끝난 개인정보는 지체 없이 파기한다.",
+      "applicability_condition": "실제 개인정보 저장·처리 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_PERSONAL"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "DIGEST_ONLY_EVIDENCE_AND_RETENTION",
+      "runtime_stage": [
+        "Provider",
+        "StageTimingTrace",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "NOT_APPLICABLE_SYNTHETIC_DATA",
+      "evidence_field": [
+        "requestDigest",
+        "responseDigest",
+        "retentionPolicy"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:a6fcd1dd993c215ec3b47034d405b70e0c48d8491260df826ae6ba6585fafa89"
+    },
+    {
+      "source_id": "PIPA-2026",
+      "source_title": "개인정보 보호법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2025-10-02",
+      "article_or_section": "제37조의2",
+      "requirement_id": "PIPA-AUTOMATED-DECISION",
+      "requirement_text": "완전 자동화 결정이 권리·의무에 중대한 영향을 주면 거부·설명 등 정보주체 권리를 보장한다.",
+      "applicability_condition": "완전 자동화된 중대한 결정 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "INTERNAL_SUMMARY_ONLY"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "HUMAN_CONTROLLED_DELIVERY",
+      "runtime_stage": [
+        "ResponseGuard",
+        "ControlledDelivery"
+      ],
+      "expected_decision": "NOT_APPLICABLE_NO_AUTOMATED_DECISION",
+      "evidence_field": [
+        "workloadId",
+        "purposeCode",
+        "controlledDeliveryStatus"
+      ],
+      "citation": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=270351",
+      "content_digest": "sha256:f9cf477c5728b63df39e7cbf3a3e7036046800fd44b74b8a1cb62824b50ecdf0"
+    },
+    {
+      "source_id": "CREDIT-INFO-ACT-2026",
+      "source_title": "신용정보의 이용 및 보호에 관한 법률",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-13",
+      "article_or_section": "제15조",
+      "requirement_id": "CREDIT-COLLECTION-USE",
+      "requirement_text": "개인신용정보 수집·처리는 동의 또는 법정 근거와 이용 목적 범위 안에서 수행한다.",
+      "applicability_condition": "실제 개인신용정보 처리 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_CREDIT"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "CREDIT_DATA_CLASS_POLICY",
+      "runtime_stage": [
+        "WorkloadPurposeSubjectActionBinding",
+        "Policy"
+      ],
+      "expected_decision": "NOT_APPLICABLE_SYNTHETIC_DATA",
+      "evidence_field": [
+        "runtimeDataClasses",
+        "purposeCode",
+        "policyAction"
+      ],
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1025128241",
+      "content_digest": "sha256:2b4788fee00c6a39833eb4ea4bbca90a5e66ed851cdd8a26cd1f1e47a8cd8890"
+    },
+    {
+      "source_id": "CREDIT-INFO-ACT-2026",
+      "source_title": "신용정보의 이용 및 보호에 관한 법률",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-13",
+      "article_or_section": "제19조·제20조의2",
+      "requirement_id": "CREDIT-SAFEGUARDS-RETENTION",
+      "requirement_text": "신용정보 전산시스템 안전보호, 접근통제·기록과 보유기간 종료 후 삭제를 관리한다.",
+      "applicability_condition": "실제 신용정보 처리·보유 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_CREDIT"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "ALL"
+      ],
+      "fpg_control_id": "ACCESS_TRACE_RETENTION",
+      "runtime_stage": [
+        "Authentication",
+        "Authorization",
+        "StageTimingTrace",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "NOT_APPLICABLE_SYNTHETIC_DATA",
+      "evidence_field": [
+        "authorizationResult",
+        "observedAt",
+        "retentionPolicy"
+      ],
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1020414797",
+      "content_digest": "sha256:f30ab5a53dfeb927a8352e8714c9600d3834cc51db658e0efa88534e2e0f62d8"
+    },
+    {
+      "source_id": "CREDIT-INFO-ACT-2026",
+      "source_title": "신용정보의 이용 및 보호에 관한 법률",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-13",
+      "article_or_section": "제32조·제33조",
+      "requirement_id": "CREDIT-PROVISION-PURPOSE",
+      "requirement_text": "개인신용정보 제공·이용의 근거와 목적·범위를 확인하고 승인 범위를 벗어난 처리를 차단한다.",
+      "applicability_condition": "실제 개인신용정보 외부 제공 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC_NON_CREDIT"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "APPROVED_SCOPE_ONLY",
+      "runtime_stage": [
+        "Authorization",
+        "Policy",
+        "OutboundGuard"
+      ],
+      "expected_decision": "NOT_APPLICABLE_CONTROL_STILL_TESTED",
+      "evidence_field": [
+        "authorizationResult",
+        "policyAction",
+        "outboundGuardStatus"
+      ],
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1025127713",
+      "content_digest": "sha256:6fafb1405a377838cf5e6359c3f6c2375ec72fb2c11c3005a5694106ff259db1"
+    },
+    {
+      "source_id": "CREDIT-INFO-ACT-2026",
+      "source_title": "신용정보의 이용 및 보호에 관한 법률",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-13",
+      "article_or_section": "제36조의2",
+      "requirement_id": "CREDIT-AUTOMATED-EVALUATION",
+      "requirement_text": "개인신용평가 또는 금융거래 의사결정의 자동화평가는 결과·주요 기준·기초정보 설명과 권리보호를 적용한다.",
+      "applicability_condition": "개인신용평가·금융거래 심사에 실제 관여 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "INTERNAL_SUMMARY_ONLY"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "NO_CREDIT_DECISION_ASSERTION",
+      "runtime_stage": [
+        "WorkloadPurposeSubjectActionBinding",
+        "ControlledDelivery"
+      ],
+      "expected_decision": "NOT_APPLICABLE_INTERNAL_ASSISTANCE",
+      "evidence_field": [
+        "workloadId",
+        "purposeCode",
+        "controlledDeliveryStatus"
+      ],
+      "citation": "https://www.law.go.kr/LSW/lsInfoP.do?lsId=010062",
+      "content_digest": "sha256:1796ad78b7e826a033c426f6977e5db767fffd2d54d653bab849d174521c9ebc"
+    },
+    {
+      "source_id": "AI-BASIC-ACT-2026",
+      "source_title": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-07-21",
+      "article_or_section": "제31조",
+      "requirement_id": "AI-ACT-GENERATIVE-TRANSPARENCY",
+      "requirement_text": "생성형 AI 기반 제품·서비스의 사전고지와 생성 결과물 표시 의무 적용 여부를 판정한다.",
+      "applicability_condition": "외부 이용자에게 생성형 AI 제품·서비스 또는 결과 제공 시",
+      "applicability": "CONDITIONAL",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "CONTROLLED_RESPONSE"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN_ONLY"
+      ],
+      "fpg_control_id": "AI_GENERATED_RESULT_NOTICE",
+      "runtime_stage": [
+        "ControlledDelivery"
+      ],
+      "expected_decision": "INTERNAL_ONLY_OR_NOTICE_REQUIRED",
+      "evidence_field": [
+        "deliveryAudience",
+        "controlledDeliveryStatus",
+        "aiGeneratedNotice"
+      ],
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1031809547",
+      "content_digest": "sha256:6e5ce3d436dc1e73991e9a31f947d717e899248100688e28da03931a990b9e62"
+    },
+    {
+      "source_id": "AI-BASIC-ACT-2026",
+      "source_title": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-07-21",
+      "article_or_section": "제33조",
+      "requirement_id": "AI-ACT-HIGH-IMPACT-CHECK",
+      "requirement_text": "고영향 인공지능 해당 여부를 사전에 확인한다.",
+      "applicability_condition": "법정 고영향 영역에서 권리·의무에 중대한 영향",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "INTERNAL_SUMMARY_ONLY"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "HIGH_IMPACT_APPLICABILITY_CHECK",
+      "runtime_stage": [
+        "WorkloadPurposeSubjectActionBinding",
+        "Policy"
+      ],
+      "expected_decision": "NOT_APPLICABLE_NO_HIGH_IMPACT_DECISION",
+      "evidence_field": [
+        "workloadId",
+        "purposeCode",
+        "highImpactApplicability"
+      ],
+      "citation": "https://www.law.go.kr/LSW/lsInfoP.do?lsId=014108",
+      "content_digest": "sha256:385c7be1776c985fdfb813803024d039afa335b7f1cd6bb0b7ac4c9ec046333d"
+    },
+    {
+      "source_id": "AI-BASIC-ACT-2026",
+      "source_title": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법",
+      "source_type": "LAW",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-07-21",
+      "article_or_section": "제34조·제35조",
+      "requirement_id": "AI-ACT-HIGH-IMPACT-DUTIES",
+      "requirement_text": "고영향 AI에는 위험관리, 설명, 이용자보호, 사람 감독, 문서보관과 영향평가를 적용한다.",
+      "applicability_condition": "고영향 인공지능 해당 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "INTERNAL_SUMMARY_ONLY"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "HIGH_IMPACT_DUTY_GATE",
+      "runtime_stage": [
+        "Policy",
+        "ResponseGuard",
+        "ControlledDelivery",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "NOT_APPLICABLE_NO_HIGH_IMPACT_DECISION",
+      "evidence_field": [
+        "highImpactApplicability",
+        "responseGuardStatus",
+        "controlledDeliveryStatus"
+      ],
+      "citation": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1031810811",
+      "content_digest": "sha256:84372a6ddec1a112caae8d296cedd754c364437a8725467853426ede93cdf681"
+    },
+    {
+      "source_id": "AI-BASIC-DECREE-2026",
+      "source_title": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법 시행령",
+      "source_type": "REGULATION",
+      "authority": "국가법령정보센터",
+      "effective_date": "2026-08-20",
+      "article_or_section": "제25조·제27조",
+      "requirement_id": "AI-DECREE-HIGH-IMPACT-EVIDENCE",
+      "requirement_text": "고영향 확인과 사람 관리·감독·위험관리 조치의 공개·문서화 세부절차를 적용한다.",
+      "applicability_condition": "고영향 인공지능 해당 시",
+      "applicability": "NOT_APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "INTERNAL_SUMMARY_ONLY"
+      ],
+      "provider_scope": [
+        "ALL"
+      ],
+      "destination_scope": [
+        "INTERNAL_ADMIN"
+      ],
+      "fpg_control_id": "HIGH_IMPACT_EVIDENCE_GATE",
+      "runtime_stage": [
+        "Policy",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "NOT_APPLICABLE_NO_HIGH_IMPACT_DECISION",
+      "evidence_field": [
+        "highImpactApplicability",
+        "contractDigest"
+      ],
+      "citation": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=198077",
+      "content_digest": "sha256:5a569686bb8adffbe805e6b18157e7a2b821d508a53480e2c03616967d14c2c7"
+    },
+    {
+      "source_id": "EFSR-2026",
+      "source_title": "전자금융감독규정",
+      "source_type": "REGULATION",
+      "authority": "금융위원회",
+      "effective_date": "2026-07-15",
+      "article_or_section": "제14조의2 제1항",
+      "requirement_id": "EFSR-CLOUD-IMPORTANCE",
+      "requirement_text": "클라우드 이용업무의 특성, 중단 영향, 고객 영향과 대체 가능성을 고려해 중요도를 평가한다.",
+      "applicability_condition": "해당 runtime이 금융회사의 클라우드컴퓨팅서비스 이용에 해당 시",
+      "applicability": "CONDITIONAL",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "SYNTHETIC"
+      ],
+      "provider_scope": [
+        "NVIDIA_DGX_CLOUD"
+      ],
+      "destination_scope": [
+        "EXTERNAL_CLOUD"
+      ],
+      "fpg_control_id": "CLOUD_IMPORTANCE_PROFILE",
+      "runtime_stage": [
+        "Policy",
+        "ContractEvaluationBundle"
+      ],
+      "expected_decision": "IMPORTANCE_ASSESSED_IF_IN_SCOPE",
+      "evidence_field": [
+        "providerProfileId",
+        "destinationProfileId",
+        "serviceImportance"
+      ],
+      "citation": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&joNo=0014",
+      "content_digest": "sha256:4c7e8842b0c7f7eb8958a3440a67ef8cd704c5d4baef7fe1d7b34d5d59bec253"
+    },
+    {
+      "source_id": "EFSR-2026",
+      "source_title": "전자금융감독규정",
+      "source_type": "REGULATION",
+      "authority": "금융위원회",
+      "effective_date": "2026-07-15",
+      "article_or_section": "제14조의2·별표 2의4",
+      "requirement_id": "EFSR-CLOUD-SAFEGUARDS",
+      "requirement_text": "클라우드 업무연속성·안전성 확보조치, 접근통제, 계약과 보고 절차를 적용한다.",
+      "applicability_condition": "금융회사·전자금융업자의 클라우드 이용 시",
+      "applicability": "CONDITIONAL",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "TRANSFORMED_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA_DGX_CLOUD"
+      ],
+      "destination_scope": [
+        "EXTERNAL_CLOUD"
+      ],
+      "fpg_control_id": "CLOUD_SECURITY_AND_CONTINUITY",
+      "runtime_stage": [
+        "Authentication",
+        "Authorization",
+        "OutboundGuard",
+        "Provider",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "SAFEGUARDS_EVIDENCED_IF_IN_SCOPE",
+      "evidence_field": [
+        "authorizationResult",
+        "destinationContractDigest",
+        "providerStatus",
+        "providerError"
+      ],
+      "citation": "https://www.law.go.kr/LSW/flDownload.do?bylClsCd=200201&flNm=%5B%EB%B3%84%ED%91%9C+2%EC%9D%984%5D+%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%BB%B4%ED%93%A8%ED%8C%85%EC%84%9C%EB%B9%84%EC%8A%A4+%EC%9D%B4%EC%9A%A9%EA%B3%BC+%EA%B4%80%EB%A0%A8%ED%95%9C+%EC%95%88%EC%A0%84%EC%84%B1+%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98%28%EC%A0%9C14%EC%A1%B0%EC%9D%982+%EA%B4%80%EB%A0%A8%29&flSeq=144141521",
+      "content_digest": "sha256:cc403406cd74a62a888ff114018b374e8b48e983a1787115e0bc3a9b29415a96"
+    },
+    {
+      "source_id": "EFSR-2026",
+      "source_title": "전자금융감독규정",
+      "source_type": "REGULATION",
+      "authority": "금융위원회",
+      "effective_date": "2026-07-15",
+      "article_or_section": "제15조·망분리 예외 관련 현행 규정",
+      "requirement_id": "EFSR-NETWORK-BOUNDARY",
+      "requirement_text": "정보처리시스템·네트워크 경계의 보호와 승인된 망분리 예외의 보안 조건을 적용한다.",
+      "applicability_condition": "금융회사 내부업무망에서 외부 SaaS/API 연결 시",
+      "applicability": "CONDITIONAL",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "RELEASED_FIELDS_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "ALLOWLISTED_EXTERNAL"
+      ],
+      "fpg_control_id": "NETWORK_BOUNDARY_DESTINATION_GUARD",
+      "runtime_stage": [
+        "OutboundGuard",
+        "Provider"
+      ],
+      "expected_decision": "ALLOWLISTED_OR_BLOCKED",
+      "evidence_field": [
+        "destinationProfileId",
+        "outboundGuardStatus",
+        "providerStatus"
+      ],
+      "citation": "https://www.law.go.kr/LSW/admRulSideInfoP.do?admRulSeq=2100000282622&chrClsCd=010201&joNo=0015",
+      "content_digest": "sha256:0943d1601bf8d2216b25346c0e6dde31e4a80cdda7e485b9e33934a3c1442491"
+    },
+    {
+      "source_id": "FSI-FRONTIER-AI-2026",
+      "source_title": "프런티어 AI 보안 위협 금융분야 대응 요령",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-07-01",
+      "article_or_section": "제로트러스트 기반 대응",
+      "requirement_id": "FSI-FRONTIER-ZERO-TRUST",
+      "requirement_text": "다중 인증, 최소권한, 중요 데이터 접근 검증, 네트워크 세분화와 이상행동 대응을 적용한다.",
+      "applicability_condition": "외부 고성능 모델 API 접근",
+      "applicability": "APPLICABLE",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "TRANSFORMED_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "EXTERNAL"
+      ],
+      "fpg_control_id": "ZERO_TRUST_RUNTIME_CHAIN",
+      "runtime_stage": [
+        "Authentication",
+        "Authorization",
+        "OutboundGuard",
+        "ResponseGuard"
+      ],
+      "expected_decision": "EXPLICIT_STAGE_DECISIONS",
+      "evidence_field": [
+        "authenticationResult",
+        "authorizationResult",
+        "outboundGuardStatus",
+        "responseGuardStatus"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11989&menuNo=222",
+      "content_digest": "sha256:c8892f2961c5d959dbac96e9a536c8dfe59bf7ad668857f38052510418ec0a4f"
+    },
+    {
+      "source_id": "FSI-SAAS-GUIDE-2026",
+      "source_title": "내부업무망 SaaS 망분리 예외 적용에 따른 보안 해설서",
+      "source_type": "SECURITY_GUIDANCE",
+      "authority": "금융보안원",
+      "effective_date": "2026-05-01",
+      "article_or_section": "SaaS 망분리 예외 보안조건",
+      "requirement_id": "FSI-SAAS-EXCEPTION",
+      "requirement_text": "내부업무망 SaaS 이용은 승인 범위, 사용자·단말·데이터·접속 통제와 로그를 통해 예외 조건을 입증한다.",
+      "applicability_condition": "해당 연결이 내부업무망 SaaS 망분리 예외에 해당 시",
+      "applicability": "CONDITIONAL",
+      "workload_scope": [
+        "customer_summary"
+      ],
+      "data_scope": [
+        "RELEASED_FIELDS_ONLY"
+      ],
+      "provider_scope": [
+        "NVIDIA"
+      ],
+      "destination_scope": [
+        "ALLOWLISTED_EXTERNAL"
+      ],
+      "fpg_control_id": "SAAS_EXCEPTION_EVIDENCE",
+      "runtime_stage": [
+        "Authentication",
+        "Authorization",
+        "OutboundGuard",
+        "StageTimingTrace"
+      ],
+      "expected_decision": "CONDITIONS_PASSED_OR_BLOCKED",
+      "evidence_field": [
+        "authorizationResult",
+        "destinationProfileId",
+        "releasedFieldsDigest",
+        "observedAt"
+      ],
+      "citation": "https://www.fsec.or.kr/bbs/detail?bbsNo=11929&menuNo=222",
+      "content_digest": "sha256:4d5cf238ffcd4ee23d70b53ff98a9ece8a33c2a4757500b661574fb63c28b38a"
+    }
+  ],
+  "rag": {
+    "queries": [
+      {
+        "query_id": "Q01",
+        "text": "AI 거버넌스와 책임 조직은 무엇인가",
+        "gold": "FSC-GOVERNANCE",
+        "ranked": [
+          "FSC-GOVERNANCE",
+          "FSS-RMF-ACCOUNTABILITY",
+          "FSS-RMF-MONITORING"
+        ]
+      },
+      {
+        "query_id": "Q02",
+        "text": "목적 제한과 적법 근거 통제는 무엇인가",
+        "gold": "PIPA-LAWFUL-PURPOSE",
+        "ranked": [
+          "PIPA-LAWFUL-PURPOSE",
+          "FSC-LEGALITY",
+          "CREDIT-COLLECTION-USE"
+        ]
+      },
+      {
+        "query_id": "Q03",
+        "text": "최소 필드만 외부 AI로 보내는 통제는 무엇인가",
+        "gold": "PIPA-MINIMIZATION",
+        "ranked": [
+          "PIPA-MINIMIZATION",
+          "FSI-DATA-LEAKAGE",
+          "PIPA-PROVISION-OUTSOURCING"
+        ]
+      },
+      {
+        "query_id": "Q04",
+        "text": "외부 AI 국외이전 적용 조건은 무엇인가",
+        "gold": "PIPA-OVERSEAS-TRANSFER",
+        "ranked": [
+          "PIPA-OVERSEAS-TRANSFER",
+          "EFSR-CLOUD-IMPORTANCE",
+          "PIPA-PROVISION-OUTSOURCING"
+        ]
+      },
+      {
+        "query_id": "Q05",
+        "text": "개인신용정보 외부 처리 조건은 무엇인가",
+        "gold": "CREDIT-PROVISION-PURPOSE",
+        "ranked": [
+          "CREDIT-PROVISION-PURPOSE",
+          "CREDIT-COLLECTION-USE",
+          "CREDIT-SAFEGUARDS-RETENTION"
+        ]
+      },
+      {
+        "query_id": "Q06",
+        "text": "자동화된 신용평가 설명 의무가 적용되는가",
+        "gold": "CREDIT-AUTOMATED-EVALUATION",
+        "ranked": [
+          "CREDIT-AUTOMATED-EVALUATION",
+          "AI-ACT-HIGH-IMPACT-CHECK",
+          "PIPA-AUTOMATED-DECISION"
+        ]
+      },
+      {
+        "query_id": "Q07",
+        "text": "생성형 AI 결과 고지와 사람 책임은 무엇인가",
+        "gold": "AI-ACT-GENERATIVE-TRANSPARENCY",
+        "ranked": [
+          "AI-ACT-GENERATIVE-TRANSPARENCY",
+          "FSC-ASSISTIVE",
+          "AI-ACT-HIGH-IMPACT-DUTIES"
+        ]
+      },
+      {
+        "query_id": "Q08",
+        "text": "고영향 AI 의무는 언제 적용되는가",
+        "gold": "AI-ACT-HIGH-IMPACT-DUTIES",
+        "ranked": [
+          "AI-ACT-HIGH-IMPACT-DUTIES",
+          "AI-DECREE-HIGH-IMPACT-EVIDENCE",
+          "AI-ACT-HIGH-IMPACT-CHECK"
+        ]
+      },
+      {
+        "query_id": "Q09",
+        "text": "외부 모델 공급망과 destination 검증은 무엇인가",
+        "gold": "FSI-SUPPLY-CHAIN",
+        "ranked": [
+          "FSI-SUPPLY-CHAIN",
+          "FSC-FINANCIAL-STABILITY",
+          "EFSR-CLOUD-SAFEGUARDS"
+        ]
+      },
+      {
+        "query_id": "Q10",
+        "text": "Prompt와 Output 유출은 어느 guard가 막는가",
+        "gold": "FSI-INPUT-OUTPUT-FILTER",
+        "ranked": [
+          "FSI-INPUT-OUTPUT-FILTER",
+          "FSI-DATA-LEAKAGE",
+          "FSC-SECURITY"
+        ]
+      },
+      {
+        "query_id": "Q11",
+        "text": "접근권한 로그 추적성 요구사항은 무엇인가",
+        "gold": "FSI-ACCESS-NETWORK-LOG",
+        "ranked": [
+          "FSI-ACCESS-NETWORK-LOG",
+          "CREDIT-SAFEGUARDS-RETENTION",
+          "FSS-RMF-MONITORING"
+        ]
+      },
+      {
+        "query_id": "Q12",
+        "text": "Cloud SaaS 망분리 예외 조건은 무엇인가",
+        "gold": "EFSR-NETWORK-BOUNDARY",
+        "ranked": [
+          "EFSR-NETWORK-BOUNDARY",
+          "FSI-SAAS-EXCEPTION",
+          "EFSR-CLOUD-SAFEGUARDS"
+        ]
+      },
+      {
+        "query_id": "Q13",
+        "text": "Provider 성공과 규제 통제 성공을 분리하는 근거는 무엇인가",
+        "gold": "FSS-RMF-RESIDUAL-RISK",
+        "ranked": [
+          "FSS-RMF-RESIDUAL-RISK",
+          "FSC-RELIABILITY",
+          "FSI-SECURITY-VALIDATION"
+        ]
+      }
+    ],
+    "metrics": {
+      "hit_at_1": 1.0,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0
+    }
+  },
+  "positive_cases": [
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "models": [
+        "Nemotron 3.5 Lightning",
+        "Muse Glimmer 30B",
+        "Gemma 4 31B IT"
+      ]
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "models": [
+        "Nemotron 3.5 Lightning",
+        "Muse Glimmer 30B",
+        "Gemma 4 31B IT"
+      ]
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "models": [
+        "Nemotron 3.5 Lightning",
+        "Muse Glimmer 30B",
+        "Gemma 4 31B IT"
+      ]
+    }
+  ],
+  "negative_cases": [
+    {
+      "case_id": "N1",
+      "defense_stage": "Authorization",
+      "authorization_result": "DENIED",
+      "provider_status": "NOT_CALLED",
+      "response_guard_status": "NOT_REACHED",
+      "delivery_status": "WITHHELD",
+      "provider_calls": 0
+    },
+    {
+      "case_id": "N2",
+      "defense_stage": "Authorization",
+      "authorization_result": "DENIED",
+      "provider_status": "NOT_CALLED",
+      "response_guard_status": "NOT_REACHED",
+      "delivery_status": "WITHHELD",
+      "provider_calls": 0
+    },
+    {
+      "case_id": "N3",
+      "defense_stage": "Policy",
+      "authorization_result": "ALLOWED",
+      "policy_action": "BLOCK",
+      "provider_status": "NOT_CALLED",
+      "response_guard_status": "NOT_REACHED",
+      "delivery_status": "WITHHELD",
+      "provider_calls": 0
+    },
+    {
+      "case_id": "N4",
+      "defense_stage": "OutboundGuard",
+      "authorization_result": "ALLOWED",
+      "policy_action": "TRANSFORM",
+      "transform_status": "APPLIED",
+      "outbound_guard_status": "BLOCKED",
+      "provider_status": "NOT_CALLED",
+      "response_guard_status": "NOT_REACHED",
+      "delivery_status": "WITHHELD",
+      "provider_calls": 0
+    }
+  ],
+  "verification_layers": {
+    "source_coverage": "PASS",
+    "retrieval_correctness": "PASS",
+    "runtime_enforcement": "PENDING",
+    "execution_evidence": "PENDING"
+  }
+}
