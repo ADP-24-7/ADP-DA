@@ -1,0 +1,1274 @@
+{
+  "schema_version": "adp-ai-e3-workload-transform-utility/v1",
+  "experiment_id": "experiment-03-customer-summary-transform-utility/v1",
+  "status": "COMPLETED",
+  "evaluated_at": "2026-09-11T00:00:00+09:00",
+  "workload_id": "customer_summary",
+  "purpose_code": "CUSTOMER_SUPPORT",
+  "dataset_id": "financial_synthetic",
+  "dataset_version": "financial_synthetic_processed_v1",
+  "dataset_digest": "sha256:9afdc4bf89c0047a5e90f21e6f8eaffb4f6c148998f1740f30baf666bdae0a44",
+  "e2_handoff_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+  "method_matrix_digest": "sha256:fa1d2be00b171726de8c95f0f749a0e116e17bf512c57c618fcca2466bd4c430",
+  "scope_limit": "Results apply only to the frozen synthetic customer_summary/CUSTOMER_SUPPORT workload and are not generalized to other financial workloads or real customer data.",
+  "provider_calls": 0,
+  "results": [
+    {
+      "field_name": "customer.customer_id",
+      "method": "MASK_2",
+      "metrics": {
+        "source_count": 1057,
+        "unique_source_count": 1057,
+        "unique_output_count": 100,
+        "direct_identifier_character_exposure_rate": 0.4,
+        "collision_rate": 1.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 10152,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.4691,
+        "payload_size_before": 9513,
+        "payload_size_after": 9513,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:17d5e76c5436d2c98d1bc831cdcf8a3233e9a33feb3b805c15f4c0322ff7b32f"
+    },
+    {
+      "field_name": "customer.customer_id",
+      "method": "MASK_3",
+      "metrics": {
+        "source_count": 1057,
+        "unique_source_count": 1057,
+        "unique_output_count": 966,
+        "direct_identifier_character_exposure_rate": 0.6,
+        "collision_rate": 0.17218543,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 182,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.82781457,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.4351,
+        "payload_size_before": 9513,
+        "payload_size_after": 9513,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:853ece76525ff3cb818537ff323ed80421ba69958f8c1c65872c3eab744dfb47"
+    },
+    {
+      "field_name": "customer.customer_id",
+      "method": "MASK_4",
+      "metrics": {
+        "source_count": 1057,
+        "unique_source_count": 1057,
+        "unique_output_count": 1057,
+        "direct_identifier_character_exposure_rate": 0.8,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.4505,
+        "payload_size_before": 9513,
+        "payload_size_after": 9513,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:dc8acefc800935b992f8205ddea01d1c18714d729e4df247643ec0cddba066d7"
+    },
+    {
+      "field_name": "customer.customer_id",
+      "method": "HMAC_PSEUDO",
+      "metrics": {
+        "source_count": 1057,
+        "unique_source_count": 1057,
+        "unique_output_count": 1057,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 3.2211,
+        "payload_size_before": 9513,
+        "payload_size_after": 71876,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "All E2 identity-hide and relation gates pass.",
+      "method_evidence_ids": [
+        "NIST-FIPS-198-1",
+        "NIST-IR-8053",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "evidence_digest": "sha256:cf870ff2649318e268ce1b649e385bb5faded15c664401751508965a6f47dc87"
+    },
+    {
+      "field_name": "customer.customer_id",
+      "method": "VAULT_TOKEN",
+      "metrics": {
+        "source_count": 1057,
+        "unique_source_count": 1057,
+        "unique_output_count": 1057,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 6.1632,
+        "payload_size_before": 9513,
+        "payload_size_after": 52850,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "All E2 identity-hide and relation gates pass.",
+      "method_evidence_ids": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "evidence_digest": "sha256:df4170f3999f74bbb74c861e96cb46cb11ac32a74c6fab4a4da4f1cc6b8454f2"
+    },
+    {
+      "field_name": "account.account_id",
+      "method": "MASK_2",
+      "metrics": {
+        "source_count": 1567,
+        "unique_source_count": 1567,
+        "unique_output_count": 100,
+        "direct_identifier_character_exposure_rate": 0.33333333,
+        "collision_rate": 1.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 23076,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.7285,
+        "payload_size_before": 15670,
+        "payload_size_after": 15670,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:1e7a6b0dfdaf2ef2da71f4b96643e4322001221067017349e3aa4ebaafa5fd76"
+    },
+    {
+      "field_name": "account.account_id",
+      "method": "MASK_3",
+      "metrics": {
+        "source_count": 1567,
+        "unique_source_count": 1567,
+        "unique_output_count": 984,
+        "direct_identifier_character_exposure_rate": 0.5,
+        "collision_rate": 0.744097,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 1166,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.255903,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.8675,
+        "payload_size_before": 15670,
+        "payload_size_after": 15670,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:2bcdcb213949b22c4ccf148bdbfa58980be6b56336e33e4c7dd3405a34c91f03"
+    },
+    {
+      "field_name": "account.account_id",
+      "method": "MASK_4",
+      "metrics": {
+        "source_count": 1567,
+        "unique_source_count": 1567,
+        "unique_output_count": 1567,
+        "direct_identifier_character_exposure_rate": 0.66666667,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.8695,
+        "payload_size_before": 15670,
+        "payload_size_after": 15670,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:059dff666151322e025dcbd22fe18cf47c901d7ab1b4da3410a07e370f62509b"
+    },
+    {
+      "field_name": "account.account_id",
+      "method": "HMAC_PSEUDO",
+      "metrics": {
+        "source_count": 1567,
+        "unique_source_count": 1567,
+        "unique_output_count": 1567,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 4.3233,
+        "payload_size_before": 15670,
+        "payload_size_after": 106556,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "All E2 identity-hide and relation gates pass.",
+      "method_evidence_ids": [
+        "NIST-FIPS-198-1",
+        "NIST-IR-8053",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "evidence_digest": "sha256:bbec1a2007a1741144aba5a150cc019843107b1430abf5045556e3c7b7d64bb0"
+    },
+    {
+      "field_name": "account.account_id",
+      "method": "VAULT_TOKEN",
+      "metrics": {
+        "source_count": 1567,
+        "unique_source_count": 1567,
+        "unique_output_count": 1567,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 6.0598,
+        "payload_size_before": 15670,
+        "payload_size_after": 78350,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "All E2 identity-hide and relation gates pass.",
+      "method_evidence_ids": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "evidence_digest": "sha256:86010102617fcb8bdeeb2dcce5b62bf2d45bfbe102d408861cbee4371db1ef06"
+    },
+    {
+      "field_name": "transaction.transaction_id",
+      "method": "MASK_2",
+      "metrics": {
+        "source_count": 43563,
+        "unique_source_count": 43563,
+        "unique_output_count": 100,
+        "direct_identifier_character_exposure_rate": 0.28571429,
+        "collision_rate": 1.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 18938736,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 19.3473,
+        "payload_size_before": 479193,
+        "payload_size_after": 479193,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:68949337c62d5e80bf55d6ecbccc0f381b763b63b8d983e9243e5ae76e44ec99"
+    },
+    {
+      "field_name": "transaction.transaction_id",
+      "method": "MASK_3",
+      "metrics": {
+        "source_count": 43563,
+        "unique_source_count": 43563,
+        "unique_output_count": 1000,
+        "direct_identifier_character_exposure_rate": 0.42857143,
+        "collision_rate": 1.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 1859334,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 19.3251,
+        "payload_size_before": 479193,
+        "payload_size_after": 479193,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:4b8e8ccd8e188a5a86df01a6d3a5c92f53b41d7f2fcaa8408ff298d6fcf26b36"
+    },
+    {
+      "field_name": "transaction.transaction_id",
+      "method": "MASK_4",
+      "metrics": {
+        "source_count": 43563,
+        "unique_source_count": 43563,
+        "unique_output_count": 10000,
+        "direct_identifier_character_exposure_rate": 0.57142857,
+        "collision_rate": 0.99972454,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 151798,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 0.00027546,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": false,
+      "utility_pass": false,
+      "relation_pass": false,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 20.4508,
+        "payload_size_before": 479193,
+        "payload_size_after": 479193,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "MASK retains source characters or the method introduces ambiguous identifier relations.",
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:1027dc6de06a24181a0815e3b0e2bfe534e31de3d93f1ca0f728b8b116597250"
+    },
+    {
+      "field_name": "transaction.transaction_id",
+      "method": "HMAC_PSEUDO",
+      "metrics": {
+        "source_count": 43563,
+        "unique_source_count": 43563,
+        "unique_output_count": 43563,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 136.418,
+        "payload_size_before": 479193,
+        "payload_size_after": 2962284,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "All E2 identity-hide and relation gates pass.",
+      "method_evidence_ids": [
+        "NIST-FIPS-198-1",
+        "NIST-IR-8053",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "evidence_digest": "sha256:4acdcda7d97b2aa21471a99033f917610da3aed75f53fc6f2f85e6b36d17eaff"
+    },
+    {
+      "field_name": "transaction.transaction_id",
+      "method": "VAULT_TOKEN",
+      "metrics": {
+        "source_count": 43563,
+        "unique_source_count": 43563,
+        "unique_output_count": 43563,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": true,
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 219.3088,
+        "payload_size_before": 479193,
+        "payload_size_after": 2178150,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "All E2 identity-hide and relation gates pass.",
+      "method_evidence_ids": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "evidence_digest": "sha256:b1ee06146f45927ab740a2e8ad358925f69ea05b8c214ed4320ed337908d2f83"
+    },
+    {
+      "field_name": "account.balance",
+      "method": "KEEP",
+      "metrics": {
+        "source_count": 1567,
+        "exact_match_rate": 1.0,
+        "max_absolute_error": "0.00",
+        "max_relative_error": 0.0,
+        "ordering_preservation_rate": 1.0,
+        "threshold_decision_preservation_rate": 1.0,
+        "precision_loss_observed": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0014,
+        "payload_size_before": 18457,
+        "payload_size_after": 18457,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "Exact synthetic financial facts are preserved.",
+      "privacy_scope": "SYNTHETIC_NON_LINKABLE_ONLY",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:e38f276f0519896d863d8acf0bb8507f406d199c73b4dc7b77fccb12b99fd6c0"
+    },
+    {
+      "field_name": "account.balance",
+      "method": "GENERALIZE",
+      "metrics": {
+        "source_count": 1567,
+        "exact_match_rate": 0.0,
+        "max_absolute_error": "998.84",
+        "max_relative_error": 1.0,
+        "ordering_preservation_rate": 0.06321839080459771,
+        "threshold_decision_preservation_rate": 0.9968091895341417,
+        "precision_loss_observed": true
+      },
+      "privacy_pass": true,
+      "utility_pass": false,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": false,
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.4209,
+        "payload_size_before": 18457,
+        "payload_size_after": 13854,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "E2 requires exact values; observed generalization error makes the method fail-closed.",
+      "privacy_scope": "SYNTHETIC_NON_LINKABLE_ONLY",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:37dd658cd49368071411cce684e8b2c316b93448025cad265ae7e26bc16b5b9e"
+    },
+    {
+      "field_name": "transaction.amount",
+      "method": "KEEP",
+      "metrics": {
+        "source_count": 43563,
+        "exact_match_rate": 1.0,
+        "max_absolute_error": "0.00",
+        "max_relative_error": 0.0,
+        "ordering_preservation_rate": 1.0,
+        "threshold_decision_preservation_rate": 1.0,
+        "precision_loss_observed": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.022,
+        "payload_size_before": 465074,
+        "payload_size_after": 465074,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "Exact synthetic financial facts are preserved.",
+      "privacy_scope": "SYNTHETIC_NON_LINKABLE_ONLY",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:a94eb79f4e0f61e6bdacf11aa29adfa795857cb944676f49d7d7690acddb9b59"
+    },
+    {
+      "field_name": "transaction.amount",
+      "method": "GENERALIZE",
+      "metrics": {
+        "source_count": 43563,
+        "exact_match_rate": 0.0,
+        "max_absolute_error": "999.95",
+        "max_relative_error": 1.0,
+        "ordering_preservation_rate": 9.58887690279276e-05,
+        "threshold_decision_preservation_rate": 0.9401020743903465,
+        "precision_loss_observed": true
+      },
+      "privacy_pass": true,
+      "utility_pass": false,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": false,
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 14.3833,
+        "payload_size_before": 465074,
+        "payload_size_after": 322341,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "NOT_FIT",
+      "decision_reason": "E2 requires exact values; observed generalization error makes the method fail-closed.",
+      "privacy_scope": "SYNTHETIC_NON_LINKABLE_ONLY",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:04562385102aac89b0111e1cfe903edd5158848115b58eca4ced1b632f8ec175"
+    },
+    {
+      "field_name": "input.prompt",
+      "method": "KEEP",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 1,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:eccd6ddd0d8f7b64dc87bcac6472077e9af8584ed98f4746ee08f97512ffd556"
+    },
+    {
+      "field_name": "customer.segment",
+      "method": "KEEP",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 1,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:faaa1dbf9012b84c9dfced6627c7b925158f1806e4f190f660e9e45fd2c54205"
+    },
+    {
+      "field_name": "account.account_type",
+      "method": "KEEP",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 1,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:fd03348a95cf9b2da2012bdf689f181c842dbecd48e2fcb6dffe6d9e2710110b"
+    },
+    {
+      "field_name": "transaction.posted_at",
+      "method": "KEEP",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 1,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:1fd2e5c24cc5fce1e0bd97ceb6027feb0526331e1403b56a2efaf584886bfc3a"
+    },
+    {
+      "field_name": "transaction.merchant_category",
+      "method": "KEEP",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 1,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "evidence_digest": "sha256:d6c0b66f98416943d26f08a68ede425aec4c3048b62ec7d60e2446bdcc8bf25c"
+    },
+    {
+      "field_name": "customer.customer_name",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:38b457990615e9fd7971e6f8fbacf3255dbe8bc3a12e4bc36baf839733e9f986"
+    },
+    {
+      "field_name": "customer.first_name",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:9bbdb924fa6da173213d88790617149df560b79b11210fcd7231c5281c33f8f5"
+    },
+    {
+      "field_name": "customer.last_name",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:5662e451a563c8a3bf6614957959e42f3e794bff36d26ebf82b581e6b3ee9543"
+    },
+    {
+      "field_name": "customer.date_of_birth",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:19dc2d459d144ed41ec8a1904bf53862042619406eb1f2333fb3fa5103dcda66"
+    },
+    {
+      "field_name": "customer.address",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:cecb45f7eb4ef706e84328b6941c2d57d8fcd6d2308d1ece2079dd1e73c8a54b"
+    },
+    {
+      "field_name": "customer.phone_number",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:fe46a2c2892d3011c95856bcb77826b54394d3f17d6c04edf732b9acc8e53cbc"
+    },
+    {
+      "field_name": "customer.email",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:c9cacca1a2140b578c9ec836f67fd1df81511b9b228cdefb330f8ddc44a5f16c"
+    },
+    {
+      "field_name": "customer.resident_registration_number",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:72785518e935300564b15e08029bf085ef94d2b2f812452b897e983ecd595550"
+    },
+    {
+      "field_name": "account.account_number",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:b376163acc74e0f7cf661b331f9fbee307a6c56021ba6b815b7f78af302ccdc3"
+    },
+    {
+      "field_name": "transaction.description",
+      "method": "REMOVE",
+      "metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": "NOT_REQUIRED",
+      "runtime_compatible": true,
+      "overall_fit": "FIT",
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0,
+        "payload_size_before": 1,
+        "payload_size_after": 0,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "decision_reason": "The E2 field contract is satisfied without changing the field's declared business semantics.",
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "evidence_digest": "sha256:bbf2ee14d8e670c7b7dd1f81c5efb54e0418a733e6033842fff13a4842cc64d7"
+    }
+  ],
+  "bundle_digest": "sha256:9c186fcf2bc6616f2865cc9a007449498dc8b2b16457e3ed93e6bbcc663cd0e0"
+}

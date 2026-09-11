@@ -1,0 +1,1008 @@
+{
+  "schema_version": "adp-ai-e3-validated-transform-profile/v1",
+  "profile_id": "customer-summary-customer-support-validated-transform/v1",
+  "profile_version": "1.2.0",
+  "status": "VALIDATED_ACTIVATED",
+  "validation_status": "VALIDATED",
+  "activation_status": "ACTIVATED",
+  "workload_id": "customer_summary",
+  "purpose_code": "CUSTOMER_SUPPORT",
+  "dataset_scope": "financial_synthetic_processed_v1 only",
+  "e2_handoff_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+  "e3_bundle_digest": "sha256:9c186fcf2bc6616f2865cc9a007449498dc8b2b16457e3ed93e6bbcc663cd0e0",
+  "selective_rerun_digest": "sha256:d84278d156b655b36aa8f3203f3002c04086beffbdef473343bdb180226cb489",
+  "validation_contradictions": [],
+  "contradiction_disposition": "E3 contradiction -> E2 owner review required",
+  "activation_rule": "Activated only after BE resolver, REQUIRED_EXACT outbound validation and provider-governance contract tests passed; E2 external execution authorization remains separate.",
+  "profiles": [
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "input.prompt",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "e2_requirement_digest": "sha256:feb9140314d6d4e0c11a790dd641c5a0c8743a1519a36228a958bf3f0563f6a3",
+      "e3_result_digest": "sha256:eccd6ddd0d8f7b64dc87bcac6472077e9af8584ed98f4746ee08f97512ffd556",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:06b0d1f0f1543a77084acd1daf1c4315fffe12384b5f54f140cd318b1b950456"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.customer_id",
+      "E2_requirement": "RELATION_PRESERVE",
+      "validated_transform_method": "VAULT_TOKEN",
+      "validated_utility_conditions": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "source_count": 1057,
+        "unique_source_count": 1057,
+        "unique_output_count": 1057,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "e2_requirement_digest": "sha256:3f77b65da1e95aeda0aec55ac7c3eb5710360c8de1c133d59313d460f36a5d69",
+      "e3_result_digest": "sha256:df4170f3999f74bbb74c861e96cb46cb11ac32a74c6fab4a4da4f1cc6b8454f2",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "PASS",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "VAULT_TOKEN",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:0384c3bfa8f23f3c46ee071b6728bc03366d2e3e02ac89d6366f3a4adbeac587"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.segment",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "e2_requirement_digest": "sha256:622449cf2a76e94b0060cc11e71d6d1085579b50c6b977ec8ba910780349b7b3",
+      "e3_result_digest": "sha256:faaa1dbf9012b84c9dfced6627c7b925158f1806e4f190f660e9e45fd2c54205",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:6fcae00aaeb1e34f441eca4702196c82b62338c80aa21eadd7fea6edf324ffac"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "account.account_id",
+      "E2_requirement": "RELATION_PRESERVE",
+      "validated_transform_method": "VAULT_TOKEN",
+      "validated_utility_conditions": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "REFERENTIAL_INTEGRITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "source_count": 1567,
+        "unique_source_count": 1567,
+        "unique_output_count": 1567,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "e2_requirement_digest": "sha256:2ec4fbaa0bde56468193e0b8fa6d049458864e789601a66f1f0eb768aaf43c2f",
+      "e3_result_digest": "sha256:86010102617fcb8bdeeb2dcce5b62bf2d45bfbe102d408861cbee4371db1ef06",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "PASS",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "VAULT_TOKEN",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:f31bb26a4ba6f04b5a8310b51fc0ff0befdd749260c7bbeb208065ac7b3f88fb"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "account.account_type",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "e2_requirement_digest": "sha256:743f5d3f8576562637259089e3a503df061c74a9054b31c5ceb5410fb7b9bbbd",
+      "e3_result_digest": "sha256:fd03348a95cf9b2da2012bdf689f181c842dbecd48e2fcb6dffe6d9e2710110b",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:bbc5a598ce6b7f6a40f2b2906c9136a6b144d46d3c134ac6c3a8c9f607ef47c9"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "account.balance",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "source_count": 1567,
+        "exact_match_rate": 1.0,
+        "max_absolute_error": "0.00",
+        "max_relative_error": 0.0,
+        "ordering_preservation_rate": 1.0,
+        "threshold_decision_preservation_rate": 1.0,
+        "precision_loss_observed": false
+      },
+      "e2_requirement_digest": "sha256:7476ca7323961cb5cc2709bf296e1670eafa5fa0c8b1cf141b9a54161095f843",
+      "e3_result_digest": "sha256:37b00146f0aedcbcae58d981f5beb97c1a36820de8e93f22ca0934f844a37ffa",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:9ca02eaafb7e8526864ffe4feabd9cdac86c2dae9593cfbe1c19e1d4da9ce203"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "transaction.transaction_id",
+      "E2_requirement": "RELATION_PRESERVE",
+      "validated_transform_method": "HMAC_PSEUDO",
+      "validated_utility_conditions": [
+        "DIRECT_IDENTIFIER_EXPOSURE",
+        "COLLISION_RATE",
+        "FALSE_MATCH_RATE",
+        "FALSE_NON_MATCH_RATE",
+        "DETERMINISTIC_CONSISTENCY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "source_count": 43563,
+        "unique_source_count": 43563,
+        "unique_output_count": 43563,
+        "direct_identifier_character_exposure_rate": 0.0,
+        "collision_rate": 0.0,
+        "same_entity_match_rate": 1.0,
+        "false_match_pair_count": 0,
+        "false_non_match_count": 0,
+        "unambiguous_relation_rate": 1.0,
+        "deterministic_consistency": true
+      },
+      "e2_requirement_digest": "sha256:d3aca581c12c18299832c4dc696e40c76ab1574bffb3274d32eb6390637f0d55",
+      "e3_result_digest": "sha256:4acdcda7d97b2aa21471a99033f917610da3aed75f53fc6f2f85e6b36d17eaff",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "PASS",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "NIST-FIPS-198-1",
+        "NIST-IR-8053",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "HMAC_PSEUDO",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:b1058a277d44966052e6d10333110b822a4810b1018a19f68c3fbcf52ad59f76"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "transaction.posted_at",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "ORDERING_PRESERVATION",
+        "SCHEMA_VALIDITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "e2_requirement_digest": "sha256:d3507790d1fcbf4f0b43286a23ed4c8385be82e7fed0e00252fa4b1e51c83eef",
+      "e3_result_digest": "sha256:1fd2e5c24cc5fce1e0bd97ceb6027feb0526331e1403b56a2efaf584886bfc3a",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:9a1c75e9f4dba520126194192727d03bbb1e0666e0a4dae810b6120fbe9bead1"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "transaction.merchant_category",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "SCHEMA_VALIDITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": true,
+        "prohibited_or_unnecessary_field_absent": false
+      },
+      "e2_requirement_digest": "sha256:473d6f9d870cb6e0625b6857d4b0adcac6a3e660ce69be53b7e7f5e380f44f18",
+      "e3_result_digest": "sha256:d6c0b66f98416943d26f08a68ede425aec4c3048b62ec7d60e2446bdcc8bf25c",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:a848676aa028707c8a0a7bbfa050416642992163446373983f02dd424185a3d8"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "transaction.amount",
+      "E2_requirement": "REQUIRED_EXACT",
+      "validated_transform_method": "KEEP",
+      "validated_utility_conditions": [
+        "EXACT_MATCH",
+        "ABSOLUTE_ERROR",
+        "RELATIVE_ERROR",
+        "ORDERING_PRESERVATION",
+        "THRESHOLD_DECISION_PRESERVATION",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE",
+        "REMOVE"
+      ],
+      "validation_metrics": {
+        "source_count": 43563,
+        "exact_match_rate": 1.0,
+        "max_absolute_error": "0.00",
+        "max_relative_error": 0.0,
+        "ordering_preservation_rate": 1.0,
+        "threshold_decision_preservation_rate": 1.0,
+        "precision_loss_observed": false
+      },
+      "e2_requirement_digest": "sha256:835167e0d3ebedbc5aec284f6754612e46bbc8641dcef404b1038b7babfbbe45",
+      "e3_result_digest": "sha256:da8f7f0440fe6b1ed8674a73ea8850c999904af736779586ae8c8470ad3a8336",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "PASS",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "KEEP",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:6d80ab382f9d8d09d25a224a49836e43220e037378c7eadc682de1f31a28589d"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.customer_name",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:a71a9ff1a10efa08a24122b96219fd656647900628c9b19ea99df99d9d36b9f7",
+      "e3_result_digest": "sha256:38b457990615e9fd7971e6f8fbacf3255dbe8bc3a12e4bc36baf839733e9f986",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:7a2d713a19fb43980ed3a56538c9da7b5d0128c757cee8ad139cba9015d47f65"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.first_name",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:42fddeb326fc51598c06ed02516f336a968f85075d29de6770151536b3c68472",
+      "e3_result_digest": "sha256:9bbdb924fa6da173213d88790617149df560b79b11210fcd7231c5281c33f8f5",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:60bdf45e347c82f541510ddddbafaf2f0a10b0c52fe7b3a443d0383037689195"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.last_name",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:25987ff76de1f86120164ace185e481e56cfac5e39a218a0f2885fea17bad78f",
+      "e3_result_digest": "sha256:5662e451a563c8a3bf6614957959e42f3e794bff36d26ebf82b581e6b3ee9543",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:a42eb41371bae42352e86899ed704a055a98ef72a1aa3a7781eb9efddecc5941"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.date_of_birth",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:c80cd5d160cf3d0c2f6c744d4c22e0734c42dd5fc78a9cf9e366789d57048046",
+      "e3_result_digest": "sha256:19dc2d459d144ed41ec8a1904bf53862042619406eb1f2333fb3fa5103dcda66",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:87ec42e47dbda9b0915af850a0b9909c3d5d4df230fc2271953f8bb6982722cd"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.address",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:664889ba28358e6152bf6c5e2bba5fb468f6386af780ccb8065ddee21f4ba714",
+      "e3_result_digest": "sha256:cecb45f7eb4ef706e84328b6941c2d57d8fcd6d2308d1ece2079dd1e73c8a54b",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:eb642cb0bf3d23fa59a2808dc3b1a67427b761070899444ae78aee647b4d8916"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.phone_number",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:b3dd754917ab2fa195ebf6537ffc8e7ac7b8b7ecf0e466a61b4d519331ab3e8d",
+      "e3_result_digest": "sha256:fe46a2c2892d3011c95856bcb77826b54394d3f17d6c04edf732b9acc8e53cbc",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:47325c82e8f975cbd302c76e9dfa70461ac668991b84054d3643944d743ed941"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.email",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:d2c96027ef072773b3668bf05b5096b206f69b57df9b91a6838693338304e479",
+      "e3_result_digest": "sha256:c9cacca1a2140b578c9ec836f67fd1df81511b9b228cdefb330f8ddc44a5f16c",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:0e68ac804ab633b6fd1d8c35db4168f3dc92dd22512fe26abe0f30f090f57379"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "customer.resident_registration_number",
+      "E2_requirement": "PROHIBITED_EXTERNAL",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:12d6279f4fa7cc64a61bbfbe9d67d5f75b4b49924ab4fb3bb45c85e7ee34c416",
+      "e3_result_digest": "sha256:72785518e935300564b15e08029bf085ef94d2b2f812452b897e983ecd595550",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:3da4743a8761d56ca0950515819d5ca99a2bc7fbf2d4f875bc32685ed1a286e6"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "account.account_number",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:26c86d92973458063c92c8f3b63ad8f7d8f49d6ec0c113f0e6913caade7d720d",
+      "e3_result_digest": "sha256:b376163acc74e0f7cf661b331f9fbee307a6c56021ba6b815b7f78af302ccdc3",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:0ac1a13e2b1905a6837d29f3b803e1509b8c12d95c6947900e96ca7107b9fb9c"
+    },
+    {
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "field_name": "transaction.description",
+      "E2_requirement": "REMOVE",
+      "validated_transform_method": "REMOVE",
+      "validated_utility_conditions": [
+        "FIELD_ABSENCE",
+        "SCHEMA_VALIDITY",
+        "RUNTIME_COMPATIBILITY"
+      ],
+      "prohibited_methods": [
+        "KEEP",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "validation_metrics": {
+        "contract_rule_verified": true,
+        "required_field_available": false,
+        "prohibited_or_unnecessary_field_absent": true
+      },
+      "e2_requirement_digest": "sha256:dbf667138b127bd6989e94433e2670be11a72bf6e801c708b6a4f61e4fc98cee",
+      "e3_result_digest": "sha256:bbf2ee14d8e670c7b7dd1f81c5efb54e0418a733e6033842fff13a4842cc64d7",
+      "privacy_result": "PASS",
+      "utility_result": "PASS",
+      "relation_result": "NOT_APPLICABLE",
+      "exact_result": "NOT_APPLICABLE",
+      "runtime_supported": true,
+      "runtime_compatibility": "SUPPORTED_ACTIVE",
+      "destination_compatibility": "FIELD_CONTRACT_PASS_PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "evidence_ids": [
+        "financial-regulatory-evidence/v2",
+        "e2-synthetic-temporal-provenance/v1",
+        "nvidia-api-trial-synthetic-egress/v1"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "profile_version": "1.2.0",
+      "activation_status": "ACTIVATED",
+      "current_runtime_method": "REMOVE",
+      "current_runtime_profile_match": true,
+      "evidence_digest": "sha256:6cf7f4a8ba22eb07bb22064f47855b14818e2f85f3489772b29447e8eead34c4"
+    }
+  ],
+  "runtime_profile_gaps": [],
+  "profile_digest": "sha256:788b2da13d17ca13d5e1062ce98dce143d54810ed9dee31976f398b04a03fa0d"
+}

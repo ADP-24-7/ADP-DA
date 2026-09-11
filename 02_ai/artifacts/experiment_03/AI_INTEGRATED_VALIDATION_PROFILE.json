@@ -1,0 +1,46 @@
+{
+  "schema_version": "adp-ai-integrated-validation-profile/v1",
+  "profile_id": "ai-integrated-validation-profile/e1-e2-e3/v1",
+  "status": "VALIDATED_ACTIVATED_HOLDOUT_BLOCKED",
+  "generated_at": "2026-09-12T00:00:00+09:00",
+  "provider_calls": 0,
+  "components": {
+    "e1_runtime_validation": {
+      "status": "VALIDATED",
+      "canonical_document": "docs/AI_EXPERIMENT_01_MODEL_ONLY_RUNTIME_VALIDATION.md",
+      "bundle_content_digest": "sha256:e0c4614165746242099d249d9723d1e793af12d3b32abb8117969738725364df"
+    },
+    "e2_policy_requirement_validation": {
+      "status": "E2_POLICY_REQUIREMENT_VALIDATED",
+      "handoff_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+      "rag_top1_analysis_digest": "sha256:e044e2d61b7617d68b45e8223e074d369255075a1e1dd4a50a23941c8508cf45",
+      "internal_control_classification_digest": "sha256:e0fae8cdb3d6716fdaf9cc2e09c0066c902b914a3e6898a7974205f3c1fdbd51",
+      "provider_governance": "PROVIDER_GOVERNANCE_BLOCKED",
+      "provider_governance_activation": "ACTIVE_FAIL_CLOSED",
+      "provider_governance_contract_version": "e2-provider-governance/1.2.0",
+      "provider_governance_contract_digest": "sha256:5f591b577fd41993682c732392405fd9329305ec8e6ff1f983913eb5bfe71039",
+      "provider_governance_reason_codes": [
+        "PROVIDER_REGION_REQUIRED",
+        "RETENTION_UNVERIFIED",
+        "MODEL_TRAINING_NOT_ALLOWED"
+      ],
+      "external_model_execution": "PENDING_EXTERNAL_EXECUTION"
+    },
+    "e3_transform_utility_validation": {
+      "status": "VALIDATED",
+      "activation_status": "ACTIVATED",
+      "validation_contradictions": 0,
+      "runtime_activation_gaps": 0,
+      "selective_rerun_digest": "sha256:d84278d156b655b36aa8f3203f3002c04086beffbdef473343bdb180226cb489",
+      "profile_digest": "sha256:788b2da13d17ca13d5e1062ce98dce143d54810ed9dee31976f398b04a03fa0d"
+    }
+  },
+  "handoff": {
+    "be_endpoint": "/api/admin/ai/evaluation-runs/{runId}/transform-governance-profile",
+    "external_execution_status": "PENDING_EXTERNAL_EXECUTION",
+    "runtime_architecture_changed": false,
+    "holdout_baseline": "AI_E1_E2_E3_HOLDOUT_BASELINE.json",
+    "previous_integrated_profile_digest": "sha256:f2bfcfd67c563feb1d131d77f40149cbaacaa3f6f997a554f7f40cf37b078b79"
+  },
+  "integrated_profile_digest": "sha256:2e396f6a1482a868397e56f19a68daab5d3c6caea6e2ed800c07bcd69a996f21"
+}

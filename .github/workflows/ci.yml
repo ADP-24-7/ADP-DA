@@ -19,13 +19,20 @@ jobs:
         with:
           path: ADP-DA
 
-      - name: Checkout BE Compose and P0 evaluation contract
+      - name: Checkout BE Compose and E1-E3 governance contract
         uses: actions/checkout@v4
         with:
           repository: nahee8034-ux/ADP-BE
-          # Pin the matching producer contract while P0 is not on upstream main.
-          ref: 3692e572da1ff09b040a3e80a863030282060c58
+          # Pin the matching producer contract while the baseline is not on upstream main.
+          ref: 50a1f8bc719708cfdcb4e041672f9aead88e0a0a
           path: ADP-BE
+
+      - name: Checkout FE E1-E3 governance projection
+        uses: actions/checkout@v4
+        with:
+          repository: ADP-24-7/ADP-FE
+          ref: 6a329e0dc94d067051fdc1ae1754a3e34e7d5380
+          path: ADP-FE
 
       - name: Validate Docker Compose
         run: |
@@ -57,6 +64,13 @@ jobs:
 
       - name: Test
         run: python -m pytest 02_ai/tests
+
+      - name: Restore BE P0 contract for Digital Asset tests
+        uses: actions/checkout@v4
+        with:
+          repository: nahee8034-ux/ADP-BE
+          ref: 3692e572da1ff09b040a3e80a863030282060c58
+          path: ADP-BE
 
       - name: Digital Asset Test
         run: python -m pytest 03_digital_asset/tests

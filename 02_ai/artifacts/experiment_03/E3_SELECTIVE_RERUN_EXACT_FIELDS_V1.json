@@ -1,0 +1,103 @@
+{
+  "schema_version": "adp-ai-e3-selective-rerun/v1",
+  "rerun_id": "e3-selective-rerun-e2-field-revision-001",
+  "status": "PASS",
+  "rerun_scope": [
+    "account.balance",
+    "transaction.amount"
+  ],
+  "excluded_scope": "UNCHANGED_18_FIELDS_NOT_RERUN",
+  "evaluated_at": "2026-09-11T00:00:00+09:00",
+  "e2_handoff_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+  "prior_e3_bundle_digest": "sha256:9c186fcf2bc6616f2865cc9a007449498dc8b2b16457e3ed93e6bbcc663cd0e0",
+  "provider_calls": 0,
+  "results": [
+    {
+      "field_name": "account.balance",
+      "method": "KEEP",
+      "metrics": {
+        "source_count": 1567,
+        "exact_match_rate": 1.0,
+        "max_absolute_error": "0.00",
+        "max_relative_error": 0.0,
+        "ordering_preservation_rate": 1.0,
+        "threshold_decision_preservation_rate": 1.0,
+        "precision_loss_observed": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0015,
+        "payload_size_before": 18457,
+        "payload_size_after": 18457,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "Exact synthetic financial facts are preserved.",
+      "privacy_scope": "SYNTHETIC_NON_LINKABLE_ONLY",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "privacy": "PASS_SYNTHETIC_NON_LINKABLE_SCOPE",
+      "exact_preservation": "PASS",
+      "utility": "PASS",
+      "runtime_compatibility": "PASS_METHOD_SUPPORTED_ACTIVE",
+      "destination_release_compatibility": "PASS_FIELD_ALLOWLIST; PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "e2_requirement_digest": "sha256:7476ca7323961cb5cc2709bf296e1670eafa5fa0c8b1cf141b9a54161095f843",
+      "evidence_digest": "sha256:37b00146f0aedcbcae58d981f5beb97c1a36820de8e93f22ca0934f844a37ffa"
+    },
+    {
+      "field_name": "transaction.amount",
+      "method": "KEEP",
+      "metrics": {
+        "source_count": 43563,
+        "exact_match_rate": 1.0,
+        "max_absolute_error": "0.00",
+        "max_relative_error": 0.0,
+        "ordering_preservation_rate": 1.0,
+        "threshold_decision_preservation_rate": 1.0,
+        "precision_loss_observed": false
+      },
+      "privacy_pass": true,
+      "utility_pass": true,
+      "relation_pass": "NOT_REQUIRED",
+      "exact_pass": true,
+      "runtime_compatible": true,
+      "destination_compatible": true,
+      "operational_metrics": {
+        "transform_latency_ms": 0.0008,
+        "payload_size_before": 465074,
+        "payload_size_after": 465074,
+        "schema_validity": true,
+        "deterministic_consistency": true,
+        "transform_failure": false,
+        "retrieval_compatibility": true,
+        "outbound_compatibility": true
+      },
+      "overall_fit": "FIT",
+      "decision_reason": "Exact synthetic financial facts are preserved.",
+      "privacy_scope": "SYNTHETIC_NON_LINKABLE_ONLY",
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "privacy": "PASS_SYNTHETIC_NON_LINKABLE_SCOPE",
+      "exact_preservation": "PASS",
+      "utility": "PASS",
+      "runtime_compatibility": "PASS_METHOD_SUPPORTED_ACTIVE",
+      "destination_release_compatibility": "PASS_FIELD_ALLOWLIST; PROVIDER_GOVERNANCE_SEPARATELY_BLOCKED",
+      "e2_requirement_digest": "sha256:835167e0d3ebedbc5aec284f6754612e46bbc8641dcef404b1038b7babfbbe45",
+      "evidence_digest": "sha256:da8f7f0440fe6b1ed8674a73ea8850c999904af736779586ae8c8470ad3a8336"
+    }
+  ],
+  "selective_rerun_digest": "sha256:d84278d156b655b36aa8f3203f3002c04086beffbdef473343bdb180226cb489"
+}

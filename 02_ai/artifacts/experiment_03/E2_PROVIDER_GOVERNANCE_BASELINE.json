@@ -1,0 +1,80 @@
+{
+  "schema_version": "adp-e2-provider-governance-baseline/v1",
+  "contract_version": "e2-provider-governance/1.2.0",
+  "contract_digest": "sha256:5f591b577fd41993682c732392405fd9329305ec8e6ff1f983913eb5bfe71039",
+  "previous_destination_contract_version": "nvidia-nim-chat-completions/2026-09-07",
+  "destination_contract_version": "nvidia-nim-chat-completions/2026-09-12-e3-activation",
+  "activation_status": "ACTIVE_FAIL_CLOSED",
+  "provider_connection_profile_id": "nvidia-nim-hosted",
+  "model_profile_ids": [
+    "google-gemma-4-31b-it",
+    "meta-muse-glimmer-30b",
+    "nvidia-nemotron-3.5-lightning-30b-a3b"
+  ],
+  "destination_contract_mapping": [
+    {
+      "model": "Gemma 4 31B IT",
+      "model_profile_id": "google-gemma-4-31b-it",
+      "destination_profile_id": "dest_google-gemma-4-31b-it",
+      "destination_digest": "sha256:824292c9ad5bdcd8cd1c502997053243f179782e18402ca380b4c54a0c76f991"
+    },
+    {
+      "model": "Muse Glimmer 30B",
+      "model_profile_id": "meta-muse-glimmer-30b",
+      "destination_profile_id": "dest_meta-muse-glimmer-30b",
+      "destination_digest": "sha256:35827b9982c8813acef21a321d0bde08d856039a882c09cbf764d72d1cc3b607"
+    },
+    {
+      "model": "Nemotron 3.5 Lightning",
+      "model_profile_id": "nvidia-nemotron-3.5-lightning-30b-a3b",
+      "destination_profile_id": "dest_nvidia-nemotron-3-5-lightning-30b-a3b",
+      "destination_digest": "sha256:a6d7fb15ca4da646ca16fb92eb2a7c39327be9cdff21a130012f564749bc922e"
+    }
+  ],
+  "workload_id": "customer_summary",
+  "purpose_code": "CUSTOMER_SUPPORT",
+  "allowed_regions": ["KR"],
+  "requested_region": "KR",
+  "resolved_region": "UNRESOLVED",
+  "region_decision": "BLOCK",
+  "region_reason_code": "PROVIDER_REGION_REQUIRED",
+  "approved_retention_mode": "SESSION_ONLY",
+  "maximum_retention_days": 0,
+  "provider_configured_retention_mode": "SESSION_END_DEFAULT_WITH_SECURITY_EXCEPTION",
+  "provider_retention_days": null,
+  "retention_verification_status": "UNVERIFIED",
+  "retention_decision": "BLOCK",
+  "retention_reason_code": "RETENTION_UNVERIFIED",
+  "allowed_reuse_purposes": ["REQUEST_EXECUTION"],
+  "provider_reuse_purposes": [
+    "REQUEST_EXECUTION",
+    "SECURITY_FRAUD_ABUSE_MONITORING",
+    "AI_MODEL_IMPROVEMENT"
+  ],
+  "reuse_decision": "BLOCK",
+  "reuse_reason_code": "MODEL_TRAINING_NOT_ALLOWED",
+  "governance_decision": "BLOCK",
+  "reason_codes": [
+    "PROVIDER_REGION_REQUIRED",
+    "RETENTION_UNVERIFIED",
+    "MODEL_TRAINING_NOT_ALLOWED"
+  ],
+  "provider_actual_calls": 0,
+  "evidence": [
+    {
+      "source": "NVIDIA API Catalog Quickstart Guide",
+      "url": "https://docs.api.nvidia.com/nim/docs/api-quickstart",
+      "finding": "NVIDIA-hosted DGX Cloud is confirmed; a physical processing region is not specified."
+    },
+    {
+      "source": "NVIDIA API Trial Terms of Service",
+      "url": "https://assets.ngc.nvidia.com/products/api-catalog/legal/NVIDIA%20API%20Trial%20Terms%20of%20Service.pdf",
+      "finding": "Session-end non-retention is subject to service disclosures and security/fraud/abuse logging exceptions with no verified maximum here."
+    },
+    {
+      "source": "NVIDIA Technology Access Terms of Use",
+      "url": "https://developer.nvidia.com/legal/terms",
+      "finding": "General User Content licensing includes product or service improvement, outside FPG execution-only reuse approval."
+    }
+  ]
+}

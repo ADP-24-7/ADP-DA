@@ -1,0 +1,62 @@
+{
+  "schema_version": "adp-ai-e1-e2-e3-holdout-baseline/v1",
+  "baseline_version": "1.0.0",
+  "status": "VALIDATED_ACTIVATED_HOLDOUT_BLOCKED",
+  "frozen_at": "2026-09-12T00:00:00+09:00",
+  "provider_actual_calls": 0,
+  "e1": {
+    "status": "FROZEN",
+    "responsibility": "CALLER_AUTH_WORKLOAD_PURPOSE_SUBJECT_RETRIEVAL_POLICY"
+  },
+  "e2": {
+    "status": "FROZEN_FAIL_CLOSED",
+    "requirement_version": "1.1.1",
+    "requirement_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+    "governance_contract_version": "e2-provider-governance/1.2.0",
+    "governance_contract_digest": "sha256:5f591b577fd41993682c732392405fd9329305ec8e6ff1f983913eb5bfe71039",
+    "governance_activation_status": "ACTIVE_FAIL_CLOSED",
+    "governance_decision": "BLOCK",
+    "reason_codes": [
+      "PROVIDER_REGION_REQUIRED",
+      "RETENTION_UNVERIFIED",
+      "MODEL_TRAINING_NOT_ALLOWED"
+    ]
+  },
+  "e3": {
+    "status": "FROZEN_ACTIVATED",
+    "profile_version": "1.2.0",
+    "profile_digest": "sha256:788b2da13d17ca13d5e1062ce98dce143d54810ed9dee31976f398b04a03fa0d",
+    "runtime_activation_gaps": 0
+  },
+  "runtime_flow": [
+    "AUTHENTICATION_CALLER_BINDING",
+    "WORKLOAD_PURPOSE_BINDING",
+    "DESTINATION_PROFILE_RESOLUTION",
+    "PROVIDER_MODEL_BINDING",
+    "REGION_RETENTION_REUSE_GOVERNANCE",
+    "RETRIEVAL_POLICY",
+    "FIELD_TRANSFORM",
+    "REQUIRED_EXACT",
+    "OUTBOUND_CONTRACT",
+    "EXTERNAL_EXECUTION_BOUNDARY",
+    "TRACE_AUDIT"
+  ],
+  "holdout_readiness": {
+    "e1_frozen": "PASS",
+    "e2_frozen": "PASS",
+    "e3_frozen": "PASS",
+    "region_runtime_gate_activated": "PASS",
+    "retention_runtime_gate_activated": "PASS",
+    "reuse_runtime_gate_activated": "PASS",
+    "destination_contract_refrozen": "PASS",
+    "integrated_contract_frozen": "PASS",
+    "runtime_activation_gap": "PASS",
+    "contradiction": "PASS",
+    "region_external_fact_resolved": "BLOCKED",
+    "retention_external_fact_verified": "BLOCKED",
+    "reuse_scope_approved": "BLOCKED",
+    "holdout_ready": "BLOCKED"
+  },
+  "previous_integrated_digest": "sha256:f2bfcfd67c563feb1d131d77f40149cbaacaa3f6f997a554f7f40cf37b078b79",
+  "baseline_digest": "sha256:0ce91807505042ebba1f8f5059da2f60cdabeab8c9285d304feaf8f1d66ef274"
+}
