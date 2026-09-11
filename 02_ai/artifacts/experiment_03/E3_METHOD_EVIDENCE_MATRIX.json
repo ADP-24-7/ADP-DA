@@ -1,0 +1,836 @@
+{
+  "schema_version": "adp-ai-e3-method-evidence-matrix/v1",
+  "matrix_id": "e3-method-evidence-customer-summary/v1",
+  "status": "FROZEN_BEFORE_EXPERIMENT",
+  "frozen_at": "2026-09-11T00:00:00+09:00",
+  "e2_handoff_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+  "sources": [
+    {
+      "source_id": "FSC-FINANCIAL-DEID-2022",
+      "source_type": "OFFICIAL_GUIDANCE",
+      "authority": "Financial Services Commission",
+      "year": 2022,
+      "document": "Financial-sector Pseudonymization and Anonymization Guide",
+      "method": [
+        "REMOVE",
+        "MASK",
+        "GENERALIZE",
+        "AGGREGATE"
+      ],
+      "applicable_field_type": "financial personal/credit tabular data",
+      "workload_condition": "Choose methods after purpose, use environment, data subject, attributes and risk assessment",
+      "privacy_property": "Pseudonymization does not eliminate re-identification risk",
+      "utility_property": "Adequacy and re-identification review must accompany usefulness",
+      "known_limitation": "Guidance is contextual and does not certify a specific implementation",
+      "evidence_strength": "HIGH",
+      "url": "https://www.fsc.go.kr/no010101/77193",
+      "evidence_digest": "sha256:2e1c57b17aa3498e08008bc7d2071de4dafde9180810a8c3882d567a99c77d82"
+    },
+    {
+      "source_id": "PIPC-PSEUDONYM-GUIDE-2026",
+      "source_type": "OFFICIAL_GUIDANCE",
+      "authority": "Personal Information Protection Commission",
+      "year": 2026,
+      "document": "Pseudonymous Information Processing Guideline (2026.03)",
+      "method": [
+        "REMOVE",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "GENERALIZE"
+      ],
+      "applicable_field_type": "personal data",
+      "workload_condition": "Risk-based preparation, risk review, processing, adequacy review and safe management",
+      "privacy_property": "Minimization, additional-information separation and re-identification risk control",
+      "utility_property": "Method strength depends on data attributes, environment and available auxiliary data",
+      "known_limitation": "Guidance does not make synthetic or pseudonymous data anonymous",
+      "evidence_strength": "HIGH",
+      "url": "https://www.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&mCode=C020010000&nttId=11928",
+      "evidence_digest": "sha256:f5a4077dd0b13f45006198afce19f0444b9c3dc5b6de06736955553d8c91307e"
+    },
+    {
+      "source_id": "NIST-SP-800-188",
+      "source_type": "OFFICIAL_GUIDANCE",
+      "authority": "NIST",
+      "year": 2023,
+      "document": "SP 800-188 De-Identifying Government Datasets: Techniques and Governance",
+      "method": [
+        "REMOVE",
+        "MASK",
+        "GENERALIZE",
+        "AGGREGATE",
+        "NOISE_RANDOMIZATION"
+      ],
+      "applicable_field_type": "direct and quasi identifiers",
+      "workload_condition": "Set measurable privacy and accuracy goals for the actual sharing model",
+      "privacy_property": "Masking alone is not proof of de-identification",
+      "utility_property": "Validate privacy and utility independently",
+      "known_limitation": "US government guidance; applicability here is methodological",
+      "evidence_strength": "HIGH",
+      "url": "https://doi.org/10.6028/NIST.SP.800-188",
+      "evidence_digest": "sha256:b5dd1b5b60b85d98723e475ef68aa590889908848f438d0cfebeea10256a507d"
+    },
+    {
+      "source_id": "NIST-IR-8053",
+      "source_type": "OFFICIAL_GUIDANCE",
+      "authority": "NIST",
+      "year": 2015,
+      "document": "IR 8053 De-Identification of Personal Information",
+      "method": [
+        "REMOVE",
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN"
+      ],
+      "applicable_field_type": "personal information",
+      "workload_condition": "Select controls against the stated re-identification model",
+      "privacy_property": "Pseudonymous values retain linkability and re-identification considerations",
+      "utility_property": "Preserved relations must be tested separately",
+      "known_limitation": "Survey rather than implementation certification",
+      "evidence_strength": "HIGH",
+      "url": "https://doi.org/10.6028/NIST.IR.8053",
+      "evidence_digest": "sha256:dd495333ced41f1e2c611d53646087f816d156c7fad8fb6add5d7313c92c42e0"
+    },
+    {
+      "source_id": "NIST-FIPS-198-1",
+      "source_type": "SECURITY_STANDARD",
+      "authority": "NIST",
+      "year": 2008,
+      "document": "FIPS 198-1 The Keyed-Hash Message Authentication Code",
+      "method": [
+        "HMAC_PSEUDO"
+      ],
+      "applicable_field_type": "identifier",
+      "workload_condition": "Keyed, purpose-scoped deterministic pseudonyms with managed key separation",
+      "privacy_property": "Keyed construction resists plain-digest equivalence",
+      "utility_property": "Determinism can preserve joins",
+      "known_limitation": "HMAC is an authentication primitive, not a de-identification certification",
+      "evidence_strength": "HIGH",
+      "url": "https://doi.org/10.6028/NIST.FIPS.198-1",
+      "evidence_digest": "sha256:da6129732fc79391ebacbfd39775d98f6dd7921d09833e663652260ae06f991f"
+    },
+    {
+      "source_id": "NIST-SP-800-38G-R1-2PD",
+      "source_type": "SECURITY_STANDARD",
+      "authority": "NIST",
+      "year": 2025,
+      "document": "SP 800-38G Rev.1 Second Public Draft",
+      "method": [
+        "FPE"
+      ],
+      "applicable_field_type": "legacy formatted identifier",
+      "workload_condition": "Only when ciphertext must preserve a legacy format",
+      "privacy_property": "FF1 requires a domain of at least one million; FF3 was removed",
+      "utility_property": "Preserves format, not semantic utility or de-identification",
+      "known_limitation": "Draft status; format and equality leakage remain contextual risks",
+      "evidence_strength": "HIGH_DRAFT",
+      "url": "https://doi.org/10.6028/NIST.SP.800-38Gr1.2pd",
+      "evidence_digest": "sha256:116803dbda814b3d6d17d9898f1a41cd011ae87d39c5495ed32d600b98853639"
+    },
+    {
+      "source_id": "SHINHAN-PRO-INVESTOR",
+      "source_type": "FINANCIAL_OPERATION_REFERENCE",
+      "authority": "Shinhan Securities",
+      "year": 2026,
+      "document": "Personal Professional Investor Application Procedure",
+      "method": [
+        "KEEP"
+      ],
+      "applicable_field_type": "identity and eligibility evidence",
+      "workload_condition": "Professional-investor eligibility review",
+      "privacy_property": "Exact identity is restricted to the authorized verification process",
+      "utility_property": "Name and real-name number must be unmasked for this review",
+      "known_limitation": "One specific workflow; it cannot justify exact release in customer_summary",
+      "evidence_strength": "HIGH",
+      "url": "https://www.shinhansec.com/siw/banking-lending/service/609001/contents.do",
+      "evidence_digest": "sha256:7ed57762368ae2f420710979f86804ec44753ed4914abd8bb9ff460fa90c030c"
+    },
+    {
+      "source_id": "SHINHAN-PRIVACY-CONTROLS",
+      "source_type": "FINANCIAL_INDUSTRY_POLICY",
+      "authority": "Shinhan Securities",
+      "year": 2026,
+      "document": "Credit Information Use and Management System",
+      "method": [
+        "MASK",
+        "HMAC_PSEUDO",
+        "VAULT_TOKEN",
+        "STANDARD_ENCRYPTION"
+      ],
+      "applicable_field_type": "personal and credit information",
+      "workload_condition": "Pseudonymous processing under separated access, approval, DLP, logging and monitoring",
+      "privacy_property": "Access control and encryption complement data transformation",
+      "utility_property": "Operational controls preserve accountable use, not transform fitness by themselves",
+      "known_limitation": "Public control statement does not specify a transformation algorithm",
+      "evidence_strength": "HIGH",
+      "url": "https://www.shinhansec.com/siw/customer-center/guide/business_guide_terms_tab8/contents.do",
+      "evidence_digest": "sha256:5b39562a2e09a4673968ab22004b1f91d4ed4d6e7944ad07107c090294175b29"
+    },
+    {
+      "source_id": "SHINHAN-MASKING-OPERATIONS",
+      "source_type": "FINANCIAL_OPERATION_REFERENCE",
+      "authority": "Shinhan Securities",
+      "year": 2024,
+      "document": "Information Protection Role Guide",
+      "method": [
+        "MASK"
+      ],
+      "applicable_field_type": "customer information display",
+      "workload_condition": "Authorized staff reveal and external export review",
+      "privacy_property": "Mask reveal is permission-governed",
+      "utility_property": "Partial display can support a limited operational task",
+      "known_limitation": "Describes workflow controls, not de-identification or a universal masking rule",
+      "evidence_strength": "MEDIUM",
+      "url": "https://recruit.shinhansec.com/files/interview/7-5.pdf",
+      "evidence_digest": "sha256:3685bcd036adce9e20fb207d58dd14296553ba29e504258c526e5d9508b23279"
+    },
+    {
+      "source_id": "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+      "source_type": "FINANCIAL_OPERATION_REFERENCE",
+      "authority": "Shinhan Bank",
+      "year": 2021,
+      "document": "Shinhan Plus Family Membership Family Aggregation Application (non-face-to-face)",
+      "method": [
+        "MASK",
+        "REMOVE"
+      ],
+      "applicable_field_type": "resident-registration and identity-document real-name number suffix",
+      "workload_condition": "BPR transmission for family membership registration",
+      "privacy_property": "Rear real-name-number digits are not released",
+      "utility_property": "Name, birth date and family relation remain available for the registration workflow",
+      "known_limitation": "One specific workflow; it cannot be generalized to other identity-verification contexts",
+      "evidence_strength": "HIGH",
+      "url": "https://img.shinhan.com/sbank2016/form/20200918000000420005WF00001000000001.PDF?1676301714489=",
+      "evidence_digest": "sha256:a44bafa1a824760c46ea5c0fb74d7a04dd2011372cb9fca279b4300eb54d3cc5"
+    },
+    {
+      "source_id": "MICROSOFT-DDM",
+      "source_type": "VENDOR_INDUSTRY_REFERENCE",
+      "authority": "Microsoft",
+      "year": 2026,
+      "document": "SQL Server Dynamic Data Masking",
+      "method": [
+        "MASK"
+      ],
+      "applicable_field_type": "database display field",
+      "workload_condition": "Non-privileged query result with explicit UNMASK permission",
+      "privacy_property": "Limits accidental exposure but can be bypassed by inference",
+      "utility_property": "Preserves application schema and supports role-scoped display",
+      "known_limitation": "Not law or Shinhan policy",
+      "evidence_strength": "MEDIUM",
+      "url": "https://learn.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking",
+      "evidence_digest": "sha256:9c2e67f99975e5c166138a479f068e388b4c0498124df7d10c98e4cbf8e5ce82"
+    },
+    {
+      "source_id": "PCI-TOKENIZATION-2015",
+      "source_type": "SECURITY_STANDARD",
+      "authority": "PCI Security Standards Council",
+      "year": 2015,
+      "document": "Tokenization Product Security Guidelines",
+      "method": [
+        "VAULT_TOKEN"
+      ],
+      "applicable_field_type": "identifier/token domain",
+      "workload_condition": "Controlled reversible token with vault authorization and lifecycle",
+      "privacy_property": "Separates released token from protected source value",
+      "utility_property": "Stable token can preserve relations",
+      "known_limitation": "Payment-card mechanics are not governing law for this workload",
+      "evidence_strength": "MEDIUM",
+      "url": "https://listings.pcisecuritystandards.org/documents/Tokenization_Product_Security_Guidelines.pdf",
+      "evidence_digest": "sha256:afcc91444b57d948e7d32afd5dea4cc8280124bd39f2c7c931d50a12a2e7ab67"
+    },
+    {
+      "source_id": "GRUBBS-2017-ORE",
+      "source_type": "PEER_REVIEWED",
+      "authority": "IEEE Symposium on Security and Privacy",
+      "year": 2017,
+      "document": "Leakage-Abuse Attacks against Order-Revealing Encryption",
+      "method": [
+        "OPE_ORE"
+      ],
+      "applicable_field_type": "ordered value",
+      "workload_condition": "Only where server-side range/sort is indispensable and leakage is explicitly accepted",
+      "privacy_property": "Order and frequency leakage can enable plaintext recovery",
+      "utility_property": "Preserves comparisons but not confidentiality equivalent to standard encryption",
+      "known_limitation": "Attack outcomes depend on leakage profile and auxiliary data",
+      "evidence_strength": "HIGH",
+      "url": "https://doi.org/10.1109/SP.2017.44",
+      "evidence_digest": "sha256:61a515b36852151bb10a8357a70198fc6c5f8248a81a76d1dd074a43eab7efc0"
+    },
+    {
+      "source_id": "NAVEED-2015-PPE",
+      "source_type": "PEER_REVIEWED",
+      "authority": "ACM CCS",
+      "year": 2015,
+      "document": "Inference Attacks on Property-Preserving Encrypted Databases",
+      "method": [
+        "OPE_ORE",
+        "FPE"
+      ],
+      "applicable_field_type": "structured column",
+      "workload_condition": "Evaluate auxiliary-distribution attacks before preserving database properties",
+      "privacy_property": "Deterministic and order leakage can expose plaintext distributions",
+      "utility_property": "Query utility creates measurable leakage",
+      "known_limitation": "Medical datasets were studied, not this synthetic financial dataset",
+      "evidence_strength": "HIGH",
+      "url": "https://doi.org/10.1145/2810103.2813651",
+      "evidence_digest": "sha256:ea6e250172ca1077cdde939bba7dd934a342a4a5116fb2cfb3ab1d6ad79744df"
+    },
+    {
+      "source_id": "DURAK-VAUDENAY-2017",
+      "source_type": "PEER_REVIEWED",
+      "authority": "CRYPTO",
+      "year": 2017,
+      "document": "Breaking the FF3 Format-Preserving Encryption Standard over Small Domains",
+      "method": [
+        "FPE"
+      ],
+      "applicable_field_type": "small-domain formatted identifier",
+      "workload_condition": "Reject weak-domain FPE and obsolete FF3",
+      "privacy_property": "Practical attacks demonstrate domain-size risk",
+      "utility_property": "Format preservation alone provides no workload utility guarantee",
+      "known_limitation": "Targets FF3/small domains",
+      "evidence_strength": "HIGH",
+      "url": "https://eprint.iacr.org/2017/521",
+      "evidence_digest": "sha256:de13c4cdd527a41cc8fdadb7c28ccc989b2e687ff3bbffcdbb00f4d954641326"
+    },
+    {
+      "source_id": "WOO-2009-UTILITY",
+      "source_type": "PEER_REVIEWED",
+      "authority": "Journal of Privacy and Confidentiality",
+      "year": 2009,
+      "document": "Global Measures of Data Utility for Microdata Masked for Disclosure Limitation",
+      "method": [
+        "MASK",
+        "GENERALIZE",
+        "AGGREGATE",
+        "NOISE_RANDOMIZATION"
+      ],
+      "applicable_field_type": "tabular data",
+      "workload_condition": "Measure utility for the actual analysis rather than by a global score",
+      "privacy_property": "Disclosure limitation and utility are distinct",
+      "utility_property": "Workload-specific analyses can diverge from global utility",
+      "known_limitation": "Statistical microdata differs from operational customer support",
+      "evidence_strength": "MEDIUM",
+      "url": "https://doi.org/10.29012/jpc.v1i1.568",
+      "evidence_digest": "sha256:e10410ab4440b3696ca13dfc682db465407340435be2ad8381cf436a2760011e"
+    },
+    {
+      "source_id": "SHARMA-2021-FINANCIAL",
+      "source_type": "PEER_REVIEWED",
+      "authority": "Computers, Materials & Continua",
+      "year": 2021,
+      "document": "Evaluating the Risk of Disclosure and Utility in a Synthetic Dataset",
+      "method": [
+        "NOISE_RANDOMIZATION",
+        "AGGREGATE"
+      ],
+      "applicable_field_type": "financial tabular/synthetic data",
+      "workload_condition": "Statistical release with explicit privacy budget and aggregate utility goal",
+      "privacy_property": "Synthetic provenance does not automatically establish low disclosure risk",
+      "utility_property": "Risk and utility must both be evaluated",
+      "known_limitation": "Different mechanism and no record-level support use case",
+      "evidence_strength": "MEDIUM",
+      "url": "https://doi.org/10.32604/cmc.2021.014984",
+      "evidence_digest": "sha256:969f2f26ec6fbcfaa077f5e33aa8d46376670c63225dcee998d9d80b076768d6"
+    }
+  ],
+  "rows": [
+    {
+      "method_id": "E3-METHOD-01",
+      "method": "KEEP",
+      "field": [
+        "account.account_id",
+        "account.account_number",
+        "account.account_type",
+        "account.balance",
+        "customer.address",
+        "customer.customer_id",
+        "customer.customer_name",
+        "customer.date_of_birth",
+        "customer.email",
+        "customer.first_name",
+        "customer.last_name",
+        "customer.phone_number",
+        "customer.resident_registration_number",
+        "customer.segment",
+        "input.prompt",
+        "transaction.amount",
+        "transaction.description",
+        "transaction.merchant_category",
+        "transaction.posted_at",
+        "transaction.transaction_id"
+      ],
+      "field_scope": "required exact and controlled categorical fields",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [
+        "PROHIBITED_EXTERNAL",
+        "RELATION_PRESERVE",
+        "REMOVE",
+        "REQUIRED_EXACT"
+      ],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [],
+      "industry_source": [
+        "SHINHAN-PRO-INVESTOR"
+      ],
+      "academic_source": [
+        "WOO-2009-UTILITY"
+      ],
+      "method_evidence_ids": [
+        "SHINHAN-PRO-INVESTOR",
+        "WOO-2009-UTILITY"
+      ],
+      "metric": "EXACT_MATCH,ERROR,SCHEMA_VALIDITY",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "One specific workflow; it cannot justify exact release in customer_summary; Statistical microdata differs from operational customer support",
+      "BE_support_status": "SUPPORTED",
+      "applicability": "APPLICABLE",
+      "evidence_digest": "sha256:98a16df7ba768181bd3f9d3246b0a10f9336e1219f6bc5487eb183a0a97fd6b2"
+    },
+    {
+      "method_id": "E3-METHOD-02",
+      "method": "REMOVE",
+      "field": [
+        "account.account_id",
+        "account.account_number",
+        "account.account_type",
+        "account.balance",
+        "customer.address",
+        "customer.customer_id",
+        "customer.customer_name",
+        "customer.date_of_birth",
+        "customer.email",
+        "customer.first_name",
+        "customer.last_name",
+        "customer.phone_number",
+        "customer.resident_registration_number",
+        "customer.segment",
+        "input.prompt",
+        "transaction.amount",
+        "transaction.description",
+        "transaction.merchant_category",
+        "transaction.posted_at",
+        "transaction.transaction_id"
+      ],
+      "field_scope": "unnecessary or prohibited external fields",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [
+        "PROHIBITED_EXTERNAL",
+        "RELATION_PRESERVE",
+        "REMOVE",
+        "REQUIRED_EXACT"
+      ],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "industry_source": [],
+      "academic_source": [],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "NIST-SP-800-188"
+      ],
+      "metric": "FIELD_ABSENCE,SCHEMA_VALIDITY",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "Guidance is contextual and does not certify a specific implementation; Guidance does not make synthetic or pseudonymous data anonymous; US government guidance; applicability here is methodological",
+      "BE_support_status": "SUPPORTED",
+      "applicability": "APPLICABLE",
+      "evidence_digest": "sha256:d3a8e9f90327c57c785edd374d250b2db2a5566df85f9861c160db59b3f1fdbe"
+    },
+    {
+      "method_id": "E3-METHOD-03",
+      "method": "MASK",
+      "field": [
+        "account.account_id",
+        "account.account_number",
+        "account.account_type",
+        "account.balance",
+        "customer.address",
+        "customer.customer_id",
+        "customer.customer_name",
+        "customer.date_of_birth",
+        "customer.email",
+        "customer.first_name",
+        "customer.last_name",
+        "customer.phone_number",
+        "customer.resident_registration_number",
+        "customer.segment",
+        "input.prompt",
+        "transaction.amount",
+        "transaction.description",
+        "transaction.merchant_category",
+        "transaction.posted_at",
+        "transaction.transaction_id"
+      ],
+      "field_scope": "relationship identifiers",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [
+        "PROHIBITED_EXTERNAL",
+        "RELATION_PRESERVE",
+        "REMOVE",
+        "REQUIRED_EXACT"
+      ],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "NIST-SP-800-188"
+      ],
+      "industry_source": [
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM"
+      ],
+      "academic_source": [
+        "WOO-2009-UTILITY"
+      ],
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHINHAN-MASKING-OPERATIONS",
+        "SHINHAN-FAMILY-MEMBERSHIP-MASKING",
+        "MICROSOFT-DDM",
+        "WOO-2009-UTILITY"
+      ],
+      "metric": "EXPOSURE,COLLISION,RELATION",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "US government guidance; applicability here is methodological; Describes workflow controls, not de-identification or a universal masking rule; One specific workflow; it cannot be generalized to other identity-verification contexts; Not law or Shinhan policy; Statistical microdata differs from operational customer support",
+      "BE_support_status": "SUPPORTED",
+      "applicability": "APPLICABLE_BUT_REJECTED_WHEN_LITERAL_EXPOSURE_REMAINS",
+      "evidence_digest": "sha256:5e66b8714893741a2c65704c619992f9dbeadf920fd5f7ce29b1fde028ce1f74"
+    },
+    {
+      "method_id": "E3-METHOD-04",
+      "method": "HMAC_PSEUDO",
+      "field": [
+        "account.account_id",
+        "account.account_number",
+        "account.account_type",
+        "account.balance",
+        "customer.address",
+        "customer.customer_id",
+        "customer.customer_name",
+        "customer.date_of_birth",
+        "customer.email",
+        "customer.first_name",
+        "customer.last_name",
+        "customer.phone_number",
+        "customer.resident_registration_number",
+        "customer.segment",
+        "input.prompt",
+        "transaction.amount",
+        "transaction.description",
+        "transaction.merchant_category",
+        "transaction.posted_at",
+        "transaction.transaction_id"
+      ],
+      "field_scope": "relationship identifiers",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [
+        "PROHIBITED_EXTERNAL",
+        "RELATION_PRESERVE",
+        "REMOVE",
+        "REQUIRED_EXACT"
+      ],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "NIST-FIPS-198-1",
+        "NIST-IR-8053",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "industry_source": [],
+      "academic_source": [],
+      "method_evidence_ids": [
+        "NIST-FIPS-198-1",
+        "NIST-IR-8053",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "metric": "EXPOSURE,COLLISION,DETERMINISM,RELATION",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "HMAC is an authentication primitive, not a de-identification certification; Survey rather than implementation certification; Guidance does not make synthetic or pseudonymous data anonymous",
+      "BE_support_status": "SUPPORTED",
+      "applicability": "APPLICABLE",
+      "evidence_digest": "sha256:a2ff47f4578047eff75dba7778bda69afa54d69c9c6d6a93a2ffb7e34300b962"
+    },
+    {
+      "method_id": "E3-METHOD-05",
+      "method": "VAULT_TOKEN",
+      "field": [
+        "account.account_id",
+        "account.account_number",
+        "account.account_type",
+        "account.balance",
+        "customer.address",
+        "customer.customer_id",
+        "customer.customer_name",
+        "customer.date_of_birth",
+        "customer.email",
+        "customer.first_name",
+        "customer.last_name",
+        "customer.phone_number",
+        "customer.resident_registration_number",
+        "customer.segment",
+        "input.prompt",
+        "transaction.amount",
+        "transaction.description",
+        "transaction.merchant_category",
+        "transaction.posted_at",
+        "transaction.transaction_id"
+      ],
+      "field_scope": "relationship identifiers with controlled reversibility",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [
+        "PROHIBITED_EXTERNAL",
+        "RELATION_PRESERVE",
+        "REMOVE",
+        "REQUIRED_EXACT"
+      ],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026"
+      ],
+      "industry_source": [
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "academic_source": [],
+      "method_evidence_ids": [
+        "PCI-TOKENIZATION-2015",
+        "PIPC-PSEUDONYM-GUIDE-2026",
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "metric": "EXPOSURE,COLLISION,RELATION,REVERSIBILITY_CONTROL",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "Payment-card mechanics are not governing law for this workload; Guidance does not make synthetic or pseudonymous data anonymous; Public control statement does not specify a transformation algorithm",
+      "BE_support_status": "SUPPORTED",
+      "applicability": "APPLICABLE",
+      "evidence_digest": "sha256:f746317edb7d290fc8fecc34c2e9a3721289c24830e02fe9d833d435614aef8e"
+    },
+    {
+      "method_id": "E3-METHOD-06",
+      "method": "STANDARD_ENCRYPTION",
+      "field": [
+        "NONE_IN_CURRENT_E2_CONTRACT"
+      ],
+      "field_scope": "external confidentiality where plaintext restoration is required",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [],
+      "industry_source": [
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "academic_source": [],
+      "method_evidence_ids": [
+        "SHINHAN-PRIVACY-CONTROLS"
+      ],
+      "metric": "CONFIDENTIALITY,KEY_AND_DECRYPT_AUTHORIZATION",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "Public control statement does not specify a transformation algorithm",
+      "BE_support_status": "NOT_SUPPORTED",
+      "applicability": "NOT_APPLICABLE_TO_PROVIDER_PAYLOAD",
+      "evidence_digest": "sha256:7f2609616bb0004847836e30b5cb70d9f357a002dc4ff339281ec6f32d3abc6a"
+    },
+    {
+      "method_id": "E3-METHOD-07",
+      "method": "FPE",
+      "field": [
+        "NONE_IN_CURRENT_E2_CONTRACT"
+      ],
+      "field_scope": "legacy fixed-format identifiers",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "NIST-SP-800-38G-R1-2PD"
+      ],
+      "industry_source": [],
+      "academic_source": [
+        "DURAK-VAUDENAY-2017",
+        "NAVEED-2015-PPE"
+      ],
+      "method_evidence_ids": [
+        "NIST-SP-800-38G-R1-2PD",
+        "DURAK-VAUDENAY-2017",
+        "NAVEED-2015-PPE"
+      ],
+      "metric": "DOMAIN_SIZE,FORMAT,LEAKAGE",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "Draft status; format and equality leakage remain contextual risks; Targets FF3/small domains; Medical datasets were studied, not this synthetic financial dataset",
+      "BE_support_status": "REQUIRES_EXTENSION",
+      "applicability": "NOT_APPLICABLE_NO_FORMAT_PRESERVATION_NEED",
+      "evidence_digest": "sha256:3f25ee748fa251bed015d31219197f7da23e0f775ea55178d78cfd00dc8f18e2"
+    },
+    {
+      "method_id": "E3-METHOD-08",
+      "method": "OPE_ORE",
+      "field": [
+        "NONE_IN_CURRENT_E2_CONTRACT"
+      ],
+      "field_scope": "server-side range or sort fields",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [],
+      "industry_source": [],
+      "academic_source": [
+        "GRUBBS-2017-ORE",
+        "NAVEED-2015-PPE"
+      ],
+      "method_evidence_ids": [
+        "GRUBBS-2017-ORE",
+        "NAVEED-2015-PPE"
+      ],
+      "metric": "ORDER_UTILITY,LEAKAGE_ABUSE",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "Attack outcomes depend on leakage profile and auxiliary data; Medical datasets were studied, not this synthetic financial dataset",
+      "BE_support_status": "NOT_SUPPORTED",
+      "applicability": "NOT_APPLICABLE_NO_CIPHERTEXT_QUERY_NEED",
+      "evidence_digest": "sha256:03dc76e356910d4f8f32aa5aa0bf1112467fbd40c8e6ed9300c2a059958b19f5"
+    },
+    {
+      "method_id": "E3-METHOD-09",
+      "method": "GENERALIZE",
+      "field": [
+        "account.account_id",
+        "account.account_number",
+        "account.account_type",
+        "account.balance",
+        "customer.address",
+        "customer.customer_id",
+        "customer.customer_name",
+        "customer.date_of_birth",
+        "customer.email",
+        "customer.first_name",
+        "customer.last_name",
+        "customer.phone_number",
+        "customer.resident_registration_number",
+        "customer.segment",
+        "input.prompt",
+        "transaction.amount",
+        "transaction.description",
+        "transaction.merchant_category",
+        "transaction.posted_at",
+        "transaction.transaction_id"
+      ],
+      "field_scope": "numeric facts where bins satisfy the purpose",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [
+        "PROHIBITED_EXTERNAL",
+        "RELATION_PRESERVE",
+        "REMOVE",
+        "REQUIRED_EXACT"
+      ],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "FSC-FINANCIAL-DEID-2022"
+      ],
+      "industry_source": [],
+      "academic_source": [
+        "WOO-2009-UTILITY"
+      ],
+      "method_evidence_ids": [
+        "FSC-FINANCIAL-DEID-2022",
+        "WOO-2009-UTILITY"
+      ],
+      "metric": "EXACT_ERROR,ORDER,THRESHOLD",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "Guidance is contextual and does not certify a specific implementation; Statistical microdata differs from operational customer support",
+      "BE_support_status": "SUPPORTED",
+      "applicability": "EVALUATED_AND_PROHIBITED_FOR_REQUIRED_EXACT",
+      "evidence_digest": "sha256:3f22539d201c1f8fc6a9ed71993bbab35d630d120176416ff3d91f9d8e655fa0"
+    },
+    {
+      "method_id": "E3-METHOD-10",
+      "method": "AGGREGATE",
+      "field": [
+        "NONE_IN_CURRENT_E2_CONTRACT"
+      ],
+      "field_scope": "population/statistical outputs",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "NIST-SP-800-188"
+      ],
+      "industry_source": [],
+      "academic_source": [
+        "SHARMA-2021-FINANCIAL"
+      ],
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHARMA-2021-FINANCIAL"
+      ],
+      "metric": "AGGREGATE_UTILITY,DISCLOSURE_RISK",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "US government guidance; applicability here is methodological; Different mechanism and no record-level support use case",
+      "BE_support_status": "NOT_SUPPORTED",
+      "applicability": "NOT_APPLICABLE_RECORD_LEVEL_SUMMARY_REQUIRED",
+      "evidence_digest": "sha256:17fdf90fd499b9477b0831abed73630f64a2b67d45c6a25f02f6bbb41260e0c7"
+    },
+    {
+      "method_id": "E3-METHOD-11",
+      "method": "NOISE_RANDOMIZATION",
+      "field": [
+        "NONE_IN_CURRENT_E2_CONTRACT"
+      ],
+      "field_scope": "statistical output with explicit error/privacy budget",
+      "workload": "customer_summary",
+      "purpose": "CUSTOMER_SUPPORT",
+      "E2_requirement": [],
+      "privacy_goal": "Meet only the field-bound E2 privacy intents; no method is safe by label alone",
+      "utility_goal": "Preserve the field-bound business need and every required E2 utility gate",
+      "official_source": [
+        "NIST-SP-800-188"
+      ],
+      "industry_source": [],
+      "academic_source": [
+        "SHARMA-2021-FINANCIAL"
+      ],
+      "method_evidence_ids": [
+        "NIST-SP-800-188",
+        "SHARMA-2021-FINANCIAL"
+      ],
+      "metric": "PRIVACY_BUDGET,ERROR_BOUNDS",
+      "why_metric": "The metrics map directly to exactness, relation, disclosure and compatibility gates in the frozen E2 requirement.",
+      "expected_strength": "CONDITIONAL_ON_ALL_REQUIRED_GATES",
+      "known_limitation": "US government guidance; applicability here is methodological; Different mechanism and no record-level support use case",
+      "BE_support_status": "NOT_SUPPORTED",
+      "applicability": "NOT_APPLICABLE_EXACT_RECORD_FACTS_REQUIRED",
+      "evidence_digest": "sha256:9b518de5a7923ef08b55463305d121c5080a963d9f0f9c8626f4cca88731fd9f"
+    }
+  ],
+  "unbacked_metric_policy": "UNBACKED_METRICS_MUST_BE_MARKED_EXPLORATORY",
+  "matrix_digest": "sha256:fa1d2be00b171726de8c95f0f749a0e116e17bf512c57c618fcca2466bd4c430"
+}
