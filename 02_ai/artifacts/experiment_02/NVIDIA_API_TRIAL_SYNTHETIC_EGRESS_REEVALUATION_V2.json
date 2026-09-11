@@ -1,0 +1,68 @@
+{
+  "schema_version": "adp-ai-provider-egress-reevaluation/v2",
+  "evaluation_run_id": "ai-experiment-02-financial-regulatory-v5",
+  "contract_fixed_conditions_digest": "sha256:d2400d2f4cdf093b30be11bf35bd1ec928fd723e39d7003e31763bf15bd0703a",
+  "synthetic_egress_evidence_digest": "sha256:ab100dde0147c22177b3e7842cf3dc69a8d52fe4ad435a75902ac291f59b2b2f",
+  "synthetic_temporal_provenance_digest": "sha256:7deb467f14d4b054f7f6106d8c874185050173b41e8a1c0b3411de073f940e42",
+  "evaluation_reference_date": "2026-09-11",
+  "retrieval_window_days": 90,
+  "temporal_consistency_status": "VERIFIED",
+  "results": [
+    {
+      "case_id": "financial-regulatory-p1-customer-10861",
+      "execution_id": "exec_6ecfbcda-6e7d-4eba-a778-cae92571e850",
+      "authorization_result": "ALLOWED",
+      "applicability_result": "APPLICABLE",
+      "policy_action": "TRANSFORM",
+      "retrieval_transaction_count": 2,
+      "transform_status": "APPLIED",
+      "transformed_field_count": 14,
+      "outbound_guard_status": "PASSED",
+      "outbound_guard_reason_codes": [],
+      "provider_status": "NOT_SENT"
+    },
+    {
+      "case_id": "financial-regulatory-p2-customer-10832",
+      "execution_id": "exec_de6a4ea9-b08f-4b84-899b-7ee1f2042f68",
+      "authorization_result": "ALLOWED",
+      "applicability_result": "APPLICABLE",
+      "policy_action": "TRANSFORM",
+      "retrieval_transaction_count": 2,
+      "transform_status": "APPLIED",
+      "transformed_field_count": 17,
+      "outbound_guard_status": "PASSED",
+      "outbound_guard_reason_codes": [],
+      "provider_status": "NOT_SENT"
+    },
+    {
+      "case_id": "financial-regulatory-p3-customer-10202",
+      "execution_id": "exec_08d6c0b0-158a-42c3-a15f-3046f3f810c9",
+      "authorization_result": "ALLOWED",
+      "applicability_result": "APPLICABLE",
+      "policy_action": "TRANSFORM",
+      "retrieval_transaction_count": 2,
+      "transform_status": "APPLIED",
+      "transformed_field_count": 14,
+      "outbound_guard_status": "PASSED",
+      "outbound_guard_reason_codes": [],
+      "provider_status": "NOT_SENT"
+    }
+  ],
+  "transaction_required_fields_present": true,
+  "transaction_missing_rejection_resolved": true,
+  "destination_contract_changed": false,
+  "retrieval_window_changed": false,
+  "runtime_semantics_changed": false,
+  "destination_risk": {
+    "processing_region": "UNRESOLVED",
+    "retention": "SESSION_END_DEFAULT_WITH_SECURITY_FRAUD_ABUSE_LOG_EXCEPTION_DURATION_UNSPECIFIED",
+    "training_or_reuse": "PERMITTED_FOR_PRODUCT_SERVICE_AND_AI_MODEL_IMPROVEMENT",
+    "decision": "REVIEW_REQUIRED",
+    "provider_call_authorized": false
+  },
+  "provider_baseline": {
+    "provider_request": 0,
+    "connector_execution": 0,
+    "ai_model_execution_evidence": 0
+  }
+}

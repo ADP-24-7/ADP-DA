@@ -1,0 +1,77 @@
+{
+  "schema_version": "adp-ai-synthetic-temporal-provenance/v1",
+  "evidence_id": "e2-synthetic-temporal-provenance/v1",
+  "evaluation_run_id": "ai-experiment-02-financial-regulatory-v5",
+  "dataset_id": "financial_synthetic",
+  "dataset_version": "financial_synthetic_processed_v1",
+  "evaluation_reference_date": "2026-09-11",
+  "retrieval_window_days": 90,
+  "temporal_generation_rule": "Within each E2 customer case, preserve the original synthetic transaction ordering and regenerate timestamps at evaluation_reference_date minus 14 days for the newer transaction and minus 28 days for the older transaction. Only posted_at changes; customer/account linkage, amount, type, balance, regulatory trigger, workload, purpose, transform obligation, and destination contract remain unchanged.",
+  "transactions": [
+    {
+      "transaction_id": "da-txn-3031153",
+      "customer_id": "da-customer-10861",
+      "account_id": "da-acct-200032",
+      "original_synthetic_timestamp": "2022-06-13T08:00:00",
+      "normalized_synthetic_timestamp": "2026-08-14T00:00:00",
+      "transaction_type": "Transfer",
+      "amount": "2259.69"
+    },
+    {
+      "transaction_id": "da-txn-3048211",
+      "customer_id": "da-customer-10861",
+      "account_id": "da-acct-200032",
+      "original_synthetic_timestamp": "2022-10-13T23:00:00",
+      "normalized_synthetic_timestamp": "2026-08-28T00:00:00",
+      "transaction_type": "Deposit",
+      "amount": "1178.79"
+    },
+    {
+      "transaction_id": "da-txn-3007618",
+      "customer_id": "da-customer-10832",
+      "account_id": "da-acct-200904",
+      "original_synthetic_timestamp": "2024-01-09T08:00:00",
+      "normalized_synthetic_timestamp": "2026-08-28T00:00:00",
+      "transaction_type": "Withdrawal",
+      "amount": "2123.67"
+    },
+    {
+      "transaction_id": "da-txn-3024917",
+      "customer_id": "da-customer-10832",
+      "account_id": "da-acct-200904",
+      "original_synthetic_timestamp": "2023-12-22T01:00:00",
+      "normalized_synthetic_timestamp": "2026-08-14T00:00:00",
+      "transaction_type": "Transfer",
+      "amount": "-2367.37"
+    },
+    {
+      "transaction_id": "da-txn-3048536",
+      "customer_id": "da-customer-10202",
+      "account_id": "da-acct-201288",
+      "original_synthetic_timestamp": "2021-03-29T22:00:00",
+      "normalized_synthetic_timestamp": "2026-08-14T00:00:00",
+      "transaction_type": "Transfer",
+      "amount": "4999.59"
+    },
+    {
+      "transaction_id": "da-txn-3007823",
+      "customer_id": "da-customer-10202",
+      "account_id": "da-acct-201288",
+      "original_synthetic_timestamp": "2022-12-31T01:00:00",
+      "normalized_synthetic_timestamp": "2026-08-28T00:00:00",
+      "transaction_type": "Withdrawal",
+      "amount": "4875.14"
+    }
+  ],
+  "preserved_semantics": [
+    "customer_account_relationship",
+    "transaction_amount",
+    "transaction_type",
+    "balance_relationship",
+    "regulatory_trigger",
+    "workload_purpose",
+    "transform_obligation",
+    "destination_contract"
+  ],
+  "temporal_consistency_status": "VERIFIED"
+}

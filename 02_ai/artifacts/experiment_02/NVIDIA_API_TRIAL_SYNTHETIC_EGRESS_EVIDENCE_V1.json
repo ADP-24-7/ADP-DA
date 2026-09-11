@@ -1,0 +1,111 @@
+{
+  "schema_version": "adp-ai-provider-egress-evidence/v1",
+  "evidence_id": "nvidia-api-trial-synthetic-egress/v1",
+  "evaluated_at": "2026-09-11T00:00:00+09:00",
+  "evaluation_run_id": "ai-experiment-02-financial-regulatory-v4",
+  "provider": "NVIDIA API Catalog hosted NIM",
+  "provider_terms": {
+    "source": "https://assets.ngc.nvidia.com/products/api-catalog/legal/NVIDIA%20API%20Trial%20Terms%20of%20Service.pdf",
+    "source_type": "PROVIDER_CONTRACT",
+    "service_scope": "TRIAL_INTERNAL_TEST_AND_EVALUATION_ONLY",
+    "processing_region": "UNRESOLVED",
+    "retention": "SESSION_END_DEFAULT_WITH_SECURITY_FRAUD_ABUSE_LOG_EXCEPTION_DURATION_UNSPECIFIED",
+    "training_or_reuse": "PERMITTED_FOR_NVIDIA_PRODUCT_SERVICE_AND_AI_MODEL_IMPROVEMENT",
+    "third_party_processing": "PERMITTED_FOR_SECURITY_FRAUD_OR_ABUSE_MONITORING",
+    "personal_or_sensitive_data": "PROHIBITED_UNLESS_EXPRESSLY_PERMITTED",
+    "clauses": ["1.2", "2.2", "2.3", "2.4", "2.6", "3.3", "4.3"]
+  },
+  "resolution": {
+    "path": "FULLY_SYNTHETIC_NON_LINKABLE_MINIMIZED_PAYLOAD",
+    "provider_conditions_treated_as_resolved": false,
+    "reason": "The provider does not identify the processing country or the duration of exceptional security/fraud/abuse logs, and expressly permits content reuse for AI model improvement. E2 therefore relies only on a synthetic, non-real-person dataset and a minimized transformed release.",
+    "fail_closed_condition": "Any dataset, row reference, field, or transform outside this evidence remains UNRESOLVED and MUST_NOT_CALL_PROVIDER"
+  },
+  "dataset_provenance": {
+    "dataset_id": "financial_synthetic",
+    "dataset_version": "financial_synthetic_processed_v1",
+    "dataset_digest": "sha256:9afdc4bf89c0047a5e90f21e6f8eaffb4f6c148998f1740f30baf666bdae0a44",
+    "manifest_sha256": "sha256:2e54e595ded98144cc9b57459497768318e9d5616ccd39e9a711e174d7faaee0",
+    "source_type": "SYNTHETIC",
+    "real_person_linkage": "NONE",
+    "case_row_refs": [
+      "financial_synthetic_processed_v1:customers.csv#CustomerID=10861:sha256:db19a727415717a1ca271cea5bdb39ccdc6af4686a033eeb631ae4c83447401b",
+      "financial_synthetic_processed_v1:customers.csv#CustomerID=10832:sha256:18f0831cf7e970ad9d8c376d3a3877c86612270dd259745b8a14225761de5dfe",
+      "financial_synthetic_processed_v1:customers.csv#CustomerID=10202:sha256:2e794d37166b1eae5e50e1703d62d442174b61464d74c96dd8e7778f15e1149f"
+    ]
+  },
+  "payload_minimization": {
+    "retrieved_and_released_field_paths": [
+      "input.prompt",
+      "customer.customer_id",
+      "customer.segment",
+      "account.account_id",
+      "account.account_type",
+      "account.balance",
+      "transaction.transaction_id",
+      "transaction.posted_at",
+      "transaction.merchant_category",
+      "transaction.amount"
+    ],
+    "explicitly_excluded_fields": [
+      "customer.customer_name",
+      "customer.first_name",
+      "customer.last_name",
+      "customer.date_of_birth",
+      "customer.address",
+      "customer.phone_number",
+      "customer.email",
+      "customer.resident_registration_number",
+      "account.account_number",
+      "transaction.description"
+    ],
+    "transform_treatments": {
+      "input.prompt": "KEEP_STATIC_EVALUATION_INSTRUCTION",
+      "customer.customer_id": "VAULT_TOKEN_EXECUTION_SCOPED",
+      "customer.segment": "KEEP_SYNTHETIC_CATEGORY",
+      "account.account_id": "VAULT_TOKEN_EXECUTION_SCOPED",
+      "account.account_type": "KEEP_SYNTHETIC_CATEGORY",
+      "account.balance": "GENERALIZE_SYNTHETIC_AMOUNT",
+      "transaction.transaction_id": "HMAC_PSEUDO_EXECUTION_SCOPED",
+      "transaction.posted_at": "KEEP_SYNTHETIC_DATE",
+      "transaction.merchant_category": "KEEP_SYNTHETIC_CATEGORY",
+      "transaction.amount": "GENERALIZE_SYNTHETIC_AMOUNT"
+    },
+    "raw_personal_data_present": false,
+    "raw_credit_information_present": false,
+    "confidential_fpg_data_present": false,
+    "linkable_to_real_person": false
+  },
+  "reevaluation": {
+    "applicability": {
+      "decision": "NOT_APPLICABLE_TO_REAL_PERSON_OR_REAL_CREDIT_DATA_TRANSFER",
+      "condition": "Exact dataset digest and all three row references match this evidence",
+      "on_mismatch": "UNRESOLVED_MUST_NOT_CALL_PROVIDER"
+    },
+    "policy": {
+      "authorization_result": "ALLOWED",
+      "decision": "TRANSFORM",
+      "manual_override": false,
+      "production_semantics_changed": false
+    },
+    "outbound_guard": {
+      "decision": "PASS_ELIGIBLE_NOT_EXECUTED",
+      "required_checks": [
+        "destination profile id/version/digest match",
+        "workload and purpose binding match",
+        "final action is TRANSFORM",
+        "every released field has a destination field contract",
+        "no prohibited, unknown, removed, raw-unapproved, or secret field is present",
+        "all released values have digests",
+        "E2 contract validates the exact dataset, row, transform, prompt, model, and provider payload before connector execution"
+      ],
+      "provider_call_authorized": false
+    }
+  },
+  "provider_baseline": {
+    "provider_request": 0,
+    "connector_execution": 0,
+    "ai_model_execution_evidence": 0,
+    "observed_at": "2026-09-11T00:00:00+09:00"
+  }
+}

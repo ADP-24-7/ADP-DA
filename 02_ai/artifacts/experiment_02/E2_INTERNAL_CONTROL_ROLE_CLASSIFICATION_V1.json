@@ -1,0 +1,329 @@
+{
+  "schema_version": "adp-ai-e2-internal-control-role-classification/v1",
+  "status": "CLASSIFIED",
+  "control_count": 19,
+  "unmapped_count": 0,
+  "role_family_counts": {
+    "DIRECT": 6,
+    "INDIRECT": 5,
+    "GOVERNANCE": 8
+  },
+  "controls": [
+    {
+      "internal_control": "CTRL-RUNTIME-001",
+      "control_name": "Outbound disclosure purpose and recipient gate",
+      "role": "DIRECT_RUNTIME_CONTROL",
+      "role_family": "DIRECT",
+      "runtime_api_trace_location": "Policy -> OutboundGuard -> outbound decision evidence",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-001",
+        "requirement_ids": [
+          "RC-00002",
+          "RC-00015",
+          "RC-00019"
+        ],
+        "validation_requirement": "request fixture, recipient/purpose policy snapshot, final outbound payload, decision evidence packet",
+        "implementation_boundary": "Project runtime guard; does not define the legal transfer basis."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-002",
+      "control_name": "Re-identification purpose guard",
+      "role": "POLICY_INPUT",
+      "role_family": "INDIRECT",
+      "runtime_api_trace_location": "Policy/applicability input; no independent final Runtime allow/block binding in E2",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-002",
+        "requirement_ids": [
+          "RC-00009"
+        ],
+        "validation_requirement": "purpose classifier eval, adversarial prompts, decision trace",
+        "implementation_boundary": "Project runtime guard; detection logic requires validation before active use."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-003",
+      "control_name": "Pseudonym mapping separation control",
+      "role": "DIRECT_RUNTIME_CONTROL",
+      "role_family": "DIRECT",
+      "runtime_api_trace_location": "Transform -> field treatment / mapping separation evidence",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-003",
+        "requirement_ids": [
+          "RC-00006"
+        ],
+        "validation_requirement": "vault access log, mapping egress fixture, policy snapshot",
+        "implementation_boundary": "Project technical design candidate; exact vault mechanism is not selected here."
+      }
+    },
+    {
+      "internal_control": "CTRL-EVAL-001",
+      "control_name": "Pseudonymization suitability evaluation",
+      "role": "DIRECT_RUNTIME_CONTROL",
+      "role_family": "DIRECT",
+      "runtime_api_trace_location": "E2 field requirement / E3 method evidence and validation profile",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-EVAL-001",
+        "requirement_ids": [
+          "RC-00001",
+          "RC-00003",
+          "RC-00004",
+          "RC-00010",
+          "RC-00044"
+        ],
+        "validation_requirement": "privacy risk report, utility report, transform option comparison",
+        "implementation_boundary": "Evaluation layer owns final transform choice; this control only defines evaluation need."
+      }
+    },
+    {
+      "internal_control": "CTRL-GOV-001",
+      "control_name": "Pseudonymized data governance record control",
+      "role": "AUDIT_ONLY",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "governance_workflow, audit_log",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-GOV-001",
+        "requirement_ids": [
+          "RC-00005",
+          "RC-00007",
+          "RC-00008"
+        ],
+        "validation_requirement": "review record, audit trace, governance checklist",
+        "implementation_boundary": "Governance control; not a runtime allow/block decision."
+      }
+    },
+    {
+      "internal_control": "CTRL-GOV-002",
+      "control_name": "Credit information consent request handling",
+      "role": "HUMAN_REVIEW",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "case_management",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-GOV-002",
+        "requirement_ids": [
+          "RC-00011",
+          "RC-00012"
+        ],
+        "validation_requirement": "case record, consent state snapshot",
+        "implementation_boundary": "Governance workflow; runtime enforcement can only follow a validated operational policy."
+      }
+    },
+    {
+      "internal_control": "CTRL-GOV-003",
+      "control_name": "Outsourcing provider governance control",
+      "role": "DIRECT_RUNTIME_CONTROL",
+      "role_family": "DIRECT",
+      "runtime_api_trace_location": "Applicability / destination profile -> provider governance gate",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-GOV-003",
+        "requirement_ids": [
+          "RC-00014",
+          "RC-00017",
+          "RC-00018",
+          "RC-00020"
+        ],
+        "validation_requirement": "contract checklist, provider assessment, supervision log",
+        "implementation_boundary": "Governance and provider control; not an automatic runtime decision by itself."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-004",
+      "control_name": "Cross-border transfer review and egress gate",
+      "role": "POLICY_INPUT",
+      "role_family": "INDIRECT",
+      "runtime_api_trace_location": "Policy/applicability input; no independent final Runtime allow/block binding in E2",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-004",
+        "requirement_ids": [
+          "RC-00021",
+          "RC-00022",
+          "RC-00024",
+          "RC-00041"
+        ],
+        "validation_requirement": "destination fixture, notice artifact, transfer basis record, outbound payload",
+        "implementation_boundary": "Candidate runtime gate plus governance dependency; legal basis is not invented here."
+      }
+    },
+    {
+      "internal_control": "CTRL-REF-001",
+      "control_name": "General legal reference routing",
+      "role": "HUMAN_REVIEW",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "review_queue",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-REF-001",
+        "requirement_ids": [
+          "RC-00013",
+          "RC-00016",
+          "RC-00023"
+        ],
+        "validation_requirement": "review packet showing cited Evidence",
+        "implementation_boundary": "Non-runtime reference; used for human review context only."
+      }
+    },
+    {
+      "internal_control": "CTRL-REF-002",
+      "control_name": "Unverified electronic finance reference backlog",
+      "role": "AUDIT_ONLY",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "evidence_backlog",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-REF-002",
+        "requirement_ids": [
+          "RC-00025"
+        ],
+        "validation_requirement": "source verification result",
+        "implementation_boundary": "Backlog tracking only; no runtime control."
+      }
+    },
+    {
+      "internal_control": "CTRL-GOV-004",
+      "control_name": "Information system monitoring governance",
+      "role": "GOVERNANCE_ONLY",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "monitoring_console, governance_workflow",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-GOV-004",
+        "requirement_ids": [
+          "RC-00026",
+          "RC-00030",
+          "RC-00031",
+          "RC-00049"
+        ],
+        "validation_requirement": "monitoring policy, audit log, review record",
+        "implementation_boundary": "Governance monitoring; does not select a runtime action."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-005",
+      "control_name": "Privileged and administrator account access control",
+      "role": "POLICY_INPUT",
+      "role_family": "INDIRECT",
+      "runtime_api_trace_location": "Policy/applicability input; no independent final Runtime allow/block binding in E2",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-005",
+        "requirement_ids": [
+          "RC-00027",
+          "RC-00045",
+          "RC-00047"
+        ],
+        "validation_requirement": "account inventory, access policy, negative access fixture, audit trace",
+        "implementation_boundary": "Runtime authorization candidate; REVIEW_REQUIRED dependencies block promotion."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-006",
+      "control_name": "Internal business system network boundary control",
+      "role": "POLICY_INPUT",
+      "role_family": "INDIRECT",
+      "runtime_api_trace_location": "Policy/applicability input; no independent final Runtime allow/block binding in E2",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-006",
+        "requirement_ids": [
+          "RC-00032"
+        ],
+        "validation_requirement": "network path fixture, policy snapshot, connection decision log",
+        "implementation_boundary": "Network control candidate; active blocking requires validation artifact."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-007",
+      "control_name": "Credential and regulated-data protection control",
+      "role": "POLICY_INPUT",
+      "role_family": "INDIRECT",
+      "runtime_api_trace_location": "Policy/applicability input; no independent final Runtime allow/block binding in E2",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-007",
+        "requirement_ids": [
+          "RC-00033",
+          "RC-00034",
+          "RC-00048"
+        ],
+        "validation_requirement": "secret fixture, scan report, protected payload evidence",
+        "implementation_boundary": "Project technical control; exact cryptographic implementation is outside this artifact."
+      }
+    },
+    {
+      "internal_control": "CTRL-REF-003",
+      "control_name": "AI scope reference control",
+      "role": "HUMAN_REVIEW",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "review_queue",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-REF-003",
+        "requirement_ids": [
+          "RC-00035",
+          "RC-00036"
+        ],
+        "validation_requirement": "AI scope review packet",
+        "implementation_boundary": "Non-runtime AI reference only."
+      }
+    },
+    {
+      "internal_control": "CTRL-GOV-005",
+      "control_name": "AI usage security governance control",
+      "role": "GOVERNANCE_ONLY",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "ai_governance_workflow, monitoring_console",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-GOV-005",
+        "requirement_ids": [
+          "RC-00037",
+          "RC-00038",
+          "RC-00039"
+        ],
+        "validation_requirement": "AI usage register, monitoring log, review checklist",
+        "implementation_boundary": "Governance control; runtime prompt/payload controls require separate policy candidates."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-008",
+      "control_name": "AI input sensitive-data detection control",
+      "role": "DIRECT_RUNTIME_CONTROL",
+      "role_family": "DIRECT",
+      "runtime_api_trace_location": "Transform -> OutboundGuard sensitive-data release evidence",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-008",
+        "requirement_ids": [
+          "RC-00040"
+        ],
+        "validation_requirement": "labeled input fixture, detector report, decision trace",
+        "implementation_boundary": "Detection candidate; transform or blocking action remains validation-dependent."
+      }
+    },
+    {
+      "internal_control": "CTRL-RUNTIME-009",
+      "control_name": "External AI reuse restriction control",
+      "role": "DIRECT_RUNTIME_CONTROL",
+      "role_family": "DIRECT",
+      "runtime_api_trace_location": "Policy -> destination reuse-risk decision -> provider NOT_CALLED",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-RUNTIME-009",
+        "requirement_ids": [
+          "RC-00042"
+        ],
+        "validation_requirement": "provider terms snapshot, request fixture, routing decision trace",
+        "implementation_boundary": "Runtime/provider gate candidate; legal and contract review remains dependency."
+      }
+    },
+    {
+      "internal_control": "CTRL-GOV-006",
+      "control_name": "SaaS and cloud provider assurance control",
+      "role": "PROVIDER_GOVERNANCE",
+      "role_family": "GOVERNANCE",
+      "runtime_api_trace_location": "vendor_review, cloud_review",
+      "evidence": {
+        "catalog_ref": "gateway_rules/processed/controls.json#CTRL-GOV-006",
+        "requirement_ids": [
+          "RC-00028",
+          "RC-00029",
+          "RC-00043",
+          "RC-00046"
+        ],
+        "validation_requirement": "provider assessment, cloud security checklist, source verification result",
+        "implementation_boundary": "Governance control; REVIEW_REQUIRED requirements block promotion of dependent runtime controls."
+      }
+    }
+  ],
+  "classification_digest": "sha256:e0fae8cdb3d6716fdaf9cc2e09c0066c902b914a3e6898a7974205f3c1fdbd51"
+}

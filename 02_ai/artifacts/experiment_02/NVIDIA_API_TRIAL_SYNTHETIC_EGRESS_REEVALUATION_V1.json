@@ -1,0 +1,37 @@
+{
+  "schema_version": "adp-ai-provider-egress-reevaluation/v1",
+  "evaluation_run_id": "ai-experiment-02-financial-regulatory-v4",
+  "contract_fixed_conditions_digest": "sha256:2e575f3484d09eab7a78fbdc36d28c0500fa4d7f2dc5e20091e4b6fa7768f397",
+  "synthetic_egress_evidence_digest": "sha256:ab100dde0147c22177b3e7842cf3dc69a8d52fe4ad435a75902ac291f59b2b2f",
+  "execution_id": "exec_ad4b3fbe-edfa-403b-b8c9-8ec14d4dbe5f",
+  "case_id": "financial-regulatory-p1-customer-10861",
+  "model_profile_id": "nvidia-nemotron-3.5-lightning-30b-a3b",
+  "applicability_result": "APPLICABLE",
+  "authorization_result": "ALLOWED",
+  "policy_action": "TRANSFORM",
+  "transform_status": "APPLIED",
+  "transformed_field_count": 6,
+  "outbound_guard_status": "REJECTED",
+  "outbound_candidate_field_count": 6,
+  "outbound_guard_reason_codes": [
+    "REQUIRED_FIELD_MISSING",
+    "REQUIRED_FIELD_MISSING",
+    "REQUIRED_FIELD_MISSING",
+    "REQUIRED_FIELD_MISSING"
+  ],
+  "missing_contract_fields": [
+    "transaction.transaction_id",
+    "transaction.posted_at",
+    "transaction.merchant_category",
+    "transaction.amount"
+  ],
+  "cause": "The frozen retrieval as-of date is 2026-09-11 and the retrieval profile has a 90-day transaction window. The E2 source transactions are dated in 2022, so no transaction record is selected while the existing destination contract requires all four transaction fields.",
+  "runtime_status": "BLOCKED",
+  "provider_status": "NOT_CALLED",
+  "provider_request_count": 0,
+  "connector_execution_count": 0,
+  "ai_model_execution_evidence_count": 0,
+  "manual_override": false,
+  "runtime_semantics_changed": false,
+  "next_action": "STOP_NO_POLICY_OR_OUTBOUND_GUARD_BYPASS"
+}
