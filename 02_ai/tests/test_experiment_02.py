@@ -5,28 +5,48 @@ from pathlib import Path
 import pytest
 from adp_da.experiment_02 import (
     Experiment02Error,
-    build_operational_metrics_contract,
     build_internal_control_roles,
+    build_operational_metrics_contract,
     build_rag_top1_analysis,
-    validate_evidence,
     validate_e2_to_e3_handoff,
-    validate_operational_metrics_contract,
+    validate_evidence,
     validate_internal_control_roles,
+    validate_operational_metrics_contract,
     validate_rag_top1_analysis,
     validate_synthetic_egress_evidence,
     validate_temporal_provenance,
 )
 
-ARTIFACT = Path(__file__).parents[1] / "artifacts/experiment_02/FINANCIAL_AI_REGULATORY_EVIDENCE_V2.json"
-EGRESS_ARTIFACT = Path(__file__).parents[1] / "artifacts/experiment_02/NVIDIA_API_TRIAL_SYNTHETIC_EGRESS_EVIDENCE_V1.json"
-TEMPORAL_ARTIFACT = Path(__file__).parents[1] / "artifacts/experiment_02/E2_SYNTHETIC_TEMPORAL_PROVENANCE_V1.json"
-REEVALUATION_V2 = Path(__file__).parents[1] / "artifacts/experiment_02/NVIDIA_API_TRIAL_SYNTHETIC_EGRESS_REEVALUATION_V2.json"
+ARTIFACT = (
+    Path(__file__).parents[1] / "artifacts/experiment_02/FINANCIAL_AI_REGULATORY_EVIDENCE_V2.json"
+)
+EGRESS_ARTIFACT = (
+    Path(__file__).parents[1]
+    / "artifacts/experiment_02/NVIDIA_API_TRIAL_SYNTHETIC_EGRESS_EVIDENCE_V1.json"
+)
+TEMPORAL_ARTIFACT = (
+    Path(__file__).parents[1] / "artifacts/experiment_02/E2_SYNTHETIC_TEMPORAL_PROVENANCE_V1.json"
+)
+REEVALUATION_V2 = (
+    Path(__file__).parents[1]
+    / "artifacts/experiment_02/NVIDIA_API_TRIAL_SYNTHETIC_EGRESS_REEVALUATION_V2.json"
+)
 CANONICAL_DOC = Path(__file__).parents[1] / "docs/EXPERIMENT_02_REGULATORY_RUNTIME_VALIDATION.md"
-OPERATIONAL_CONTRACT = Path(__file__).parents[1] / "artifacts/experiment_02/E2_CROSS_MODEL_OPERATIONAL_METRICS_CONTRACT_V1.json"
-RAG_TOP1_ANALYSIS = Path(__file__).parents[1] / "artifacts/experiment_02/E2_RAG_TOP1_MISS_ANALYSIS_V1.json"
-CONTROL_ROLES = Path(__file__).parents[1] / "artifacts/experiment_02/E2_INTERNAL_CONTROL_ROLE_CLASSIFICATION_V1.json"
+OPERATIONAL_CONTRACT = (
+    Path(__file__).parents[1]
+    / "artifacts/experiment_02/E2_CROSS_MODEL_OPERATIONAL_METRICS_CONTRACT_V1.json"
+)
+RAG_TOP1_ANALYSIS = (
+    Path(__file__).parents[1] / "artifacts/experiment_02/E2_RAG_TOP1_MISS_ANALYSIS_V1.json"
+)
+CONTROL_ROLES = (
+    Path(__file__).parents[1]
+    / "artifacts/experiment_02/E2_INTERNAL_CONTROL_ROLE_CLASSIFICATION_V1.json"
+)
 CONTROL_CATALOG = Path(__file__).parents[1] / "gateway_rules/processed/controls.json"
-E2_TO_E3_HANDOFF = Path(__file__).parents[1] / "artifacts/experiment_03/E2_TO_E3_TRANSFORM_REQUIREMENTS.json"
+E2_TO_E3_HANDOFF = (
+    Path(__file__).parents[1] / "artifacts/experiment_03/E2_TO_E3_TRANSFORM_REQUIREMENTS.json"
+)
 
 
 def test_regulatory_evidence_and_rag_are_deterministic() -> None:
@@ -89,7 +109,9 @@ def test_hit_metrics_are_not_runtime_compliance() -> None:
 
 
 def test_nvidia_trial_uses_only_fail_closed_synthetic_resolution() -> None:
-    result = validate_synthetic_egress_evidence(json.loads(EGRESS_ARTIFACT.read_text(encoding="utf-8")))
+    result = validate_synthetic_egress_evidence(
+        json.loads(EGRESS_ARTIFACT.read_text(encoding="utf-8"))
+    )
     assert result["status"] == "PASS"
     assert result["provider_call_authorized"] is False
 
@@ -140,20 +162,34 @@ def test_temporally_consistent_cases_reach_outbound_without_provider_call() -> N
 def test_canonical_doc_preserves_e1_depth_and_truthful_e2_execution_boundary() -> None:
     document = CANONICAL_DOC.read_text(encoding="utf-8")
     required_sections = (
-        "## 1. Objective", "## 2. E1 Baseline", "## 3. E1 → E2 Expansion",
-        "## 4. Regulatory Evidence", "## 5. Internal Policy / Control",
-        "## 6. Workload / Purpose", "## 7. RAG Validation", "## 8. Applicability",
-        "## 9. Field Requirement", "## 10. Positive Runtime",
-        "## 11. Negative Runtime N1~N4", "## 12. Provider Governance",
-        "## 13. Model별 Validation Contract", "### 13.1 Nemotron 3.5 Lightning",
-        "### 13.2 Muse Glimmer 30B", "### 13.3 Gemma 4 31B IT",
-        "## 14. Cross-Model Metrics Contract", "## 15. E1 ↔ E2 Comparison",
-        "## 16. FE Controller Contract", "## 17. E3 Handoff",
+        "## 1. Objective",
+        "## 2. E1 Baseline",
+        "## 3. E1 → E2 Expansion",
+        "## 4. Regulatory Evidence",
+        "## 5. Internal Policy / Control",
+        "## 6. Workload / Purpose",
+        "## 7. RAG Validation",
+        "## 8. Applicability",
+        "## 9. Field Requirement",
+        "## 10. Positive Runtime",
+        "## 11. Negative Runtime N1~N4",
+        "## 12. Provider Governance",
+        "## 13. Model별 Validation Contract",
+        "### 13.1 Nemotron 3.5 Lightning",
+        "### 13.2 Muse Glimmer 30B",
+        "### 13.3 Gemma 4 31B IT",
+        "## 14. Cross-Model Metrics Contract",
+        "## 15. E1 ↔ E2 Comparison",
+        "## 16. FE Controller Contract",
+        "## 17. E3 Handoff",
         "## 18. Limitations / Remaining Gap",
     )
     assert all(section in document for section in required_sections)
     assert "Status: `OPEN / PRE_PROVIDER_VALIDATED / PROVIDER_GOVERNANCE_BLOCKED`" in document
-    assert "Provider baseline은 request `0`, connector execution `0`, AI model execution evidence `0`" in document
+    assert (
+        "Provider baseline은 request `0`, connector execution `0`, AI model execution evidence `0`"
+        in document
+    )
     assert "| P1 | NOT_EXECUTED | NOT_EXECUTED | NOT_EXECUTED |" in document
     assert "| P2 | NOT_EXECUTED | NOT_EXECUTED | NOT_EXECUTED |" in document
     assert "| P3 | NOT_EXECUTED | NOT_EXECUTED | NOT_EXECUTED |" in document
@@ -166,7 +202,9 @@ def test_e2_owned_e3_input_handoff_is_frozen_without_running_e3() -> None:
     assert result == {
         "status": "PASS",
         "contract_version": "1.1.1",
-        "contract_digest": "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e",
+        "contract_digest": (
+            "sha256:899cf31a920c1363cfb21b9c7d6f3204819222935bcbb9008a01ccbf9a8ba73e"
+        ),
         "requirement_count": 60,
     }
 
