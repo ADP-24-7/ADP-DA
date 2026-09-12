@@ -65,11 +65,11 @@ jobs:
       - name: Test
         run: python -m pytest 02_ai/tests
 
-      - name: Restore BE P0 contract for Digital Asset tests
+      - name: Restore BE PR 59 Digital Asset runtime contract
         uses: actions/checkout@v4
         with:
           repository: nahee8034-ux/ADP-BE
-          ref: 3692e572da1ff09b040a3e80a863030282060c58
+          ref: 85a01970079344681361803fe4d038cf9a1ebf06
           path: ADP-BE
 
       - name: Digital Asset Test
