@@ -1,0 +1,798 @@
+{
+  "schema_version": "adp-digital-asset-regulatory-registry/v1",
+  "registry_version": "2026-09-12",
+  "domain": "DIGITAL_ASSET",
+  "as_of": "2026-09-12",
+  "retrieved_at": "2026-09-12T00:00:00+09:00",
+  "official_snapshot": "OFFICIAL_REGULATORY_SNAPSHOT_2026-09-12.json",
+  "responsibility_boundary": "FPG consumes upstream KYC/AML/VASP eligibility results; it owns binding, exact comparison, destination guard, execution evidence, reconciliation and audit trace.",
+  "entries": [
+    {
+      "source_id": "PIPA-2026-09-11",
+      "regulatory_evidence_id": "REF-REG-PIPA-2026-09-11",
+      "domain": "BOTH",
+      "law_name": "개인정보 보호법",
+      "regulation_type": "LAW",
+      "authority": "개인정보보호위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "법률 제21445호",
+      "applicable_articles": [
+        "제15조",
+        "제16조",
+        "제17조",
+        "제18조",
+        "제21조",
+        "제24조",
+        "제26조",
+        "제28조의8",
+        "제29조"
+      ],
+      "promulgation_date": "2026-03-10",
+      "effective_date": "2026-09-11",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:b724fb30e599c3a3548375101feed37dbb60f10c810c313d25ae6de43da4dfe6",
+      "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=283839",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "IDENTITY_MINIMIZATION",
+        "DESTINATION_DISCLOSURE",
+        "TRACE_RETENTION"
+      ],
+      "linked_controls": [
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "TRACE_BINDING",
+        "DIGEST_ONLY_EVIDENCE"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "PIPA-DECREE-2026-09-11",
+      "regulatory_evidence_id": "REF-REG-PIPA-DECREE-2026-09-11",
+      "domain": "BOTH",
+      "law_name": "개인정보 보호법 시행령",
+      "regulation_type": "PRESIDENTIAL_DECREE",
+      "authority": "개인정보보호위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "대통령령 제36671호",
+      "applicable_articles": [
+        "제17조",
+        "제18조",
+        "제30조",
+        "제30조의2"
+      ],
+      "promulgation_date": "2026-09-10",
+      "effective_date": "2026-09-11",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:8a321271b3ce81c60182ea9809bdbc0f7bd90b564d0fd6e20e52aa732c423a9c",
+      "source_url": "https://law.go.kr/LSW/lsInfoP.do?lsId=011357",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "IDENTITY_MINIMIZATION",
+        "SECURE_EXTERNAL_TRANSFER"
+      ],
+      "linked_controls": [
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "DESTINATION_ALLOWLIST"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "FIN-GOV-ACT-2026",
+      "regulatory_evidence_id": "REF-REG-FIN-GOV-ACT-2026",
+      "domain": "BOTH",
+      "law_name": "금융회사의 지배구조에 관한 법률",
+      "regulation_type": "LAW",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "법률 제21065호",
+      "applicable_articles": [
+        "제24조",
+        "제27조",
+        "제30조의2",
+        "제30조의3"
+      ],
+      "promulgation_date": "2025-10-01",
+      "effective_date": "2026-01-02",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:8bb9cbc5dacbb36678410376045e93b1103839dadc0a63df0cd5a74e66159e57",
+      "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=277253",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "INTERNAL_CONTROL_ACCOUNTABILITY",
+        "RISK_MANAGEMENT_ACCOUNTABILITY"
+      ],
+      "linked_controls": [
+        "MAKER_CHECKER_POLICY_LIFECYCLE",
+        "AUDIT_EVIDENCE",
+        "RECOVERY_GOVERNANCE"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "FIN-GOV-DECREE-2026",
+      "regulatory_evidence_id": "REF-REG-FIN-GOV-DECREE-2026",
+      "domain": "BOTH",
+      "law_name": "금융회사의 지배구조에 관한 법률 시행령",
+      "regulation_type": "PRESIDENTIAL_DECREE",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "대통령령 제36220호",
+      "applicable_articles": [
+        "제19조",
+        "제22조",
+        "제25조의2"
+      ],
+      "promulgation_date": "2026-03-24",
+      "effective_date": "2026-03-24",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:0b71558cc7c70752e07b94206bcebf9933e2d44679e048e2268336acc1496bd6",
+      "source_url": "https://law.go.kr/lsInfoP.do?ancYnChk=0&lsId=012620",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "INTERNAL_CONTROL_STANDARD",
+        "RISK_MANAGEMENT_STANDARD"
+      ],
+      "linked_controls": [
+        "POLICY_LIFECYCLE_APPROVAL",
+        "AUDIT_EVIDENCE"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "VA-UPA-2024",
+      "regulatory_evidence_id": "REF-REG-VA-UPA-2024",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "가상자산 이용자 보호 등에 관한 법률",
+      "regulation_type": "LAW",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "법률 제20372호",
+      "applicable_articles": [
+        "제2조",
+        "제6조",
+        "제7조",
+        "제9조"
+      ],
+      "promulgation_date": "2024-03-12",
+      "effective_date": "2024-07-19",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:ba8706f31a87570515517f0d215b77f2ddb8273ab576ba546e45308ec2de8e3e",
+      "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1024562527",
+      "repository_status": "CURRENT",
+      "repository_reference": "03_digital_asset/evidence_ontology/processed/evidence_master.json#EV-00050,EV-00051",
+      "linked_requirements": [
+        "DA-01_TRANSACTION_NOT_EXECUTION_RESULT",
+        "DA-02_EXACT_PRESERVATION",
+        "DA-03_TRACE_BINDING"
+      ],
+      "linked_controls": [
+        "AUTHORITATIVE_EXECUTION_EVIDENCE",
+        "APPROVED_VS_REQUESTED_MATCH",
+        "TRACE_BINDING"
+      ],
+      "linked_policy_artifacts": [
+        "DAB-REGULATED-TRANSFER-VNEXT",
+        "OR-DA-REGULATED-TRANSFER-VNEXT",
+        "DA-DIGITAL-ASSET-RUNTIME-CANDIDATE-001/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "EFTA-ACT-2026-09-12",
+      "regulatory_evidence_id": "REF-REG-EFTA-ACT-2026-09-12",
+      "domain": "BOTH",
+      "law_name": "전자금융거래법",
+      "regulation_type": "LAW",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "2026-09-12 현행본; 법률 제21205호는 2026-12-17 시행예정",
+      "applicable_articles": [
+        "제7조",
+        "제9조",
+        "제21조",
+        "제22조",
+        "제24조"
+      ],
+      "promulgation_date": null,
+      "effective_date": "2026-09-12",
+      "amendment_status": "CURRENT_EFFECTIVE_WITH_FUTURE_AMENDMENT",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:3f2dab56ff0c79d0d2f9211e2d3c334a43462c05723dcb338e4d595eed6de0f8",
+      "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsId=010199&efYd=20260912",
+      "repository_status": "REVIEW_REQUIRED",
+      "repository_reference": null,
+      "linked_requirements": [
+        "TRANSACTION_RECORD",
+        "LOSSLESS_AMOUNT",
+        "EXECUTION_EVIDENCE"
+      ],
+      "linked_controls": [
+        "APPROVED_VS_REQUESTED_MATCH",
+        "TRACE_BINDING",
+        "AUTHORITATIVE_EXECUTION_EVIDENCE"
+      ],
+      "linked_policy_artifacts": [],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "MISSING",
+        "requirement": "MISSING",
+        "control": "PENDING_REVIEW",
+        "policy_artifact": "MISSING",
+        "be_lifecycle": "MISSING",
+        "fe": "MISSING"
+      }
+    },
+    {
+      "source_id": "EFTA-DECREE-2026-04-28",
+      "regulatory_evidence_id": "REF-REG-EFTA-DECREE-2026-04-28",
+      "domain": "BOTH",
+      "law_name": "전자금융거래법 시행령",
+      "regulation_type": "PRESIDENTIAL_DECREE",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "대통령령 제36281호",
+      "applicable_articles": [
+        "제7조",
+        "제11조",
+        "제11조의2",
+        "제26조"
+      ],
+      "promulgation_date": "2026-04-28",
+      "effective_date": "2026-04-28",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:f747060fec0d4daf2ff1dc3e89d1523f9072092e6ba0cce8876838ea157f467c",
+      "source_url": "https://law.go.kr/LSW/lsInfoP.do?lsId=010366",
+      "repository_status": "REVIEW_REQUIRED",
+      "repository_reference": null,
+      "linked_requirements": [
+        "TRANSACTION_RECORD",
+        "EXECUTION_EVIDENCE"
+      ],
+      "linked_controls": [
+        "TRACE_BINDING",
+        "AUTHORITATIVE_EXECUTION_EVIDENCE"
+      ],
+      "linked_policy_artifacts": [],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "MISSING",
+        "requirement": "MISSING",
+        "control": "PENDING_REVIEW",
+        "policy_artifact": "MISSING",
+        "be_lifecycle": "MISSING",
+        "fe": "MISSING"
+      }
+    },
+    {
+      "source_id": "VA-UPA-DECREE-2025",
+      "regulatory_evidence_id": "REF-REG-VA-UPA-DECREE-2025",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "가상자산 이용자 보호 등에 관한 법률 시행령",
+      "regulation_type": "PRESIDENTIAL_DECREE",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "대통령령 제35472호",
+      "applicable_articles": [
+        "제7조",
+        "제11조",
+        "제17조"
+      ],
+      "promulgation_date": "2025-04-22",
+      "effective_date": "2025-04-23",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:3f87aad36c0d3c55ace2395883fe0405203361b3564a0fa1d7cf4d6201194317",
+      "source_url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1027797047",
+      "repository_status": "CURRENT",
+      "repository_reference": "03_digital_asset/evidence_ontology/processed/evidence_master.json#EV-00052",
+      "linked_requirements": [
+        "DA-02_EXACT_PRESERVATION",
+        "DA-03_TRACE_BINDING",
+        "DA-06_RECOVERY_IDEMPOTENCY"
+      ],
+      "linked_controls": [
+        "APPROVED_VS_REQUESTED_MATCH",
+        "TRACE_BINDING",
+        "RECONCILE_FIRST"
+      ],
+      "linked_policy_artifacts": [
+        "DAB-REGULATED-TRANSFER-VNEXT",
+        "PE-DA-REGULATED-TRANSFER-VNEXT"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "PENDING_REVIEW",
+        "fe": "PENDING_REVIEW"
+      }
+    },
+    {
+      "source_id": "VA-SUPERVISION-2024-37",
+      "regulatory_evidence_id": "REF-REG-VA-SUPERVISION-2024-37",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "가상자산업감독규정",
+      "regulation_type": "FSC_NOTICE",
+      "authority": "금융위원회",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "금융위원회고시 제2024-37호",
+      "applicable_articles": [
+        "제3조",
+        "제9조",
+        "제10조",
+        "제17조"
+      ],
+      "promulgation_date": "2024-07-10",
+      "effective_date": "2024-07-19",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:7a4228c58dd334878cc55204ef779fa391f70be50dc4e0bb5870c33e47d96072",
+      "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000244180&chrClsCd=010201",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "ASSET_CUSTODY_CONTROL",
+        "SECURITY_AND_INCIDENT_PROCEDURE"
+      ],
+      "linked_controls": [
+        "TRACE_BINDING",
+        "EXECUTION_EVIDENCE",
+        "RECOVERY_GOVERNANCE"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "SFTR-ACT-2026-08-20",
+      "regulatory_evidence_id": "REF-REG-SFTR-ACT-2026-08-20",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률",
+      "regulation_type": "LAW",
+      "authority": "금융위원회·금융정보분석원",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "법률 제21358호",
+      "applicable_articles": [
+        "제4조",
+        "제5조",
+        "제5조의2",
+        "제7조"
+      ],
+      "promulgation_date": "2026-02-19",
+      "effective_date": "2026-08-20",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:b939a259dce42eb158fef00910ec479e6a410c5dc5b4b91fd881fbfe91b84389",
+      "source_url": "https://www.law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010102&lsId=009244",
+      "repository_status": "CURRENT",
+      "repository_reference": "03_digital_asset/evidence_ontology/processed/evidence_master.json#EV-00053..EV-00055 (NOT_VERIFIABLE, 깨진 원문/조건)",
+      "linked_requirements": [
+        "CDD_RESULT_REQUIRED",
+        "VASP_ELIGIBILITY_REQUIRED",
+        "TRANSACTION_MONITORING"
+      ],
+      "linked_controls": [
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "APPROVED_VS_REQUESTED_MATCH",
+        "DESTINATION_ALLOWLIST"
+      ],
+      "linked_policy_artifacts": [
+        "DAB-REGULATED-TRANSFER-VNEXT",
+        "OR-DA-REGULATED-TRANSFER-VNEXT"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "PENDING_REVIEW",
+        "requirement": "PENDING_REVIEW",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "PENDING_REVIEW",
+        "fe": "PENDING_REVIEW"
+      }
+    },
+    {
+      "source_id": "SFTR-DECREE-2026-08-20",
+      "regulatory_evidence_id": "REF-REG-SFTR-DECREE-2026-08-20",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "특정 금융거래정보의 보고 및 이용 등에 관한 법률 시행령",
+      "regulation_type": "PRESIDENTIAL_DECREE",
+      "authority": "금융위원회·금융정보분석원",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "대통령령 제36592호",
+      "applicable_articles": [
+        "제10조의10",
+        "제10조의11",
+        "제13조"
+      ],
+      "promulgation_date": "2026-08-18",
+      "effective_date": "2026-08-20",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:ba726da574b89e0ebc692727c4190b864404c906574300f56533e1119406349e",
+      "source_url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=288765",
+      "repository_status": "CURRENT",
+      "repository_reference": "03_digital_asset/evidence_ontology/processed/evidence_master.json#EV-00056,EV-00057 (NOT_VERIFIABLE, URL/version 혼재)",
+      "linked_requirements": [
+        "TRAVEL_RULE_IDENTITY",
+        "COUNTERPARTY_VASP",
+        "DESTINATION_RISK"
+      ],
+      "linked_controls": [
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "DESTINATION_ALLOWLIST",
+        "PRE_EXECUTION_BLOCK"
+      ],
+      "linked_policy_artifacts": [
+        "OR-DA-REGULATED-TRANSFER-VNEXT",
+        "PE-DA-REGULATED-TRANSFER-VNEXT"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "PENDING_REVIEW",
+        "requirement": "PENDING_REVIEW",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "PENDING_REVIEW",
+        "fe": "PENDING_REVIEW"
+      }
+    },
+    {
+      "source_id": "FIU-REPORT-SUPERVISION-2026-2",
+      "regulatory_evidence_id": "REF-REG-FIU-REPORT-SUPERVISION-2026-2",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "특정 금융거래정보 보고 및 감독규정",
+      "regulation_type": "FIU_NOTICE",
+      "authority": "금융정보분석원",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "금융정보분석원고시 제2026-2호",
+      "applicable_articles": [
+        "제3조",
+        "제26조",
+        "제27조",
+        "제28조의2",
+        "제31조"
+      ],
+      "promulgation_date": "2026-08-20",
+      "effective_date": "2026-08-20",
+      "amendment_status": "CURRENT_EFFECTIVE_WITH_DEFERRED_CLAUSES",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:384dd77bef90ea47ff72b4fef7595390956603254a3a9cb82f8c423fb69fbeb3",
+      "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000284076&chrClsCd=010201",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "REPORTING_GOVERNANCE",
+        "VASP_REGISTRATION_EVIDENCE"
+      ],
+      "linked_controls": [
+        "AUDIT_EVIDENCE",
+        "POLICY_VERSION_BINDING"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "FIU-AML-CFT-2025-2",
+      "regulatory_evidence_id": "REF-REG-FIU-AML-CFT-2025-2",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "자금세탁방지 및 공중협박자금조달금지에 관한 업무규정",
+      "regulation_type": "FIU_NOTICE",
+      "authority": "금융정보분석원",
+      "official_source": "국가법령정보센터",
+      "official_identifier": "금융정보분석원고시 제2025-2호",
+      "applicable_articles": [
+        "제20조",
+        "제21조",
+        "제38조",
+        "제44조",
+        "제52조"
+      ],
+      "promulgation_date": "2025-10-22",
+      "effective_date": "2026-01-22",
+      "amendment_status": "CURRENT_EFFECTIVE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:74013d6053103149283a5b67579bf3ab12283d6d09460237648c574d6d27501f",
+      "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000267264&chrClsCd=010201",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "RISK_BASED_CDD",
+        "RECORD_RETENTION",
+        "INTERNAL_AML_CONTROL"
+      ],
+      "linked_controls": [
+        "UPSTREAM_KYC_BINDING",
+        "TRACE_BINDING",
+        "AUDIT_EVIDENCE"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    },
+    {
+      "source_id": "FSC-VA-AMENDMENT-2026-08-11",
+      "regulatory_evidence_id": "REF-REG-FSC-VA-AMENDMENT-2026-08-11",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "가상자산시장 투명성 강화를 위한 특정금융정보법 시행령 개정안 국무회의 의결",
+      "regulation_type": "OFFICIAL_POLICY_RELEASE",
+      "authority": "금융위원회",
+      "official_source": "금융위원회",
+      "official_identifier": "보도자료 87499",
+      "applicable_articles": [
+        "트래블룰 기준금액 폐지",
+        "해외 VASP·개인지갑 위험기반 통제",
+        "고객확인 명확화"
+      ],
+      "promulgation_date": "2026-08-11",
+      "effective_date": "2026-08-20",
+      "amendment_status": "CURRENT_EXPLANATORY_SOURCE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:b38f0cb743137d0368fc11adb085c03cd9ebd3241054062fcc956d8d7fcf2ef9",
+      "source_url": "https://www.fsc.go.kr/no010101/87499",
+      "repository_status": "CURRENT",
+      "repository_reference": "03_digital_asset/evidence_ontology/processed/evidence_master.json#EV-00058",
+      "linked_requirements": [
+        "ALL_VALUE_TRAVEL_RULE",
+        "OFFSHORE_VASP_RISK",
+        "UNHOSTED_WALLET_RISK"
+      ],
+      "linked_controls": [
+        "DESTINATION_ALLOWLIST",
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "PRE_EXECUTION_BLOCK"
+      ],
+      "linked_policy_artifacts": [
+        "DAB-REGULATED-TRANSFER-VNEXT",
+        "OR-DA-REGULATED-TRANSFER-VNEXT",
+        "PE-DA-REGULATED-TRANSFER-VNEXT"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "PENDING_REVIEW",
+        "fe": "PENDING_REVIEW"
+      }
+    },
+    {
+      "source_id": "FIU-CDD-GUIDE",
+      "regulatory_evidence_id": "REF-REG-FIU-CDD-GUIDE",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "자금세탁방지제도 안내 - 고객확인제도(CDD)",
+      "regulation_type": "OFFICIAL_GUIDANCE",
+      "authority": "금융정보분석원",
+      "official_source": "금융정보분석원",
+      "official_identifier": "정책안내 guide04",
+      "applicable_articles": [
+        "고객 신원",
+        "실제소유자",
+        "거래 목적",
+        "지속적 확인"
+      ],
+      "promulgation_date": null,
+      "effective_date": null,
+      "amendment_status": "CURRENT_UNVERSIONED_WEB_GUIDANCE",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:15d59ef3dd29c4dca30eb921037c3c29525b45f5a2511d5c397396d0a7e1a90e",
+      "source_url": "https://www.kofiu.go.kr/kor/policy/guide04.do",
+      "repository_status": "REVIEW_REQUIRED",
+      "repository_reference": "03_digital_asset/evidence_ontology/processed/evidence_master.json#EV-00059 (version/effective_date 없음)",
+      "linked_requirements": [
+        "CDD_RESULT_REQUIRED",
+        "PURPOSE_BINDING"
+      ],
+      "linked_controls": [
+        "UPSTREAM_KYC_BINDING",
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE"
+      ],
+      "linked_policy_artifacts": [
+        "DAB-REGULATED-TRANSFER-VNEXT"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "PENDING_REVIEW",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "PENDING_REVIEW",
+        "fe": "PENDING_REVIEW"
+      }
+    },
+    {
+      "source_id": "FATF-RECOMMENDATIONS-2026-06",
+      "regulatory_evidence_id": "REF-REG-FATF-RECOMMENDATIONS-2026-06",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "The FATF Recommendations",
+      "regulation_type": "INTERNATIONAL_STANDARD",
+      "authority": "FATF",
+      "official_source": "FATF",
+      "official_identifier": "FATF Recommendations, updated June 2026",
+      "applicable_articles": [
+        "Recommendation 15 and INR.15",
+        "Recommendation 16"
+      ],
+      "promulgation_date": "2026-06-23",
+      "effective_date": "2026-06-23",
+      "amendment_status": "CURRENT_PUBLISHED",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:81f8625db7a967b43897b8eb7a3fd4192b9047578de08f30ae55c6eb2a871bc4",
+      "source_url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Fatf-recommendations.html",
+      "repository_status": "REVIEW_REQUIRED",
+      "repository_reference": "03_digital_asset/artifacts/be_handoff_vNext/* (R.15/INR.15/R.16 참조는 있으나 edition·digest 없음)",
+      "linked_requirements": [
+        "VASP_RISK_BASED_CONTROL",
+        "TRAVEL_RULE_IDENTITY",
+        "PAYMENT_TRANSPARENCY"
+      ],
+      "linked_controls": [
+        "DESTINATION_ALLOWLIST",
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "TRACE_BINDING"
+      ],
+      "linked_policy_artifacts": [
+        "DAB-REGULATED-TRANSFER-VNEXT",
+        "OR-DA-REGULATED-TRANSFER-VNEXT"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "PENDING_REVIEW",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "PENDING_REVIEW",
+        "fe": "PENDING_REVIEW"
+      }
+    },
+    {
+      "source_id": "FATF-VA-TARGETED-UPDATE-2026",
+      "regulatory_evidence_id": "REF-REG-FATF-VA-TARGETED-UPDATE-2026",
+      "domain": "DIGITAL_ASSET",
+      "law_name": "Seventh Targeted Update on Implementation of the FATF Standards on Virtual Assets/VASPs",
+      "regulation_type": "INTERNATIONAL_GUIDANCE",
+      "authority": "FATF",
+      "official_source": "FATF",
+      "official_identifier": "Seventh Targeted Update, 16 July 2026",
+      "applicable_articles": [
+        "Recommendation 15 implementation",
+        "Travel Rule",
+        "offshore VASP",
+        "unhosted wallet risk"
+      ],
+      "promulgation_date": "2026-07-16",
+      "effective_date": "2026-07-16",
+      "amendment_status": "CURRENT_PUBLISHED",
+      "retrieved_at": "2026-09-12T00:00:00+09:00",
+      "content_digest": "sha256:f54ff8461a164b8ea5b341298a22ad9cd57e7d7259a6221eaa10591e0aa78487",
+      "source_url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/targeted-updated-virtualassets-vasps-2026.html",
+      "repository_status": "CURRENT",
+      "repository_reference": null,
+      "linked_requirements": [
+        "OFFSHORE_VASP_RISK",
+        "UNHOSTED_WALLET_RISK",
+        "TRAVEL_RULE_IMPLEMENTATION"
+      ],
+      "linked_controls": [
+        "DESTINATION_ALLOWLIST",
+        "PRE_EXECUTION_BLOCK",
+        "AUDIT_EVIDENCE"
+      ],
+      "linked_policy_artifacts": [
+        "DA-REGULATORY-EVIDENCE-MATERIALIZATION-2026-09-13/1.0.0"
+      ],
+      "trace": {
+        "official_source": "CONNECTED",
+        "da_evidence": "CONNECTED",
+        "requirement": "CONNECTED",
+        "control": "CONNECTED",
+        "policy_artifact": "CONNECTED",
+        "be_lifecycle": "CONNECTED",
+        "fe": "CONNECTED"
+      }
+    }
+  ],
+  "summary": {
+    "sources": 17,
+    "CURRENT": 13,
+    "OUTDATED": 0,
+    "MISSING": 0,
+    "INVALID_REFERENCE": 0,
+    "REVIEW_REQUIRED": 4,
+    "UNRESOLVED": 0,
+    "fully_connected": 9,
+    "partial_or_missing": 8
+  }
+}

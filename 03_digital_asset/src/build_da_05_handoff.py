@@ -10,7 +10,14 @@ from pathlib import Path
 
 import jsonschema
 import pandas as pd
-from build_da_00_01_handoff import notebook, output_text, require, sha256, table
+from build_da_00_01_handoff import (
+    notebook,
+    output_text,
+    require,
+    sha256,
+    sha256_text,
+    table,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 DA = Path("03_digital_asset")
@@ -102,7 +109,7 @@ def build(root: Path = ROOT, generated_at: str = "") -> dict:
         "source_notebook": NB.as_posix(),
         "source_notebook_sha256": sha256(root / NB),
         "source_markdown": DOC.as_posix(),
-        "source_markdown_sha256": sha256(root / DOC),
+        "source_markdown_sha256": sha256_text(root / DOC),
         "source_data": MASTER.as_posix(),
         "source_data_sha256": sha256(root / MASTER),
         "evidence_type": "APPROVAL_FIXTURE_WITH_OBSERVED_ETHEREUM_REQUEST_CONTEXT",

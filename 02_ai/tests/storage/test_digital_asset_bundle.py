@@ -56,7 +56,9 @@ def build_bundle() -> BuiltDigitalAssetBundle:
 
 def test_be_p0_5_schemas_are_exactly_frozen() -> None:
     for filename, expected in SCHEMA_RAW_DIGESTS.items():
-        assert hashlib.sha256((SCHEMAS / filename).read_bytes()).hexdigest() == expected
+        # Git may materialize CRLF on Windows; the frozen identity is the LF-normalized blob.
+        schema_bytes = (SCHEMAS / filename).read_bytes().replace(b"\r\n", b"\n")
+        assert hashlib.sha256(schema_bytes).hexdigest() == expected
 
 
 def test_semantic_constants_match_frozen_be_schemas() -> None:

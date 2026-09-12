@@ -40,6 +40,11 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def sha256_text(path: Path) -> str:
+    """Hash repository text as its canonical LF blob across checkout platforms."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
 def notebook(root: Path, path: Path) -> dict[str, Any]:
     value = json.loads((root / path).read_text(encoding="utf-8"))
     require(value["nbformat"] == 4, "Unsupported notebook format")

@@ -1,0 +1,196 @@
+{
+  "generated_at": "2026-09-12T00:00:00+09:00",
+  "count": 9,
+  "automatic_approval": false,
+  "reviews": [
+    {
+      "review_id": "RR-001",
+      "regulatory_evidence_id": "REF-REG-EFTA-ACT-2026-09-12",
+      "domain": "BOTH",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.law.go.kr/LSW/lsInfoP.do?lsId=010199&efYd=20260912",
+      "effective_date": "2026-09-12",
+      "affected_requirement": [
+        "ELECTRONIC_TRANSACTION_RECORD",
+        "ACCESS_AND_SECURITY",
+        "INCIDENT_CONTROL"
+      ],
+      "affected_control": [
+        "FULL_STAGE_TRACE",
+        "AUTHZ_AND_DESTINATION_ALLOWLIST",
+        "PROVIDER_FAILURE_CONTAINMENT"
+      ],
+      "affected_policy": [],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-002",
+      "regulatory_evidence_id": "REF-REG-EFTA-DECREE-2026-04-28",
+      "domain": "BOTH",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://law.go.kr/LSW/lsInfoP.do?lsId=010366",
+      "effective_date": "2026-04-28",
+      "affected_requirement": [
+        "ELECTRONIC_TRANSACTION_RECORD",
+        "ACCESS_AND_SECURITY"
+      ],
+      "affected_control": [
+        "FULL_STAGE_TRACE",
+        "END_TO_END_AI_SECURITY"
+      ],
+      "affected_policy": [],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-003",
+      "regulatory_evidence_id": "REF-REG-AI-BASIC-ACT-2026",
+      "domain": "AI",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282791&efYd=20260122",
+      "effective_date": "2026-01-22",
+      "affected_requirement": [
+        "AI-ACT-GENERATIVE-TRANSPARENCY",
+        "AI-ACT-HIGH-IMPACT-CHECK",
+        "AI-ACT-HIGH-IMPACT-DUTIES"
+      ],
+      "affected_control": [
+        "AI_GENERATED_RESULT_NOTICE",
+        "HIGH_IMPACT_APPLICABILITY_CHECK",
+        "HIGH_IMPACT_DUTY_GATE"
+      ],
+      "affected_policy": [
+        "FINANCIAL_AI_REGULATORY_EVIDENCE_V2"
+      ],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-004",
+      "regulatory_evidence_id": "REF-REG-FSI-SAAS-GUIDE-2026",
+      "domain": "AI",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.fsec.or.kr/bbs/detail?bbsNo=11929&menuNo=222",
+      "effective_date": "2026-04-29",
+      "affected_requirement": [
+        "FSI-SAAS-EXCEPTION"
+      ],
+      "affected_control": [
+        "SAAS_EXCEPTION_EVIDENCE"
+      ],
+      "affected_policy": [
+        "FINANCIAL_AI_REGULATORY_EVIDENCE_V2",
+        "E2_PROVIDER_GOVERNANCE_BASELINE/1.2.0"
+      ],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-005",
+      "regulatory_evidence_id": "REF-REG-FSC-MYDATA-SERVICE-GUIDE-2021-07",
+      "domain": "AI",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.fsc.go.kr/po010101/76323",
+      "effective_date": "2021-07-29",
+      "affected_requirement": [
+        "CREDIT-PURPOSE-LIMITATION",
+        "CREDIT-DATA-MINIMIZATION",
+        "CREDIT-THIRD-PARTY-PROTECTION"
+      ],
+      "affected_control": [
+        "PURPOSE_AND_WORKLOAD_BINDING",
+        "DATA_MINIMIZATION_AND_LEAKAGE_GUARD"
+      ],
+      "affected_policy": [],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-006",
+      "regulatory_evidence_id": "REF-REG-FSC-FINANCIAL-PRIVACY-GUIDE-2017",
+      "domain": "AI",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.fsc.go.kr/po010101/72612",
+      "effective_date": "2017-02-27",
+      "affected_requirement": [
+        "CREDIT-RETENTION-DESTRUCTION",
+        "CREDIT-CONSENT"
+      ],
+      "affected_control": [
+        "RETENTION_REUSE_CONTRACT",
+        "AUTHORIZATION_POLICY_SEPARATION"
+      ],
+      "affected_policy": [],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-007",
+      "regulatory_evidence_id": "REF-REG-FSEC-CRYPTO-GUIDE-2019",
+      "domain": "AI",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.fsec.or.kr/bbs/detail?bbsNo=6158&menuNo=222",
+      "effective_date": "2019-01-09",
+      "affected_requirement": [
+        "SECURE-PSEUDONYMIZATION",
+        "KEY-MANAGEMENT"
+      ],
+      "affected_control": [
+        "E3_TOKEN_TRANSFORM",
+        "E3_HMAC_TRANSFORM",
+        "DATA_MINIMIZATION_AND_LEAKAGE_GUARD"
+      ],
+      "affected_policy": [
+        "E3_VALIDATED_TRANSFORM_PROFILE/1.2.0 (method outcome only)"
+      ],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-008",
+      "regulatory_evidence_id": "REF-REG-FIU-CDD-GUIDE",
+      "domain": "DIGITAL_ASSET",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.kofiu.go.kr/kor/policy/guide04.do",
+      "effective_date": null,
+      "affected_requirement": [
+        "CDD_RESULT_REQUIRED",
+        "PURPOSE_BINDING"
+      ],
+      "affected_control": [
+        "UPSTREAM_KYC_BINDING",
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE"
+      ],
+      "affected_policy": [
+        "DAB-REGULATED-TRANSFER-VNEXT"
+      ],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "review_id": "RR-009",
+      "regulatory_evidence_id": "REF-REG-FATF-RECOMMENDATIONS-2026-06",
+      "domain": "DIGITAL_ASSET",
+      "issue": "Official source is current, but legal applicability or lifecycle binding requires maker-checker review.",
+      "official_source": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Fatf-recommendations.html",
+      "effective_date": "2026-06-23",
+      "affected_requirement": [
+        "VASP_RISK_BASED_CONTROL",
+        "TRAVEL_RULE_IDENTITY",
+        "PAYMENT_TRANSPARENCY"
+      ],
+      "affected_control": [
+        "DESTINATION_ALLOWLIST",
+        "REQUIRED_OUTBOUND_FIELD_PRESENCE",
+        "TRACE_BINDING"
+      ],
+      "affected_policy": [
+        "DAB-REGULATED-TRANSFER-VNEXT",
+        "OR-DA-REGULATED-TRANSFER-VNEXT"
+      ],
+      "recommended_review_action": "Legal owner validates applicability and a privileged operator binds the approved candidate; do not auto-activate.",
+      "status": "PENDING_REVIEW"
+    }
+  ]
+}
