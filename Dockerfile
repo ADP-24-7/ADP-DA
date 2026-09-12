@@ -8,6 +8,8 @@ WORKDIR /app
 COPY pyproject.toml README.md ./
 COPY 02_ai/src ./02_ai/src
 COPY 02_ai/contracts ./02_ai/contracts
+COPY scripts ./scripts
+COPY regulatory_baseline ./regulatory_baseline
 
 RUN python -m pip install --upgrade pip \
     && python -m pip install --no-cache-dir -e .

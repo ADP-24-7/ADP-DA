@@ -1,0 +1,45 @@
+{
+  "schema_version": "adp-regulatory-lineage-e2e/v1",
+  "as_of": "2026-09-12",
+  "canonical_identity": {
+    "da_field": "regulatory_evidence_id",
+    "be_equivalent": "evidence_id",
+    "immutability_tuple": ["regulatory_evidence_id", "source_version", "source_digest"]
+  },
+  "cases": [
+    {
+      "case_id": "REG-LINEAGE-AI-001",
+      "domain": "AI",
+      "regulatory_source_id": "PIPA-2026-09-11",
+      "regulatory_evidence_id": "REF-REG-PIPA-2026-09-11",
+      "source_version": "21445-2026-09-11",
+      "source_digest": "sha256:b724fb30e599c3a3548375101feed37dbb60f10c810c313d25ae6de43da4dfe6",
+      "effective_date": "2026-09-11",
+      "requirement_refs": ["PIPA-PURPOSE-LIMITATION", "PIPA-DATA-MINIMIZATION", "PIPA-OUTSOURCING-TRANSFER"],
+      "control_refs": ["PURPOSE_AND_WORKLOAD_BINDING", "DATA_MINIMIZATION_AND_LEAKAGE_GUARD", "PROVIDER_GOVERNANCE"],
+      "policy_artifact_id": "AI-POLICY-LOCAL-VALIDATED-001",
+      "policy_version": "1.0.0",
+      "execution_pack": "AI",
+      "workload_id": "customer_summary",
+      "purpose_code": "CUSTOMER_SUPPORT",
+      "expected_lifecycle_state": "VALIDATED"
+    },
+    {
+      "case_id": "REG-LINEAGE-DA-001",
+      "domain": "DIGITAL_ASSET",
+      "regulatory_source_id": "VA-UPA-2024",
+      "regulatory_evidence_id": "REF-REG-VA-UPA-2024",
+      "source_version": "20372-2024-07-19",
+      "source_digest": "sha256:ba8706f31a87570515517f0d215b77f2ddb8273ab576ba546e45308ec2de8e3e",
+      "effective_date": "2024-07-19",
+      "requirement_refs": ["DA-01-EXECUTION-EVIDENCE", "DA-02-EXACT-PRESERVATION", "DA-03-TRACE-BINDING"],
+      "control_refs": ["AUTHORITATIVE_EXECUTION_EVIDENCE", "LOSSLESS_EXACT_AMOUNT", "APPROVAL_TO_FINAL_TRACE"],
+      "policy_artifact_id": "DA-DIGITAL-ASSET-RUNTIME-LOCAL-ACTIVE-001",
+      "policy_version": "1.0.0",
+      "execution_pack": "DIGITAL_ASSET",
+      "workload_id": "tokenized_asset_purchase",
+      "purpose_code": "DIGITAL_ASSET_PURCHASE",
+      "expected_lifecycle_state": "ACTIVE"
+    }
+  ]
+}
