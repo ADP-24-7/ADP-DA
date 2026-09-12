@@ -1,0 +1,51 @@
+{
+  "experiment_version": "adp-ai-isolated-model-benchmark/1.0.0",
+  "recorded_at": "2026-09-11T23:59:25.1846347Z",
+  "harness_mode": "BENCHMARK_EVALUATION_ONLY",
+  "production_governance": "ACTIVE_FAIL_CLOSED / BLOCK",
+  "production_runtime_invoked": false,
+  "synthetic_public_data_only": true,
+  "credential_reference": "NVIDIA_API_KEY",
+  "provider_actual_calls": 3,
+  "results": [
+    {
+      "model": "Nemotron 3.5 Lightning",
+      "model_id": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "authentication": "PASS",
+      "endpoint_connectivity": "PASS",
+      "provider_response": "PASS",
+      "latency_ms": 4283.485,
+      "input_tokens": 83,
+      "output_tokens": 96,
+      "total_tokens": 179,
+      "error": null,
+      "timeout": false
+    },
+    {
+      "model": "Muse Glimmer 30B",
+      "model_id": "meta/muse-glimmer-30b",
+      "authentication": "PASS",
+      "endpoint_connectivity": "PASS",
+      "provider_response": "EMPTY_FINAL_CONTENT",
+      "latency_ms": 3644.405,
+      "input_tokens": 82,
+      "output_tokens": 96,
+      "total_tokens": 178,
+      "error": "EMPTY_FINAL_CONTENT_AT_96_TOKEN_SMOKE_LIMIT",
+      "timeout": false
+    },
+    {
+      "model": "Gemma 4 31B IT",
+      "model_id": "google/gemma-4-31b-it",
+      "authentication": "PASS",
+      "endpoint_connectivity": "PASS",
+      "provider_response": "PASS",
+      "latency_ms": 25693.536,
+      "input_tokens": 85,
+      "output_tokens": 65,
+      "total_tokens": 150,
+      "error": null,
+      "timeout": false
+    }
+  ]
+}
