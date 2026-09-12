@@ -1,5 +1,14 @@
 # DA-04 Outbound Destination Runtime Validation
 
+## Final Runtime Validation
+
+ADP-BE PR #59 closes the prior local BE E2E and trace gaps without changing the DA-04 analysis
+metrics. `BLOCK_DESTINATION` is denied by the server-owned approved-transaction policy gate
+before an outbound candidate is created: provider request, connector execution, post-execution
+evidence, and external effect counts are all zero. PASS cases continue through the six P0-7
+controls and bind P0-8 independent evidence. Provider-specific real wire schemas remain outside
+the local P0 validation boundary.
+
 현재 vNext의 Field-level 목적지 분리는 성립한다. 다만 Field 집합이 완전하다는 사실은
 실제 upstream 값이나 Provider wire schema까지 확보했다는 뜻이 아니다.
 

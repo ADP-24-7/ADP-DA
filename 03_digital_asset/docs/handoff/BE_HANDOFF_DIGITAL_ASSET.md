@@ -1,6 +1,15 @@
 # Digital Asset BE Handoff
 
-Status: `FPG BE HANDOFF READY WITH NON-BLOCKING GAPS`
+Status: `DIGITAL ASSET DA-01~DA-06 FINAL VALIDATED`
+
+## Final Runtime Validation
+
+The active DA-01 through DA-06 requirements are closed by
+[Digital Asset P0 Local Product E2E](DA_P0_LOCAL_PRODUCT_E2E.md) against
+[ADP-BE PR #59](https://github.com/ADP-24-7/ADP-BE/pull/59). The six canonical
+fixtures passed through the existing BE Runtime path, and the demo repository integration
+completed with the locked DA/BE/FE revisions and Flyway V52. This closure changes no analysis
+statistics, fixture bytes, or Runtime policy ownership.
 
 This is the active Digital Asset runtime handoff index. Historical V2/V3/vNext PR documents were consolidated here so BE can implement from one current contract set without following PR-level document history.
 
@@ -48,9 +57,11 @@ Runtime must bind evidence by `transaction_hash` and finalize execution state on
 - external execution response binding
 - recovery and idempotency adapter
 
-## Non-blocking Contract Gaps
+## Out-of-scope Extension Boundaries
 
-These remain BE-owned or adapter-owned contract gaps. They must not be filled with inferred domain, legal, chain-specific, or provider-specific rules in the FPG analysis layer.
+The following remain BE-owned or adapter-owned extension boundaries outside the validated local
+P0 contract. They do not reopen DA-01 through DA-06 and must not be filled with inferred domain,
+legal, chain-specific, or provider-specific rules in the FPG analysis layer.
 
 - runtime enum
 - approved transaction schema

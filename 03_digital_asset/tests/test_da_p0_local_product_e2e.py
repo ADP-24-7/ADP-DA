@@ -121,7 +121,7 @@ def test_current_be_consumer_contract_and_supported_triggers(built):
     for field in outbound:
         assert field in outbound_contract
     assert "asset-sent-unknown" in connector
-    assert "asset-execution-failed" not in connector
+    assert "asset-execution-failed" in connector
     assert "DIGITAL_ASSET_APPROVED_AMOUNT_EXCEEDED" in reason_codes
     assert "DIGITAL_ASSET_APPROVED_DESTINATION_MISMATCH" in reason_codes
     assert "IDEMPOTENCY_KEY_REUSED" in reason_codes

@@ -1,5 +1,37 @@
 # Digital Asset P0 Local Product E2E
 
+Status: `DIGITAL ASSET DA-01~DA-06 FINAL VALIDATED`
+
+## Final closure on 2026-09-12
+
+ADP-BE PR [#59](https://github.com/ADP-24-7/ADP-BE/pull/59) executed all six
+canonical DA fixtures through the existing Runtime API and PostgreSQL path. The original closure
+suite passed 548 tests with zero failures; after merging the latest BE main, the final regression
+passed 562 tests with zero failures and one skipped test. The locked demo integration passed with
+BE, DA, FE, Docs, PostgreSQL, and Flyway V52 healthy. No DA fixture, analysis statistic, BE
+production class, or migration was changed for this validation.
+
+The final Runtime flow is fixed as:
+
+`Approval`
+→ `Requested Transaction`
+→ `Pre-Execution Policy Guard`
+→ `External Execution`
+→ `Execution Evidence`
+→ `Reconciliation`
+→ `Final State`
+→ `Decision Trace`
+→ `Admin Operations`
+
+| DA Evidence | Validated flow segment |
+| --- | --- |
+| DA-01 | External Execution → Execution Evidence → Final State |
+| DA-02 | Approval → Requested Transaction → Guard → Execution Evidence |
+| DA-03 | Approval → Request → Attempt/Evidence → Final State → Decision Trace |
+| DA-04 | Approved Destination → Guard → External Execution boundary |
+| DA-05 | Approval → Requested Transaction → PASS/BLOCK |
+| DA-06 | External Execution → Reconciliation → Final State → Admin Operations |
+
 ## BE work boundary reviewed on 2026-09-10
 
 | PR | State | BE-owned scope | DA impact |
@@ -22,12 +54,23 @@ PR #43 is the AI Evaluation Contract runtime and does not own Digital Asset fixt
 
 | DA Evidence | DA Runtime Requirement | BE implementation location | Status | Remaining work |
 | --- | --- | --- | --- | --- |
-| DA-01 | Do not treat `tx_hash` as success; distinguish SUCCESS/FAILED/UNKNOWN using receipt/finality | `DigitalAssetPostExecutionEvidenceService`, `DigitalAssetSettlementOutcomeHandler`, PR #33 | IMPLEMENTED | Add a local connector trigger that returns a confirmed failed receipt for product E2E. |
-| DA-02 | Preserve authoritative atomic amounts as exact strings and compare Approved/Requested/Executed without float | `DigitalAssetAmount`, `ApprovedTransactionBindingEvaluator`, `ExactExecutionAmountResolver`, PR #27/#33 | IMPLEMENTED | None for the canonical P0 path. |
-| DA-03 | Bind Approval, Request, Attempt, transaction hash, receipt, transfer/trace and final state | runtime snapshot/guard/post-execution evidence tables and trace endpoints, PR #30/#32/#33 | IMPLEMENTED | Prove the complete chain in the six-case runnable harness. |
-| DA-04 | Enforce destination profile fields and fail closed on unsupported/unresolved provider mappings | `DigitalAssetPreExecutionGuard`, destination profile adapter and response guard, PR #32 | IMPLEMENTED | Real provider wire schema remains outside P0. |
-| DA-05 | Compare PURPOSE, ASSET, AMOUNT, COUNTERPARTY, DESTINATION and PERIOD with PASS/BLOCK/REVIEW | `ApprovedTransactionResolver`, `ApprovedTransactionBindingEvaluator`, `DigitalAssetPolicyGate`, PR #26/#27 | IMPLEMENTED | Counterparty is represented by the approved beneficiary reference in the current contract. |
-| DA-06 | Preserve idempotency, reconcile SENT_UNKNOWN before retry, prohibit blind resend, recover terminal state | runtime idempotency persistence and `ExternalInteractionRecoveryService`, PR #40 | PARTIAL | Local SENT_UNKNOWN fixture currently reconciles connector acknowledgement without recovered receipt/transfer evidence. |
+| DA-01 | Do not treat `tx_hash` as success; distinguish SUCCESS/FAILED/UNKNOWN using receipt/finality | `EXECUTION_FAILED`: transaction hash present, independent receipt `FAILED`, final state `FAILED` | VALIDATED | None for the canonical local P0 path. |
+| DA-02 | Preserve authoritative atomic amounts as exact strings and compare Approved/Requested/Executed without float | String atomic values, exact comparison and persisted exact-amount digest verified | VALIDATED | None for the canonical local P0 path. |
+| DA-03 | Bind Approval, Request, Attempt, transaction hash, receipt, transfer/trace and final state | One execution/trace binds snapshot, guard, connector, independent evidence, reconciliation and final state | VALIDATED | None for the canonical local P0 path. |
+| DA-04 | Enforce destination profile fields and fail closed on unsupported/unresolved provider mappings | `BLOCK_DESTINATION`: server-owned destination mismatch blocked before provider/connector; external effect 0 | VALIDATED | Real-provider wire schema remains outside local P0. |
+| DA-05 | Compare PURPOSE, ASSET, AMOUNT, COUNTERPARTY, DESTINATION and PERIOD with PASS/BLOCK/REVIEW | Amount/destination mismatches blocked with effect 0; PASS fixtures alone execute | VALIDATED | Counterparty remains the approved beneficiary reference in this contract. |
+| DA-06 | Preserve idempotency, reconcile SENT_UNKNOWN before retry, prohibit blind resend, recover terminal state | Reconcile-first recovery and duplicate replay each retain one total external effect | VALIDATED | Real-provider idempotency behavior remains adapter scope. |
+
+## Final Validation Matrix
+
+| DA Evidence | Runtime Requirement | BE Runtime Result | Actual | Final |
+| --- | --- | --- | --- | --- |
+| DA-01 | Transaction != Execution Result | Receipt/Evidence judgment | Failed receipt overrides transaction-hash presence; `FAILED` | VALIDATED |
+| DA-02 | Exact Preservation | Lossless Exact Amount | Approved/requested/executed atomic strings and exact digest preserved | VALIDATED |
+| DA-03 | Trace Binding | Approval → Final State | Execution ID binds snapshot, attempt, evidence, reconciliation, final trace | VALIDATED |
+| DA-04 | Destination Control | Pre/Outbound Guard | Server-owned mismatch blocked; connector/provider/effect 0 | VALIDATED |
+| DA-05 | Approved vs Requested | PASS/BLOCK | Amount and destination mismatch block; matching cases execute | VALIDATED |
+| DA-06 | Recovery / Idempotency | SENT_UNKNOWN / Reconciliation | No blind retry, reconcile-first, immutable snapshot, one-effect replay | VALIDATED |
 
 ## Canonical Bundle assessment
 
@@ -54,12 +97,16 @@ local API credential from the environment; no credential is stored in a fixture.
 | `GOLDEN_PASS` | PASS | settled, receipt success, finalized, evidence verified | COMPLETED | Supported |
 | `BLOCK_AMOUNT` | BLOCK | connector not called | BLOCKED | Supported |
 | `BLOCK_DESTINATION` | BLOCK | connector not called | BLOCKED | Supported |
-| `EXECUTION_FAILED` | PASS | receipt failed | FAILED | Needs a BE local connector/approval trigger |
-| `SENT_UNKNOWN_RECOVERED` | PASS | one effect, status query, no resend | EXTERNALLY_RECONCILED | Needs recovered execution evidence in the local trigger |
+| `EXECUTION_FAILED` | PASS | receipt failed | FAILED | Supported and validated by BE PR #59 |
+| `SENT_UNKNOWN_RECOVERED` | PASS | one effect, status query, no resend | EXTERNALLY_RECONCILED | Supported and validated by BE PR #59 |
 | `DUPLICATE_REQUEST` | PASS | identical request submitted twice, one connector effect | COMPLETED | Supported |
 
 These are inputs and assertions for the actual BE runtime path. They do not implement a second
 policy engine, runtime state machine, evidence store or reconciliation service.
+
+The two frozen fixture `runtime_support` strings retain their generation-time capability markers
+because changing them would alter canonical fixture bytes and digests. Current support is
+authoritatively recorded by this validation matrix and BE PR #59 evidence.
 
 ## Validation
 

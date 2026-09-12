@@ -1,9 +1,9 @@
 # Preserve the exact bytes of the analyst-owned evidence used by SHA-256 artifacts.
-03_digital_asset/contracts/be_loader_v1/*.schema.json -text
+03_digital_asset/contracts/be_loader_v1/*.schema.json text eol=lf
 03_digital_asset/notebooks/runtime_validation/DA_00_master_sample.ipynb -text
 03_digital_asset/notebooks/runtime_validation/DA_01_external_execution.ipynb -text
 03_digital_asset/data/processed/da_master_transaction_sample_73410.csv -text
 03_digital_asset/notebooks/runtime_validation/DA_06_recovery_idempotency.ipynb -text
-03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md -text whitespace=cr-at-eol
+03_digital_asset/docs/handoff/DA_06_recovery_idempotency.md text eol=lf
 03_digital_asset/notebooks/runtime_validation/DA_05_approved_requested_match.ipynb -text
-03_digital_asset/docs/handoff/DA_05_approved_requested_match.md -text
+03_digital_asset/docs/handoff/DA_05_approval_request_match.md text eol=lf

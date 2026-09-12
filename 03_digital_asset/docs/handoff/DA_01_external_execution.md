@@ -57,11 +57,19 @@ BE must preserve:
 - final execution status separately from policy action
 - unresolved or pending result states in recovery/reconciliation instead of final success
 
-## Non-blocking Gaps
+## Final Runtime Validation
+
+ADP-BE PR #59 validates `EXECUTION_FAILED` with one attempted external effect, an available
+transaction hash, authoritative independent receipt status `FAILED`, settlement `FAILED/WAIT`,
+and final Runtime state `FAILED`. The transaction identifier is therefore not used as success
+evidence. `SENT_UNKNOWN_RECOVERED` separately proves that unresolved transport state enters
+reconciliation rather than being promoted to success.
+
+## Out-of-scope Provider Mappings
+
+The validated local P0 Runtime owns the receipt, recovery, reconciliation, trace, and audit
+evidence needed by the six cases. Provider-specific wire mappings remain adapter scope:
 
 - provider-specific receipt schema
-- execution receipt/status enum
-- retry/reconciliation event schema
-- audit event schema
 - `externalTransactionId` to `tx_hash` mapping
 - receipt confirmation timestamp and chain finality mapping
