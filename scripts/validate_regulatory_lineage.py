@@ -26,6 +26,7 @@ def validate() -> None:
     digital_asset = load("DIGITAL_ASSET_REGULATORY_REGISTRY.json")
     fixtures = load("REGULATORY_LINEAGE_E2E_FIXTURES.json")
     review_queue = load("REGULATORY_REVIEW_QUEUE.json")
+    materialization = load("REGULATORY_LINEAGE_MATERIALIZATION.json")
 
     sources = {item["source_id"]: item for item in snapshot["sources"]}
     assert len(sources) == len(snapshot["sources"]), "duplicate regulatory source_id"
@@ -87,6 +88,29 @@ def validate() -> None:
     for review in review_queue["reviews"]:
         assert required_review_fields <= review.keys()
         assert review["status"] == "PENDING_REVIEW"
+    assert materialization["automatic_approval"] is False
+    assert materialization["automatic_activation"] is False
+    assert materialization["target_lifecycle_state"] == "DRAFT"
+    materialized_keys = {
+        (item["domain"], item["regulatory_evidence_id"])
+        for item in materialization["materializations"]
+    }
+    assert len(materialized_keys) == 14
+    assert not ({item[1] for item in materialized_keys} & review_ids)
+    registry_entries = {
+        (registry["domain"], item["regulatory_evidence_id"]): item
+        for registry in (ai, digital_asset)
+        for item in registry["entries"]
+    }
+    for item in materialization["materializations"]:
+        entry = registry_entries[(item["domain"], item["regulatory_evidence_id"])]
+        assert item["source_digest"] == entry["content_digest"]
+        assert item["requirement_refs"] == entry["linked_requirements"]
+        assert item["control_refs"] == entry["linked_controls"]
+        assert set(entry["trace"].values()) == {"CONNECTED"}
+        assert item["lifecycle_state"] == "DRAFT"
+    assert ai["summary"]["fully_connected"] == 7
+    assert digital_asset["summary"]["fully_connected"] == 9
     assert len(fixtures["cases"]) >= 2
     assert {case["domain"] for case in fixtures["cases"]} >= {"AI", "DIGITAL_ASSET"}
     for case in fixtures["cases"]:

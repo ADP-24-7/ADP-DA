@@ -55,3 +55,7 @@ API:
 # Refresh and review extension (2026-09-13)
 
 `scripts/regulatory_refresh.py` and the authenticated internal refresh API extend immutable source/evidence lineage without changing runtime decisions. BE scheduler/manual orchestration rejects automatic activation, and FE projects the same regulatory evidence identity, source digest, policy version, lifecycle, domain, and review status.
+
+# Missing-lineage materialization (2026-09-13)
+
+`scripts/materialize_regulatory_lineage.py` deterministically reproduces the checked-in materialization. It fails if the expected AI 11 / Digital Asset 10 missing inventory drifts, excludes every Evidence ID in `REGULATORY_REVIEW_QUEUE.json`, and only copies Requirement/Control identities already recorded by the Registry. Materialized policy artifacts remain `DRAFT`; association is trace metadata and never an approval or activation command. BE persists and returns Requirement/Control references on the immutable Evidence-to-Policy binding, and FE renders those exact references alongside the lifecycle state.

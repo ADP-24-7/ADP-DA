@@ -49,3 +49,12 @@
 # Implemented refresh closure (2026-09-13)
 
 The registry now drives authority adapters, normalized SHA-256 comparison, selective parsing, AI/Digital Asset impact splitting, pending evidence/requirement/control/policy candidates, and the existing maker-checker lifecycle. Remaining `MISSING` trace values represent real source-to-artifact materialization work and are not reported as connected.
+
+# Current-source materialization (2026-09-13)
+
+The 21 domain mappings classified as `MISSING` were reviewed against the immutable review queue. Fourteen `CURRENT` mappings (AI 6, Digital Asset 8) now preserve their existing Registry Requirement and Control identities in `REGULATORY_LINEAGE_MATERIALIZATION.json` and bind them to new DRAFT-only domain policy artifacts. Seven mappings overlap the nine legal-owner review sources and remain unchanged. No interpretation, approval, activation, current-selection update, or Runtime decision is generated.
+
+| Domain | Connected before | Materialized | Connected after | Review-required missing unchanged |
+| --- | ---: | ---: | ---: | ---: |
+| AI | 1 | 6 | 7 / 21 | 5 |
+| Digital Asset | 1 | 8 | 9 / 17 | 2 |
