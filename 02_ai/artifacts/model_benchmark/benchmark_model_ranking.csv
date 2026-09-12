@@ -1,0 +1,4 @@
+model,weighted_score_available_metrics,available_weight,cost_component,cost_reason
+Gemma 4 31B IT,79.9397,0.9,,N/A_OFFICIAL_PER_MODEL_API_TRIAL_PRICE_NOT_VERIFIED
+Muse Glimmer 30B,79.8483,0.9,,N/A_OFFICIAL_PER_MODEL_API_TRIAL_PRICE_NOT_VERIFIED
+Nemotron 3.5 Lightning,44.5772,0.9,,N/A_OFFICIAL_PER_MODEL_API_TRIAL_PRICE_NOT_VERIFIED

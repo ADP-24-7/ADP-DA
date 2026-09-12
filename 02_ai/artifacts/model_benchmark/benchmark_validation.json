@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "expected_executions": 270,
+  "actual_executions": 270,
+  "unique_case_model_repetition_combinations": 270,
+  "synthetic_public_data_only": true,
+  "production_runtime_invoked": false,
+  "production_governance": "ACTIVE_FAIL_CLOSED / BLOCK"
+}

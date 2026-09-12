@@ -1,0 +1,9 @@
+metric,measurement,evidence,rationale
+Quality,"correctness, completeness, groundedness, required information coverage",NIST AI RMF Valid & Reliable; NIST AI 600-1; HELM,Financial task output reliability
+Latency,"E2E mean, p50, p95, min, max; TTFT when exposed",MLPerf Inference,Online inference responsiveness
+Token Efficiency,"input, output and total tokens",NVIDIA NIM API metadata; HELM efficiency,Operational resource efficiency
+Cost,per-request and quality-adjusted cost when official price exists,Provider official pricing,Adoption economics without invented prices
+Stability,"success, error, timeout and malformed-output rates",NIST AI RMF Valid & Reliable; TEVV-Athlon draft,Operational reliability
+Policy Compliance,"field allowlist, TOKEN/HMAC, REQUIRED_EXACT and forbidden disclosure",NIST Measure/Manage plus frozen FPG controls,"Model-behavior compliance, separate from production provider approval"
+Format Compliance,"JSON parse, exact schema, required fields and types",TEVV verification; CheckList,System integration fitness
+Consistency,three-run answer agreement and contract consistency,NIST reliability; TEVV-Athlon draft,Repeated-run reliability

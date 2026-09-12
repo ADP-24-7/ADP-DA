@@ -1,0 +1,1800 @@
+{
+  "experiment_version": "adp-ai-isolated-model-benchmark/1.0.0",
+  "case_count": 30,
+  "workloads": [
+    "simple_lookup_summary",
+    "exact_numeric_processing",
+    "relationship_preservation",
+    "document_rag",
+    "composite_reasoning",
+    "policy_format_compliance"
+  ],
+  "models": {
+    "Nemotron 3.5 Lightning": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "Muse Glimmer 30B": "meta/muse-glimmer-30b",
+    "Gemma 4 31B IT": "google/gemma-4-31b-it"
+  },
+  "repetitions": 3,
+  "expected_executions": 270,
+  "weights": {
+    "quality": 0.25,
+    "latency": 0.15,
+    "token_efficiency": 0.1,
+    "cost": 0.1,
+    "stability": 0.15,
+    "policy_compliance": 0.1,
+    "format_compliance": 0.05,
+    "consistency": 0.1
+  },
+  "production_governance": "ACTIVE_FAIL_CLOSED / BLOCK",
+  "evaluation_harness": "ISOLATED BENCHMARK HARNESS",
+  "cases": [
+    {
+      "case_id": "BENCH-01",
+      "workload_type": "simple_lookup_summary",
+      "input": "Summarize account status.",
+      "reference_context": {
+        "customer_id": "TOK_C001",
+        "account_id": "TOK_A001",
+        "status": "ACTIVE",
+        "product": "CHECKING"
+      },
+      "expected_elements": [
+        "active",
+        "checking"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "DOC-A01"
+      ],
+      "difficulty": "LOW",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:c075f721e9111783985f2dbd510f1218a99775c7ef00d40a1fb834a16287ed25"
+    },
+    {
+      "case_id": "BENCH-02",
+      "workload_type": "simple_lookup_summary",
+      "input": "Summarize recent activity.",
+      "reference_context": {
+        "customer_id": "TOK_C002",
+        "transaction_id": "HMAC_T002",
+        "merchant_category": "GROCERY",
+        "posted_at": "2026-09-10"
+      },
+      "expected_elements": [
+        "grocery",
+        "2026-09-10"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "DOC-A02"
+      ],
+      "difficulty": "LOW",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:b47824c60ba82ed898ac8e0d889e80d562fb9e199b0b5fcb781094461d179929"
+    },
+    {
+      "case_id": "BENCH-03",
+      "workload_type": "simple_lookup_summary",
+      "input": "State the support eligibility.",
+      "reference_context": {
+        "customer_id": "TOK_C003",
+        "segment": "STANDARD",
+        "account_status": "ACTIVE",
+        "support_channel": "CHAT"
+      },
+      "expected_elements": [
+        "eligible",
+        "chat"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "DOC-A03"
+      ],
+      "difficulty": "LOW",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:7bd2a215dfc081486b34bfd86986605aa1b51b394c02d31fd845b2eb6a8255a8"
+    },
+    {
+      "case_id": "BENCH-04",
+      "workload_type": "simple_lookup_summary",
+      "input": "Summarize two account products.",
+      "reference_context": {
+        "customer_id": "TOK_C004",
+        "products": [
+          "SAVINGS",
+          "CREDIT_CARD"
+        ]
+      },
+      "expected_elements": [
+        "savings",
+        "credit_card"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "DOC-A04"
+      ],
+      "difficulty": "LOW",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:f4c4bbff922c7eb4322e9fdccc879a3596e1e3c245402935aac037fc0a5dcdf0"
+    },
+    {
+      "case_id": "BENCH-05",
+      "workload_type": "simple_lookup_summary",
+      "input": "Summarize the latest payment state.",
+      "reference_context": {
+        "customer_id": "TOK_C005",
+        "transaction_id": "HMAC_T005",
+        "payment_status": "SETTLED"
+      },
+      "expected_elements": [
+        "settled"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "DOC-A05"
+      ],
+      "difficulty": "LOW",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:c9c83f7a08b717c14e5311ab9eed8dccb8c8f1463900a39be234eccfb51a0979"
+    },
+    {
+      "case_id": "BENCH-06",
+      "workload_type": "exact_numeric_processing",
+      "input": "Calculate remaining balance after the transaction.",
+      "reference_context": {
+        "account_id": "TOK_A006",
+        "account.balance": "1250.75",
+        "transaction.amount": "200.25"
+      },
+      "expected_elements": [
+        "1050.50"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "account.balance": "1250.75",
+        "transaction.amount": "200.25"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "CALC-B01"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:0a587f08f6e5b60618982eb783f1de15d3e9d83415eb9543253e060fa660b325"
+    },
+    {
+      "case_id": "BENCH-07",
+      "workload_type": "exact_numeric_processing",
+      "input": "Calculate the sum of the three transactions.",
+      "reference_context": {
+        "account_id": "TOK_A007",
+        "transaction.amounts": [
+          "10.10",
+          "20.20",
+          "30.30"
+        ]
+      },
+      "expected_elements": [
+        "60.60"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "transaction.amounts": "10.10|20.20|30.30"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "CALC-B02"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:8782f8d0231b32cbdd4ac233c2c62289810a7559bade370a14029fff8aa6c4c2"
+    },
+    {
+      "case_id": "BENCH-08",
+      "workload_type": "exact_numeric_processing",
+      "input": "Report whether balance covers the transaction and both exact values.",
+      "reference_context": {
+        "account_id": "TOK_A008",
+        "account.balance": "500.00",
+        "transaction.amount": "499.99"
+      },
+      "expected_elements": [
+        "yes",
+        "500.00",
+        "499.99"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "account.balance": "500.00",
+        "transaction.amount": "499.99"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "CALC-B03"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:1028217aabf216ca8083751ec8863293b067b0be830abdd9853e9e41f0a79d18"
+    },
+    {
+      "case_id": "BENCH-09",
+      "workload_type": "exact_numeric_processing",
+      "input": "Calculate the exact balance difference.",
+      "reference_context": {
+        "account_id": "TOK_A009",
+        "account.balance": "1000.00",
+        "target_balance": "875.55"
+      },
+      "expected_elements": [
+        "124.45"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "account.balance": "1000.00"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "CALC-B04"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:abd1439c1dd1e5c3598c3d33922abc2560387a0c4d696a0d42f4b1173fdd3dcb"
+    },
+    {
+      "case_id": "BENCH-10",
+      "workload_type": "exact_numeric_processing",
+      "input": "Choose the larger exact transaction amount.",
+      "reference_context": {
+        "transaction_ids": [
+          "HMAC_T010A",
+          "HMAC_T010B"
+        ],
+        "transaction.amounts": [
+          "91.19",
+          "91.90"
+        ]
+      },
+      "expected_elements": [
+        "91.90",
+        "hmac_t010b"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "transaction.amounts": "91.19|91.90"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "CALC-B05"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:26b23669df55f975fdd920acdfd312a94c36e1d77268182bba02fdaa517a1342"
+    },
+    {
+      "case_id": "BENCH-11",
+      "workload_type": "relationship_preservation",
+      "input": "Identify which account owns the transaction.",
+      "reference_context": {
+        "customer_id": "TOK_C011",
+        "accounts": [
+          {
+            "account_id": "TOK_A011A",
+            "transactions": [
+              "HMAC_T011A"
+            ]
+          },
+          {
+            "account_id": "TOK_A011B",
+            "transactions": [
+              "HMAC_T011B"
+            ]
+          }
+        ],
+        "query_transaction": "HMAC_T011B"
+      },
+      "expected_elements": [
+        "tok_a011b",
+        "tok_c011"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "REL-C01"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:fad428463ee7f00ec09519e2f2cd13bce418f5e0d8e93fdc5e14a9086b344884"
+    },
+    {
+      "case_id": "BENCH-12",
+      "workload_type": "relationship_preservation",
+      "input": "List the two transactions linked to the account.",
+      "reference_context": {
+        "customer_id": "TOK_C012",
+        "account_id": "TOK_A012",
+        "transaction_ids": [
+          "HMAC_T012A",
+          "HMAC_T012B"
+        ]
+      },
+      "expected_elements": [
+        "hmac_t012a",
+        "hmac_t012b",
+        "tok_a012"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "REL-C02"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:a576c4dc2a11ad1a0cbf276f01c0722a7862a1f2291c46c116f9f22fdbce8ea7"
+    },
+    {
+      "case_id": "BENCH-13",
+      "workload_type": "relationship_preservation",
+      "input": "Identify the customer linked to the savings account.",
+      "reference_context": {
+        "relations": [
+          {
+            "customer_id": "TOK_C013A",
+            "account_id": "TOK_A013A",
+            "product": "CHECKING"
+          },
+          {
+            "customer_id": "TOK_C013B",
+            "account_id": "TOK_A013B",
+            "product": "SAVINGS"
+          }
+        ]
+      },
+      "expected_elements": [
+        "tok_c013b",
+        "tok_a013b"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "REL-C03"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:f2e28226656a05f2f4d233c2ba76708a600e07d9bde623ee44bffbae84cf0e98"
+    },
+    {
+      "case_id": "BENCH-14",
+      "workload_type": "relationship_preservation",
+      "input": "State the transaction chain in posted order.",
+      "reference_context": {
+        "account_id": "TOK_A014",
+        "transactions": [
+          {
+            "transaction_id": "HMAC_T014B",
+            "posted_at": "2026-09-11"
+          },
+          {
+            "transaction_id": "HMAC_T014A",
+            "posted_at": "2026-09-09"
+          }
+        ]
+      },
+      "expected_elements": [
+        "hmac_t014a",
+        "hmac_t014b"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "REL-C04"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:7f6cab844ac7043d39204e33d7ece4c6d50618d2aeeb4ca6e947096d632ac002"
+    },
+    {
+      "case_id": "BENCH-15",
+      "workload_type": "relationship_preservation",
+      "input": "Count accounts and transactions for the customer.",
+      "reference_context": {
+        "customer_id": "TOK_C015",
+        "accounts": [
+          {
+            "account_id": "TOK_A015A",
+            "transaction_ids": [
+              "HMAC_T015A"
+            ]
+          },
+          {
+            "account_id": "TOK_A015B",
+            "transaction_ids": [
+              "HMAC_T015B",
+              "HMAC_T015C"
+            ]
+          }
+        ]
+      },
+      "expected_elements": [
+        "2",
+        "3"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "REL-C05"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:bd1b7b99fd887f0732a61970939ccf82d3845166ad901f8ad1c892837f9f0b9e"
+    },
+    {
+      "case_id": "BENCH-16",
+      "workload_type": "document_rag",
+      "input": "Answer the retention question from the reference only.",
+      "reference_context": {
+        "question": "What is the approved retention mode?",
+        "references": [
+          {
+            "evidence_id": "RAG-D01",
+            "text": "The approved retention mode is SESSION_ONLY with maximum retention of 0 days."
+          }
+        ]
+      },
+      "expected_elements": [
+        "session_only",
+        "0"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RAG-D01"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:482f21241e308179715101fa4d5d4f96616cf548c7bf29fb8d8eaa9bbaa1a781"
+    },
+    {
+      "case_id": "BENCH-17",
+      "workload_type": "document_rag",
+      "input": "Answer the region question from the reference only.",
+      "reference_context": {
+        "question": "Is the physical processing region resolved?",
+        "references": [
+          {
+            "evidence_id": "RAG-D02",
+            "text": "The NVIDIA-hosted physical processing region remains UNRESOLVED."
+          }
+        ]
+      },
+      "expected_elements": [
+        "unresolved"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RAG-D02"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:e86ba1e7110491cfc70838f55f63bd6aa7936160c72d82a76c4e8f56494eb1e9"
+    },
+    {
+      "case_id": "BENCH-18",
+      "workload_type": "document_rag",
+      "input": "Answer the reuse question from the reference only.",
+      "reference_context": {
+        "question": "Which reuse purpose is approved?",
+        "references": [
+          {
+            "evidence_id": "RAG-D03",
+            "text": "Only REQUEST_EXECUTION is approved; model improvement is not approved."
+          }
+        ]
+      },
+      "expected_elements": [
+        "request_execution"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RAG-D03"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:0ddf83882c0535010c9936fb4026aa07dc360cb9e5c486f6c0104e76d8069c82"
+    },
+    {
+      "case_id": "BENCH-19",
+      "workload_type": "document_rag",
+      "input": "State the exact transform requirement from the reference.",
+      "reference_context": {
+        "question": "How must transaction.amount be transformed?",
+        "references": [
+          {
+            "evidence_id": "RAG-D04",
+            "text": "transaction.amount uses KEEP and REQUIRED_EXACT; GENERALIZE is prohibited."
+          }
+        ]
+      },
+      "expected_elements": [
+        "keep",
+        "required_exact",
+        "generalize",
+        "prohibited"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "transaction.amount": "REQUIRED_EXACT"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RAG-D04"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:a8962e81821b51aaa21865c6e52da3b4d22ecdafdb56534594c77a8ee4d2e52b"
+    },
+    {
+      "case_id": "BENCH-20",
+      "workload_type": "document_rag",
+      "input": "State the production execution decision from the reference.",
+      "reference_context": {
+        "question": "What is the production external execution decision?",
+        "references": [
+          {
+            "evidence_id": "RAG-D05",
+            "text": "Production remains ACTIVE_FAIL_CLOSED with governance decision BLOCK."
+          }
+        ]
+      },
+      "expected_elements": [
+        "active_fail_closed",
+        "block"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RAG-D05"
+      ],
+      "difficulty": "MEDIUM",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:e2ea829084a5c810445bd5601d871bddb23072cb9d530b638f464e6d98732998"
+    },
+    {
+      "case_id": "BENCH-21",
+      "workload_type": "composite_reasoning",
+      "input": "Determine the action using all conditions.",
+      "reference_context": {
+        "account_id": "TOK_A021",
+        "account.balance": "800.00",
+        "transaction.amount": "750.00",
+        "account_status": "ACTIVE",
+        "rule": "ALLOW only when ACTIVE and balance covers amount"
+      },
+      "expected_elements": [
+        "allow",
+        "800.00",
+        "750.00"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "account.balance": "800.00",
+        "transaction.amount": "750.00"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RULE-E01"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:0f96be181f8e70e280ff136ab615ddffd620556e242f47605440380da5b86a7b"
+    },
+    {
+      "case_id": "BENCH-22",
+      "workload_type": "composite_reasoning",
+      "input": "Determine the action using all conditions.",
+      "reference_context": {
+        "account_id": "TOK_A022",
+        "account.balance": "400.00",
+        "transaction.amount": "450.00",
+        "account_status": "ACTIVE",
+        "rule": "BLOCK when balance is below amount"
+      },
+      "expected_elements": [
+        "block",
+        "400.00",
+        "450.00"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "account.balance": "400.00",
+        "transaction.amount": "450.00"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RULE-E02"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:f86e923c7777114a012c8e520b0741b58710858f7503c800e492620345f37068"
+    },
+    {
+      "case_id": "BENCH-23",
+      "workload_type": "composite_reasoning",
+      "input": "Determine whether human review is required.",
+      "reference_context": {
+        "customer_id": "TOK_C023",
+        "risk_flags": [
+          "ADDRESS_MISMATCH",
+          "RECENT_DEVICE_CHANGE"
+        ],
+        "rule": "REVIEW when two or more risk flags exist"
+      },
+      "expected_elements": [
+        "review",
+        "2"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RULE-E03"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:018caa38a688558aab396eb142a001a59697e372248cbe03e65b512d1b492a3c"
+    },
+    {
+      "case_id": "BENCH-24",
+      "workload_type": "composite_reasoning",
+      "input": "Select the eligible account and preserve its exact balance.",
+      "reference_context": {
+        "accounts": [
+          {
+            "account_id": "TOK_A024A",
+            "status": "DORMANT",
+            "account.balance": "900.00"
+          },
+          {
+            "account_id": "TOK_A024B",
+            "status": "ACTIVE",
+            "account.balance": "850.25"
+          }
+        ],
+        "rule": "Select ACTIVE only"
+      },
+      "expected_elements": [
+        "tok_a024b",
+        "850.25"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "account.balance": "850.25"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RULE-E04"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:6407612c6ac0e9a218cf04ad0bee579e17569dda98d5456fcde523c8a89fb677"
+    },
+    {
+      "case_id": "BENCH-25",
+      "workload_type": "composite_reasoning",
+      "input": "Apply precedence BLOCK over REVIEW over ALLOW.",
+      "reference_context": {
+        "signals": [
+          "ALLOW",
+          "REVIEW",
+          "BLOCK"
+        ],
+        "precedence": "BLOCK > REVIEW > ALLOW"
+      },
+      "expected_elements": [
+        "block"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "RULE-E05"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:e7ba5f92804192fdba6a4bfe9f0ef77952b79aad4e809bd43056f52166219587"
+    },
+    {
+      "case_id": "BENCH-26",
+      "workload_type": "policy_format_compliance",
+      "input": "Return the required schema without extra fields.",
+      "reference_context": {
+        "customer_id": "TOK_C026",
+        "instruction": "answer must be SCHEMA_OK"
+      },
+      "expected_elements": [
+        "schema_ok"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "FMT-F01"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:f162ce5307058ff0e55a7de971a64594347bcc1ad018fe4393d9696fb2b60daf"
+    },
+    {
+      "case_id": "BENCH-27",
+      "workload_type": "policy_format_compliance",
+      "input": "Refuse to invent a missing balance.",
+      "reference_context": {
+        "account_id": "TOK_A027",
+        "account.balance": null,
+        "instruction": "answer must be NOT_AVAILABLE"
+      },
+      "expected_elements": [
+        "not_available"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "FMT-F02"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:ddab18833f55684323325ea2cec953498064a4bcfaaa7dcf87cf4b4044523c0c"
+    },
+    {
+      "case_id": "BENCH-28",
+      "workload_type": "policy_format_compliance",
+      "input": "Do not reveal a raw identifier; use only the token.",
+      "reference_context": {
+        "customer_id": "TOK_C028",
+        "instruction": "answer must include TOK_C028 only"
+      },
+      "expected_elements": [
+        "tok_c028"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "FMT-F03"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:ba3fad55f9ff860a26fe20a47992dd10f96f8b1c7cb211229b897b9a3921ba94"
+    },
+    {
+      "case_id": "BENCH-29",
+      "workload_type": "policy_format_compliance",
+      "input": "Return the exact policy decision code.",
+      "reference_context": {
+        "policy_decision": "BLOCK",
+        "reason_code": "PROVIDER_REGION_REQUIRED"
+      },
+      "expected_elements": [
+        "block",
+        "provider_region_required"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {},
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "FMT-F04"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:d36a36b58009b9f53bae4d19436afd106c8e94a9ab1b0d695f3f1f9f4bd01c2e"
+    },
+    {
+      "case_id": "BENCH-30",
+      "workload_type": "policy_format_compliance",
+      "input": "Preserve the required exact amount string.",
+      "reference_context": {
+        "transaction_id": "HMAC_T030",
+        "transaction.amount": "0.10",
+        "instruction": "do not round or coerce"
+      },
+      "expected_elements": [
+        "0.10"
+      ],
+      "required_fields": [
+        "answer",
+        "case_id",
+        "evidence_ids"
+      ],
+      "exact_fields": {
+        "transaction.amount": "0.10"
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "case_id",
+          "evidence_ids"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "quality_rubric": {
+        "correctness": 40,
+        "completeness": 25,
+        "groundedness": 20,
+        "required_information_coverage": 15
+      },
+      "evidence_ids": [
+        "FMT-F05"
+      ],
+      "difficulty": "HIGH",
+      "data_classification": "SYNTHETIC_NON_LINKABLE",
+      "case_digest": "sha256:8b4fec4060068299f6ca8e4e49214532e0f4da6c00daf1051bd1f05d1dfb980b"
+    }
+  ],
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "benchmark_contract_digest": "sha256:789003daa1540fdcde3d2cdf469e56e5067f8359a46145047a60d7d7ea489c16"
+}
